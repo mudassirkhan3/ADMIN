@@ -1,358 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Portal Access | Pharmacology-I BSN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-    
-    body { 
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
-      color: #0f172a; 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      padding: 16px; 
-    }
-
-    .login-container { 
-      background: white; 
-      width: 100%; 
-      max-width: 440px; 
-      padding: 36px 28px; 
-      border-radius: 28px; 
-      box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04); 
-      border: 1px solid rgba(226, 232, 240, 0.8); 
-      position: relative; 
-    }
-
-    .login-header { text-align: center; margin-bottom: 24px; }
-    .login-header h1 { font-size: 1.5rem; font-weight: 800; color: #0284c7; letter-spacing: -0.5px; margin-bottom: 6px; }
-    .login-header p { font-size: 0.85rem; color: #64748b; font-weight: 500; }
-
-    .tab-switcher { display: flex; background: #f1f5f9; border-radius: 14px; padding: 5px; margin-bottom: 22px; }
-    .tab-btn { flex: 1; text-align: center; padding: 11px; font-size: 0.85rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 10px; color: #64748b; transition: all 0.25s ease; }
-    .tab-btn.active { background: white; color: #0284c7; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
-    .form-input { width: 100%; padding: 13px 16px; border: 1.5px solid #cbd5e1; border-radius: 14px; font-size: 0.95rem; font-weight: 600; outline: none; background: #f8fafc; color: #0f172a; transition: all 0.2s; }
-    .form-input:focus { border-color: #0284c7; background: white; box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12); }
-
-    .auth-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; border-radius: 14px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 8px; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25); transition: transform 0.1s, opacity 0.2s; }
-    .auth-btn:hover { opacity: 0.94; }
-    .auth-btn:active { transform: scale(0.98); }
-
-    .forgot-row { display: flex; justify-content: flex-end; margin-top: -8px; margin-bottom: 12px; }
-    .forgot-link { font-size: 0.8rem; font-weight: 700; color: #0284c7; text-decoration: none; cursor: pointer; transition: color 0.2s; }
-    .forgot-link:hover { color: #0369a1; text-decoration: underline; }
-
-    .help-admin-btn { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 10px; 
-      width: 100%; 
-      margin-top: 16px; 
-      padding: 13px; 
-      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); 
-      color: white; 
-      border: none; 
-      border-radius: 14px; 
-      font-size: 0.9rem; 
-      font-weight: 700; 
-      text-decoration: none; 
-      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.25);
-      transition: all 0.2s ease; 
-    }
-    .help-admin-btn:hover { 
-      opacity: 0.92;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
-    }
-    .help-admin-btn:active { transform: scale(0.98); }
-    .whatsapp-icon { font-size: 1.1rem; }
-
-    .help-text { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #64748b; }
-    .help-text span { color: #0284c7; font-weight: 700; }
-    
-    .hidden { display: none; }
-
-    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(3px); }
-    .modal-box { background: white; border-radius: 20px; padding: 24px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); animation: modalPopup 0.2s ease; }
-    @keyframes modalPopup { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .modal-box h3 { font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .modal-box p { font-size: 0.82rem; color: #64748b; margin-bottom: 16px; line-height: 1.4; }
-    .modal-actions { display: flex; gap: 8px; margin-top: 20px; }
-    .btn-primary { flex: 1; background: #0284c7; color: white; border: none; padding: 11px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
-    .btn-primary:hover { opacity: 0.9; }
-    .btn-secondary { flex: 1; background: #e2e8f0; color: #334155; border: none; padding: 11px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
-    .btn-secondary:hover { background: #cbd5e1; }
-
-    @media (max-width: 480px) {
-      body { padding: 12px; }
-      .login-container { padding: 28px 20px; border-radius: 24px; }
-      .login-header h1 { font-size: 1.35rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nursing Study Assistant | BSN</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <div class="login-container">
-    <div class="login-header">
-      <h1>Pharmacology-I Portal</h1>
-      <p id="headerSubtitle">Sign in with your email &amp; password</p>
-    </div>
-
-    <div class="tab-switcher">
-      <button type="button" id="loginTabBtn" class="tab-btn active" onclick="switchMode('login')">Log In</button>
-      <button type="button" id="registerTabBtn" class="tab-btn" onclick="switchMode('register')">Register</button>
-    </div>
-
-    <form id="authForm" onsubmit="handleAuth(event)">
-      <div id="registerFields" class="hidden">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="studentName" class="form-input" placeholder="e.g. Mudassir Khan">
-        </div>
-
-        <div class="form-group">
-          <label>Institute Name</label>
-          <input type="text" id="studentInstitute" class="form-input" value="New Life Institute of Nursing">
-        </div>
-
-        <div class="form-group">
-          <label>Semester</label>
-          <input type="text" id="studentSemester" class="form-input" value="3rd Semester">
-        </div>
-
-        <div class="form-group">
-          <label>🔐 Security Question: What is your favorite city name?</label>
-          <input type="text" id="studentSecurityAnswer" class="form-input" placeholder="e.g. Multan">
-          <p style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">Remember this answer! It matches your cloud profile if you forget your password.</p>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Student Email</label>
-        <input type="email" id="studentEmail" class="form-input" placeholder="e.g. student@nursing.edu" required>
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="studentPassword" class="form-input" placeholder="Enter your password" required>
-      </div>
-
-      <div id="forgotPasswordRow" class="forgot-row">
-        <a class="forgot-link" onclick="openForgotModal()">Forgot Password?</a>
-      </div>
-
-      <button type="submit" id="submitBtn" class="auth-btn">Log In to Dashboard →</button>
-    </form>
-
-    <a href="https://wa.me/923241064487?text=Hello%20Mudassir,%20I%20need%20help%20with%20my%20Pharmacology-I%20portal%20account." target="_blank" class="help-admin-btn">
-      <span class="whatsapp-icon">💬</span> Need Help? Ask Admin
-    </a>
-
-    <div class="help-text">
-      <p>Protected Student Portal • Developed by <span>Mudassir Khan</span></p>
-    </div>
-  </div>
-
-  <div id="forgotModal" class="modal-backdrop">
-    <div class="modal-box">
-      <h3>Reset Password</h3>
-      <p>Enter your registered account email and answer the security question to securely reset your password.</p>
-      
-      <div class="form-group">
-        <label>Registered Student Email</label>
-        <input type="email" id="recoveryEmail" class="form-input" placeholder="student@nursing.edu">
-      </div>
-
-      <div class="form-group">
-        <label>Security Question: What is your favorite city name?</label>
-        <input type="text" id="recoveryAnswer" class="form-input" placeholder="Enter your favorite city name">
-      </div>
-
-      <div class="form-group">
-        <label>New Password</label>
-        <input type="password" id="recoveryNewPassword" class="form-input" placeholder="Enter new password">
-      </div>
-
-      <div class="modal-actions">
-        <button onclick="executePasswordReset()" class="btn-primary">Reset Password</button>
-        <button onclick="closeForgotModal()" class="btn-secondary">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let currentMode = 'login';
-    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycby_9qujjFnAovZHwnKQML2t9nGjKZkMnI9Wd5574oedSLAxkEH_2LMBM5rvH-u62B3Mow/exec';
-
-    window.onload = function() {
-      if (localStorage.getItem('pharmacologyLoggedIn') === 'true') {
-        window.location.href = 'dashboard.html';
-      }
-    };
-
-    function switchMode(mode) {
-      currentMode = mode;
-      const regFields = document.getElementById('registerFields');
-      const submitBtn = document.getElementById('submitBtn');
-      const headerSubtitle = document.getElementById('headerSubtitle');
-      const loginTab = document.getElementById('loginTabBtn');
-      const regTab = document.getElementById('registerTabBtn');
-      const forgotRow = document.getElementById('forgotPasswordRow');
-
-      if (mode === 'register') {
-        regFields.classList.remove('hidden');
-        forgotRow.classList.add('hidden');
-        submitBtn.innerText = 'Create Account & Register →';
-        headerSubtitle.innerText = 'Create your student account';
-        regTab.classList.add('active');
-        loginTab.classList.remove('active');
-        document.getElementById('studentName').required = true;
-        document.getElementById('studentSecurityAnswer').required = true;
-      } else {
-        regFields.classList.add('hidden');
-        forgotRow.classList.remove('hidden');
-        submitBtn.innerText = 'Log In to Dashboard →';
-        headerSubtitle.innerText = 'Sign in with your email & password';
-        loginTab.classList.add('active');
-        regTab.classList.remove('active');
-        document.getElementById('studentName').required = false;
-        document.getElementById('studentSecurityAnswer').required = false;
-      }
-    }
-
-    function openForgotModal() {
-      const typedEmail = document.getElementById('studentEmail').value.trim();
-      if(typedEmail) {
-        document.getElementById('recoveryEmail').value = typedEmail;
-      }
-      document.getElementById('recoveryAnswer').value = '';
-      document.getElementById('recoveryNewPassword').value = '';
-      document.getElementById('forgotModal').style.display = 'flex';
-    }
-
-    function closeForgotModal() {
-      document.getElementById('forgotModal').style.display = 'none';
-    }
-
-    async function handleAuth(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('studentEmail').value.trim().toLowerCase();
-      const password = document.getElementById('studentPassword').value.trim();
-      const submitBtn = document.getElementById('submitBtn');
-
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Processing...";
-
-      try {
-        if (currentMode === 'register') {
-          const name = document.getElementById('studentName').value.trim();
-          const institute = document.getElementById('studentInstitute').value.trim();
-          const semester = document.getElementById('studentSemester').value.trim();
-          const securityAnswer = document.getElementById('studentSecurityAnswer').value.trim();
-
-          // Send data to Google Sheet for Registration (background save)
-          fetch(GOOGLE_SHEET_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              action: 'register',
-              fullName: name,
-              institute: institute,
-              email: email,
-              password: password,
-              semester: semester,
-              securityAnswer: securityAnswer
-            })
-          });
-
-          // Save locally as well so login works instantly
-          const localUser = { name: name, institute: institute, email: email, semester: semester, password: password, securityAnswer: securityAnswer };
-          let registeredUsers = JSON.parse(localStorage.getItem('pharmacologyAllUsers')) || [];
-          registeredUsers.push(localUser);
-          localStorage.setItem('pharmacologyAllUsers', JSON.stringify(registeredUsers));
-
-          alert('🎉 Registration successful! You can now log in with your email and password.');
-          switchMode('login');
-          document.getElementById('authForm').reset();
-
-        } else {
-          // Login Mode: Check against registered local backup database or simulated cloud check
-          let registeredUsers = JSON.parse(localStorage.getItem('pharmacologyAllUsers')) || [];
-          
-          // Fallback default admin/student account if list is empty
-          if(registeredUsers.length === 0) {
-            registeredUsers.push({
-              email: "student@nursing.edu",
-              password: "password123",
-              name: "Mudassir Hussain Khan",
-              institute: "New Life Institute of Nursing",
-              semester: "4th Semester"
-            });
-          }
-
-          let matchedUser = registeredUsers.find(u => u.email.toLowerCase() === email && u.password === password);
-
-          if (matchedUser) {
-            localStorage.setItem('pharmacologyUser', JSON.stringify(matchedUser));
-            localStorage.setItem('pharmacologyLoggedIn', 'true');
-            window.location.href = 'dashboard.html';
-          } else {
-            // STRICT BLOCK: Wrong details will show this error and stay on page
-            alert('❌ Invalid email or password! Please check your credentials or register first.');
-          }
-        }
-      } catch (err) {
-        console.error('Auth Error:', err);
-        alert('⚠️ Connection error. Please check your network connection.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = currentMode === 'register' ? 'Create Account & Register →' : 'Log In to Dashboard →';
-      }
-    }
-
-    async function executePasswordReset() {
-      const email = document.getElementById('recoveryEmail').value.trim().toLowerCase();
-      const answer = document.getElementById('recoveryAnswer').value.trim();
-      const newPassword = document.getElementById('recoveryNewPassword').value.trim();
-
-      if (!email || !answer || !newPassword) {
-        alert('❌ Please fill in all fields to verify your identity.');
-        return;
-      }
-
-      let registeredUsers = JSON.parse(localStorage.getItem('pharmacologyAllUsers')) || [];
-      let userIndex = registeredUsers.findIndex(u => u.email.toLowerCase() === email);
-
-      if (userIndex !== -1 && registeredUsers[userIndex].securityAnswer && registeredUsers[userIndex].securityAnswer.toLowerCase() === answer.toLowerCase()) {
-        registeredUsers[userIndex].password = newPassword;
-        localStorage.setItem('pharmacologyAllUsers', JSON.stringify(registeredUsers));
+    <!-- App Shell -->
+    <div class="app-shell">
         
-        // Also send reset signal to Google Sheet backend
-        fetch(GOOGLE_SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'reset', email: email, securityAnswer: answer, newPassword: newPassword })
-        });
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        alert('🎉 Password reset successfully! You can now log in with your new password.');
-        closeForgotModal();
-        document.getElementById('studentEmail').value = email;
-      } else {
-        alert('❌ Password reset failed. Incorrect email or security answer for favorite city.');
-      }
-    }
-  </script>
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-icon"><i class="fa-solid fa-user-nurse"></i></div>
+                <div class="brand-text">
+                    <h2>MK Study Hub</h2>
+                    <span>BSN AI Assistant</span>
+                </div>
+                <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Subject & Semester Selector -->
+            <div class="selector-container">
+                <label for="semesterSelect"><i class="fa-solid fa-layer-group"></i> Select Semester</label>
+                <select id="semesterSelect">
+                    <option value="Semester 1">Semester 1</option>
+                    <option value="Semester 2">Semester 2</option>
+                    <option value="Semester 3" selected>Semester 3</option>
+                    <option value="Semester 4">Semester 4</option>
+                    <option value="Semester 5">Semester 5</option>
+                    <option value="Semester 6">Semester 6</option>
+                    <option value="Semester 7">Semester 7</option>
+                    <option value="Semester 8">Semester 8</option>
+                </select>
+
+                <label for="subjectSelect"><i class="fa-solid fa-book-medical"></i> Select Subject</label>
+                <select id="subjectSelect">
+                    <option value="Pharmacology" selected>Pharmacology</option>
+                    <option value="Adult Health Nursing">Adult Health Nursing</option>
+                    <option value="Pathophysiology">Pathophysiology</option>
+                    <option value="Fundamentals of Nursing">Fundamentals of Nursing</option>
+                    <option value="Community Health Nursing">Community Health Nursing</option>
+                    <option value="Anatomy & Physiology">Anatomy & Physiology</option>
+                    <option value="Microbiology">Microbiology</option>
+                    <option value="Nursing Research">Nursing Research</option>
+                    <option value="Leadership & Management">Leadership & Management</option>
+                    <option value="Maternal & Child Health">Maternal & Child Health</option>
+                    <option value="Mental Health Nursing">Mental Health Nursing</option>
+                </select>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="chat-view"><i class="fa-solid fa-comments"></i> AI Chat & Study</button>
+                <button class="nav-item" data-target="mcq-view"><i class="fa-solid fa-list-check"></i> MCQ Generator</button>
+                <button class="nav-item" data-target="quiz-view"><i class="fa-solid fa-stopwatch"></i> Exam Quiz Mode</button>
+                <button class="nav-item" data-target="viva-view"><i class="fa-solid fa-microphone-lines"></i> Viva Preparation</button>
+                <button class="nav-item" data-target="notes-view"><i class="fa-solid fa-file-pdf"></i> Study Notes & PDFs</button>
+            </nav>
+
+            <!-- Chat History Drawer -->
+            <div class="chat-history-section">
+                <div class="history-header">
+                    <span><i class="fa-solid fa-clock-rotate-left"></i> Chat History</span>
+                    <button id="newChatBtn" title="New Chat"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic chat threads -->
+                </div>
+            </div>
+
+            <!-- Footer Theme Toggle -->
+            <div class="sidebar-footer">
+                <button class="theme-toggle-btn" id="themeToggleBtn">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Dark Mode</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Mobile / Desktop Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="menu-toggle-btn" id="menuToggleBtn"><i class="fa-solid fa-bars"></i></button>
+                    <h1 id="currentViewTitle">AI Chat & Study</h1>
+                </div>
+                <div class="header-right">
+                    <span class="badge-bsn">BSN Undergrad v1.0</span>
+                </div>
+            </header>
+
+            <!-- VIEWS CONTAINER -->
+            <div class="views-container">
+
+                <!-- 1. AI CHAT VIEW -->
+                <section class="view-section active" id="chat-view">
+                    <div class="chat-wrapper">
+                        
+                        <!-- Quick Prompts Row -->
+                        <div class="quick-prompts-bar">
+                            <button class="qp-btn" data-prompt="Explain Simply: ">Explain Simply</button>
+                            <button class="qp-btn" data-prompt="Give MCQs with answers: ">Give MCQs</button>
+                            <button class="qp-btn" data-prompt="Make Short Questions for exam: ">Make Short Qs</button>
+                            <button class="qp-btn" data-prompt="Make Long Essay Questions: ">Make Long Qs</button>
+                            <button class="qp-btn" data-prompt="Test me with a clinical question: ">Test Me</button>
+                            <button class="qp-btn" data-prompt="Give Viva Questions & Expected Answers: ">Viva Questions</button>
+                            <button class="qp-btn" data-prompt="Summarize this topic into key bullet points: ">Summarize This</button>
+                            <button class="qp-btn" data-prompt="What are the Important Exam Points for: ">Important Points</button>
+                        </div>
+
+                        <!-- Chat Messages Container -->
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message ai-message">
+                                <div class="message-avatar"><i class="fa-solid fa-user-nurse"></i></div>
+                                <div class="message-body">
+                                    <p>Hello! I am your AI Nursing Study Assistant. Select your semester and subject on the left, ask any clinical or theoretical question, or use the quick study buttons above!</p>
+                                    <span class="disclaimer-tag"><i class="fa-solid fa-triangle-exclamation"></i> Educational aid only. Not a substitute for clinical instructors or medical professionals.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Typing Indicator -->
+                        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                            <div class="message-avatar"><i class="fa-solid fa-user-nurse"></i></div>
+                            <div class="typing-bubble">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input Box -->
+                        <div class="chat-input-area">
+                            <textarea id="chatInput" placeholder="Ask about nursing care plans, pharmacology, pathophysiology..." rows="1"></textarea>
+                            <button id="sendBtn" title="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. MCQ GENERATOR VIEW -->
+                <section class="view-section" id="mcq-view">
+                    <div class="card-container">
+                        <h2><i class="fa-solid fa-list-check"></i> Interactive MCQ Generator</h2>
+                        <p class="section-desc">Generate targeted practice questions based on your chosen subject.</p>
+                        
+                        <div class="form-grid" id="mcqSetupForm">
+                            <div class="form-group">
+                                <label>Topic / Keyword</label>
+                                <input type="text" id="mcqTopic" placeholder="e.g. Antihypertensive drugs, Heart failure">
+                            </div>
+                            <div class="form-group">
+                                <label>Number of Questions</label>
+                                <select id="mcqCount">
+                                    <option value="5">5 Questions</option>
+                                    <option value="10">10 Questions</option>
+                                    <option value="15">15 Questions</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Difficulty Level</label>
+                                <select id="mcqDifficulty">
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                            </div>
+                            <button class="primary-btn" id="generateMcqsBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Practice MCQs</button>
+                        </div>
+
+                        <!-- MCQ Active Container -->
+                        <div class="mcq-active-box" id="mcqActiveBox" style="display: none;">
+                            <div class="mcq-progress-header">
+                                <span id="mcqCounter">Question 1 of 5</span>
+                                <span id="mcqScoreTracker">Score: 0</span>
+                            </div>
+                            <div id="mcqQuestionContainer"></div>
+                            <div class="mcq-actions" id="mcqActions" style="display: none;">
+                                <button class="primary-btn" id="nextMcqBtn">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- MCQ Results Container -->
+                        <div class="quiz-results-box" id="mcqResultsBox" style="display: none;">
+                            <h3><i class="fa-solid fa-award"></i> Practice Complete!</h3>
+                            <div class="score-card" id="mcqFinalScoreText"></div>
+                            <button class="primary-btn" id="restartMcqBtn"><i class="fa-solid fa-rotate-right"></i> Try Another Quiz</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. EXAM QUIZ MODE VIEW -->
+                <section class="view-section" id="quiz-view">
+                    <div class="card-container">
+                        <h2><i class="fa-solid fa-stopwatch"></i> Timed Exam Quiz Mode</h2>
+                        <p class="section-desc">Simulate BSN semester examinations with optional timers and detailed score reviews.</p>
+                        
+                        <div class="form-grid" id="quizSetupForm">
+                            <div class="form-group">
+                                <label>Exam Topic / Module</label>
+                                <input type="text" id="quizTopic" placeholder="e.g. Gastrointestinal Pharmacology">
+                            </div>
+                            <div class="form-group">
+                                <label>Timer Option</label>
+                                <select id="quizTimerOption">
+                                    <option value="yes">Timed (1 Minute per Question)</option>
+                                    <option value="no">Untimed Practice</option>
+                                </select>
+                            </div>
+                            <button class="primary-btn" id="startQuizBtn"><i class="fa-solid fa-play"></i> Start Exam Quiz</button>
+                        </div>
+
+                        <!-- Quiz Active Container -->
+                        <div class="quiz-active-box" id="quizActiveBox" style="display: none;">
+                            <div class="quiz-top-bar">
+                                <span id="quizQuestionCounter">Q 1/10</span>
+                                <span id="quizTimerDisplay" class="timer-badge"><i class="fa-solid fa-clock"></i> 01:00</span>
+                            </div>
+                            <div id="quizQuestionBox"></div>
+                            <div class="quiz-nav-btns">
+                                <button class="secondary-btn" id="quizPrevBtn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                                <button class="primary-btn" id="quizNextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
+                                <button class="success-btn" id="quizSubmitBtn" style="display:none;"><i class="fa-solid fa-check"></i> Submit Exam</button>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Results Container -->
+                        <div class="quiz-results-box" id="quizResultsBox" style="display: none;">
+                            <h3><i class="fa-solid fa-file-lines"></i> Exam Results Report</h3>
+                            <div class="score-card" id="quizScoreSummary"></div>
+                            <div class="review-list" id="quizReviewList"></div>
+                            <button class="primary-btn" id="retakeQuizBtn"><i class="fa-solid fa-rotate-right"></i> Start New Exam</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. VIVA PREPARATION VIEW -->
+                <section class="view-section" id="viva-view">
+                    <div class="card-container">
+                        <h2><i class="fa-solid fa-microphone-lines"></i> Clinical Viva & Oral Examination Prep</h2>
+                        <p class="section-desc">Interactive oral examiner simulation. The AI asks one clinical/viva question at a time, evaluates your response, gives feedback, and progresses.</p>
+
+                        <div class="viva-setup" id="vivaSetupBox">
+                            <div class="form-group">
+                                <label>Viva Topic / Clinical Area</label>
+                                <input type="text" id="vivaTopicInput" placeholder="e.g. Aseptic Technique & Wound Dressing">
+                            </div>
+                            <button class="primary-btn" id="startVivaBtn"><i class="fa-solid id-badge"></i> Begin Viva Session</button>
+                        </div>
+
+                        <div class="viva-session-box" id="vivaSessionBox" style="display: none;">
+                            <div class="viva-header-info">
+                                <span id="vivaQuestionNumber">Question 1</span>
+                                <button class="text-btn" id="endVivaBtn"><i class="fa-solid fa-right-from-bracket"></i> End Session</button>
+                            </div>
+                            <div class="viva-qa-box" id="vivaQABox">
+                                <!-- Dynamic Viva conversation -->
+                            </div>
+                            <div class="viva-input-area">
+                                <textarea id="vivaAnswerInput" placeholder="Type your verbal response as if speaking to the instructor..." rows="2"></textarea>
+                                <button class="primary-btn" id="submitVivaAnswerBtn"><i class="fa-solid fa-paper-plane"></i> Submit Answer</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. STUDY NOTES & PDFs VIEW -->
+                <section class="view-section" id="notes-view">
+                    <div class="card-container">
+                        <h2><i class="fa-solid fa-file-pdf"></i> Study Notes & Document Hub</h2>
+                        <p class="section-desc">Organize and preview your lecture slides, nursing care plans, and PDF summaries.</p>
+
+                        <div class="notes-upload-box">
+                            <label for="noteFileInput" class="file-drop-area">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Click to upload study notes (PDF, TXT) or drag & drop</span>
+                                <span class="file-hint">Stored securely in browser storage for quick review</span>
+                            </label>
+                            <input type="file" id="noteFileInput" accept=".pdf,.txt,.doc,.docx" style="display: none;">
+                        </div>
+
+                        <div class="notes-list-container">
+                            <h3>My Saved Notes & Care Plans</h3>
+                            <div class="notes-grid" id="notesGrid">
+                                <!-- Dynamic uploaded items -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
 </body>
 </html>
