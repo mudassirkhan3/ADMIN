@@ -331,7 +331,7 @@
         <div class="portal-body">
             
             <div class="success-overlay" id="successView">
-                <i class="fa-solid fa-circle-check"></i>
+                <div style="font-size: 3.5rem; color: #10b981; margin-bottom: 14px;"><i class="fa-solid fa-circle-check"></i></div>
                 <h2>Application Submitted Successfully!</h2>
                 <p>Your candidate record & photo have been securely registered with the institutional database. Our admission committee will review your credentials shortly.</p>
             </div>
@@ -346,6 +346,11 @@
                 <div class="form-group-pro">
                     <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
                     <input type="text" name="fathername" required placeholder="Enter father's name">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-id-card"></i> CNIC / B-Form Number</label>
+                    <input type="text" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
                 </div>
 
                 <div class="form-group-pro">
