@@ -3,180 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSN Nursing Admission Portal | MK Study Hub</title>
+    <title>Official Admissions 2026 | New Life Institute of Nursing</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .terms-box {
-            background: var(--bg-main);
+        :root {
+            --primary-glow: rgba(2, 132, 199, 0.15);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #030712 100%, #0f172a 0%);
+        }
+        .portal-wrapper {
+            width: 100%;
+            max-width: 780px;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 14px;
-            max-height: 150px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .portal-header {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #fff;
+            padding: 36px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .portal-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .portal-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        .institute-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            backdrop-filter: blur(5px);
+        }
+        .portal-body {
+            padding: 35px 30px;
+        }
+        .form-grid-pro {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .form-group-pro {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group-pro.full-width {
+            grid-column: 1 / -1;
+        }
+        .form-group-pro label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-group-pro label i {
+            color: var(--primary);
+        }
+        .form-group-pro input, .form-group-pro select {
+            padding: 13px 16px;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-size: 0.92rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-group-pro input:focus, .form-group-pro select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        .terms-container {
+            background: var(--bg-main);
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            max-height: 140px;
             overflow-y: auto;
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
-        .terms-box ul {
-            padding-left: 16px;
-            margin: 4px 0;
+        .terms-container ul {
+            padding-left: 18px;
+            margin-top: 4px;
         }
-        .checkbox-group {
+        .agreement-box {
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 16px;
+            align-items: center;
+            gap: 12px;
             font-size: 0.85rem;
-            cursor: pointer;
-        }
-        .checkbox-group input {
-            margin-top: 3px;
-            cursor: pointer;
-        }
-        .success-banner {
-            display: none;
-            background: #d1fae5;
-            color: #065f46;
-            padding: 14px;
-            border-radius: 8px;
-            text-align: center;
             font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            margin-top: 4px;
+        }
+        .agreement-box input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+        .submit-btn-pro {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .submit-btn-pro:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px rgba(2, 132, 199, 0.35);
+        }
+        .success-overlay {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 0.4s ease;
+        }
+        .success-overlay i {
+            font-size: 4rem;
+            color: #10b981;
             margin-bottom: 16px;
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .success-overlay h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .success-overlay p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        @media(max-width: 650px) {
+            .form-grid-pro {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-shell" style="margin-left: 0;">
-        <main class="main-content" style="margin-left: 0; width: 100%;">
+    <div class="portal-wrapper">
+        <div class="portal-header">
+            <span class="institute-badge">New Life Institute of Nursing, Multan</span>
+            <h1>Bachelor of Science in Nursing (BSN)</h1>
+            <p>Official Candidate Admission & Registration Portal 2026</p>
+        </div>
+
+        <div class="portal-body">
             
-            <header class="top-header">
-                <div class="header-left">
-                    <a href="index.html" class="secondary-btn" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fa-solid fa-arrow-left"></i> Home</a>
-                    <h1>Candidate Admission Form 2026</h1>
-                </div>
-                <div class="header-right">
-                    <span class="badge-bsn">New Life Institute of Nursing</span>
-                </div>
-            </header>
-
-            <div class="views-container">
-                <div class="card-container" style="max-width: 800px;">
-                    <h2><i class="fa-solid fa-user-graduate" style="color: var(--primary);"></i> Student Registration & Agreement</h2>
-                    <p class="section-desc">Please complete all fields accurately and review the institute terms before submitting.</p>
-
-                    <div class="success-banner" id="successBanner">
-                        <i class="fa-solid fa-circle-check"></i> Registration submitted successfully! Data has been saved.
-                    </div>
-
-                    <form id="admissionForm" class="form-grid">
-                        
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-user"></i> Full Name</label>
-                            <input type="text" name="fullname" required placeholder="e.g. Muhammad Ali">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
-                            <input type="text" name="fathername" required placeholder="e.g. Ahmed Khan">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-calendar"></i> Date of Birth</label>
-                            <input type="date" name="dob" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-map-location-dot"></i> District</label>
-                            <input type="text" name="district" required placeholder="e.g. Multan">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-house"></i> Temporary Address</label>
-                            <input type="text" name="temporary_address" required placeholder="House #12, Street 3, City Area">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
-                            <input type="text" name="permanent_address" required placeholder="House #12, Street 3, Hometown">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-phone"></i> Phone Number</label>
-                            <input type="tel" name="phone" required placeholder="0300 1234567">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact Number</label>
-                            <input type="tel" name="emergency_contact" required placeholder="0300 7654321">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-award"></i> Matric Marks</label>
-                            <input type="text" name="matric_marks" required placeholder="850/1100">
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
-                            <input type="text" name="fsc_marks" required placeholder="780/1100">
-                        </div>
-
-                        <!-- Terms & Conditions Box derived from image -->
-                        <div class="form-group" style="grid-column: 1 / -1;">
-                            <label><i class="fa-solid fa-file-contract"></i> Terms and Conditions</label>
-                            <div class="terms-box">
-                                <strong>Note & Policy Guidelines:</strong>
-                                <ul>
-                                    <li>Tuition fee & "Graduation fee" are subject to change. Library fee, university registration, and PNC registration fees are excluded.</li>
-                                    <li>The student will pay the tuition fee till the last exam in the institute.</li>
-                                    <li>The student has to pay the complete fee for the semester.</li>
-                                    <li>If fee is not submitted on time, a fine may be charged.</li>
-                                    <li>Fee is not refundable at any stage of admission.</li>
-                                    <li>Student is required to agree and sign this agreement upon registration.</li>
-                                </ul>
-                            </div>
-                            <label class="checkbox-group">
-                                <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
-                                <span>I have read, understood, and accept all the terms, conditions, and fee policies outlined above.</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" id="submitBtn" class="primary-btn" style="grid-column: 1 / -1;">
-                            <i class="fa-solid fa-paper-plane"></i> Submit Registration Form
-                        </button>
-
-                    </form>
-                </div>
+            <div class="success-overlay" id="successView">
+                <i class="fa-solid fa-circle-check"></i>
+                <h2>Application Submitted Successfully!</h2>
+                <p>Your candidate record has been securely registered with the institutional database. Our admission committee will review your credentials shortly.</p>
             </div>
-        </main>
+
+            <form id="admissionForm" class="form-grid-pro">
+                
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-user"></i> Full Name</label>
+                    <input type="text" name="fullname" required placeholder="As per Matric certificate">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
+                    <input type="text" name="fathername" required placeholder="Enter father's name">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
+                    <input type="date" name="dob" required>
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-map-location-dot"></i> District</label>
+                    <input type="text" name="district" required placeholder="e.g. Multan">
+                </div>
+
+                <div class="form-group-pro full-width">
+                    <label><i class="fa-solid fa-house"></i> Temporary Address</label>
+                    <input type="text" name="temporary_address" required placeholder="Current residential address">
+                </div>
+
+                <div class="form-group-pro full-width">
+                    <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
+                    <input type="text" name="permanent_address" required placeholder="Permanent address as per CNIC/B-Form">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                    <input type="tel" name="phone" required placeholder="0300 1234567">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact</label>
+                    <input type="tel" name="emergency_contact" required placeholder="Guardian contact number">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-award"></i> Matric Marks</label>
+                    <input type="text" name="matric_marks" required placeholder="e.g. 850/1100">
+                </div>
+
+                <div class="form-group-pro">
+                    <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
+                    <input type="text" name="fsc_marks" required placeholder="e.g. 780/1100">
+                </div>
+
+                <div class="form-group-pro full-width">
+                    <label><i class="fa-solid fa-file-contract"></i> Institutional Terms & Conditions</label>
+                    <div class="terms-container">
+                        <strong>Official Policy Guidelines:</strong>
+                        <ul>
+                            <li>Tuition fee & graduation fees are subject to institutional schedules. Library, university registration, and PNC registration fees are excluded.</li>
+                            <li>The student will pay regular tuition fees until the completion of their final institutional exams.</li>
+                            <li>Students must clear semester fees in full according to notified deadlines to avoid late fines.</li>
+                            <li>Fees deposited are strictly non-refundable at any stage of the admission process.</li>
+                            <li>Candidates are required to fully agree to these terms upon final registration.</li>
+                        </ul>
+                    </div>
+                    <label class="agreement-box">
+                        <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
+                        <span>I have carefully read, understood, and agreed to all institute rules and financial policies.</span>
+                    </label>
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn-pro">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Official Application
+                </button>
+
+            </form>
+        </div>
     </div>
 
     <script>
-        // Replace with your deployed Google Apps Script Web App URL
+        // Replace with your Google Apps Script Web App URL
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
         const form = document.getElementById('admissionForm');
-        const successBanner = document.getElementById('successBanner');
+        const successView = document.getElementById('successView');
         const submitBtn = document.getElementById('submitBtn');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record...';
             submitBtn.disabled = true;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
-                    successBanner.style.display = 'block';
-                    form.reset();
-                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration Form';
-                    submitBtn.disabled = false;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    form.style.display = 'none';
+                    successView.style.display = 'block';
                 })
                 .catch(error => {
-                    alert('Submission error! Please check your network connection.');
-                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration Form';
+                    alert('Connection error! Please verify your network and try again.');
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Official Application';
                     submitBtn.disabled = false;
                 });
         });
