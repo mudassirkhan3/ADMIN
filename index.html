@@ -43,6 +43,43 @@
             padding: 36px 30px;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+        /* Animated College Background Image */
+        .portal-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
+            background-size: cover;
+            opacity: 0.18;
+            animation: bgZoomPulse 12s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+        @keyframes bgZoomPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .portal-header * {
+            position: relative;
+            z-index: 2;
+        }
+        .college-logo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
         .portal-header h1 {
             font-size: 1.6rem;
@@ -52,19 +89,19 @@
         }
         .portal-header p {
             font-size: 0.9rem;
-            opacity: 0.9;
+            opacity: 0.95;
             font-weight: 500;
         }
         .institute-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             backdrop-filter: blur(5px);
         }
         .portal-body {
@@ -200,6 +237,8 @@
 
     <div class="portal-wrapper">
         <div class="portal-header">
+            <!-- College Logo -->
+            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
             <p>Official Candidate Admission & Registration Portal 2026</p>
