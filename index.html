@@ -45,7 +45,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Animated College Background Image */
         .portal-header::before {
             content: "";
             position: absolute;
@@ -142,6 +141,10 @@
             transition: all 0.3s ease;
             outline: none;
         }
+        .form-group-pro input[type="file"] {
+            padding: 10px;
+            cursor: pointer;
+        }
         .form-group-pro input:focus, .form-group-pro select:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px var(--primary-glow);
@@ -237,7 +240,6 @@
 
     <div class="portal-wrapper">
         <div class="portal-header">
-            <!-- College Logo -->
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
@@ -249,7 +251,7 @@
             <div class="success-overlay" id="successView">
                 <i class="fa-solid fa-circle-check"></i>
                 <h2>Application Submitted Successfully!</h2>
-                <p>Your candidate record has been securely registered with the institutional database. Our admission committee will review your credentials shortly.</p>
+                <p>Your candidate record & photo have been securely registered with the institutional database. Our admission committee will review your credentials shortly.</p>
             </div>
 
             <form id="admissionForm" class="form-grid-pro">
@@ -305,6 +307,13 @@
                 </div>
 
                 <div class="form-group-pro full-width">
+                    <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
+                    <input type="file" id="photoInput" accept="image/*" required>
+                    <input type="hidden" id="photoBase64" name="candidate_photo">
+                    <small style="color: var(--text-muted); font-size: 0.75rem;">Upload a clear passport-size photograph (JPG/PNG)</small>
+                </div>
+
+                <div class="form-group-pro full-width">
                     <label><i class="fa-solid fa-file-contract"></i> Institutional Terms & Conditions</label>
                     <div class="terms-container">
                         <strong>Official Policy Guidelines:</strong>
@@ -331,6 +340,19 @@
     </div>
 
     <script>
+        // Convert uploaded photo to Base64 so it can pass cleanly through Google Apps Script
+        const photoInput = document.getElementById('photoInput');
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('photoBase64').value = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
         // Replace with your Google Apps Script Web App URL
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
         const form = document.getElementById('admissionForm');
@@ -339,7 +361,7 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Photo...';
             submitBtn.disabled = true;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
