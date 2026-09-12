@@ -2,51 +2,65 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Official Admissions 2026 | New Life Institute of Nursing</title>
     <!-- Favicon Integration -->
     <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
             --primary-glow: rgba(2, 132, 199, 0.15);
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
-        body {
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 12px;
         }
-        [data-theme="dark"] body {
-            background: linear-gradient(135deg, #030712 100%, #0f172a 0%);
-        }
+
         .portal-wrapper {
             width: 100%;
             max-width: 780px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         .portal-header {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
-            padding: 36px 30px;
+            padding: 28px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
+
         .portal-header::before {
             content: "";
             position: absolute;
@@ -60,192 +74,246 @@
             animation: bgZoomPulse 12s infinite alternate ease-in-out;
             z-index: 1;
         }
+
         @keyframes bgZoomPulse {
             0% { transform: scale(1); }
             100% { transform: scale(1.1); }
         }
+
         .portal-header * {
             position: relative;
             z-index: 2;
         }
+
         .college-logo {
-            width: 75px;
-            height: 75px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.8);
+            border: 3px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             animation: floatLogo 4s ease-in-out infinite;
         }
+
         @keyframes floatLogo {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
         }
+
         .portal-header h1 {
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: -0.5px;
+            line-height: 1.3;
         }
+
         .portal-header p {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             opacity: 0.95;
             font-weight: 500;
         }
+
         .institute-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 30px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
             backdrop-filter: blur(5px);
         }
+
         .portal-body {
-            padding: 35px 30px;
+            padding: 20px 16px;
         }
+
         .form-grid-pro {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 14px;
         }
+
         .form-group-pro {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
+
         .form-group-pro.full-width {
             grid-column: 1 / -1;
         }
+
         .form-group-pro label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
+
         .form-group-pro label i {
             color: var(--primary);
         }
+
         .form-group-pro input, .form-group-pro select {
-            padding: 13px 16px;
+            width: 100%;
+            padding: 12px 14px;
             border-radius: 10px;
             border: 1.5px solid var(--border-color);
             background: var(--bg-main);
             color: var(--text-main);
-            font-size: 0.92rem;
+            font-size: 16px; /* Prevents auto-zoom on mobile devices */
             font-family: inherit;
-            transition: all 0.3s ease;
             outline: none;
+            transition: all 0.3s ease;
         }
+
         .form-group-pro input[type="file"] {
-            padding: 10px;
+            padding: 8px;
             cursor: pointer;
+            font-size: 0.85rem;
         }
+
         .form-group-pro input:focus, .form-group-pro select:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px var(--primary-glow);
         }
+
         .terms-container {
             background: var(--bg-main);
             border: 1.5px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            max-height: 140px;
+            border-radius: 10px;
+            padding: 12px;
+            max-height: 120px;
             overflow-y: auto;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.4;
         }
+
         .terms-container ul {
-            padding-left: 18px;
+            padding-left: 16px;
             margin-top: 4px;
         }
+
         .agreement-box {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.85rem;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-main);
             cursor: pointer;
-            margin-top: 4px;
+            margin-top: 6px;
+            line-height: 1.3;
         }
+
         .agreement-box input {
             width: 18px;
             height: 18px;
             accent-color: var(--primary);
             cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 1px;
         }
+
         .submit-btn-pro {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
             border: none;
-            padding: 15px;
+            padding: 14px;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.25);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 6px;
+            width: 100%;
         }
-        .submit-btn-pro:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 24px rgba(2, 132, 199, 0.35);
+
+        .submit-btn-pro:active {
+            transform: scale(0.98);
         }
+
         .portal-footer-credit {
             text-align: center;
-            padding: 16px;
-            font-size: 0.75rem;
+            padding: 14px;
+            font-size: 0.72rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
             background: var(--bg-main);
         }
+
         .portal-footer-credit span {
             font-weight: 700;
             color: var(--primary);
         }
+
         .success-overlay {
             display: none;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 15px;
             animation: fadeIn 0.4s ease;
         }
+
         .success-overlay i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #10b981;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         @keyframes bounceIn {
             0% { transform: scale(0); }
             70% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+
         .success-overlay h2 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
+
         .success-overlay p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
+            line-height: 1.4;
         }
-        @media(max-width: 650px) {
+
+        /* Mobile Optimization Breakpoint */
+        @media(max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+            .portal-wrapper {
+                border-radius: 14px;
+            }
+            .portal-header {
+                padding: 22px 16px;
+            }
+            .portal-header h1 {
+                font-size: 1.2rem;
+            }
+            .portal-body {
+                padding: 16px 12px;
+            }
             .form-grid-pro {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
     </style>
@@ -324,7 +392,7 @@
                     <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
                     <input type="file" id="photoInput" accept="image/*" required>
                     <input type="hidden" id="photoBase64" name="candidate_photo">
-                    <small style="color: var(--text-muted); font-size: 0.75rem;">Upload a clear passport-size photograph (JPG/PNG)</small>
+                    <small style="color: var(--text-muted); font-size: 0.72rem;">Upload a clear passport-size photograph (JPG/PNG)</small>
                 </div>
 
                 <div class="form-group-pro full-width">
@@ -352,7 +420,6 @@
             </form>
         </div>
 
-        <!-- Professional Developer Footer Credit -->
         <div class="portal-footer-credit">
             Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing
         </div>
