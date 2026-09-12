@@ -3,304 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Nursing Study Assistant | BSN</title>
+    <title>BSN Nursing Admission Portal | MK Study Hub</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .terms-box {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .terms-box ul {
+            padding-left: 16px;
+            margin: 4px 0;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .checkbox-group input {
+            margin-top: 3px;
+            cursor: pointer;
+        }
+        .success-banner {
+            display: none;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- App Shell -->
-    <div class="app-shell">
-        
-        <!-- Sidebar Overlay for Mobile -->
-        <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-        <!-- Sidebar / Navigation -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="brand-icon"><i class="fa-solid fa-user-nurse"></i></div>
-                <div class="brand-text">
-                    <h2>MK Study Hub</h2>
-                    <span>BSN AI Assistant</span>
-                </div>
-                <button class="close-sidebar-btn" id="closeSidebarBtn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <!-- Subject & Semester Selector -->
-            <div class="selector-container">
-                <label for="semesterSelect"><i class="fa-solid fa-layer-group"></i> Select Semester</label>
-                <select id="semesterSelect">
-                    <option value="Semester 1">Semester 1</option>
-                    <option value="Semester 2">Semester 2</option>
-                    <option value="Semester 3" selected>Semester 3</option>
-                    <option value="Semester 4">Semester 4</option>
-                    <option value="Semester 5">Semester 5</option>
-                    <option value="Semester 6">Semester 6</option>
-                    <option value="Semester 7">Semester 7</option>
-                    <option value="Semester 8">Semester 8</option>
-                </select>
-
-                <label for="subjectSelect"><i class="fa-solid fa-book-medical"></i> Select Subject</label>
-                <select id="subjectSelect">
-                    <option value="Pharmacology" selected>Pharmacology</option>
-                    <option value="Adult Health Nursing">Adult Health Nursing</option>
-                    <option value="Pathophysiology">Pathophysiology</option>
-                    <option value="Fundamentals of Nursing">Fundamentals of Nursing</option>
-                    <option value="Community Health Nursing">Community Health Nursing</option>
-                    <option value="Anatomy & Physiology">Anatomy & Physiology</option>
-                    <option value="Microbiology">Microbiology</option>
-                    <option value="Nursing Research">Nursing Research</option>
-                    <option value="Leadership & Management">Leadership & Management</option>
-                    <option value="Maternal & Child Health">Maternal & Child Health</option>
-                    <option value="Mental Health Nursing">Mental Health Nursing</option>
-                </select>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav class="sidebar-nav">
-                <button class="nav-item active" data-target="chat-view"><i class="fa-solid fa-comments"></i> AI Chat & Study</button>
-                <button class="nav-item" data-target="mcq-view"><i class="fa-solid fa-list-check"></i> MCQ Generator</button>
-                <button class="nav-item" data-target="quiz-view"><i class="fa-solid fa-stopwatch"></i> Exam Quiz Mode</button>
-                <button class="nav-item" data-target="viva-view"><i class="fa-solid fa-microphone-lines"></i> Viva Preparation</button>
-                <button class="nav-item" data-target="notes-view"><i class="fa-solid fa-file-pdf"></i> Study Notes & PDFs</button>
-            </nav>
-
-            <!-- Chat History Drawer -->
-            <div class="chat-history-section">
-                <div class="history-header">
-                    <span><i class="fa-solid fa-clock-rotate-left"></i> Chat History</span>
-                    <button id="newChatBtn" title="New Chat"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <div class="history-list" id="historyList">
-                    <!-- Dynamic chat threads -->
-                </div>
-            </div>
-
-            <!-- Footer Theme Toggle -->
-            <div class="sidebar-footer">
-                <button class="theme-toggle-btn" id="themeToggleBtn">
-                    <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Dark Mode</span>
-                </button>
-            </div>
-        </aside>
-
-        <!-- Main Content Area -->
-        <main class="main-content">
+    <div class="app-shell" style="margin-left: 0;">
+        <main class="main-content" style="margin-left: 0; width: 100%;">
             
-            <!-- Top Mobile / Desktop Header -->
             <header class="top-header">
                 <div class="header-left">
-                    <button class="menu-toggle-btn" id="menuToggleBtn"><i class="fa-solid fa-bars"></i></button>
-                    <h1 id="currentViewTitle">AI Chat & Study</h1>
+                    <a href="index.html" class="secondary-btn" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fa-solid fa-arrow-left"></i> Home</a>
+                    <h1>Candidate Admission Form 2026</h1>
                 </div>
                 <div class="header-right">
-                    <span class="badge-bsn">BSN Undergrad v1.0</span>
+                    <span class="badge-bsn">New Life Institute of Nursing</span>
                 </div>
             </header>
 
-            <!-- VIEWS CONTAINER -->
             <div class="views-container">
+                <div class="card-container" style="max-width: 800px;">
+                    <h2><i class="fa-solid fa-user-graduate" style="color: var(--primary);"></i> Student Registration & Agreement</h2>
+                    <p class="section-desc">Please complete all fields accurately and review the institute terms before submitting.</p>
 
-                <!-- 1. AI CHAT VIEW -->
-                <section class="view-section active" id="chat-view">
-                    <div class="chat-wrapper">
+                    <div class="success-banner" id="successBanner">
+                        <i class="fa-solid fa-circle-check"></i> Registration submitted successfully! Data has been saved.
+                    </div>
+
+                    <form id="admissionForm" class="form-grid">
                         
-                        <!-- Quick Prompts Row -->
-                        <div class="quick-prompts-bar">
-                            <button class="qp-btn" data-prompt="Explain Simply: ">Explain Simply</button>
-                            <button class="qp-btn" data-prompt="Give MCQs with answers: ">Give MCQs</button>
-                            <button class="qp-btn" data-prompt="Make Short Questions for exam: ">Make Short Qs</button>
-                            <button class="qp-btn" data-prompt="Make Long Essay Questions: ">Make Long Qs</button>
-                            <button class="qp-btn" data-prompt="Test me with a clinical question: ">Test Me</button>
-                            <button class="qp-btn" data-prompt="Give Viva Questions & Expected Answers: ">Viva Questions</button>
-                            <button class="qp-btn" data-prompt="Summarize this topic into key bullet points: ">Summarize This</button>
-                            <button class="qp-btn" data-prompt="What are the Important Exam Points for: ">Important Points</button>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-user"></i> Full Name</label>
+                            <input type="text" name="fullname" required placeholder="e.g. Muhammad Ali">
                         </div>
 
-                        <!-- Chat Messages Container -->
-                        <div class="chat-messages" id="chatMessages">
-                            <div class="message ai-message">
-                                <div class="message-avatar"><i class="fa-solid fa-user-nurse"></i></div>
-                                <div class="message-body">
-                                    <p>Hello! I am your AI Nursing Study Assistant. Select your semester and subject on the left, ask any clinical or theoretical question, or use the quick study buttons above!</p>
-                                    <span class="disclaimer-tag"><i class="fa-solid fa-triangle-exclamation"></i> Educational aid only. Not a substitute for clinical instructors or medical professionals.</span>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
+                            <input type="text" name="fathername" required placeholder="e.g. Ahmed Khan">
                         </div>
 
-                        <!-- Typing Indicator -->
-                        <div class="typing-indicator" id="typingIndicator" style="display: none;">
-                            <div class="message-avatar"><i class="fa-solid fa-user-nurse"></i></div>
-                            <div class="typing-bubble">
-                                <span></span><span></span><span></span>
-                            </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+                            <input type="date" name="dob" required>
                         </div>
 
-                        <!-- Chat Input Box -->
-                        <div class="chat-input-area">
-                            <textarea id="chatInput" placeholder="Ask about nursing care plans, pharmacology, pathophysiology..." rows="1"></textarea>
-                            <button id="sendBtn" title="Send Message"><i class="fa-solid fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 2. MCQ GENERATOR VIEW -->
-                <section class="view-section" id="mcq-view">
-                    <div class="card-container">
-                        <h2><i class="fa-solid fa-list-check"></i> Interactive MCQ Generator</h2>
-                        <p class="section-desc">Generate targeted practice questions based on your chosen subject.</p>
-                        
-                        <div class="form-grid" id="mcqSetupForm">
-                            <div class="form-group">
-                                <label>Topic / Keyword</label>
-                                <input type="text" id="mcqTopic" placeholder="e.g. Antihypertensive drugs, Heart failure">
-                            </div>
-                            <div class="form-group">
-                                <label>Number of Questions</label>
-                                <select id="mcqCount">
-                                    <option value="5">5 Questions</option>
-                                    <option value="10">10 Questions</option>
-                                    <option value="15">15 Questions</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Difficulty Level</label>
-                                <select id="mcqDifficulty">
-                                    <option value="Easy">Easy</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Hard">Hard</option>
-                                </select>
-                            </div>
-                            <button class="primary-btn" id="generateMcqsBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Practice MCQs</button>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-map-location-dot"></i> District</label>
+                            <input type="text" name="district" required placeholder="e.g. Multan">
                         </div>
 
-                        <!-- MCQ Active Container -->
-                        <div class="mcq-active-box" id="mcqActiveBox" style="display: none;">
-                            <div class="mcq-progress-header">
-                                <span id="mcqCounter">Question 1 of 5</span>
-                                <span id="mcqScoreTracker">Score: 0</span>
-                            </div>
-                            <div id="mcqQuestionContainer"></div>
-                            <div class="mcq-actions" id="mcqActions" style="display: none;">
-                                <button class="primary-btn" id="nextMcqBtn">Next Question <i class="fa-solid fa-arrow-right"></i></button>
-                            </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-house"></i> Temporary Address</label>
+                            <input type="text" name="temporary_address" required placeholder="House #12, Street 3, City Area">
                         </div>
 
-                        <!-- MCQ Results Container -->
-                        <div class="quiz-results-box" id="mcqResultsBox" style="display: none;">
-                            <h3><i class="fa-solid fa-award"></i> Practice Complete!</h3>
-                            <div class="score-card" id="mcqFinalScoreText"></div>
-                            <button class="primary-btn" id="restartMcqBtn"><i class="fa-solid fa-rotate-right"></i> Try Another Quiz</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 3. EXAM QUIZ MODE VIEW -->
-                <section class="view-section" id="quiz-view">
-                    <div class="card-container">
-                        <h2><i class="fa-solid fa-stopwatch"></i> Timed Exam Quiz Mode</h2>
-                        <p class="section-desc">Simulate BSN semester examinations with optional timers and detailed score reviews.</p>
-                        
-                        <div class="form-grid" id="quizSetupForm">
-                            <div class="form-group">
-                                <label>Exam Topic / Module</label>
-                                <input type="text" id="quizTopic" placeholder="e.g. Gastrointestinal Pharmacology">
-                            </div>
-                            <div class="form-group">
-                                <label>Timer Option</label>
-                                <select id="quizTimerOption">
-                                    <option value="yes">Timed (1 Minute per Question)</option>
-                                    <option value="no">Untimed Practice</option>
-                                </select>
-                            </div>
-                            <button class="primary-btn" id="startQuizBtn"><i class="fa-solid fa-play"></i> Start Exam Quiz</button>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
+                            <input type="text" name="permanent_address" required placeholder="House #12, Street 3, Hometown">
                         </div>
 
-                        <!-- Quiz Active Container -->
-                        <div class="quiz-active-box" id="quizActiveBox" style="display: none;">
-                            <div class="quiz-top-bar">
-                                <span id="quizQuestionCounter">Q 1/10</span>
-                                <span id="quizTimerDisplay" class="timer-badge"><i class="fa-solid fa-clock"></i> 01:00</span>
-                            </div>
-                            <div id="quizQuestionBox"></div>
-                            <div class="quiz-nav-btns">
-                                <button class="secondary-btn" id="quizPrevBtn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
-                                <button class="primary-btn" id="quizNextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
-                                <button class="success-btn" id="quizSubmitBtn" style="display:none;"><i class="fa-solid fa-check"></i> Submit Exam</button>
-                            </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                            <input type="tel" name="phone" required placeholder="0300 1234567">
                         </div>
 
-                        <!-- Quiz Results Container -->
-                        <div class="quiz-results-box" id="quizResultsBox" style="display: none;">
-                            <h3><i class="fa-solid fa-file-lines"></i> Exam Results Report</h3>
-                            <div class="score-card" id="quizScoreSummary"></div>
-                            <div class="review-list" id="quizReviewList"></div>
-                            <button class="primary-btn" id="retakeQuizBtn"><i class="fa-solid fa-rotate-right"></i> Start New Exam</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 4. VIVA PREPARATION VIEW -->
-                <section class="view-section" id="viva-view">
-                    <div class="card-container">
-                        <h2><i class="fa-solid fa-microphone-lines"></i> Clinical Viva & Oral Examination Prep</h2>
-                        <p class="section-desc">Interactive oral examiner simulation. The AI asks one clinical/viva question at a time, evaluates your response, gives feedback, and progresses.</p>
-
-                        <div class="viva-setup" id="vivaSetupBox">
-                            <div class="form-group">
-                                <label>Viva Topic / Clinical Area</label>
-                                <input type="text" id="vivaTopicInput" placeholder="e.g. Aseptic Technique & Wound Dressing">
-                            </div>
-                            <button class="primary-btn" id="startVivaBtn"><i class="fa-solid id-badge"></i> Begin Viva Session</button>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact Number</label>
+                            <input type="tel" name="emergency_contact" required placeholder="0300 7654321">
                         </div>
 
-                        <div class="viva-session-box" id="vivaSessionBox" style="display: none;">
-                            <div class="viva-header-info">
-                                <span id="vivaQuestionNumber">Question 1</span>
-                                <button class="text-btn" id="endVivaBtn"><i class="fa-solid fa-right-from-bracket"></i> End Session</button>
-                            </div>
-                            <div class="viva-qa-box" id="vivaQABox">
-                                <!-- Dynamic Viva conversation -->
-                            </div>
-                            <div class="viva-input-area">
-                                <textarea id="vivaAnswerInput" placeholder="Type your verbal response as if speaking to the instructor..." rows="2"></textarea>
-                                <button class="primary-btn" id="submitVivaAnswerBtn"><i class="fa-solid fa-paper-plane"></i> Submit Answer</button>
-                            </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-award"></i> Matric Marks</label>
+                            <input type="text" name="matric_marks" required placeholder="850/1100">
                         </div>
-                    </div>
-                </section>
 
-                <!-- 5. STUDY NOTES & PDFs VIEW -->
-                <section class="view-section" id="notes-view">
-                    <div class="card-container">
-                        <h2><i class="fa-solid fa-file-pdf"></i> Study Notes & Document Hub</h2>
-                        <p class="section-desc">Organize and preview your lecture slides, nursing care plans, and PDF summaries.</p>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
+                            <input type="text" name="fsc_marks" required placeholder="780/1100">
+                        </div>
 
-                        <div class="notes-upload-box">
-                            <label for="noteFileInput" class="file-drop-area">
-                                <i class="fa-solid fa-cloud-arrow-up"></i>
-                                <span>Click to upload study notes (PDF, TXT) or drag & drop</span>
-                                <span class="file-hint">Stored securely in browser storage for quick review</span>
+                        <!-- Terms & Conditions Box derived from image -->
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label><i class="fa-solid fa-file-contract"></i> Terms and Conditions</label>
+                            <div class="terms-box">
+                                <strong>Note & Policy Guidelines:</strong>
+                                <ul>
+                                    <li>Tuition fee & "Graduation fee" are subject to change. Library fee, university registration, and PNC registration fees are excluded.</li>
+                                    <li>The student will pay the tuition fee till the last exam in the institute.</li>
+                                    <li>The student has to pay the complete fee for the semester.</li>
+                                    <li>If fee is not submitted on time, a fine may be charged.</li>
+                                    <li>Fee is not refundable at any stage of admission.</li>
+                                    <li>Student is required to agree and sign this agreement upon registration.</li>
+                                </ul>
+                            </div>
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
+                                <span>I have read, understood, and accept all the terms, conditions, and fee policies outlined above.</span>
                             </label>
-                            <input type="file" id="noteFileInput" accept=".pdf,.txt,.doc,.docx" style="display: none;">
                         </div>
 
-                        <div class="notes-list-container">
-                            <h3>My Saved Notes & Care Plans</h3>
-                            <div class="notes-grid" id="notesGrid">
-                                <!-- Dynamic uploaded items -->
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                        <button type="submit" id="submitBtn" class="primary-btn" style="grid-column: 1 / -1;">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Registration Form
+                        </button>
 
+                    </form>
+                </div>
             </div>
         </main>
     </div>
 
-    <!-- Script File -->
-    <script src="script.js"></script>
+    <script>
+        // Replace with your deployed Google Apps Script Web App URL
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        const form = document.getElementById('admissionForm');
+        const successBanner = document.getElementById('successBanner');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    successBanner.style.display = 'block';
+                    form.reset();
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration Form';
+                    submitBtn.disabled = false;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                })
+                .catch(error => {
+                    alert('Submission error! Please check your network connection.');
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Registration Form';
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 </body>
 </html>
