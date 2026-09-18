@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Official Admissions & Portal 2026 | New Life Institute of Nursing</title>
+    <title>Official Admissions 2026-27 | New Life Institute of Nursing</title>
     <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,12 +19,7 @@
             --border-color: #e2e8f0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -54,11 +49,33 @@
         .portal-header {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
-            padding: 28px 20px;
+            padding: 30px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
+
+        /* Animated Background Header Overlay */
+        .portal-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
+            background-size: cover;
+            opacity: 0.18;
+            animation: bgZoomPulse 12s infinite alternate ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes bgZoomPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .portal-header * { position: relative; z-index: 2; }
 
         .college-logo {
             width: 65px;
@@ -75,7 +92,6 @@
             font-weight: 800;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
-            line-height: 1.3;
         }
 
         .portal-header p {
@@ -97,7 +113,6 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Tabs Switcher */
         .nav-tabs {
             display: flex;
             background: #e2e8f0;
@@ -129,23 +144,12 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .portal-body {
-            padding: 20px 16px;
-        }
+        .portal-body { padding: 20px 16px; }
 
-        .section-view {
-            display: none;
-        }
+        .section-view { display: none; }
+        .section-view.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .section-view.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .form-grid-pro {
             display: grid;
@@ -159,9 +163,7 @@
             gap: 6px;
         }
 
-        .form-group-pro.full-width {
-            grid-column: 1 / -1;
-        }
+        .form-group-pro.full-width { grid-column: 1 / -1; }
 
         .form-group-pro label {
             font-size: 0.8rem;
@@ -172,9 +174,7 @@
             gap: 6px;
         }
 
-        .form-group-pro label i {
-            color: var(--primary);
-        }
+        .form-group-pro label i { color: var(--primary); }
 
         .form-group-pro input, .form-group-pro select {
             width: 100%;
@@ -189,12 +189,7 @@
             transition: all 0.3s ease;
         }
 
-        .form-group-pro input[type="file"] {
-            padding: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
+        .form-group-pro input[type="file"] { padding: 8px; cursor: pointer; font-size: 0.85rem; }
         .form-group-pro input:focus, .form-group-pro select:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px var(--primary-glow);
@@ -205,16 +200,11 @@
             border: 1.5px solid var(--border-color);
             border-radius: 10px;
             padding: 12px;
-            max-height: 100px;
+            max-height: 90px;
             overflow-y: auto;
             font-size: 0.75rem;
             color: var(--text-muted);
             line-height: 1.4;
-        }
-
-        .terms-container ul {
-            padding-left: 16px;
-            margin-top: 4px;
         }
 
         .agreement-box {
@@ -228,14 +218,7 @@
             margin-top: 6px;
         }
 
-        .agreement-box input {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-            cursor: pointer;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
+        .agreement-box input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
 
         .submit-btn-pro, .track-btn {
             grid-column: 1 / -1;
@@ -247,7 +230,6 @@
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
             display: flex;
             align-items: center;
@@ -263,34 +245,13 @@
             padding: 25px 15px;
         }
 
-        .success-overlay i {
-            font-size: 3.5rem;
-            color: #10b981;
-            margin-bottom: 14px;
-        }
+        .success-overlay i { font-size: 3.5rem; color: #10b981; margin-bottom: 14px; }
+        .success-overlay h2 { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
 
-        .success-overlay h2 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
+        .tracker-box { text-align: center; padding: 10px 5px; }
+        .tracker-box h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
+        .tracker-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
 
-        .tracker-box {
-            text-align: center;
-            padding: 10px 5px;
-        }
-        .tracker-box h3 {
-            font-size: 1.2rem;
-            color: var(--text-main);
-            margin-bottom: 6px;
-            font-weight: 800;
-        }
-        .tracker-box p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
         .result-box {
             margin-top: 20px;
             background: var(--bg-main);
@@ -301,12 +262,9 @@
             display: none;
             border-left: 5px solid var(--primary);
             font-size: 0.88rem;
+            line-height: 1.5;
         }
-        .result-box h4 {
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
+        .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
 
         .portal-footer-credit {
             text-align: center;
@@ -316,15 +274,10 @@
             border-top: 1px solid var(--border-color);
             background: var(--bg-main);
         }
-
-        .portal-footer-credit span {
-            font-weight: 700;
-            color: var(--primary);
-        }
+        .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
         @media(max-width: 600px) {
             body { padding: 6px; }
-            .portal-wrapper { border-radius: 14px; }
             .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
@@ -336,13 +289,13 @@
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Candidate Admission & Status Portal 2026</p>
+            <p>Official Candidate Admission & Status Portal (Session 2026–27)</p>
         </div>
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
-            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
+            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status & Fee</button>
         </div>
 
         <div class="portal-body">
@@ -352,9 +305,9 @@
                 
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
-                    <h2>Application Submitted Successfully!</h2>
+                    <h2>Application & Fee Proof Submitted!</h2>
                     <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2026-000</strong></p>
-                    <p style="margin-top: 4px;">Your data is securely saved to the institutional database.</p>
+                    <p style="margin-top: 4px;">Your data and payment reference are saved. Admin will verify your payment shortly.</p>
                 </div>
 
                 <form id="admissionForm" class="form-grid-pro">
@@ -414,6 +367,12 @@
                     </div>
 
                     <div class="form-group-pro full-width">
+                        <label><i class="fa-solid fa-receipt"></i> Online Fee Payment Transaction ID / Ref No</label>
+                        <input type="text" name="payment_id" required placeholder="e.g. TID-98432105 or Bank Receipt No">
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit application fee via Online Bank/JazzCash/EasyPaisa and enter reference number here.</small>
+                    </div>
+
+                    <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
                         <input type="file" id="photoInput" accept="image/*" required>
                         <input type="hidden" id="photoBase64" name="candidate_photo">
@@ -437,7 +396,7 @@
                     </div>
 
                     <button type="submit" id="submitBtn" class="submit-btn-pro">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Official Application
+                        <i class="fa-solid fa-paper-plane"></i> Submit Official Application & Payment Proof
                     </button>
                 </form>
             </div>
@@ -445,8 +404,8 @@
             <!-- TRACK STATUS SECTION -->
             <div id="trackSection" class="section-view">
                 <div class="tracker-box">
-                    <h3>Track Candidate Status</h3>
-                    <p>Enter your CNIC or phone number to check your admission committee review status.</p>
+                    <h3>Track Admission & Fee Status</h3>
+                    <p>Enter your CNIC or phone number to check your committee review and fee verification status.</p>
 
                     <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
@@ -454,14 +413,15 @@
                     </div>
 
                     <button type="button" class="track-btn" onclick="checkStatus()">
-                        <i class="fa-solid fa-magnifying-glass"></i> Search Application Status
+                        <i class="fa-solid fa-magnifying-glass"></i> Check Live Record
                     </button>
 
                     <div class="result-box" id="resultBox">
                         <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
                         <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
-                        <p><strong>Program:</strong> BSN 5th Semester / Admissions 2026</p>
-                        <p><strong>Current Status:</strong> <span id="resStatus" style="color: #10b981; font-weight: 700;">-</span></p>
+                        <p><strong>Program:</strong> BSN 5th Semester / Session 2026–27</p>
+                        <p><strong>Admission Status:</strong> <span id="resStatus" style="color: #0284c7; font-weight: 700;">-</span></p>
+                        <p><strong>Fee Payment Status:</strong> <span id="resPayStatus" style="font-weight: 700;">-</span></p>
                     </div>
                 </div>
             </div>
@@ -515,10 +475,10 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Photo...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Payment Proof...';
             submitBtn.disabled = true;
 
-            const randomId = 'NLIN-2026-' + Math.floor(1000 + Math.random() * 9000);
+            const randomId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('refIdDisplay').innerText = randomId;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
@@ -549,6 +509,11 @@
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
                         document.getElementById('resStatus').innerText = data.appStatus;
+                        
+                        const paySpan = document.getElementById('resPayStatus');
+                        paySpan.innerText = data.payStatus;
+                        paySpan.style.color = data.payStatus.includes('Verified') ? '#10b981' : '#f59e0b';
+
                         resultBox.style.display = 'block';
                     } else {
                         alert('No application record found for this CNIC/Phone number.');
