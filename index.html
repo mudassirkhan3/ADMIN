@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Official Admissions 2026-27 | New Life Institute of Nursing</title>
+    <title>Official Admission Form 2026-27 | New Life Institute of Nursing</title>
     <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -289,13 +289,13 @@
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Candidate Admission & Status Portal (Session 2026–27)</p>
+            <p>Official Admission Form (Session 2026–27)</p>
         </div>
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
-            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status & Fee</button>
+            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
         </div>
 
         <div class="portal-body">
@@ -305,9 +305,9 @@
                 
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
-                    <h2>Application & Fee Proof Submitted!</h2>
-                    <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2026-000</strong></p>
-                    <p style="margin-top: 4px;">Your data and payment reference are saved. Admin will verify your payment shortly.</p>
+                    <h2>Admission Form Submitted Successfully!</h2>
+                    <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
+                    <p style="margin-top: 4px;">Your data and payment reference have been successfully saved to the institutional database.</p>
                 </div>
 
                 <form id="admissionForm" class="form-grid-pro">
@@ -367,9 +367,9 @@
                     </div>
 
                     <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-receipt"></i> Online Fee Payment Transaction ID / Ref No</label>
-                        <input type="text" name="payment_id" required placeholder="e.g. TID-98432105 or Bank Receipt No">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit application fee via Online Bank/JazzCash/EasyPaisa and enter reference number here.</small>
+                        <label><i class="fa-solid fa-receipt"></i> Fee Deposit / Transaction ID / Slip No</label>
+                        <input type="text" name="payment_ref" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Please deposit admission fee via bank/mobile app before submitting and enter reference ID here.</small>
                     </div>
 
                     <div class="form-group-pro full-width">
@@ -396,7 +396,7 @@
                     </div>
 
                     <button type="submit" id="submitBtn" class="submit-btn-pro">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Official Application & Payment Proof
+                        <i class="fa-solid fa-paper-plane"></i> Submit Official Admission Form
                     </button>
                 </form>
             </div>
@@ -404,8 +404,8 @@
             <!-- TRACK STATUS SECTION -->
             <div id="trackSection" class="section-view">
                 <div class="tracker-box">
-                    <h3>Track Admission & Fee Status</h3>
-                    <p>Enter your CNIC or phone number to check your committee review and fee verification status.</p>
+                    <h3>Track Admission Status</h3>
+                    <p>Enter your CNIC or phone number to check your admission committee review status.</p>
 
                     <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
@@ -421,7 +421,6 @@
                         <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
                         <p><strong>Program:</strong> BSN 5th Semester / Session 2026–27</p>
                         <p><strong>Admission Status:</strong> <span id="resStatus" style="color: #0284c7; font-weight: 700;">-</span></p>
-                        <p><strong>Fee Payment Status:</strong> <span id="resPayStatus" style="font-weight: 700;">-</span></p>
                     </div>
                 </div>
             </div>
@@ -475,7 +474,7 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Payment Proof...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Admission Form...';
             submitBtn.disabled = true;
 
             const randomId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
@@ -509,11 +508,6 @@
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
                         document.getElementById('resStatus').innerText = data.appStatus;
-                        
-                        const paySpan = document.getElementById('resPayStatus');
-                        paySpan.innerText = data.payStatus;
-                        paySpan.style.color = data.payStatus.includes('Verified') ? '#10b981' : '#f59e0b';
-
                         resultBox.style.display = 'block';
                     } else {
                         alert('No application record found for this CNIC/Phone number.');
