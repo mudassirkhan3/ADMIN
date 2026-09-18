@@ -262,9 +262,91 @@
             display: none;
             border-left: 5px solid var(--primary);
             font-size: 0.88rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+
+        /* Impressive Popup Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            text-align: left;
+            position: relative;
+            animation: scaleUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes scaleUpModal { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .modal-card h3 {
+            color: var(--text-main);
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-card h3 i { color: var(--primary); }
+
+        .modal-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-card ul li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+
+        .modal-card ul li i {
+            color: #10b981;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+            transition: 0.2s;
+        }
+
+        .modal-btn:active { transform: scale(0.98); }
 
         .portal-footer-credit {
             text-align: center;
@@ -284,18 +366,32 @@
 </head>
 <body>
 
+    <!-- IMPRESSIVE INSTRUCTIONS POPUP MODAL -->
+    <div class="modal-overlay" id="instructionModal">
+        <div class="modal-card">
+            <h3><i class="fa-solid fa-circle-info"></i> Candidate Registration Guide</h3>
+            <ul>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Information:</strong> Fill in your full name, father's name, and CNIC/B-Form exactly as recorded on your Matric certificate.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment Reference:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Photograph Upload:</strong> Upload a clear, professional passport-size photo (under 2MB in size).</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Save Your Tracking ID:</strong> Upon successful submission, note down your unique tracking reference ID to check your live admission status anytime.</li>
+            </ul>
+            <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
     <div class="portal-wrapper">
         <div class="portal-header">
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Admission Form (Session 2026–27)</p>
+            <p>Official Admission Form — 1st Semester (Session 2026–27)</p>
         </div>
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
-            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
+            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status & Fee</button>
         </div>
 
         <div class="portal-body">
@@ -307,7 +403,7 @@
                     <i class="fa-solid fa-circle-check"></i>
                     <h2>Admission Form Submitted Successfully!</h2>
                     <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
-                    <p style="margin-top: 4px;">Your data and payment reference have been successfully saved to the institutional database.</p>
+                    <p style="margin-top: 4px;">Your data and payment reference have been securely saved to the institutional database.</p>
                 </div>
 
                 <form id="admissionForm" class="form-grid-pro">
@@ -369,7 +465,7 @@
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-receipt"></i> Fee Deposit / Transaction ID / Slip No</label>
                         <input type="text" name="payment_ref" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Please deposit admission fee via bank/mobile app before submitting and enter reference ID here.</small>
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission processing fee before submitting and enter reference ID here.</small>
                     </div>
 
                     <div class="form-group-pro full-width">
@@ -404,8 +500,8 @@
             <!-- TRACK STATUS SECTION -->
             <div id="trackSection" class="section-view">
                 <div class="tracker-box">
-                    <h3>Track Admission Status</h3>
-                    <p>Enter your CNIC or phone number to check your admission committee review status.</p>
+                    <h3>Track Admission & Fee Status</h3>
+                    <p>Enter your CNIC or phone number to check your committee review and fee verification status.</p>
 
                     <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
@@ -419,8 +515,9 @@
                     <div class="result-box" id="resultBox">
                         <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
                         <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
-                        <p><strong>Program:</strong> BSN 5th Semester / Session 2026–27</p>
+                        <p><strong>Program:</strong> BSN 1st Semester / Session 2026–27</p>
                         <p><strong>Admission Status:</strong> <span id="resStatus" style="color: #0284c7; font-weight: 700;">-</span></p>
+                        <p><strong>Fee Status:</strong> <span id="resPayStatus" style="font-weight: 700;">-</span></p>
                     </div>
                 </div>
             </div>
@@ -433,6 +530,11 @@
     </div>
 
     <script>
+        // Modal Close Function
+        function closeModal() {
+            document.getElementById('instructionModal').style.display = 'none';
+        }
+
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
@@ -508,6 +610,12 @@
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
                         document.getElementById('resStatus').innerText = data.appStatus;
+                        
+                        const paySpan = document.getElementById('resPayStatus');
+                        // Checking column index 16 for fee status or default text
+                        paySpan.innerText = data.payStatus || "Pending Verification";
+                        paySpan.style.color = (data.payStatus && data.payStatus.includes('Verified')) ? '#10b981' : '#f59e0b';
+
                         resultBox.style.display = 'block';
                     } else {
                         alert('No application record found for this CNIC/Phone number.');
