@@ -49,7 +49,7 @@
         .portal-header {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
-            padding: 30px 20px;
+            padding: 26px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -78,24 +78,24 @@
         .portal-header * { position: relative; z-index: 2; }
 
         .college-logo {
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .portal-header h1 {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 800;
             margin-bottom: 4px;
             letter-spacing: -0.5px;
         }
 
         .portal-header p {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             opacity: 0.95;
             font-weight: 500;
         }
@@ -103,14 +103,24 @@
         .institute-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             backdrop-filter: blur(5px);
+        }
+
+        .header-helpline {
+            margin-top: 8px;
+            font-size: 0.78rem;
+            background: rgba(0, 0, 0, 0.15);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
         }
 
         .nav-tabs {
@@ -373,8 +383,8 @@
             <ul>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Information:</strong> Fill in your full name, father's name, and CNIC/B-Form exactly as recorded on your Matric certificate.</li>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment Reference:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Photograph Upload:</strong> Upload a clear, professional passport-size photo (under 2MB in size).</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Save Your Tracking ID:</strong> Upon successful submission, note down your unique tracking reference ID to check your live admission status anytime.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Photograph Upload:</strong> Upload a clear passport-size photo (under 2MB in size).</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Easy Status Tracking:</strong> You can check your application status anytime using your **CNIC or Phone Number**.</li>
             </ul>
             <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
         </div>
@@ -386,6 +396,9 @@
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
             <p>Official Admission Form — 1st Semester (Session 2026–27)</p>
+            <div class="header-helpline">
+                <i class="fa-solid fa-phone"></i> Helpline / Office: 0309-1965700
+            </div>
         </div>
 
         <!-- Navigation Tabs -->
@@ -501,11 +514,11 @@
             <div id="trackSection" class="section-view">
                 <div class="tracker-box">
                     <h3>Track Admission & Fee Status</h3>
-                    <p>Enter your CNIC or phone number to check your committee review and fee verification status.</p>
+                    <p>Enter your CNIC or Phone Number to check your committee review and fee verification status instantly.</p>
 
                     <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
-                        <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
-                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
+                        <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
+                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1 or 03001234567">
                     </div>
 
                     <button type="button" class="track-btn" onclick="checkStatus()">
@@ -525,7 +538,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing
+            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)
         </div>
     </div>
 
@@ -594,13 +607,13 @@
                 });
         });
 
-        // Live Tracker Search Functionality
+        // Live Tracker Search Functionality (Supports CNIC or Phone Number)
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
 
             if(query === '') {
-                alert('Please enter a valid CNIC or Phone number.');
+                alert('Please enter your CNIC or Phone number to search.');
                 return;
             }
 
@@ -612,13 +625,12 @@
                         document.getElementById('resStatus').innerText = data.appStatus;
                         
                         const paySpan = document.getElementById('resPayStatus');
-                        // Checking column index 16 for fee status or default text
                         paySpan.innerText = data.payStatus || "Pending Verification";
                         paySpan.style.color = (data.payStatus && data.payStatus.includes('Verified')) ? '#10b981' : '#f59e0b';
 
                         resultBox.style.display = 'block';
                     } else {
-                        alert('No application record found for this CNIC/Phone number.');
+                        alert('No application record found matching this CNIC or Phone number.');
                         resultBox.style.display = 'none';
                     }
                 })
