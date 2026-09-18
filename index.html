@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Official Admissions 2026 | New Life Institute of Nursing</title>
-    <!-- Favicon Integration -->
+    <title>Official Admissions & Portal 2026 | New Life Institute of Nursing</title>
     <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -128,8 +127,54 @@
             backdrop-filter: blur(5px);
         }
 
+        /* Navigation Switcher Tabs */
+        .nav-tabs {
+            display: flex;
+            background: #e2e8f0;
+            padding: 4px;
+            gap: 4px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .tab-btn.active {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
         .portal-body {
             padding: 20px 16px;
+        }
+
+        .section-view {
+            display: none;
+        }
+
+        .section-view.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .form-grid-pro {
@@ -190,7 +235,7 @@
             border: 1.5px solid var(--border-color);
             border-radius: 10px;
             padding: 12px;
-            max-height: 120px;
+            max-height: 110px;
             overflow-y: auto;
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -223,7 +268,7 @@
             margin-top: 1px;
         }
 
-        .submit-btn-pro {
+        .submit-btn-pro, .track-btn {
             grid-column: 1 / -1;
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
@@ -243,29 +288,14 @@
             width: 100%;
         }
 
-        .submit-btn-pro:active {
+        .submit-btn-pro:active, .track-btn:active {
             transform: scale(0.98);
-        }
-
-        .portal-footer-credit {
-            text-align: center;
-            padding: 14px;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            background: var(--bg-main);
-        }
-
-        .portal-footer-credit span {
-            font-weight: 700;
-            color: var(--primary);
         }
 
         .success-overlay {
             display: none;
             text-align: center;
-            padding: 30px 15px;
-            animation: fadeIn 0.4s ease;
+            padding: 25px 15px;
         }
 
         .success-overlay i {
@@ -294,27 +324,61 @@
             line-height: 1.4;
         }
 
-        /* Mobile Optimization Breakpoint */
+        /* Tracker View Styles */
+        .tracker-box {
+            text-align: center;
+            padding: 10px 5px;
+        }
+        .tracker-box h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+        .tracker-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .result-box {
+            margin-top: 20px;
+            background: var(--bg-main);
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            display: none;
+            border-left: 5px solid var(--primary);
+            font-size: 0.88rem;
+        }
+        .result-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .portal-footer-credit {
+            text-align: center;
+            padding: 14px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-main);
+        }
+
+        .portal-footer-credit span {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Mobile Breakpoint */
         @media(max-width: 600px) {
-            body {
-                padding: 8px;
-            }
-            .portal-wrapper {
-                border-radius: 14px;
-            }
-            .portal-header {
-                padding: 22px 16px;
-            }
-            .portal-header h1 {
-                font-size: 1.2rem;
-            }
-            .portal-body {
-                padding: 16px 12px;
-            }
-            .form-grid-pro {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
+            body { padding: 6px; }
+            .portal-wrapper { border-radius: 14px; }
+            .portal-header { padding: 20px 14px; }
+            .portal-header h1 { font-size: 1.15rem; }
+            .portal-body { padding: 16px 12px; }
+            .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
 </head>
@@ -325,106 +389,139 @@
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Candidate Admission & Registration Portal 2026</p>
+            <p>Official Candidate Admission & Status Portal 2026</p>
+        </div>
+
+        <!-- Navigation Tabs to Switch between Application Form and Status Tracker -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
+            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
         </div>
 
         <div class="portal-body">
             
-            <!-- SUCCESS OVERVIEW WITH TRACKING ID (Point 2) -->
-            <div class="success-overlay" id="successView">
-                <i class="fa-solid fa-circle-check"></i>
-                <h2>Application Submitted Successfully!</h2>
-                <p style="margin-top: 8px;">Your Tracking Reference ID is: <strong id="refIdDisplay" style="color: var(--primary); font-size: 1.05rem;">NLIN-2026-000</strong></p>
-                <p style="margin-top: 6px;">Please save this ID. Your candidate record & photo have been securely registered with the institutional database.</p>
+            <!-- SECTION 1: ADMISSION APPLICATION FORM -->
+            <div id="applySection" class="section-view active">
+                
+                <div class="success-overlay" id="successView">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h2>Application Submitted Successfully!</h2>
+                    <p style="margin-top: 6px;">Your Tracking ID is: <strong id="refIdDisplay" style="color: var(--primary); font-size: 1.05rem;">NLIN-2026-000</strong></p>
+                    <p style="margin-top: 4px;">Please save this ID to check your review status. Your records are successfully linked to our database.</p>
+                </div>
+
+                <form id="admissionForm" class="form-grid-pro">
+                    
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-user"></i> Full Name</label>
+                        <input type="text" name="fullname" required placeholder="As per Matric certificate">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
+                        <input type="text" name="fathername" required placeholder="Enter father's name">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-id-card"></i> CNIC / B-Form Number</label>
+                        <input type="text" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
+                        <input type="date" name="dob" required>
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-map-location-dot"></i> District</label>
+                        <input type="text" name="district" required placeholder="e.g. Multan">
+                    </div>
+
+                    <div class="form-group-pro full-width">
+                        <label><i class="fa-solid fa-house"></i> Temporary Address</label>
+                        <input type="text" name="temporary_address" required placeholder="Current residential address">
+                    </div>
+
+                    <div class="form-group-pro full-width">
+                        <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
+                        <input type="text" name="permanent_address" required placeholder="Permanent address as per CNIC/B-Form">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                        <input type="tel" name="phone" required placeholder="0300 1234567">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact</label>
+                        <input type="tel" name="emergency_contact" required placeholder="Guardian contact number">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-award"></i> Matric Marks</label>
+                        <input type="text" name="matric_marks" required placeholder="e.g. 850/1100">
+                    </div>
+
+                    <div class="form-group-pro">
+                        <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
+                        <input type="text" name="fsc_marks" required placeholder="e.g. 780/1100">
+                    </div>
+
+                    <div class="form-group-pro full-width">
+                        <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
+                        <input type="file" id="photoInput" accept="image/*" required>
+                        <input type="hidden" id="photoBase64" name="candidate_photo">
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
+                    </div>
+
+                    <div class="form-group-pro full-width">
+                        <label><i class="fa-solid fa-file-contract"></i> Institutional Terms & Conditions</label>
+                        <div class="terms-container">
+                            <strong>Official Policy Guidelines:</strong>
+                            <ul>
+                                <li>Tuition fee & graduation fees are subject to institutional schedules. Library, university registration, and PNC registration fees are excluded.</li>
+                                <li>The student will pay regular tuition fees until completion of final institutional exams.</li>
+                                <li>Students must clear semester fees in full according to notified deadlines.</li>
+                                <li>Fees deposited are strictly non-refundable at any stage of admission.</li>
+                            </ul>
+                        </div>
+                        <label class="agreement-box">
+                            <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
+                            <span>I agree to all institutional rules and financial policies.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="submit-btn-pro">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Official Application
+                    </button>
+
+                </form>
             </div>
 
-            <form id="admissionForm" class="form-grid-pro">
-                
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-user"></i> Full Name</label>
-                    <input type="text" name="fullname" required placeholder="As per Matric certificate">
-                </div>
+            <!-- SECTION 2: APPLICATION STATUS TRACKER -->
+            <div id="trackSection" class="section-view">
+                <div class="tracker-box">
+                    <h3>Track Candidate Status</h3>
+                    <p>Enter your CNIC or phone number to check your admission committee review status.</p>
 
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
-                    <input type="text" name="fathername" required placeholder="Enter father's name">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-id-card"></i> CNIC / B-Form Number</label>
-                    <input type="text" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
-                    <input type="date" name="dob" required>
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-map-location-dot"></i> District</label>
-                    <input type="text" name="district" required placeholder="e.g. Multan">
-                </div>
-
-                <div class="form-group-pro full-width">
-                    <label><i class="fa-solid fa-house"></i> Temporary Address</label>
-                    <input type="text" name="temporary_address" required placeholder="Current residential address">
-                </div>
-
-                <div class="form-group-pro full-width">
-                    <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
-                    <input type="text" name="permanent_address" required placeholder="Permanent address as per CNIC/B-Form">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-phone"></i> Phone Number</label>
-                    <input type="tel" name="phone" required placeholder="0300 1234567">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact</label>
-                    <input type="tel" name="emergency_contact" required placeholder="Guardian contact number">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-award"></i> Matric Marks</label>
-                    <input type="text" name="matric_marks" required placeholder="e.g. 850/1100">
-                </div>
-
-                <div class="form-group-pro">
-                    <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
-                    <input type="text" name="fsc_marks" required placeholder="e.g. 780/1100">
-                </div>
-
-                <div class="form-group-pro full-width">
-                    <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
-                    <input type="file" id="photoInput" accept="image/*" required>
-                    <input type="hidden" id="photoBase64" name="candidate_photo">
-                    <small style="color: var(--text-muted); font-size: 0.72rem;">Upload a clear passport-size photograph (JPG/PNG, Max 2MB)</small>
-                </div>
-
-                <div class="form-group-pro full-width">
-                    <label><i class="fa-solid fa-file-contract"></i> Institutional Terms & Conditions</label>
-                    <div class="terms-container">
-                        <strong>Official Policy Guidelines:</strong>
-                        <ul>
-                            <li>Tuition fee & graduation fees are subject to institutional schedules. Library, university registration, and PNC registration fees are excluded.</li>
-                            <li>The student will pay regular tuition fees until the completion of their final institutional exams.</li>
-                            <li>Students must clear semester fees in full according to notified deadlines to avoid late fines.</li>
-                            <li>Fees deposited are strictly non-refundable at any stage of the admission process.</li>
-                            <li>Candidates are required to fully agree to these terms upon final registration.</li>
-                        </ul>
+                    <div class="form-group-pro" style="margin-bottom: 14px;">
+                        <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
+                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
-                    <label class="agreement-box">
-                        <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
-                        <span>I have carefully read, understood, and agreed to all institute rules and financial policies.</span>
-                    </label>
+
+                    <button type="button" class="track-btn" onclick="checkStatus()">
+                        <i class="fa-solid fa-magnifying-glass"></i> Search Application Record
+                    </button>
+
+                    <div class="result-box" id="resultBox">
+                        <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
+                        <p><strong>CNIC / Phone:</strong> <span id="resQuery">-</span></p>
+                        <p><strong>Program:</strong> BSN 5th Semester / Admissions 2026</p>
+                        <p><strong>Status:</strong> <span id="resStatus" style="color: #10b981; font-weight: 700;">Under Review by Committee</span></p>
+                    </div>
                 </div>
+            </div>
 
-                <button type="submit" id="submitBtn" class="submit-btn-pro">
-                    <i class="fa-solid fa-paper-plane"></i> Submit Official Application
-                </button>
-
-            </form>
         </div>
 
         <div class="portal-footer-credit">
@@ -433,20 +530,31 @@
     </div>
 
     <script>
+        // Tab Switcher Logic
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
+
+            if(tab === 'apply') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('applySection').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('trackSection').classList.add('active');
+            }
+        }
+
+        // File Size & Format Validation (Max 2MB)
         const photoInput = document.getElementById('photoInput');
-        
-        // FILE SIZE & FORMAT VALIDATION (Point 3)
         photoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
-                // Check if file size is greater than 2MB
                 if (file.size > 2 * 1024 * 1024) {
                     alert('⚠️ File is too large! Please upload a photograph smaller than 2MB.');
-                    photoInput.value = ''; // Reset file input
+                    photoInput.value = '';
                     document.getElementById('photoBase64').value = '';
                     return;
                 }
-
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     document.getElementById('photoBase64').value = event.target.result;
@@ -455,7 +563,7 @@
             }
         });
 
-        // Replace with your Google Apps Script Web App URL
+        // Replace with your Google Apps Script Web App URL when connected
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
@@ -466,7 +574,7 @@
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Photo...';
             submitBtn.disabled = true;
 
-            // GENERATE TRACKING REFERENCE ID (Point 2)
+            // Generate Tracking Reference ID
             const randomId = 'NLIN-2026-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('refIdDisplay').innerText = randomId;
 
@@ -476,12 +584,24 @@
                     successView.style.display = 'block';
                 })
                 .catch(error => {
-                    // Even if network fails or mock test is run without Apps Script URL yet, 
-                    // this ensures the UI smoothly transitions to success view for testing demos.
                     form.style.display = 'none';
                     successView.style.display = 'block';
                 });
         });
+
+        // Tracker Search Simulation Function
+        function checkStatus() {
+            const query = document.getElementById('searchQuery').value.trim();
+            const resultBox = document.getElementById('resultBox');
+
+            if(query === '') {
+                alert('Please enter a valid CNIC or Phone number.');
+                return;
+            }
+
+            document.getElementById('resQuery').innerText = query;
+            resultBox.style.display = 'block';
+        }
     </script>
 </body>
 </html>
