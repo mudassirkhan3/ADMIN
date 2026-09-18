@@ -60,30 +60,6 @@
             overflow: hidden;
         }
 
-        .portal-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
-            background-size: cover;
-            opacity: 0.18;
-            animation: bgZoomPulse 12s infinite alternate ease-in-out;
-            z-index: 1;
-        }
-
-        @keyframes bgZoomPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        .portal-header * {
-            position: relative;
-            z-index: 2;
-        }
-
         .college-logo {
             width: 65px;
             height: 65px;
@@ -92,12 +68,6 @@
             border: 3px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             margin-bottom: 10px;
-            animation: floatLogo 4s ease-in-out infinite;
-        }
-
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
         }
 
         .portal-header h1 {
@@ -127,7 +97,7 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Navigation Switcher Tabs */
+        /* Tabs Switcher */
         .nav-tabs {
             display: flex;
             background: #e2e8f0;
@@ -213,7 +183,7 @@
             border: 1.5px solid var(--border-color);
             background: var(--bg-main);
             color: var(--text-main);
-            font-size: 16px; /* Prevents auto-zoom on mobile devices */
+            font-size: 16px;
             font-family: inherit;
             outline: none;
             transition: all 0.3s ease;
@@ -235,7 +205,7 @@
             border: 1.5px solid var(--border-color);
             border-radius: 10px;
             padding: 12px;
-            max-height: 110px;
+            max-height: 100px;
             overflow-y: auto;
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -256,7 +226,6 @@
             color: var(--text-main);
             cursor: pointer;
             margin-top: 6px;
-            line-height: 1.3;
         }
 
         .agreement-box input {
@@ -288,10 +257,6 @@
             width: 100%;
         }
 
-        .submit-btn-pro:active, .track-btn:active {
-            transform: scale(0.98);
-        }
-
         .success-overlay {
             display: none;
             text-align: center;
@@ -302,13 +267,6 @@
             font-size: 3.5rem;
             color: #10b981;
             margin-bottom: 14px;
-            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0); }
-            70% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
         .success-overlay h2 {
@@ -318,13 +276,6 @@
             margin-bottom: 6px;
         }
 
-        .success-overlay p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.4;
-        }
-
-        /* Tracker View Styles */
         .tracker-box {
             text-align: center;
             padding: 10px 5px;
@@ -371,13 +322,9 @@
             color: var(--primary);
         }
 
-        /* Mobile Breakpoint */
         @media(max-width: 600px) {
             body { padding: 6px; }
             .portal-wrapper { border-radius: 14px; }
-            .portal-header { padding: 20px 14px; }
-            .portal-header h1 { font-size: 1.15rem; }
-            .portal-body { padding: 16px 12px; }
             .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
         }
     </style>
@@ -392,7 +339,7 @@
             <p>Official Candidate Admission & Status Portal 2026</p>
         </div>
 
-        <!-- Navigation Tabs to Switch between Application Form and Status Tracker -->
+        <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
             <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
@@ -400,18 +347,17 @@
 
         <div class="portal-body">
             
-            <!-- SECTION 1: ADMISSION APPLICATION FORM -->
+            <!-- APPLY FORM SECTION -->
             <div id="applySection" class="section-view active">
                 
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
                     <h2>Application Submitted Successfully!</h2>
-                    <p style="margin-top: 6px;">Your Tracking ID is: <strong id="refIdDisplay" style="color: var(--primary); font-size: 1.05rem;">NLIN-2026-000</strong></p>
-                    <p style="margin-top: 4px;">Please save this ID to check your review status. Your records are successfully linked to our database.</p>
+                    <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2026-000</strong></p>
+                    <p style="margin-top: 4px;">Your data is securely saved to the institutional database.</p>
                 </div>
 
                 <form id="admissionForm" class="form-grid-pro">
-                    
                     <div class="form-group-pro">
                         <label><i class="fa-solid fa-user"></i> Full Name</label>
                         <input type="text" name="fullname" required placeholder="As per Matric certificate">
@@ -479,10 +425,9 @@
                         <div class="terms-container">
                             <strong>Official Policy Guidelines:</strong>
                             <ul>
-                                <li>Tuition fee & graduation fees are subject to institutional schedules. Library, university registration, and PNC registration fees are excluded.</li>
-                                <li>The student will pay regular tuition fees until completion of final institutional exams.</li>
-                                <li>Students must clear semester fees in full according to notified deadlines.</li>
-                                <li>Fees deposited are strictly non-refundable at any stage of admission.</li>
+                                <li>Tuition fee & graduation fees are subject to institutional schedules.</li>
+                                <li>Students must clear semester fees in full according to deadlines.</li>
+                                <li>Fees deposited are strictly non-refundable at any stage.</li>
                             </ul>
                         </div>
                         <label class="agreement-box">
@@ -494,30 +439,29 @@
                     <button type="submit" id="submitBtn" class="submit-btn-pro">
                         <i class="fa-solid fa-paper-plane"></i> Submit Official Application
                     </button>
-
                 </form>
             </div>
 
-            <!-- SECTION 2: APPLICATION STATUS TRACKER -->
+            <!-- TRACK STATUS SECTION -->
             <div id="trackSection" class="section-view">
                 <div class="tracker-box">
                     <h3>Track Candidate Status</h3>
                     <p>Enter your CNIC or phone number to check your admission committee review status.</p>
 
-                    <div class="form-group-pro" style="margin-bottom: 14px;">
+                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> CNIC or Phone Number</label>
                         <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
 
                     <button type="button" class="track-btn" onclick="checkStatus()">
-                        <i class="fa-solid fa-magnifying-glass"></i> Search Application Record
+                        <i class="fa-solid fa-magnifying-glass"></i> Search Application Status
                     </button>
 
                     <div class="result-box" id="resultBox">
                         <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
-                        <p><strong>CNIC / Phone:</strong> <span id="resQuery">-</span></p>
+                        <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
                         <p><strong>Program:</strong> BSN 5th Semester / Admissions 2026</p>
-                        <p><strong>Status:</strong> <span id="resStatus" style="color: #10b981; font-weight: 700;">Under Review by Committee</span></p>
+                        <p><strong>Current Status:</strong> <span id="resStatus" style="color: #10b981; font-weight: 700;">-</span></p>
                     </div>
                 </div>
             </div>
@@ -530,7 +474,6 @@
     </div>
 
     <script>
-        // Tab Switcher Logic
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
@@ -544,7 +487,7 @@
             }
         }
 
-        // File Size & Format Validation (Max 2MB)
+        // File Size Validation (Max 2MB)
         const photoInput = document.getElementById('photoInput');
         photoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -563,8 +506,9 @@
             }
         });
 
-        // Replace with your Google Apps Script Web App URL when connected
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+        // Connected Google Apps Script Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
+        
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
         const submitBtn = document.getElementById('submitBtn');
@@ -574,12 +518,12 @@
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Record & Photo...';
             submitBtn.disabled = true;
 
-            // Generate Tracking Reference ID
             const randomId = 'NLIN-2026-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('refIdDisplay').innerText = randomId;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
+                .then(response => response.json())
+                .then(data => {
                     form.style.display = 'none';
                     successView.style.display = 'block';
                 })
@@ -589,7 +533,7 @@
                 });
         });
 
-        // Tracker Search Simulation Function
+        // Live Tracker Search Functionality
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
@@ -599,8 +543,21 @@
                 return;
             }
 
-            document.getElementById('resQuery').innerText = query;
-            resultBox.style.display = 'block';
+            fetch(scriptURL + '?q=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === 'success') {
+                        document.getElementById('resName').innerText = data.name;
+                        document.getElementById('resStatus').innerText = data.appStatus;
+                        resultBox.style.display = 'block';
+                    } else {
+                        alert('No application record found for this CNIC/Phone number.');
+                        resultBox.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    alert('Error connecting to institutional database.');
+                });
         }
     </script>
 </body>
