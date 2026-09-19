@@ -1,262 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidate Verification | New Life Institute of Nursing</title>
-    <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --success: #10b981;
-            --bg-main: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-        }
+var SHEET_NAME = "Sheet1";
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getSheetByName(SHEET_NAME);
+    
+    // Auto-setup exact headers if the sheet is empty
+    if (sheet.getLastRow() === 0) {
+      var headers = [
+        "Timestamp",
+        "fullname",
+        "fathername",
+        "cnic",
+        "dob",
+        "district",
+        "temporary_address",
+        "permanent_address",
+        "phone",
+        "emergency_contact",
+        "matric_marks",
+        "fsc_marks",
+        "candidate_photo",
+        "agreement_accepted",
+        "payment_id",
+        "Status",
+        "Payment_Status"
+      ];
+      sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    }
+    
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var nextRow = sheet.getLastRow() + 1;
+    
+    var rowData = headers.map(function(header) {
+      if (header === 'Timestamp') {
+        return new Date();
+      }
+      if (header === 'Status') {
+        return 'Under Review';
+      }
+      if (header === 'Payment_Status') {
+        return 'Pending Verification';
+      }
+      // Maps html form field 'payment_id' (or fallback alternatives)
+      if (header === 'payment_id') {
+        return e.parameter['payment_id'] || e.parameter['payment_ref'] || '';
+      }
+      return e.parameter[header] || '';
+    });
+    
+    sheet.getRange(nextRow, 1, 1, rowData.length).setValues([rowData]);
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
 
-        body {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .verify-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 480px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--primary);
-            overflow: hidden;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .card-header img {
-            width: 55px; height: 55px; border-radius: 50%; object-fit: cover;
-            border: 2px solid #fff; margin-bottom: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .card-header h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 2px; }
-        .card-header p { font-size: 0.72rem; opacity: 0.9; }
-
-        .verified-badge {
-            background: #dcfce7;
-            color: #166534;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 800;
-            font-size: 0.75rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin: 16px auto 0 auto;
-        }
-
-        .card-body {
-            padding: 24px;
-        }
-
-        .profile-row {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            margin-bottom: 20px;
-            background: var(--bg-main);
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .candidate-photo {
-            width: 90px;
-            height: 110px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-            background: #cbd5e1;
-        }
-
-        .profile-quick-info {
-            flex: 1;
-        }
-
-        .profile-quick-info h3 {
-            font-size: 1rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 4px;
-        }
-
-        .profile-quick-info p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 2px;
-        }
-
-        .info-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            background: var(--bg-main);
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 0.85rem;
-        }
-
-        .info-item span:first-child { color: var(--text-muted); font-weight: 600; }
-        .info-item span:last-child { color: var(--text-main); font-weight: 700; text-align: right; }
-
-        .loading-box, .error-box {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-        }
-
-        .loading-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 12px; }
-        .error-box i { font-size: 2.5rem; color: #ef4444; margin-bottom: 12px; }
-        .error-box h3 { color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
-
-        .card-footer {
-            text-align: center;
-            padding: 14px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            background: var(--bg-main);
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="verify-card">
-        <div class="card-header">
-            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
-            <h2>NEW LIFE INSTITUTE OF NURSING</h2>
-            <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
-            <div class="verified-badge">
-                <i class="fa-solid fa-circle-check"></i> OFFICIAL ENTRY TEST ADMIT CARD
-            </div>
-        </div>
-
-        <div class="card-body">
-            <!-- Loading State -->
-            <div id="loadingState" class="loading-box">
-                <i class="fa-solid fa-spinner fa-spin"></i>
-                <p>Verifying candidate credentials from live database...</p>
-            </div>
-
-            <!-- Error State -->
-            <div id="errorState" class="error-box" style="display: none;">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <h3>Record Not Found</h3>
-                <p>The scanned QR code does not match an active student record in the institutional database.</p>
-            </div>
-
-            <!-- Success Content Layout -->
-            <div id="successState" style="display: none;">
-                <div class="profile-row">
-                    <img id="candPhoto" class="candidate-photo" src="" alt="Photo">
-                    <div class="profile-quick-info">
-                        <h3 id="candName">-</h3>
-                        <p><strong>Father:</strong> <span id="candFather">-</span></p>
-                        <p style="color: var(--primary); margin-top: 4px; font-size: 0.75rem; font-weight: 700;">BSN 1st Semester (2026–27)</p>
-                    </div>
-                </div>
-
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span>CNIC / B-Form</span>
-                        <span id="candCnic">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span>Phone Number</span>
-                        <span id="candPhone">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span>Fee Verification Status</span>
-                        <span id="candFee" style="color: var(--success);">-</span>
-                    </div>
-                    <div class="info-item">
-                        <span>Committee Status</span>
-                        <span id="candAppStatus" style="color: var(--primary);">-</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-footer">
-            Official Verification Portal | Developed by Mudassir Khan
-        </div>
-    </div>
-
-    <script>
-        // Connected Google Apps Script Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
-
-        // Extract CNIC query parameter from URL (e.g. slip.html?q=36302-1234567-1)
-        const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('q');
-
-        if (!query) {
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('errorState').style.display = 'block';
+function doGet(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getSheetByName(SHEET_NAME);
+    var rows = sheet.getDataRange().getValues();
+    
+    if (rows.length === 0) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ 'status': 'error', 'message': 'Sheet is empty' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    var headers = rows[0];
+    var query = e.parameter.q;
+    
+    // Handle admin stats request
+    if (query === 'admin_stats') {
+      var total = rows.length - 1;
+      var approved = 0;
+      var pending = 0;
+      
+      var statusIdx = headers.indexOf('Status');
+      
+      for (var i = 1; i < rows.length; i++) {
+        var status = rows[i][statusIdx] ? rows[i][statusIdx].toString().toLowerCase() : '';
+        if (status.includes('approved') || status.includes('verified')) {
+          approved++;
         } else {
-            fetch(scriptURL + '?q=' + encodeURIComponent(query))
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('loadingState').style.display = 'none';
-                    if (data.status === 'success') {
-                        document.getElementById('candName').innerText = data.name;
-                        document.getElementById('candFather').innerText = data.father;
-                        document.getElementById('candCnic').innerText = data.cnic;
-                        document.getElementById('candPhone').innerText = data.phone;
-                        document.getElementById('candFee').innerText = data.payStatus || 'Verified';
-                        document.getElementById('candAppStatus').innerText = data.appStatus || 'Approved';
-                        
-                        if(data.photo) {
-                            document.getElementById('candPhoto').src = data.photo;
-                        } else {
-                            document.getElementById('candPhoto').src = 'https://via.placeholder.com/90x110?text=No+Photo';
-                        }
-
-                        document.getElementById('successState').style.display = 'block';
-                    } else {
-                        document.getElementById('errorState').style.display = 'block';
-                    }
-                })
-                .catch(err => {
-                    document.getElementById('loadingState').style.display = 'none';
-                    document.getElementById('errorState').style.display = 'block';
-                });
+          pending++;
         }
-    </script>
-</body>
-</html>
+      }
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({ 'total': total, 'approved': approved, 'pending': pending }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    if (!query) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ 'status': 'error', 'message': 'No query provided' }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    var cnicIdx = headers.indexOf('cnic');
+    var phoneIdx = headers.indexOf('phone');
+    var nameIdx = headers.indexOf('fullname');
+    var fatherIdx = headers.indexOf('fathername');
+    var statusIdx = headers.indexOf('Status');
+    var payStatusIdx = headers.indexOf('Payment_Status');
+    var photoIdx = headers.indexOf('candidate_photo');
+    
+    for (var i = 1; i < rows.length; i++) {
+      var row = rows[i];
+      var rowCnic = row[cnicIdx] ? row[cnicIdx].toString().trim() : '';
+      var rowPhone = row[phoneIdx] ? row[phoneIdx].toString().trim() : '';
+      
+      if (rowCnic.toLowerCase() === query.toLowerCase() || rowPhone.toLowerCase() === query.toLowerCase()) {
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            'status': 'success',
+            'name': row[nameIdx],
+            'father': row[fatherIdx],
+            'cnic': rowCnic,
+            'phone': rowPhone,
+            'appStatus': row[statusIdx] || 'Under Review',
+            'payStatus': row[payStatusIdx] || 'Pending Verification',
+            'photo': row[photoIdx] || ''
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'status': 'not_found' }))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'status': 'error', 'message': err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
