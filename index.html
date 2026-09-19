@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Official Admission Form 2026-27 | New Life Institute of Nursing</title>
+    <title>Official Admission Portal 2026-27 | New Life Institute of Nursing</title>
     <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -38,11 +38,11 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -73,25 +73,15 @@
 
         .portal-header * { position: relative; z-index: 2; }
 
-        /* Admin Button Positioned in Header Right Corner */
         .header-admin-btn {
             position: absolute;
-            top: 14px;
-            right: 14px;
+            top: 14px; right: 14px;
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.2s;
-            z-index: 10;
+            padding: 6px 12px; border-radius: 20px;
+            font-size: 0.72rem; font-weight: 700; cursor: pointer;
+            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 5px; transition: 0.2s; z-index: 10;
         }
         .header-admin-btn:hover { background: rgba(255, 255, 255, 0.35); }
 
@@ -119,14 +109,31 @@
             padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
         }
 
+        /* Beautiful Countdown & Date Banner on Top of Form */
+        .deadline-banner {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            color: #b45309;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+        }
+        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .countdown-timer { background: #b45309; color: #fff; padding: 4px 10px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.5px; }
+
         .nav-tabs {
             display: flex; background: #e2e8f0; padding: 4px; gap: 4px; border-bottom: 1px solid var(--border-color);
         }
 
         .tab-btn {
-            flex: 1; background: transparent; border: none; padding: 10px; font-size: 0.85rem;
+            flex: 1; background: transparent; border: none; padding: 10px 8px; font-size: 0.8rem;
             font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 8px;
-            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 6px;
+            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 5px;
         }
 
         .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
@@ -134,7 +141,7 @@
         .portal-body { padding: 20px 16px; }
 
         .section-view { display: none; }
-        .section-view.active { display: block; animation: fadeIn 0.4s ease; }
+        .section-view.active { display: block; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -168,7 +175,9 @@
             grid-column: 1 / -1; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
             cursor: pointer; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; width: 100%;
+            transition: 0.2s;
         }
+        .submit-btn-pro:active, .track-btn:active { transform: scale(0.99); }
         .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25); margin-top: 10px; }
 
         .success-overlay { display: none; text-align: center; padding: 25px 15px; }
@@ -201,19 +210,11 @@
         .modal-card ul li i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
         .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-        /* Admin Dashboard Grid Styles */
         .admin-stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 14px 0;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0;
         }
         .admin-stat-box {
-            background: var(--bg-main);
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
+            background: var(--bg-main); border: 1px solid var(--border-color); padding: 10px; border-radius: 10px; text-align: center;
         }
         .admin-stat-box span { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
         .admin-stat-box p { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
@@ -223,7 +224,7 @@
         }
         .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
-        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } }
+        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } .deadline-banner { flex-direction: column; gap: 8px; text-align: center; } }
     </style>
 </head>
 <body>
@@ -235,16 +236,17 @@
             <ul>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Info:</strong> Fill your name, father's name, and CNIC exactly as on your Matric certificate.</li>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Official Slip:</strong> Upon submission, instantly download your official PDF admission slip token.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Official Slip & Admit Card:</strong> Download your confirmation PDF slip upon submitting, and your exam Admit Card once your fee is verified.</li>
             </ul>
             <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
 
-    <!-- PROPER ADMIN DASHBOARD MODAL -->
+    <!-- ADMIN DASHBOARD MODAL -->
     <div class="modal-overlay" id="adminModal" style="display: none;">
         <div class="modal-card">
             <h3><i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal</h3>
+            
             <div id="adminPinSection">
                 <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Enter Administrator Security PIN (Default: 2026):</p>
                 <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:12px;">
@@ -254,22 +256,22 @@
                 </div>
             </div>
 
-            <div id="adminDashboardContent" style="display:none;">
+            <div id="adminDashboardContent" style="display: none;">
                 <p style="font-size: 0.82rem; color: #10b981; font-weight: 700; margin-bottom: 10px;">
                     <i class="fa-solid fa-circle-check"></i> Connected Live to Google Sheets Database
                 </p>
                 
                 <div class="admin-stat-grid">
                     <div class="admin-stat-box">
-                        <span id="statTotal">--</span>
+                        <span id="statTotal">...</span>
                         <p>Total Applied</p>
                     </div>
                     <div class="admin-stat-box">
-                        <span id="statApproved" style="color: #10b981;">--</span>
+                        <span id="statApproved" style="color: #10b981;">...</span>
                         <p>Approved</p>
                     </div>
                     <div class="admin-stat-box">
-                        <span id="statPending" style="color: #f59e0b;">--</span>
+                        <span id="statPending" style="color: #f59e0b;">...</span>
                         <p>Under Review</p>
                     </div>
                 </div>
@@ -285,7 +287,6 @@
 
     <div class="portal-wrapper">
         <div class="portal-header">
-            <!-- ADMIN BUTTON IN HEADER RIGHT CORNER -->
             <button class="header-admin-btn" onclick="openAdminModal()">
                 <i class="fa-solid fa-lock"></i> Admin Login
             </button>
@@ -293,22 +294,33 @@
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Admission Form — 1st Semester (Session 2026–27)</p>
+            <p>Official Admission Portal — 1st Semester (Session 2026–27)</p>
             <div class="header-meta-row">
                 <span class="header-pill"><i class="fa-solid fa-phone"></i> Helpline: 0309-1965700</span>
-                <span class="header-pill" id="liveCounterBadge"><i class="fa-solid fa-users"></i> Admissions Open</span>
+                <span class="header-pill"><i class="fa-solid fa-circle-check"></i> Admissions Open</span>
             </div>
         </div>
 
+        <!-- NAVIGATION TABS -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
-            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status & Fee</button>
+            <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply</button>
+            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Status</button>
+            <button class="tab-btn" onclick="switchTab('admitCard')"><i class="fa-solid fa-id-card-clip"></i> Admit Card</button>
         </div>
 
         <div class="portal-body">
             
             <!-- APPLY FORM SECTION -->
             <div id="applySection" class="section-view active">
+
+                <!-- BEAUTIFUL DEADLINE & TIMER BANNER -->
+                <div class="deadline-banner">
+                    <div>
+                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.1rem; color: #d97706;"></i>
+                        <span>Deadline: October 15, 2026</span>
+                    </div>
+                    <div class="countdown-timer" id="countdownClock">Loading Timer...</div>
+                </div>
                 
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
@@ -423,7 +435,6 @@
                         <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1 or 03001234567">
                     </div>
 
-                    <!-- Button with Loading State Support -->
                     <button type="button" id="searchBtn" class="track-btn" onclick="checkStatus()">
                         <i class="fa-solid fa-magnifying-glass"></i> Check Live Record
                     </button>
@@ -438,6 +449,23 @@
                 </div>
             </div>
 
+            <!-- ADMIT CARD SECTION -->
+            <div id="admitCardSection" class="section-view">
+                <div class="tracker-box">
+                    <h3>Download Entry Test Admit Card</h3>
+                    <p>Enter your CNIC or Phone Number to generate your official exam admit card (Available only after fee verification).</p>
+
+                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
+                        <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
+                        <input type="text" id="admitQuery" placeholder="e.g. 36302-1234567-1">
+                    </div>
+
+                    <button type="button" id="admitBtn" class="track-btn" onclick="generateAdmitCard()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <i class="fa-solid fa-print"></i> Generate & Print Admit Card
+                    </button>
+                </div>
+            </div>
+
         </div>
 
         <div class="portal-footer-credit">
@@ -446,6 +474,26 @@
     </div>
 
     <script>
+        // Live Countdown Timer Script (Target: October 15, 2026)
+        const deadline = new Date('October 15, 2026 23:59:59').getTime();
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = deadline - now;
+
+            if (distance < 0) {
+                document.getElementById('countdownClock').innerText = "ADMISSIONS CLOSED";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdownClock').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+
         function closeModal() { document.getElementById('instructionModal').style.display = 'none'; }
         
         function openAdminModal() {
@@ -455,14 +503,12 @@
             document.getElementById('adminDashboardContent').style.display = 'none';
         }
 
-        // Verify Admin PIN and Fetch Real Google Sheet Metrics
         function verifyAdminPin() {
             const pin = document.getElementById('adminPinInput').value.trim();
             if(pin === '2026') {
                 document.getElementById('adminPinSection').style.display = 'none';
                 document.getElementById('adminDashboardContent').style.display = 'block';
                 
-                // Fetch real counts from database
                 fetch(scriptURL + '?q=admin_stats')
                     .then(res => res.json())
                     .then(data => {
@@ -483,12 +529,16 @@
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
+
             if(tab === 'apply') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('applySection').classList.add('active');
-            } else {
+            } else if(tab === 'track') {
                 document.querySelectorAll('.tab-btn')[1].classList.add('active');
                 document.getElementById('trackSection').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('admitCardSection').classList.add('active');
             }
         }
 
@@ -519,7 +569,7 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Admission Form...';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Form & Saving...';
             submitBtn.disabled = true;
 
             generatedTrackingId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
@@ -582,7 +632,7 @@
             slipWindow.document.close();
         }
 
-        // Live Tracker Search Functionality with Proper Loading Spinner
+        // Live Tracker Search Functionality with Spinner
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
@@ -593,15 +643,13 @@
                 return;
             }
 
-            // Show proper loading state on button
-            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Searching Institutional Database...';
+            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking Database...';
             searchBtn.disabled = true;
             resultBox.style.display = 'none';
 
             fetch(scriptURL + '?q=' + encodeURIComponent(query))
                 .then(response => response.json())
                 .then(data => {
-                    // Reset button state
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
 
@@ -622,6 +670,124 @@
                 .catch(error => {
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
+                    alert('Error connecting to institutional database.');
+                });
+        }
+
+        // Generate Printable Admit Card Function with Scannable QR Code
+        function generateAdmitCard() {
+            const query = document.getElementById('admitQuery').value.trim();
+            const admitBtn = document.getElementById('admitBtn');
+
+            if(query === '') {
+                alert('Please enter your CNIC or Phone number.');
+                return;
+            }
+
+            admitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying Eligibility...';
+            admitBtn.disabled = true;
+
+            fetch(scriptURL + '?q=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
+                    admitBtn.disabled = false;
+
+                    if(data.status === 'success') {
+                        const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
+                        
+                        if(!isFeeVerified) {
+                            alert('⚠️ Admit Card Locked: Your fee payment is still "Pending Verification" by the administration. Once verified, you can download your admit card.');
+                            return;
+                        }
+
+                        const qrText = encodeURIComponent(`Verified Student: ${data.name} | Father: ${data.father} | CNIC: ${data.cnic} | Status: FEE VERIFIED & APPROVED`);
+                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${qrText}`;
+
+                        const cardWindow = window.open('', '_blank');
+                        cardWindow.document.write(`
+                            <html>
+                            <head>
+                                <title>Entry Test Admit Card - ${data.name}</title>
+                                <style>
+                                    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 25px; color: #1e293b; max-width: 650px; margin: auto; border: 3px solid #0284c7; border-radius: 16px; background: #fff; }
+                                    .header { text-align: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; margin-bottom: 20px; }
+                                    .header img.logo { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
+                                    .header h2 { color: #0284c7; margin: 6px 0 2px 0; font-size: 1.15rem; }
+                                    .header p { font-size: 0.78rem; color: #64748b; margin: 0; }
+                                    .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.75rem; display: inline-block; margin-top: 6px; }
+                                    
+                                    .card-main-layout { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+                                    .details-grid div { margin-bottom: 6px; }
+                                    
+                                    .qr-container { text-align: center; background: #f8fafc; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; }
+                                    .qr-container img { width: 100px; height: 100px; }
+                                    .qr-container span { font-size: 0.65rem; color: #64748b; display: block; margin-top: 4px; font-weight: bold; }
+
+                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff; padding: 14px; border-radius: 10px; margin-bottom: 20px; font-size: 0.88rem; }
+                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 8px; font-size: 0.95rem; }
+                                    .instructions { font-size: 0.75rem; color: #475569; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+                                    .instructions ul { padding-left: 15px; margin: 4px 0; }
+                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 25px; font-size: 0.8rem; font-weight: bold; }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="header">
+                                    <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
+                                    <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
+                                    <p>Official Entry Test Admit Card — BSN 1st Semester (Session 2026–27)</p>
+                                    <div class="badge">Fee Verified & Eligible for Test ✔</div>
+                                </div>
+
+                                <div class="card-main-layout">
+                                    <div class="details-grid">
+                                        <div><strong>Candidate Name:</strong><br>${data.name}</div>
+                                        <div><strong>Father's Name:</strong><br>${data.father}</div>
+                                        <div><strong>CNIC / B-Form:</strong><br>${data.cnic}</div>
+                                        <div><strong>Program:</strong><br>Bachelor of Science in Nursing</div>
+                                    </div>
+                                    <div class="qr-container">
+                                        <img src="${qrCodeUrl}" alt="Verification QR">
+                                        <span>SCAN TO VERIFY</span>
+                                    </div>
+                                </div>
+
+                                <div class="exam-box">
+                                    <h4><i class="fa-solid fa-clipboard-question"></i> Entry Test Schedule & Venue Details</h4>
+                                    <p><strong>Test Date:</strong> Sunday, 18 October 2026</p>
+                                    <p><strong>Reporting Time:</strong> 09:00 AM Sharp</p>
+                                    <p><strong>Exam Timing:</strong> 10:00 AM – 12:00 PM</p>
+                                    <p><strong>Exam Centre / Venue:</strong> Main Campus Auditorium, New Life Institute of Nursing, Multan</p>
+                                </div>
+
+                                <div class="instructions">
+                                    <strong>Important Instructions for Candidates:</strong>
+                                    <ul>
+                                        <li>Bring your original CNIC or B-Form along with this printed Admit Card.</li>
+                                        <li>Mobile phones, smartwatches, and electronic devices are strictly prohibited in the exam hall.</li>
+                                        <li>Candidates must report to the examination center 30 minutes before test timing.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="footer-sign">
+                                    <div>Helpline: 0309-1965700</div>
+                                    <div style="text-align: center;">_______________________<br>Controller of Admissions</div>
+                                </div>
+
+                                <script>window.print();<\/script>
+                            </body>
+                            </html>
+                        `);
+                        cardWindow.document.close();
+
+                    } else {
+                        alert('No application record found matching this CNIC or Phone number.');
+                    }
+                })
+                .catch(err => {
+                    admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
+                    admitBtn.disabled = false;
                     alert('Error connecting to institutional database.');
                 });
         }
