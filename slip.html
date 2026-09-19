@@ -13,10 +13,8 @@
         h2 { font-size: 1.1rem; color: #1e293b; margin-bottom: 4px; font-weight: 800; }
         p.sub { font-size: 0.75rem; color: #64748b; margin-bottom: 20px; }
         .status-badge { display: inline-block; padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; }
-        .verified { background: #dcfce7; color: #166534; }
-        .pending { background: #fef3c7; color: #b45309; }
         .details-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; font-size: 0.85rem; margin-bottom: 20px; }
-        .details-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .details-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
         .details-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .footer { font-size: 0.7rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 12px; }
     </style>
@@ -34,7 +32,7 @@
         </div>
 
         <div id="resultView" style="display: none;">
-            <div id="statusBadgeContainer" class="status-badge verified">
+            <div id="statusBadgeContainer" class="status-badge" style="background: #dcfce7; color: #166534;">
                 <i class="fa-solid fa-circle-check"></i> AUTHENTIC ADMIT CARD
             </div>
 
@@ -60,7 +58,8 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsRHdLch1MnZTRT_D1Pj6VkROcQB5wydxkMkbpbZ_chRRQVgF3aU6TGWvC-eCwvSxi/exec';
+        // Your exact new Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
         
         const urlParams = new URLSearchParams(window.location.search);
         const queryCNIC = urlParams.get('q');
@@ -73,15 +72,22 @@
                 .then(res => res.json())
                 .then(data => {
                     document.getElementById('loadingView').style.display = 'none';
+                    console.log("QR Verification Response:", data);
+
                     if (data.status === 'success') {
-                        document.getElementById('vName').innerText = data.name;
-                        document.getElementById('vFather').innerText = data.father;
-                        document.getElementById('vCnic').innerText = data.cnic;
-                        document.getElementById('vAppStatus').innerText = data.appStatus;
+                        document.getElementById('vName').innerText = data.name || '-';
+                        document.getElementById('vFather').innerText = data.father || '-';
+                        document.getElementById('vCnic').innerText = data.cnic || '-';
                         
+                        // Map manual status values directly from your Google Sheet
+                        const appStatus = data.appStatus || 'Under Review';
                         const payStatus = data.payStatus || 'Pending Verification';
-                        document.getElementById('vPayStatus').innerText = payStatus;
-                        document.getElementById('vPayStatus').style.color = payStatus.toLowerCase().includes('verified') ? '#166534' : '#b45309';
+
+                        document.getElementById('vAppStatus').innerText = appStatus;
+                        
+                        const paySpan = document.getElementById('vPayStatus');
+                        paySpan.innerText = payStatus;
+                        paySpan.style.color = payStatus.toLowerCase().includes('verified') ? '#166534' : '#b45309';
 
                         document.getElementById('resultView').style.display = 'block';
                     } else {
@@ -89,6 +95,7 @@
                     }
                 })
                 .catch(err => {
+                    console.error("QR Verification Error:", err);
                     document.getElementById('loadingView').style.display = 'none';
                     document.getElementById('errorView').style.display = 'block';
                 });
