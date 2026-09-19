@@ -551,8 +551,8 @@
             }
         });
 
-        // Your active Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsRHdLch1MnZTRT_D1Pj6VkROcQB5wydxkMkbpbZ_chRRQVgF3aU6TGWvC-eCwvSxi/exec';
+        // Your exact new Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
         
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
@@ -643,6 +643,7 @@
                 .then(data => {
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
+                    console.log("Status API Response:", data);
 
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
@@ -661,6 +662,7 @@
                 .catch(error => {
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
+                    console.error("Status API Error:", error);
                     alert('Error connecting to institutional database.');
                 });
         }
@@ -682,12 +684,13 @@
                 .then(data => {
                     admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
                     admitBtn.disabled = false;
+                    console.log("Admit Card API Response:", data);
 
                     if(data.status === 'success') {
                         const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
                         
                         if(!isFeeVerified) {
-                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once you change it to "Verified" in your Google Sheet, you can download your admit card.');
+                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once you type "Verified" in your Google Sheet, you can download your admit card.');
                             return;
                         }
 
@@ -779,6 +782,7 @@
                 .catch(err => {
                     admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
                     admitBtn.disabled = false;
+                    console.error("Admit Card API Error:", err);
                     alert('Error connecting to institutional database.');
                 });
         }
