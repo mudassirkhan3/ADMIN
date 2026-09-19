@@ -234,7 +234,7 @@
             <h3><i class="fa-solid fa-circle-info"></i> Candidate Registration Guide</h3>
             <ul>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Info:</strong> Fill your name, father's name, and CNIC exactly as on your Matric certificate.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or payment ID ready.</li>
                 <li><i class="fa-solid fa-check-circle"></i> <strong>Official Slip & Admit Card:</strong> Download your confirmation PDF slip upon submitting, and your exam Admit Card once your fee is verified.</li>
             </ul>
             <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
@@ -388,9 +388,9 @@
                     </div>
 
                     <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-receipt"></i> Fee Deposit / Transaction ID / Slip No</label>
-                        <input type="text" id="inpPay" name="payment_ref" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission processing fee before submitting and enter reference ID here.</small>
+                        <label><i class="fa-solid fa-receipt"></i> Payment ID / Bank Slip / TID</label>
+                        <input type="text" id="inpPay" name="payment_id" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission processing fee before submitting and enter payment ID here.</small>
                     </div>
 
                     <div class="form-group-pro full-width">
@@ -551,8 +551,8 @@
             }
         });
 
-        // Your verified Google Apps Script Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
+        // Updated Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsRHdLch1MnZTRT_D1Pj6VkROcQB5wydxkMkbpbZ_chRRQVgF3aU6TGWvC-eCwvSxi/exec';
         
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
@@ -611,7 +611,7 @@
                     <div class="row"><strong>Father's Name:</strong> <span>${father}</span></div>
                     <div class="row"><strong>CNIC / B-Form:</strong> <span>${cnic}</span></div>
                     <div class="row"><strong>Phone Number:</strong> <span>${phone}</span></div>
-                    <div class="row"><strong>Fee Reference / TID:</strong> <span>${payRef}</span></div>
+                    <div class="row"><strong>Payment ID / TID:</strong> <span>${payRef}</span></div>
                     <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
                     <div class="footer">
                         <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
