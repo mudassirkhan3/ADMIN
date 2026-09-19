@@ -296,7 +296,7 @@
             <p>Official Admission Portal — 1st Semester (Session 2026–27)</p>
             <div class="header-meta-row">
                 <span class="header-pill"><i class="fa-solid fa-phone"></i> 0309-1965700</span>
-                <span class="header-pill"><i class="fa-solid fa-location-dot"></i> M.A Jinnah Rd, Multan</span>
+                <span class="header-pill"><i class="fa-solid fa-location-dot"></i> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</span>
             </div>
         </div>
 
@@ -467,7 +467,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            <span>New Life Institute of Nursing</span> | Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan (Helpline: 0309-1965700)
+            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
         </div>
     </div>
 
@@ -602,7 +602,7 @@
                 <body>
                     <div class="header">
                         <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
-                        <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
+                        <p><strong>Venue Address:</strong> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
                         <p>BSN 1st Semester Admission Slip (Session 2026–27)</p>
                         <div class="badge">Tracking ID: ${generatedTrackingId}</div>
                     </div>
@@ -614,7 +614,7 @@
                     <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
                     <div class="footer">
                         <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
-                        <p>Helpline: 0309-1965700</p>
+                        <p>Helpline: 0309-1965700 | Developed by Mudassir Khan</p>
                     </div>
                     <script>window.print();<\/script>
                 </body>
@@ -690,9 +690,10 @@
                             return;
                         }
 
-                        // Complete data string for QR code scanner (opens a readable verification link/string)
-                        const verificationData = `INSTITUTION: New Life Institute of Nursing, Multan\nCANDIDATE: ${data.name}\FATHER: ${data.father}\nCNIC: ${data.cnic}\nPHONE: ${data.phone}\nFEE STATUS: ${data.payStatus}\nADMISSION: ${data.appStatus}`;
-                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(verificationData)}`;
+                        // Generate a clean HTML popup verification page encoded directly inside the QR Code
+                        const verificationHtml = `<!DOCTYPE html><html><head><title>Verify Student - ${data.name}</title><style>body{font-family:Arial,sans-serif;background:#f0f9ff;padding:20px;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}.card{background:#fff;width:100%;max-width:400px;padding:24px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.1);border:2px solid #0284c7;text-align:center}.logo{width:50px;height:50px;border-radius:50%;border:2px solid #0284c7;object-fit:cover;margin-bottom:8px}h2{color:#0284c7;font-size:1.1rem;margin:5px 0}.badge{background:#dcfce7;color:#166534;padding:4px 12px;border-radius:20px;font-weight:bold;font-size:0.75rem;display:inline-block;margin:10px 0}.info{text-align:left;background:#f8fafc;padding:12px;border-radius:8px;border:1px solid #e2e8f0;font-size:0.85rem;margin-top:12px}.info p{margin:6px 0}img.photo{width:80px;height:100px;border-radius:6px;object-fit:cover;border:2px solid #0284c7;margin-bottom:10px}</style></head><body><div class="card"><img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0"><h2>NEW LIFE INSTITUTE OF NURSING</h2><div class="badge">OFFICIAL VERIFIED ADMIT CARD ✔</div><br><img class="photo" src="${data.photo || 'https://via.placeholder.com/80x100'}"><div class="info"><p><strong>Name:</strong> ${data.name}</p><p><strong>Father's Name:</strong> ${data.father}</p><p><strong>CNIC:</strong> ${data.cnic}</p><p><strong>Phone:</strong> ${data.phone}</p><p><strong>Fee Status:</strong> <span style="color:#166534;font-weight:bold">${data.payStatus}</span></p><p><strong>Admission Status:</strong> <span style="color:#0284c7;font-weight:bold">${data.appStatus}</span></p></div></div></body></html>`;
+
+                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(verificationHtml)}`;
 
                         const cardWindow = window.open('', '_blank');
                         cardWindow.document.write(`
@@ -749,7 +750,7 @@
                                 <div class="exam-box">
                                     <h4><i class="fa-solid fa-clipboard-question"></i> Entry Test Schedule & Venue Details</h4>
                                     <p><strong>Test Date:</strong> Sunday, 18 October 2026 | <strong>Timing:</strong> 10:00 AM – 12:00 PM</p>
-                                    <p><strong>Exam Centre / Venue:</strong> Main Campus Auditorium, New Life Institute of Nursing, Multan</p>
+                                    <p><strong>Exam Centre / Venue:</strong> Main Campus, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
                                 </div>
 
                                 <div class="instructions">
