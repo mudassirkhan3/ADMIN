@@ -105,11 +105,10 @@
         }
 
         .header-pill {
-            font-size: 0.75rem; background: rgba(0, 0, 0, 0.2);
+            font-size: 0.73rem; background: rgba(0, 0, 0, 0.2);
             padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
         }
 
-        /* Beautiful Countdown & Date Banner on Top of Form */
         .deadline-banner {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border: 1px solid #f59e0b;
@@ -296,8 +295,8 @@
             <h1>Bachelor of Science in Nursing (BSN)</h1>
             <p>Official Admission Portal — 1st Semester (Session 2026–27)</p>
             <div class="header-meta-row">
-                <span class="header-pill"><i class="fa-solid fa-phone"></i> Helpline: 0309-1965700</span>
-                <span class="header-pill"><i class="fa-solid fa-circle-check"></i> Admissions Open</span>
+                <span class="header-pill"><i class="fa-solid fa-phone"></i> 0309-1965700</span>
+                <span class="header-pill"><i class="fa-solid fa-location-dot"></i> M.A Jinnah Rd, Multan</span>
             </div>
         </div>
 
@@ -313,7 +312,6 @@
             <!-- APPLY FORM SECTION -->
             <div id="applySection" class="section-view active">
 
-                <!-- BEAUTIFUL DEADLINE & TIMER BANNER -->
                 <div class="deadline-banner">
                     <div>
                         <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.1rem; color: #d97706;"></i>
@@ -469,28 +467,24 @@
         </div>
 
         <div class="portal-footer-credit">
-            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)
+            <span>New Life Institute of Nursing</span> | Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan (Helpline: 0309-1965700)
         </div>
     </div>
 
     <script>
-        // Live Countdown Timer Script (Target: October 15, 2026)
         const deadline = new Date('October 15, 2026 23:59:59').getTime();
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = deadline - now;
-
             if (distance < 0) {
                 document.getElementById('countdownClock').innerText = "ADMISSIONS CLOSED";
                 clearInterval(timerInterval);
                 return;
             }
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             document.getElementById('countdownClock').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }, 1000);
 
@@ -529,7 +523,6 @@
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
-
             if(tab === 'apply') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('applySection').classList.add('active');
@@ -542,7 +535,6 @@
             }
         }
 
-        // File Size Validation (Max 2MB)
         const photoInput = document.getElementById('photoInput');
         photoInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -559,7 +551,6 @@
             }
         });
 
-        // Connected Google Apps Script Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
         
         const form = document.getElementById('admissionForm');
@@ -587,7 +578,6 @@
                 });
         });
 
-        // Printable PDF Admission Slip Generator
         function downloadAdmissionSlip() {
             const name = document.getElementById('inpName').value;
             const father = document.getElementById('inpFather').value;
@@ -612,6 +602,7 @@
                 <body>
                     <div class="header">
                         <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
+                        <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
                         <p>BSN 1st Semester Admission Slip (Session 2026–27)</p>
                         <div class="badge">Tracking ID: ${generatedTrackingId}</div>
                     </div>
@@ -623,7 +614,7 @@
                     <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
                     <div class="footer">
                         <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
-                        <p>Helpline: 0309-1965700 | Designed by Mudassir Khan (CR)</p>
+                        <p>Helpline: 0309-1965700</p>
                     </div>
                     <script>window.print();<\/script>
                 </body>
@@ -632,7 +623,6 @@
             slipWindow.document.close();
         }
 
-        // Live Tracker Search Functionality with Spinner
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
@@ -674,7 +664,6 @@
                 });
         }
 
-        // Generate Printable Admit Card Function with Scannable QR Code
         function generateAdmitCard() {
             const query = document.getElementById('admitQuery').value.trim();
             const admitBtn = document.getElementById('admitBtn');
@@ -701,8 +690,9 @@
                             return;
                         }
 
-                        const qrText = encodeURIComponent(`Verified Student: ${data.name} | Father: ${data.father} | CNIC: ${data.cnic} | Status: FEE VERIFIED & APPROVED`);
-                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${qrText}`;
+                        // Complete data string for QR code scanner (opens a readable verification link/string)
+                        const verificationData = `INSTITUTION: New Life Institute of Nursing, Multan\nCANDIDATE: ${data.name}\FATHER: ${data.father}\nCNIC: ${data.cnic}\nPHONE: ${data.phone}\nFEE STATUS: ${data.payStatus}\nADMISSION: ${data.appStatus}`;
+                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(verificationData)}`;
 
                         const cardWindow = window.open('', '_blank');
                         cardWindow.document.write(`
@@ -710,42 +700,45 @@
                             <head>
                                 <title>Entry Test Admit Card - ${data.name}</title>
                                 <style>
-                                    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 25px; color: #1e293b; max-width: 650px; margin: auto; border: 3px solid #0284c7; border-radius: 16px; background: #fff; }
+                                    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 25px; color: #1e293b; max-width: 680px; margin: auto; border: 3px solid #0284c7; border-radius: 16px; background: #fff; }
                                     .header { text-align: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; margin-bottom: 20px; }
-                                    .header img.logo { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
-                                    .header h2 { color: #0284c7; margin: 6px 0 2px 0; font-size: 1.15rem; }
-                                    .header p { font-size: 0.78rem; color: #64748b; margin: 0; }
-                                    .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.75rem; display: inline-block; margin-top: 6px; }
+                                    .header img.logo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
+                                    .header h2 { color: #0284c7; margin: 4px 0 2px 0; font-size: 1.1rem; }
+                                    .header p { font-size: 0.75rem; color: #64748b; margin: 0; }
+                                    .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.72rem; display: inline-block; margin-top: 6px; }
                                     
-                                    .card-main-layout { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
-                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
-                                    .details-grid div { margin-bottom: 6px; }
+                                    .card-main-layout { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; }
+                                    .candidate-img { width: 90px; height: 110px; border-radius: 8px; object-fit: cover; border: 2px solid #0284c7; background: #e2e8f0; }
+                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem; background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; }
+                                    .details-grid div { margin-bottom: 4px; }
                                     
-                                    .qr-container { text-align: center; background: #f8fafc; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; }
-                                    .qr-container img { width: 100px; height: 100px; }
-                                    .qr-container span { font-size: 0.65rem; color: #64748b; display: block; margin-top: 4px; font-weight: bold; }
+                                    .qr-container { text-align: center; background: #f8fafc; padding: 8px; border-radius: 10px; border: 1px solid #e2e8f0; }
+                                    .qr-container img { width: 95px; height: 95px; }
+                                    .qr-container span { font-size: 0.6rem; color: #64748b; display: block; margin-top: 3px; font-weight: bold; }
 
-                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff; padding: 14px; border-radius: 10px; margin-bottom: 20px; font-size: 0.88rem; }
-                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 8px; font-size: 0.95rem; }
-                                    .instructions { font-size: 0.75rem; color: #475569; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-                                    .instructions ul { padding-left: 15px; margin: 4px 0; }
-                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 25px; font-size: 0.8rem; font-weight: bold; }
+                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff; padding: 12px; border-radius: 10px; margin-bottom: 15px; font-size: 0.85rem; }
+                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 6px; font-size: 0.9rem; }
+                                    .instructions { font-size: 0.72rem; color: #475569; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+                                    .instructions ul { padding-left: 15px; margin: 3px 0; }
+                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 20px; font-size: 0.78rem; font-weight: bold; border-top: 1px solid #cbd5e1; padding-top: 8px; }
                                 </style>
                             </head>
                             <body>
                                 <div class="header">
                                     <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
                                     <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
+                                    <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan | Helpline: 0309-1965700</p>
                                     <p>Official Entry Test Admit Card — BSN 1st Semester (Session 2026–27)</p>
                                     <div class="badge">Fee Verified & Eligible for Test ✔</div>
                                 </div>
 
                                 <div class="card-main-layout">
+                                    <img class="candidate-img" src="${data.photo || 'https://via.placeholder.com/90x110?text=Photo'}" alt="Candidate Photo">
                                     <div class="details-grid">
                                         <div><strong>Candidate Name:</strong><br>${data.name}</div>
                                         <div><strong>Father's Name:</strong><br>${data.father}</div>
                                         <div><strong>CNIC / B-Form:</strong><br>${data.cnic}</div>
-                                        <div><strong>Program:</strong><br>Bachelor of Science in Nursing</div>
+                                        <div><strong>Phone Number:</strong><br>${data.phone}</div>
                                     </div>
                                     <div class="qr-container">
                                         <img src="${qrCodeUrl}" alt="Verification QR">
@@ -755,9 +748,7 @@
 
                                 <div class="exam-box">
                                     <h4><i class="fa-solid fa-clipboard-question"></i> Entry Test Schedule & Venue Details</h4>
-                                    <p><strong>Test Date:</strong> Sunday, 18 October 2026</p>
-                                    <p><strong>Reporting Time:</strong> 09:00 AM Sharp</p>
-                                    <p><strong>Exam Timing:</strong> 10:00 AM – 12:00 PM</p>
+                                    <p><strong>Test Date:</strong> Sunday, 18 October 2026 | <strong>Timing:</strong> 10:00 AM – 12:00 PM</p>
                                     <p><strong>Exam Centre / Venue:</strong> Main Campus Auditorium, New Life Institute of Nursing, Multan</p>
                                 </div>
 
@@ -771,8 +762,8 @@
                                 </div>
 
                                 <div class="footer-sign">
-                                    <div>Helpline: 0309-1965700</div>
-                                    <div style="text-align: center;">_______________________<br>Controller of Admissions</div>
+                                    <div>Address: M.A Jinnah Rd, Multan</div>
+                                    <div>Admissions Office, NLIN</div>
                                 </div>
 
                                 <script>window.print();<\/script>
