@@ -551,7 +551,7 @@
             }
         });
 
-        // Updated Web App URL
+        // Your active Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxsRHdLch1MnZTRT_D1Pj6VkROcQB5wydxkMkbpbZ_chRRQVgF3aU6TGWvC-eCwvSxi/exec';
         
         const form = document.getElementById('admissionForm');
@@ -650,7 +650,7 @@
                         
                         const paySpan = document.getElementById('resPayStatus');
                         paySpan.innerText = data.payStatus || "Pending Verification";
-                        paySpan.style.color = (data.payStatus && data.payStatus.includes('Verified')) ? '#10b981' : '#f59e0b';
+                        paySpan.style.color = (data.payStatus && data.payStatus.toLowerCase().includes('verified')) ? '#10b981' : '#f59e0b';
 
                         resultBox.style.display = 'block';
                     } else {
@@ -687,7 +687,7 @@
                         const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
                         
                         if(!isFeeVerified) {
-                            alert('⚠️ Admit Card Locked: Your fee payment is still "Pending Verification" by the administration. Once verified, you can download your admit card.');
+                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once you change it to "Verified" in your Google Sheet, you can download your admit card.');
                             return;
                         }
 
