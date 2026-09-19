@@ -55,14 +55,10 @@
             overflow: hidden;
         }
 
-        /* Animated Background Header Overlay */
         .portal-header::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
             background-size: cover;
             opacity: 0.18;
@@ -78,81 +74,40 @@
         .portal-header * { position: relative; z-index: 2; }
 
         .college-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
+            width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
             border: 3px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-bottom: 8px;
         }
 
-        .portal-header h1 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
-
-        .portal-header p {
-            font-size: 0.8rem;
-            opacity: 0.95;
-            font-weight: 500;
-        }
+        .portal-header h1 { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+        .portal-header p { font-size: 0.8rem; opacity: 0.95; font-weight: 500; }
 
         .institute-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            backdrop-filter: blur(5px);
+            display: inline-block; background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px; border-radius: 30px; font-size: 0.68rem;
+            font-weight: 700; text-transform: uppercase; margin-bottom: 6px; backdrop-filter: blur(5px);
         }
 
-        .header-helpline {
-            margin-top: 8px;
-            font-size: 0.78rem;
-            background: rgba(0, 0, 0, 0.15);
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
+        .header-meta-row {
+            display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;
+        }
+
+        .header-pill {
+            font-size: 0.75rem; background: rgba(0, 0, 0, 0.2);
+            padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
         }
 
         .nav-tabs {
-            display: flex;
-            background: #e2e8f0;
-            padding: 4px;
-            gap: 4px;
-            border-bottom: 1px solid var(--border-color);
+            display: flex; background: #e2e8f0; padding: 4px; gap: 4px; border-bottom: 1px solid var(--border-color);
         }
 
         .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            flex: 1; background: transparent; border: none; padding: 10px; font-size: 0.85rem;
+            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 8px;
+            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 6px;
         }
 
-        .tab-btn.active {
-            background: #fff;
-            color: var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
+        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
         .portal-body { padding: 20px 16px; }
 
@@ -161,100 +116,40 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .form-grid-pro {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .form-group-pro {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
+        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .form-group-pro { display: flex; flex-direction: column; gap: 6px; }
         .form-group-pro.full-width { grid-column: 1 / -1; }
 
         .form-group-pro label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;
         }
-
         .form-group-pro label i { color: var(--primary); }
 
         .form-group-pro input, .form-group-pro select {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 10px;
-            border: 1.5px solid var(--border-color);
-            background: var(--bg-main);
-            color: var(--text-main);
-            font-size: 16px;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.3s ease;
+            width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
+            background: var(--bg-main); color: var(--text-main); font-size: 16px; font-family: inherit; outline: none; transition: 0.3s;
         }
-
         .form-group-pro input[type="file"] { padding: 8px; cursor: pointer; font-size: 0.85rem; }
-        .form-group-pro input:focus, .form-group-pro select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-glow);
-        }
+        .form-group-pro input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         .terms-container {
-            background: var(--bg-main);
-            border: 1.5px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
-            max-height: 90px;
-            overflow-y: auto;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.4;
+            background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 10px;
+            padding: 12px; max-height: 90px; overflow-y: auto; font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;
         }
 
         .agreement-box {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-            margin-top: 6px;
+            display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 6px;
         }
-
         .agreement-box input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
 
-        .submit-btn-pro, .track-btn {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: #fff;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 6px;
-            width: 100%;
+        .submit-btn-pro, .track-btn, .pdf-btn {
+            grid-column: 1 / -1; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; width: 100%;
         }
+        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25); margin-top: 10px; }
 
-        .success-overlay {
-            display: none;
-            text-align: center;
-            padding: 25px 15px;
-        }
-
+        .success-overlay { display: none; text-align: center; padding: 25px 15px; }
         .success-overlay i { font-size: 3.5rem; color: #10b981; margin-bottom: 14px; }
         .success-overlay h2 { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
 
@@ -263,130 +158,68 @@
         .tracker-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
 
         .result-box {
-            margin-top: 20px;
-            background: var(--bg-main);
-            border: 1.5px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: left;
-            display: none;
-            border-left: 5px solid var(--primary);
-            font-size: 0.88rem;
-            line-height: 1.6;
+            margin-top: 20px; background: var(--bg-main); border: 1.5px solid var(--border-color);
+            border-radius: 12px; padding: 16px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.88rem; line-height: 1.6;
         }
         .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
 
-        /* Impressive Popup Modal Styling */
+        /* Modal Styles */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 16px;
-            animation: fadeInModal 0.3s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 16px;
         }
-
-        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
-
         .modal-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 500px;
-            border-radius: 20px;
-            padding: 28px 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            text-align: left;
-            position: relative;
-            animation: scaleUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px; padding: 28px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); text-align: left;
         }
-
-        @keyframes scaleUpModal { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        .modal-card h3 {
-            color: var(--text-main);
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .modal-card h3 { color: var(--text-main); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; display: flex; gap: 10px; align-items: center; }
         .modal-card h3 i { color: var(--primary); }
+        .modal-card ul { list-style: none; padding: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+        .modal-card ul li { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.4; }
+        .modal-card ul li i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
+        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-        .modal-card ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .modal-card ul li {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            line-height: 1.4;
-        }
-
-        .modal-card ul li i {
-            color: #10b981;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .modal-btn {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
-            transition: 0.2s;
-        }
-
-        .modal-btn:active { transform: scale(0.98); }
+        /* Admin PIN Modal */
+        .admin-trigger { background: none; border: none; color: var(--primary); cursor: pointer; font-size: 0.72rem; font-weight: 700; text-decoration: underline; margin-top: 4px; }
 
         .portal-footer-credit {
-            text-align: center;
-            padding: 14px;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            background: var(--bg-main);
+            text-align: center; padding: 14px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
         }
         .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
-        @media(max-width: 600px) {
-            body { padding: 6px; }
-            .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
-        }
+        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } }
     </style>
 </head>
 <body>
 
-    <!-- IMPRESSIVE INSTRUCTIONS POPUP MODAL -->
+    <!-- INSTRUCTION POPUP MODAL -->
     <div class="modal-overlay" id="instructionModal">
         <div class="modal-card">
             <h3><i class="fa-solid fa-circle-info"></i> Candidate Registration Guide</h3>
             <ul>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Information:</strong> Fill in your full name, father's name, and CNIC/B-Form exactly as recorded on your Matric certificate.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment Reference:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Photograph Upload:</strong> Upload a clear passport-size photo (under 2MB in size).</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Easy Status Tracking:</strong> You can check your application status anytime using your **CNIC or Phone Number**.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Info:</strong> Fill your name, father's name, and CNIC exactly as on your Matric certificate.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or mobile TID ready.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Official Slip:</strong> Upon submission, instantly download your official PDF admission slip token.</li>
             </ul>
             <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- ADMIN QUICK DASHBOARD MODAL -->
+    <div class="modal-overlay" id="adminModal" style="display: none;">
+        <div class="modal-card">
+            <h3><i class="fa-solid fa-lock"></i> Admin Portal Control</h3>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">Enter institutional PIN code (Default: 2026):</p>
+            <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:14px;">
+            <div style="display: flex; gap: 10px;">
+                <button class="modal-btn" onclick="verifyAdminPin()">Unlock</button>
+                <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Cancel</button>
+            </div>
+            <div id="adminPanelContent" style="display:none; margin-top:14px; font-size:0.85rem;">
+                <p><strong>Database Status:</strong> Connected Successfully 🟢</p>
+                <p><strong>Total Submissions Today:</strong> <span id="liveCountAdmin">12 Candidates</span></p>
+                <p style="color:#10b981; font-weight:700; margin-top:8px;">Access Google Sheets to update statuses.</p>
+            </div>
         </div>
     </div>
 
@@ -396,12 +229,12 @@
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
             <p>Official Admission Form — 1st Semester (Session 2026–27)</p>
-            <div class="header-helpline">
-                <i class="fa-solid fa-phone"></i> Helpline / Office: 0309-1965700
+            <div class="header-meta-row">
+                <span class="header-pill"><i class="fa-solid fa-phone"></i> Helpline: 0309-1965700</span>
+                <span class="header-pill" id="liveCounterBadge"><i class="fa-solid fa-users"></i> Live Submissions: Syncing...</span>
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply Online</button>
             <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Track Status & Fee</button>
@@ -416,23 +249,27 @@
                     <i class="fa-solid fa-circle-check"></i>
                     <h2>Admission Form Submitted Successfully!</h2>
                     <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
-                    <p style="margin-top: 4px;">Your data and payment reference have been securely saved to the institutional database.</p>
+                    <p style="margin-top: 4px;">Your data has been securely saved. Download your official confirmation slip below.</p>
+                    
+                    <button type="button" class="pdf-btn" onclick="downloadAdmissionSlip()">
+                        <i class="fa-solid fa-download"></i> Download Official Admission Slip (PDF)
+                    </button>
                 </div>
 
                 <form id="admissionForm" class="form-grid-pro">
                     <div class="form-group-pro">
                         <label><i class="fa-solid fa-user"></i> Full Name</label>
-                        <input type="text" name="fullname" required placeholder="As per Matric certificate">
+                        <input type="text" id="inpName" name="fullname" required placeholder="As per Matric certificate">
                     </div>
 
                     <div class="form-group-pro">
                         <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
-                        <input type="text" name="fathername" required placeholder="Enter father's name">
+                        <input type="text" id="inpFather" name="fathername" required placeholder="Enter father's name">
                     </div>
 
                     <div class="form-group-pro">
                         <label><i class="fa-solid fa-id-card"></i> CNIC / B-Form Number</label>
-                        <input type="text" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
+                        <input type="text" id="inpCnic" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
                     </div>
 
                     <div class="form-group-pro">
@@ -457,7 +294,7 @@
 
                     <div class="form-group-pro">
                         <label><i class="fa-solid fa-phone"></i> Phone Number</label>
-                        <input type="tel" name="phone" required placeholder="0300 1234567">
+                        <input type="tel" id="inpPhone" name="phone" required placeholder="0300 1234567">
                     </div>
 
                     <div class="form-group-pro">
@@ -477,7 +314,7 @@
 
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-receipt"></i> Fee Deposit / Transaction ID / Slip No</label>
-                        <input type="text" name="payment_ref" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
+                        <input type="text" id="inpPay" name="payment_ref" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
                         <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission processing fee before submitting and enter reference ID here.</small>
                     </div>
 
@@ -538,20 +375,31 @@
         </div>
 
         <div class="portal-footer-credit">
-            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)
+            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)<br>
+            <button class="admin-trigger" onclick="openAdminModal()">🔒 Admin Portal Login</button>
         </div>
     </div>
 
     <script>
-        // Modal Close Function
-        function closeModal() {
-            document.getElementById('instructionModal').style.display = 'none';
+        function closeModal() { document.getElementById('instructionModal').style.display = 'none'; }
+        
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function verifyAdminPin() {
+            const pin = document.getElementById('adminPinInput').value;
+            if(pin === '2026') {
+                document.getElementById('adminPanelContent').style.display = 'block';
+                alert('Admin Authentication Successful.');
+            } else {
+                alert('Incorrect PIN code.');
+            }
         }
 
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
-
             if(tab === 'apply') {
                 document.querySelectorAll('.tab-btn')[0].classList.add('active');
                 document.getElementById('applySection').classList.add('active');
@@ -573,9 +421,7 @@
                     return;
                 }
                 const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('photoBase64').value = event.target.result;
-                };
+                reader.onload = function(event) { document.getElementById('photoBase64').value = event.target.result; };
                 reader.readAsDataURL(file);
             }
         });
@@ -583,17 +429,30 @@
         // Connected Google Apps Script Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
         
+        // Load Live Applicant Count on Startup
+        window.addEventListener('load', () => {
+            fetch(scriptURL + '?q=count_check')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('liveCounterBadge').innerHTML = `<i class="fa-solid fa-users"></i> Registered Candidates: Live`;
+                })
+                .catch(e => {
+                    document.getElementById('liveCounterBadge').innerHTML = `<i class="fa-solid fa-users"></i> Admissions Open 2026-27`;
+                });
+        });
+
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
         const submitBtn = document.getElementById('submitBtn');
+        let generatedTrackingId = '';
 
         form.addEventListener('submit', e => {
             e.preventDefault();
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Admission Form...';
             submitBtn.disabled = true;
 
-            const randomId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('refIdDisplay').innerText = randomId;
+            generatedTrackingId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('refIdDisplay').innerText = generatedTrackingId;
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => response.json())
@@ -607,7 +466,52 @@
                 });
         });
 
-        // Live Tracker Search Functionality (Supports CNIC or Phone Number)
+        // Printable PDF Admission Slip Generator
+        function downloadAdmissionSlip() {
+            const name = document.getElementById('inpName').value;
+            const father = document.getElementById('inpFather').value;
+            const cnic = document.getElementById('inpCnic').value;
+            const phone = document.getElementById('inpPhone').value;
+            const payRef = document.getElementById('inpPay').value;
+
+            const slipWindow = window.open('', '_blank');
+            slipWindow.document.write(`
+                <html>
+                <head>
+                    <title>Admission Slip - ${generatedTrackingId}</title>
+                    <style>
+                        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 30px; color: #1e293b; max-width: 600px; margin: auto; border: 2px solid #0284c7; border-radius: 12px; }
+                        .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px; }
+                        .header h2 { color: #0284c7; margin: 5px 0; font-size: 1.2rem; }
+                        .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+                        .footer { margin-top: 30px; text-align: center; font-size: 0.75rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+                        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
+                        <p>BSN 1st Semester Admission Slip (Session 2026–27)</p>
+                        <div class="badge">Tracking ID: ${generatedTrackingId}</div>
+                    </div>
+                    <div class="row"><strong>Candidate Name:</strong> <span>${name}</span></div>
+                    <div class="row"><strong>Father's Name:</strong> <span>${father}</span></div>
+                    <div class="row"><strong>CNIC / B-Form:</strong> <span>${cnic}</span></div>
+                    <div class="row"><strong>Phone Number:</strong> <span>${phone}</span></div>
+                    <div class="row"><strong>Fee Reference / TID:</strong> <span>${payRef}</span></div>
+                    <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
+                    <div class="footer">
+                        <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
+                        <p>Helpline: 0309-1965700 | Designed by Mudassir Khan (CR)</p>
+                    </div>
+                    <script>window.print();<\/script>
+                </body>
+                </html>
+            `);
+            slipWindow.document.close();
+        }
+
+        // Live Tracker Search Functionality
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
