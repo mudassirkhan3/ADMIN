@@ -1,1032 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>MK STUDY PORTAL | Pharmacology-I</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      -webkit-user-select: none; 
-      -moz-user-select: none; 
-      -ms-user-select: none; 
-      user-select: none; 
-      -webkit-tap-highlight-color: transparent;
-    }
-    input, textarea {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text;
-    }
-    body { background: #f8fafc; color: #0f172a; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow-x: hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Verification | New Life Institute of Nursing</title>
+    <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --success: #10b981;
+            --bg-main: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
 
-    .desktop-welcome-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-    .desktop-welcome-card {
-      background: white;
-      width: 100%;
-      max-width: 440px;
-      border-radius: 24px;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-      border-top: 6px solid #0284c7;
-    }
-    .desktop-welcome-icon {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-      color: #0284c7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 16px;
-    }
-    .desktop-welcome-card h3 { font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .desktop-welcome-card p { font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 14px; }
-    .steps-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; text-align: left; margin-bottom: 18px; }
-    .step-row { display: flex; align-items: flex-start; gap: 8px; font-size: 0.78rem; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
-    .step-row:last-child { margin-bottom: 0; }
-    .step-badge { background: #0284c7; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
-    .proceed-btn { width: 100%; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 0.92rem; cursor: pointer; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35); min-height: 48px; }
-    .proceed-btn:active { transform: scale(0.98); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-    header { 
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); 
-      color: white; 
-      padding: 10px 12px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15); 
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .header-title h1 { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.5px; }
-    .header-title p { font-size: 0.68rem; opacity: 0.95; font-weight: 600; }
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
 
-    .header-search-container { flex: 1; min-width: 100%; max-width: 100%; position: relative; order: 3; margin-top: 4px; }
-    @media(min-width: 768px) {
-      .header-search-container { flex: 1; min-width: auto; max-width: 400px; order: 2; margin-top: 0; }
-      header { padding: 14px 24px; gap: 12px; }
-      .header-title h1 { font-size: 1.25rem; }
-    }
+        .verify-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            animation: fadeIn 0.4s ease-out;
+        }
 
-    .search-box-wrapper { position: relative; width: 100%; }
-    .drug-search-input { 
-      width: 100%; 
-      padding: 10px 14px 10px 36px; 
-      border: 1px solid rgba(255, 255, 255, 0.4); 
-      border-radius: 12px; 
-      font-size: 0.85rem; 
-      font-weight: 600; 
-      outline: none; 
-      background: rgba(255, 255, 255, 0.2); 
-      color: white;
-      transition: all 0.2s;
-      min-height: 44px;
-    }
-    .drug-search-input::placeholder { color: rgba(255, 255, 255, 0.85); }
-    .drug-search-input:focus { background: white; color: #0f172a; border-color: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
-    .drug-search-input:focus::placeholder { color: #94a3b8; }
-    .search-icon-abs { position: absolute; left: 12px; top: 12px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); }
-    .drug-search-input:focus ~ .search-icon-abs { color: #64748b; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .drug-results-dropdown { 
-      display: none; 
-      position: absolute; 
-      top: 100%; 
-      left: 0; 
-      right: 0; 
-      background: white; 
-      border: 1px solid #cbd5e1; 
-      border-radius: 12px; 
-      margin-top: 6px; 
-      max-height: 260px; 
-      overflow-y: auto; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-      z-index: 1001; 
-      text-align: left;
-    }
-    .drug-result-item { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; flex-direction: column; gap: 2px; transition: background 0.15s; }
-    .drug-result-item:last-child { border-bottom: none; }
-    .drug-result-item:hover { background: #f0f9ff; }
-    .drug-name-main { font-weight: 800; color: #0f172a; font-size: 0.84rem; display: flex; justify-content: space-between; align-items: center; }
+        .card-header {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
 
-    .header-actions { display: flex; gap: 6px; align-items: center; order: 2; }
-    @media(min-width: 768px) { .header-actions { order: 3; gap: 8px; } }
+        .card-header img {
+            width: 55px; height: 55px; border-radius: 50%; object-fit: cover;
+            border: 2px solid #fff; margin-bottom: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
-    .action-btn { background: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 6px 10px; border-radius: 10px; font-weight: 700; font-size: 0.72rem; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: all 0.2s; min-height: 36px; }
-    .action-btn:active { background: rgba(255, 255, 255, 0.35); }
-    @media(min-width: 768px) { .action-btn { padding: 8px 14px; font-size: 0.78rem; } }
+        .card-header h2 { font-size: 1.1rem; font-weight: 800; margin-bottom: 2px; }
+        .card-header p { font-size: 0.72rem; opacity: 0.9; }
 
-    .container { max-width: 1200px; margin: 12px auto; padding: 0 10px; width: 100%; display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media(min-width: 900px) { 
-      .container { grid-template-columns: 280px 1fr; margin: 24px auto; gap: 24px; padding: 0 16px; } 
-    }
+        .verified-badge {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 16px auto 0 auto;
+        }
 
-    .profile-card { background: white; border: 1px solid #e2e8f0; border-radius: 18px; padding: 16px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); height: fit-content; position: static; }
-    @media(min-width: 900px) { .profile-card { position: sticky; top: 80px; padding: 22px; } }
+        .card-body {
+            padding: 24px;
+        }
 
-    .avatar-wrapper { position: relative; width: 72px; height: 72px; margin: 0 auto 10px; }
-    .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #0284c7; background: #f1f5f9; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.15); }
-    .upload-label { position: absolute; bottom: 0; right: 0; background: #0284c7; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.7rem; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-    #file-input { display: none; }
-    .profile-info h3 { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 2px; }
-    .profile-info p { font-size: 0.75rem; color: #64748b; margin-bottom: 2px; word-break: break-all; }
-    .badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-top: 4px; }
-    .edit-profile-btn { margin-top: 10px; width: 100%; background: #f8fafc; border: 1px solid #cbd5e1; color: #0369a1; padding: 8px; border-radius: 10px; font-weight: 700; font-size: 0.74rem; cursor: pointer; transition: background 0.2s; min-height: 40px; }
-    .edit-profile-btn:active { background: #f1f5f9; }
+        .profile-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 20px;
+            background: var(--bg-main);
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
 
-    .access-box { margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0; text-align: left; }
-    .access-box label { display: block; font-size: 0.72rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
-    .access-input-row { display: flex; gap: 6px; }
-    .access-input { flex: 1; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.78rem; font-weight: 700; outline: none; background: #f8fafc; min-height: 40px; }
-    .verify-btn { background: #0284c7; color: white; border: none; padding: 8px 12px; border-radius: 10px; font-weight: 700; font-size: 0.76rem; cursor: pointer; min-height: 40px; }
-    .access-status { margin-top: 6px; font-size: 0.72rem; font-weight: 700; }
-    .status-locked { color: #dc2626; }
-    .status-unlocked { color: #16a34a; }
-    .whatsapp-mini { display: block; margin-top: 8px; font-size: 0.72rem; color: #25d366; font-weight: 700; text-decoration: none; text-align: center; background: #f0fdf4; padding: 8px; border-radius: 8px; border: 1px solid #bbf7d0; transition: background 0.2s; }
-    .whatsapp-mini:hover { background: #dcfce7; }
+        .candidate-photo {
+            width: 90px;
+            height: 110px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            background: #cbd5e1;
+        }
 
-    .main-content { display: flex; flex-direction: column; gap: 12px; }
-    @media(min-width: 900px) { .main-content { gap: 16px; } }
+        .profile-quick-info {
+            flex: 1;
+        }
 
-    .card { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); position: relative; overflow: hidden; }
-    @media(min-width: 900px) { .card { padding: 22px; border-radius: 18px; } }
+        .profile-quick-info h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
 
-    .card-header-main { margin-bottom: 10px; }
-    .card h2 { font-size: 1.02rem; font-weight: 800; color: #0369a1; border-left: 4px solid #0284c7; padding-left: 8px; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
-    @media(min-width: 768px) { .card h2 { font-size: 1.1rem; } }
-    .card p { font-size: 0.78rem; color: #64748b; line-height: 1.4; }
-    @media(min-width: 768px) { .card p { font-size: 0.82rem; } }
+        .profile-quick-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
 
-    .chapters-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
-    @media(min-width: 600px) { .chapters-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; } }
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    .chapter-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; position: relative; min-height: 105px; }
-    @media(min-width: 768px) { .chapter-box { padding: 14px; min-height: 115px; } }
-    .chapter-box:hover { border-color: #0284c7; transform: translateY(-2px); background: white; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.08); }
-    .chapter-box h4 { color: #0284c7; font-size: 0.8rem; font-weight: 800; margin-bottom: 4px; padding-right: 40px; }
-    @media(min-width: 768px) { .chapter-box h4 { font-size: 0.86rem; padding-right: 45px; } }
-    .chapter-box p { font-size: 0.7rem; color: #475569; margin-bottom: 8px; line-height: 1.35; }
-    @media(min-width: 768px) { .chapter-box p { font-size: 0.74rem; margin-bottom: 10px; } }
-    .chapter-link-text { font-size: 0.7rem; font-weight: 800; color: #0369a1; margin-top: auto; display: flex; align-items: center; gap: 4px; }
-    @media(min-width: 768px) { .chapter-link-text { font-size: 0.74rem; } }
-    .chapter-badge-lock { position: absolute; top: 10px; right: 10px; font-size: 0.58rem; background: #fee2e2; color: #dc2626; padding: 2px 5px; border-radius: 6px; font-weight: 800; }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-main);
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
 
-    .table-box { border-top: 3px solid #6366f1; background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%); }
-    .table-box h4 { color: #4f46e5 !important; }
-    .papers-box { border-top: 3px solid #d97706; background: linear-gradient(135deg, #f8fafc 0%, #fffbeb 100%); }
-    .papers-box h4 { color: #b45309 !important; }
+        .info-item span:first-child { color: var(--text-muted); font-weight: 600; }
+        .info-item span:last-child { color: var(--text-main); font-weight: 700; text-align: right; }
 
-    .quiz-hub-box { border-top: 3px solid #8b5cf6; background: linear-gradient(135deg, #f8fafc 0%, #f3e8ff 100%); }
-    .quiz-hub-box h4 { color: #7c3aed !important; }
+        .loading-box, .error-box {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
 
-    .quiz-list-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 8px; margin-top: 10px; }
-    @media(min-width: 600px) { .quiz-list-grid { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-top: 12px; } }
+        .loading-box i { font-size: 2.5rem; color: var(--primary); margin-bottom: 12px; }
+        .error-box i { font-size: 2.5rem; color: #ef4444; margin-bottom: 12px; }
+        .error-box h3 { color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
 
-    .quiz-item-card { background: white; border: 1px solid #d8b4fe; border-radius: 12px; padding: 12px 14px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-    .quiz-item-card:hover { border-color: #7c3aed; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.12); }
-    .quiz-item-card h5 { color: #7c3aed; font-size: 0.8rem; font-weight: 800; margin-bottom: 2px; }
-    .quiz-item-card p { font-size: 0.7rem; color: #64748b; margin-bottom: 6px; }
-    .quiz-item-link { font-size: 0.72rem; font-weight: 800; color: #6d28d9; display: flex; align-items: center; gap: 4px; margin-top: auto; }
-
-    .mnemonic-card-box { 
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); 
-      border: 1px solid #86efac; 
-      border-radius: 14px; 
-      padding: 12px; 
-      margin-top: 8px; 
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
-    }
-    @media(min-width: 768px) { .mnemonic-card-box { padding: 16px; border-radius: 16px; } }
-    .mnemonic-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
-    .mnemonic-badge { background: #10b981; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-    .mnemonic-day-tag { font-size: 0.68rem; font-weight: 800; color: #047857; background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 10px; border: 1px solid #a7f3d0; }
-    .mnemonic-title { font-size: 0.95rem; font-weight: 800; color: #065f46; margin-bottom: 6px; border-bottom: 1px dashed #a7f3d0; padding-bottom: 6px; }
-    .mnemonic-core-formula { background: white; border: 1px solid #a7f3d0; border-radius: 10px; padding: 8px 12px; font-size: 0.85rem; font-weight: 800; color: #047857; margin-bottom: 8px; font-family: monospace, sans-serif; letter-spacing: 0.5px; text-align: center; word-break: break-all; }
-    .mnemonic-breakdown-box { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; text-align: left; }
-    .mnemonic-breakdown-item { display: flex; flex-direction: column; gap: 2px; font-size: 0.76rem; color: #064e3b; line-height: 1.35; background: rgba(255,255,255,0.6); padding: 8px 10px; border-radius: 8px; }
-    @media(min-width: 600px) { .mnemonic-breakdown-item { flex-direction: row; gap: 8px; } }
-    .mnemonic-breakdown-key { font-weight: 800; color: #047857; min-width: 90px; flex-shrink: 0; }
-    .mnemonic-alert-box { background: #fff7ed; border-left: 4px solid #f97316; padding: 8px 10px; border-radius: 8px; font-size: 0.72rem; color: #9a3412; font-weight: 700; display: flex; align-items: flex-start; gap: 6px; }
-
-    .mcq-widget-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 12px; margin-top: 8px; text-align: left; }
-    @media(min-width: 768px) { .mcq-widget-box { padding: 16px; border-radius: 16px; } }
-    .sr-badge-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
-    .sr-interval-tag { background: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 10px; font-size: 0.65rem; font-weight: 800; }
-    .mcq-question-text { font-size: 0.82rem; font-weight: 800; color: #1e293b; margin-bottom: 10px; line-height: 1.35; }
-    @media(min-width: 768px) { .mcq-question-text { font-size: 0.86rem; } }
-    .mcq-options-grid { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
-    .mcq-opt-btn { background: white; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 10px; font-size: 0.78rem; font-weight: 700; color: #334155; text-align: left; cursor: pointer; transition: all 0.2s; min-height: 42px; width: 100%; }
-    .mcq-opt-btn:active { background: #f0f9ff; }
-    .mcq-opt-btn.correct { background: #dcfce7; border-color: #10b981; color: #065f46; }
-    .mcq-opt-btn.incorrect { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
-    .mcq-explanation { display: none; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; font-size: 0.76rem; color: #475569; line-height: 1.4; margin-top: 8px; }
-    .next-mcq-btn { display: none; margin-top: 8px; width: 100%; background: #0284c7; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.78rem; cursor: pointer; min-height: 44px; }
-
-    .progress-container { margin-top: 6px; }
-    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-weight: 800; font-size: 0.78rem; color: #1e293b; }
-    .progress-bar-bg { width: 100%; height: 8px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-bottom: 10px; }
-    @media(min-width: 768px) { .progress-bar-bg { height: 10px; } }
-    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #0284c7, #10b981); border-radius: 6px; transition: width 0.4s ease; width: 0%; }
-    .progress-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center; }
-    .stat-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 6px; }
-    @media(min-width: 768px) { .stat-box { padding: 8px; } }
-    .stat-num { font-size: 0.9rem; font-weight: 900; color: #0284c7; }
-    @media(min-width: 768px) { .stat-num { font-size: 0.98rem; } }
-    .stat-label { font-size: 0.58rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-top: 2px; }
-    @media(min-width: 768px) { .stat-label { font-size: 0.65rem; } }
-
-    .study-plan-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-    .plan-task-item { display: flex; align-items: center; gap: 8px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 10px; border-radius: 10px; cursor: pointer; }
-    @media(min-width: 768px) { .plan-task-item { padding: 10px 12px; gap: 10px; } }
-    .plan-task-item input[type=checkbox] { width: 18px; height: 18px; accent-color: #0284c7; cursor: pointer; flex-shrink: 0; }
-    .plan-task-text { font-size: 0.76rem; font-weight: 700; color: #1e293b; flex: 1; }
-    @media(min-width: 768px) { .plan-task-text { font-size: 0.8rem; } }
-    .plan-task-item.completed .plan-task-text { text-decoration: line-through; color: #94a3b8; }
-
-    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center; padding: 12px; backdrop-filter: blur(3px); }
-    .modal-box { background: white; border-radius: 18px; padding: 16px; width: 100%; max-width: 440px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); text-align: left; max-height: 90vh; overflow-y: auto; }
-    @media(min-width: 768px) { .modal-box { padding: 20px; border-radius: 20px; } }
-    .modal-box h3 { font-size: 1.05rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .drug-detail-tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 16px; font-size: 0.68rem; font-weight: 800; margin-bottom: 4px; }
-    .drug-class-detail { display: inline-block; background: #f1f5f9; color: #0f172a; padding: 2px 8px; border-radius: 10px; font-size: 0.68rem; font-weight: 700; margin-bottom: 8px; border: 1px solid #cbd5e1; }
-    .drug-detail-section { margin-bottom: 8px; }
-    .drug-detail-section strong { display: block; font-size: 0.74rem; color: #0284c7; font-weight: 800; margin-bottom: 2px; }
-    .drug-detail-section p { font-size: 0.78rem; color: #334155; line-height: 1.35; }
-
-    .form-group { margin-bottom: 10px; text-align: left; }
-    .form-group label { display: block; font-size: 0.72rem; font-weight: 700; color: #334155; margin-bottom: 4px; }
-    .form-input { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.82rem; outline: none; min-height: 42px; background: #fff; color: #0f172a; font-weight: 600; }
-    .modal-actions { display: flex; gap: 8px; margin-top: 14px; }
-    .btn-primary { flex: 1; background: #0284c7; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.78rem; cursor: pointer; min-height: 44px; }
-    .btn-secondary { flex: 1; background: #e2e8f0; color: #334155; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 0.78rem; cursor: pointer; min-height: 44px; }
-
-    footer { text-align: center; font-size: 0.72rem; color: #64748b; padding: 16px 10px; border-top: 1px solid #e2e8f0; background: white; margin-top: 20px; font-weight: 500; }
-    footer span { color: #0284c7; font-weight: 700; }
-  </style>
+        .card-footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: var(--bg-main);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
 </head>
 <body>
 
-  <div id="desktopWelcomeModal" class="desktop-welcome-backdrop">
-    <div class="desktop-welcome-card">
-      <div class="desktop-welcome-icon">💻</div>
-      <h3>MK STUDY PORTAL</h3>
-      <p>Welcome, Mudassir! For the best interactive layout, extended drug search tools, and progress tracking, please switch your mobile browser to <strong>Desktop Site</strong> mode using these quick steps:</p>
-      <div class="steps-box">
-        <div class="step-row">
-          <span class="step-badge">1</span>
-          <span><strong>Android Chrome:</strong> Tap 3 dots (top right) ➔ Check <strong>"Desktop site"</strong>.</span>
+    <div class="verify-card">
+        <div class="card-header">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
+            <h2>NEW LIFE INSTITUTE OF NURSING</h2>
+            <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
+            <div class="verified-badge">
+                <i class="fa-solid fa-circle-check"></i> OFFICIAL ENTRY TEST ADMIT CARD
+            </div>
         </div>
-        <div class="step-row">
-          <span class="step-badge">2</span>
-          <span><strong>iPhone Safari:</strong> Tap "aA" (left of URL bar) ➔ Select <strong>"Request Desktop Website"</strong>.</span>
+
+        <div class="card-body">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-box">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <p>Verifying candidate credentials from live database...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-box" style="display: none;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h3>Record Not Found</h3>
+                <p>The scanned QR code does not match an active student record in the institutional database.</p>
+            </div>
+
+            <!-- Success Content Layout -->
+            <div id="successState" style="display: none;">
+                <div class="profile-row">
+                    <img id="candPhoto" class="candidate-photo" src="" alt="Photo">
+                    <div class="profile-quick-info">
+                        <h3 id="candName">-</h3>
+                        <p><strong>Father:</strong> <span id="candFather">-</span></p>
+                        <p style="color: var(--primary); margin-top: 4px; font-size: 0.75rem; font-weight: 700;">BSN 1st Semester (2026–27)</p>
+                    </div>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span>CNIC / B-Form</span>
+                        <span id="candCnic">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>Phone Number</span>
+                        <span id="candPhone">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>Fee Verification Status</span>
+                        <span id="candFee" style="color: var(--success);">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span>Committee Status</span>
+                        <span id="candAppStatus" style="color: var(--primary);">-</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="step-row">
-          <span class="step-badge">3</span>
-          <span>Search any drug &amp; master your daily MCQs seamlessly!</span>
+
+        <div class="card-footer">
+            Official Verification Portal | Developed by Mudassir Khan
         </div>
-      </div>
-      <button class="proceed-btn" onclick="dismissWelcomeModal()">Enter Portal Now</button>
-    </div>
-  </div>
-
-  <header>
-    <div class="header-title">
-      <h1>MK STUDY PORTAL</h1>
-      <p>Pharmacology-I Learning Hub</p>
-    </div>
-
-    <div class="header-actions">
-      <button onclick="logout()" class="action-btn">Log Out</button>
-    </div>
-
-    <div class="header-search-container">
-      <div class="search-box-wrapper">
-        <span class="search-icon-abs">🔍</span>
-        <input type="text" id="drugSearchInput" class="drug-search-input" placeholder="Search any drug (e.g. fluconazole, cisplatin)..." oninput="filterDrugs()">
-        <div id="drugResultsDropdown" class="drug-results-dropdown"></div>
-      </div>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="profile-card">
-      <div class="avatar-wrapper">
-        <img id="profile-pic" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250" alt="Profile" class="avatar-img">
-        <label for="file-input" class="upload-label" title="Upload Photo">📷</label>
-        <input type="file" id="file-input" accept="image/*" onchange="previewImage(event)">
-      </div>
-      <div class="profile-info">
-        <h3 id="student-name">Mudassir Hussain Khan</h3>
-        <p id="student-institute">New Life Institute of Nursing</p>
-        <p id="student-email">rollno 002075</p>
-        <span class="badge" id="student-semester">4th Semester</span>
-      </div>
-
-      <button onclick="openEditProfileModal()" class="edit-profile-btn">✏️ Edit Profile</button>
-
-      <div class="access-box">
-        <label>🔒 Single-Use Access Code</label>
-        <div class="access-input-row">
-          <input type="password" id="sidebarAccessInput" class="access-input" placeholder="Enter code">
-          <button class="verify-btn" onclick="verifySingleUseCode()">Verify</button>
-        </div>
-        <div id="accessStatusText" class="access-status status-locked">Status: Locked</div>
-        <a href="https://wa.me/923241064487?text=Hello%20Mudassir,%20I%20have%20paid%20for%20the%20Pharmacology%20portal.%20Kindly%20provide%20my%20single-use%20access%20code." target="_blank" class="whatsapp-mini">
-          💬 Pay via WhatsApp &amp; Get Code
-        </a>
-      </div>
     </div>
 
-    <div class="main-content">
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Pharmacology Chapters &amp; Units</h2>
-          <p>Unit I is open for all students. Enter your single-use code in the sidebar to unlock Units II-VIII &amp; resources.</p>
-        </div>
-        
-        <div class="chapters-grid">
-          <a href="chapter1.html" class="chapter-box" onclick="return markUnitRead(event, 1)">
-            <div>
-              <h4>Unit I: Basics</h4>
-              <p>Terminologies, history, drug sources &amp; classifications.</p>
-            </div>
-            <span class="chapter-link-text">Read Notes (Open) →</span>
-          </a>
+    <script>
+        // Connected Google Apps Script Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
 
-          <a href="chapter2.html" class="chapter-box" onclick="return checkChapterAccess(event, 2)">
-            <div>
-              <span id="lockBadge2" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>Unit II: Infections</h4>
-              <p>Antibiotics, antifungals, antivirals &amp; patient care.</p>
-            </div>
-            <span class="chapter-link-text">Read Notes →</span>
-          </a>
+        // Extract CNIC query parameter from URL (e.g. slip.html?q=36302-1234567-1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
 
-          <a href="chapter3.html" class="chapter-box" onclick="return checkChapterAccess(event, 3)">
-            <div>
-              <span id="lockBadge3" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>Unit III: Gastrointestinal</h4>
-              <p>GI symptoms, antidiarrheals, laxatives &amp; dosages.</p>
-            </div>
-            <span class="chapter-link-text">Read Notes →</span>
-          </a>
+        if (!query) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+        } else {
+            fetch(scriptURL + '?q=' + encodeURIComponent(query))
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('loadingState').style.display = 'none';
+                    if (data.status === 'success') {
+                        document.getElementById('candName').innerText = data.name;
+                        document.getElementById('candFather').innerText = data.father;
+                        document.getElementById('candCnic').innerText = data.cnic;
+                        document.getElementById('candPhone').innerText = data.phone;
+                        document.getElementById('candFee').innerText = data.payStatus || 'Verified';
+                        document.getElementById('candAppStatus').innerText = data.appStatus || 'Approved';
+                        
+                        if(data.photo) {
+                            document.getElementById('candPhoto').src = data.photo;
+                        } else {
+                            document.getElementById('candPhoto').src = 'https://via.placeholder.com/90x110?text=No+Photo';
+                        }
 
-          <a href="chapter4.html" class="chapter-box" onclick="return checkChapterAccess(event, 4)">
-            <div>
-              <span id="lockBadge4" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>Unit IV: Hematology</h4>
-              <p>Blood disorders, anticoagulants &amp; lab monitoring.</p>
-            </div>
-            <span class="chapter-link-text">Read Notes →</span>
-          </a>
-
-          <a href="chapter5.html" class="chapter-box" onclick="return checkChapterAccess(event, 5)">
-            <div>
-              <span id="lockBadge5" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>Unit V: Anti-Neoplastic</h4>
-              <p>Chemotherapy drugs, actions &amp; safety protocols.</p>
-            </div>
-            <span class="chapter-link-text">Read Notes →</span>
-          </a>
-
-          <a href="important-tables.html" class="chapter-box table-box" onclick="return checkChapterAccess(event, 6)">
-            <div>
-              <span id="lockBadge6" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>IMPORTANT TABLES</h4>
-              <p>High-yield classification &amp; dosage reference charts.</p>
-            </div>
-            <span class="chapter-link-text">Open Tables →</span>
-          </a>
-
-          <a href="uhs-past-papers.html" class="chapter-box papers-box" onclick="return checkChapterAccess(event, 7)">
-            <div>
-              <span id="lockBadge7" class="chapter-badge-lock">🔒 Locked</span>
-              <h4>UHS PAST PAPERS</h4>
-              <p>University of Health Sciences past exam papers.</p>
-            </div>
-            <span class="chapter-link-text">View Papers →</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Practice MCQS Hub</h2>
-          <p>Access chapter-wise timed practice quizzes to test your mastery across all pharmacological units:</p>
-        </div>
-
-        <div class="quiz-list-grid">
-          <a href="quiz.chapter1.html" class="quiz-item-card" onclick="return checkChapterAccess(event, 8)">
-            <div>
-              <h5>Unit I Quiz: Basics</h5>
-              <p>Pharmacokinetics &amp; drug classifications.</p>
-            </div>
-            <span class="quiz-item-link">Start Quiz →</span>
-          </a>
-
-          <a href="quiz.chapter2.html" class="quiz-item-card" onclick="return checkChapterAccess(event, 8)">
-            <div>
-              <h5>Unit II Quiz: Infections</h5>
-              <p>Antibiotics &amp; antimicrobial testing.</p>
-            </div>
-            <span class="quiz-item-link">Start Quiz →</span>
-          </a>
-
-          <a href="quiz.chapter3.html" class="quiz-item-card" onclick="return checkChapterAccess(event, 8)">
-            <div>
-              <h5>Unit III Quiz: GI</h5>
-              <p>Antacids, PPIs &amp; mucosal agents.</p>
-            </div>
-            <span class="quiz-item-link">Start Quiz →</span>
-          </a>
-
-          <a href="quiz.chapter4.html" class="quiz-item-card" onclick="return checkChapterAccess(event, 8)">
-            <div>
-              <h5>Unit IV Quiz: Hematology</h5>
-              <p>Anticoagulants &amp; antiplatelets.</p>
-            </div>
-            <span class="quiz-item-link">Start Quiz →</span>
-          </a>
-
-          <a href="quiz.chapter5.html" class="quiz-item-card" onclick="return checkChapterAccess(event, 8)">
-            <div>
-              <h5>Unit V Quiz: Oncology</h5>
-              <p>Antineoplastics &amp; targeted therapy.</p>
-            </div>
-            <span class="quiz-item-link">Start Quiz →</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Daily Quick-Flip Mnemonic</h2>
-          <p>Master key high-yield drug concepts with structured clinical memory triggers:</p>
-        </div>
-        
-        <div class="mnemonic-card-box">
-          <div class="mnemonic-header-row">
-            <span class="mnemonic-badge" id="mnemonicCategory">Unit II: Antimicrobials</span>
-            <span class="mnemonic-day-tag">Rotates Daily</span>
-          </div>
-          
-          <div class="mnemonic-title" id="mnemonicTitle">Antifungal Azoles Suffix &amp; Nursing Rule</div>
-          <div class="mnemonic-core-formula" id="mnemonicFormula">Suffix: -CONAZOLE = CYP450 Inhibitors</div>
-          
-          <div class="mnemonic-breakdown-box" id="mnemonicBreakdown">
-            <div class="mnemonic-breakdown-item">
-              <span class="mnemonic-breakdown-key">Mechanism:</span>
-              <span>Blocks ergosterol synthesis in fungal cell walls.</span>
-            </div>
-            <div class="mnemonic-breakdown-item">
-              <span class="mnemonic-breakdown-key">Interaction:</span>
-              <span>Increases plasma levels of Warfarin, Statins, &amp; Oral Hypoglycemics.</span>
-            </div>
-          </div>
-
-          <div class="mnemonic-alert-box">
-            <span>⚠️</span>
-            <span id="mnemonicAlert">Nursing Priority: Always monitor LFTs (Liver Function Tests) and prothrombin time/INR if co-administered with Warfarin.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Daily 5 MCQs &amp; Spaced Repetition</h2>
-          <p>Test your clinical retention with 5 fresh questions daily (Spaced intervals: Day 1, 3, 7, 14):</p>
-        </div>
-        
-        <div class="mcq-widget-box">
-          <div class="sr-badge-row">
-            <span class="sr-interval-tag" id="srIntervalLabel">Interval: Day 1 (Initial Review)</span>
-            <span style="font-size: 0.72rem; font-weight: 800; color: #0284c7;" id="mcqCounterStatus">Question 1 of 5</span>
-            <span style="font-size: 0.72rem; font-weight: 800; color: #047857;" id="mcqStreakCount">Score: 0 / 5</span>
-          </div>
-          <div class="mcq-question-text" id="mcqQuestionText">Loading today's clinical question...</div>
-          <div class="mcq-options-grid" id="mcqOptionsContainer"></div>
-          <div id="mcqExplanationBox" class="mcq-explanation">
-            <strong>Clinical Reasoning:</strong> <span id="mcqReasonText">Loading explanation...</span>
-          </div>
-          <button id="nextMCQBtn" class="next-mcq-btn" onclick="nextMCQQuestion()">Next Question →</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Real-Time Progress Tracker</h2>
-          <p>Your academic completion is updated in real-time as you read and practice:</p>
-        </div>
-        
-        <div class="progress-container">
-          <div class="progress-header">
-            <span id="progressText">Tasks &amp; Units Completed: 0 percent</span>
-            <span id="progressPercentNum">0%</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div id="progressBarFill" class="progress-bar-fill"></div>
-          </div>
-          <div class="progress-stats-grid">
-            <div class="stat-box">
-              <div class="stat-num" id="completedCountNum">0 / 3</div>
-              <div class="stat-label">Tasks Done</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num" id="unitsReadNum">0 / 7</div>
-              <div class="stat-label">Units Read</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-num" id="quizScoreNum">0 / 5</div>
-              <div class="stat-label">Daily MCQs Mastered</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header-main">
-          <h2>Today's Automated Study Plan</h2>
-          <p>Check off today's automatically scheduled tasks to boost your real-time progress tracker:</p>
-        </div>
-        
-        <div class="study-plan-list" id="dailyStudyPlanContainer"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="drugDetailModal" class="modal-backdrop">
-    <div class="modal-box">
-      <span id="modalDrugCategory" class="drug-detail-tag">Unit II: Infections</span>
-      <div><span id="modalDrugClass" class="drug-class-detail">Antifungal (Triazole)</span></div>
-      <h3 id="modalDrugName">Fluconazole</h3>
-      
-      <div class="drug-detail-section">
-        <strong>Mechanism of Action (MOA):</strong>
-        <p id="modalDrugMoa">Inhibits fungal cytochrome P450 sterol C-14 alpha-demethylation.</p>
-      </div>
-
-      <div class="drug-detail-section">
-        <strong>Clinical Uses:</strong>
-        <p id="modalDrugUses">Used for candidiasis, cryptococcal meningitis, and systemic fungal prophylaxis.</p>
-      </div>
-
-      <div class="drug-detail-section">
-        <strong>Common Side Effects:</strong>
-        <p id="modalDrugSideEffects">Headache, nausea, abdominal pain, elevated liver enzymes.</p>
-      </div>
-
-      <div class="modal-actions">
-        <button onclick="closeDrugDetailModal()" class="btn-primary">Got It, Close</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="editProfileModal" class="modal-backdrop">
-    <div class="modal-box">
-      <h3>Edit Student Profile</h3>
-      <div class="form-group"><label>Full Name</label><input type="text" id="editNameInput" class="form-input"></div>
-      <div class="form-group"><label>Institute Name</label><input type="text" id="editInstituteInput" class="form-input"></div>
-      <div class="form-group"><label>Email / Roll Number</label><input type="text" id="editEmailInput" class="form-input"></div>
-      <div class="form-group"><label>Semester</label><input type="text" id="editSemesterInput" class="form-input"></div>
-      <div class="modal-actions">
-        <button onclick="saveProfileChanges()" class="btn-primary">Save Changes</button>
-        <button onclick="closeEditProfileModal()" class="btn-secondary">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>Developed with clinical precision by <span>Mudassir Khan</span> • MK Study Portal</p>
-  </footer>
-
-  <script>
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    var idleTimer;
-    function resetIdleTimer() {
-      clearTimeout(idleTimer);
-      idleTimer = setTimeout(function() {
-        alert('⚠️ Session expired due to inactivity. Please log in again.');
-        logout();
-      }, 30 * 60 * 1000);
-    }
-
-    window.onload = function() {
-      if (localStorage.getItem('pharmacologyLoggedIn') !== 'true') {
-        window.location.replace('login.html');
-        return;
-      }
-
-      if (!localStorage.getItem('pharmacologyUser')) {
-        localStorage.setItem('pharmacologyUser', JSON.stringify({
-          name: 'Mudassir Hussain Khan',
-          institute: 'New Life Institute of Nursing',
-          email: 'rollno 002075',
-          semester: '4th Semester'
-        }));
-      }
-
-      loadUserDataToUI();
-      initDailyMnemonic();
-      initDailyStudyPlan();
-      initDailyMCQs();
-      loadSavedProgress();
-
-      var savedPic = localStorage.getItem('pharmacologyUserPic');
-      if (savedPic) document.getElementById('profile-pic').src = savedPic;
-
-      if (localStorage.getItem('pharmacologyUnlocked') === 'true') {
-        unlockAllChaptersUI();
-      }
-
-      resetIdleTimer();
-    };
-
-    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(function(eventType) {
-      document.addEventListener(eventType, resetIdleTimer, true);
-    });
-
-    var drugDatabase = [
-      { name: "Amoxicillin", classTag: "Antibiotic (Penicillin)", chapter: "Unit II: Infections", moa: "Inhibits bacterial cell wall synthesis by binding to penicillin-binding proteins (PBPs).", uses: "Respiratory tract infections, otitis media, sinusitis, UTI.", sideEffects: "Nausea, diarrhea, skin rash, hypersensitivity." },
-      { name: "Ampicillin", classTag: "Antibiotic (Aminopenicillin)", chapter: "Unit II: Infections", moa: "Inhibits bacterial cell wall synthesis during multiplication.", uses: "Listeria meningitis, enterococcal infections, respiratory infections.", sideEffects: "Diarrhea, rash, pseudomembranous colitis." },
-      { name: "Piperacillin-Tazobactam", classTag: "Antibiotic (Antipseudomonal Penicillin + Beta-Lactamase Inhibitor)", chapter: "Unit II: Infections", moa: "Inhibits cell wall synthesis and protects against beta-lactamase degradation.", uses: "Severe nosocomial pneumonia, sepsis, intra-abdominal infections.", sideEffects: "Diarrhea, headache, rash, electrolyte imbalance." },
-      { name: "Ceftriaxone", classTag: "Antibiotic (3rd Gen Cephalosporin)", chapter: "Unit II: Infections", moa: "Binds to PBPs, inhibiting bacterial cell wall synthesis.", uses: "Meningitis, gonorrhea, community-acquired pneumonia, sepsis.", sideEffects: "Diarrhea, biliary sludge, injection site pain." },
-      { name: "Cefepime", classTag: "Antibiotic (4th Gen Cephalosporin)", chapter: "Unit II: Infections", moa: "Broad spectrum bactericidal cell wall synthesis inhibitor active against Pseudomonas.", uses: "Febrile neutropenia, severe hospital-acquired infections.", sideEffects: "Encephalopathy (in renal failure), diarrhea, rash." },
-      { name: "Meropenem", classTag: "Antibiotic (Carbapenem)", chapter: "Unit II: Infections", moa: "Ultra-broad-spectrum bactericidal cell wall synthesis inhibitor resistant to beta-lactamases.", uses: "Multidrug-resistant bacterial infections, intra-abdominal infections, meningitis.", sideEffects: "Headache, nausea, diarrhea, seizures (rare)." },
-      { name: "Azithromycin", classTag: "Antibiotic (Macrolide)", chapter: "Unit II: Infections", moa: "Binds to 50S ribosomal subunit, inhibiting bacterial protein synthesis.", uses: "Pneumonia, pharyngitis, chlamydia, pertussis.", sideEffects: "Abdominal pain, nausea, QT prolongation." },
-      { name: "Ciprofloxacin", classTag: "Antibiotic (Fluoroquinolone)", chapter: "Unit II: Infections", moa: "Inhibits bacterial DNA gyrase and topoisomerase IV.", uses: "Urinary tract infections, pyelonephritis, anthrax, traveler's diarrhea.", sideEffects: "Nausea, tendonitis, photosensitivity, QT prolongation." },
-      { name: "Levofloxacin", classTag: "Antibiotic (Respiratory Fluoroquinolone)", chapter: "Unit II: Infections", moa: "Inhibits DNA gyrase and topoisomerase IV.", uses: "Community-acquired pneumonia, acute bacterial sinusitis, chronic bronchitis.", sideEffects: "Nausea, headache, tendon rupture risk, dizziness." },
-      { name: "Vancomycin", classTag: "Antibiotic (Glycopeptide)", chapter: "Unit II: Infections", moa: "Inhibits cell wall synthesis by binding to D-alanyl-D-alanine termini.", uses: "Methicillin-resistant Staphylococcus aureus (MRSA) infections, C. difficile colitis.", sideEffects: "Red Man Syndrome (if infused too fast), nephrotoxicity, ototoxicity." },
-      { name: "Gentamicin", classTag: "Antibiotic (Aminoglycoside)", chapter: "Unit II: Infections", moa: "Binds to 30S ribosomal subunit, causing mRNA misreading and protein synthesis inhibition.", uses: "Severe gram-negative bacterial sepsis, endocarditis.", sideEffects: "Nephrotoxicity, ototoxicity (irreversible vestibular/auditory damage)." },
-      { name: "Doxycycline", classTag: "Antibiotic (Tetracycline)", chapter: "Unit II: Infections", moa: "Reversibly binds 30S ribosomal subunit to block aminoacyl-tRNA binding.", uses: "Lyme disease, acne, chlamydia, Rocky Mountain spotted fever.", sideEffects: "Photosensitivity, GI upset, tooth discoloration in children under 8." },
-      { name: "Clindamycin", classTag: "Antibiotic (Lincosamide)", chapter: "Unit II: Infections", moa: "Binds 50S ribosomal subunit, inhibiting bacterial protein synthesis.", uses: "Anaerobic infections, skin and soft tissue infections, aspiration pneumonia.", sideEffects: "Diarrhea, C. difficile-associated colitis, nausea." },
-      { name: "Metronidazole", classTag: "Antibiotic / Antiprotozoal (Nitroimidazole)", chapter: "Unit II: Infections", moa: "Forms reduced cytotoxic radicals that damage DNA in anaerobic organisms.", uses: "Anaerobic infections, bacterial vaginosis, trichomoniasis, C. difficile.", sideEffects: "Metallic taste, disulfiram-like reaction with alcohol, nausea, headache." },
-      { name: "Trimethoprim-Sulfamethoxazole", classTag: "Antibiotic (Sulfa Drug / Antifolate)", chapter: "Unit II: Infections", moa: "Sequential blockade of bacterial folic acid synthesis pathway.", uses: "UTIs, Pneumocystis jirovecii pneumonia (PJP) prophylaxis.", sideEffects: "Rash, hyperkalemia, bone marrow suppression, photosensitivity." },
-      { name: "Fluconazole", classTag: "Antifungal (Triazole)", chapter: "Unit II: Infections", moa: "Inhibits fungal CYP450 sterol C-14 alpha-demethylation.", uses: "Candidiasis, cryptococcal meningitis.", sideEffects: "Headache, nausea, elevated liver enzymes." },
-      { name: "Amphotericin B", classTag: "Antifungal (Polyene)", chapter: "Unit II: Infections", moa: "Binds to ergosterol in fungal cell membranes, forming ion-leaking pores.", uses: "Severe life-threatening systemic fungal infections.", sideEffects: "Fever, chills, nephrotoxicity, hypokalemia." },
-      { name: "Itraconazole", classTag: "Antifungal (Triazole)", chapter: "Unit II: Infections", moa: "Inhibits fungal ergosterol synthesis via CYP450 inhibition.", uses: "Histoplasmosis, blastomycosis, onychomycosis.", sideEffects: "Nausea, headache, heart failure exacerbation." },
-      { name: "Caspofungin", classTag: "Antifungal (Echinocandin)", chapter: "Unit II: Infections", moa: "Inhibits synthesis of beta-(1,3)-D-glucan in fungal cell wall.", uses: "Invasive candidiasis, empiric therapy for febrile neutropenia.", sideEffects: "Fever, phlebitis, elevated liver enzymes." },
-      { name: "Acyclovir", classTag: "Antiviral (Nucleoside Analogue)", chapter: "Unit II: Infections", moa: "Inhibits viral DNA polymerase after phosphorylation by viral thymidine kinase.", uses: "Herpes simplex (HSV-1, HSV-2), Varicella-zoster (shingles/chickenpox).", sideEffects: "Nausea, headache, transient renal impairment." },
-      { name: "Valganciclovir", classTag: "Antiviral (Cytomegalovirus Agent)", chapter: "Unit II: Infections", moa: "Inhibits viral DNA polymerase in cytomegalovirus (CMV).", uses: "CMV retinitis in immunocompromised patients, transplant prophylaxis.", sideEffects: "Bone marrow suppression, neutropenia, diarrhea." },
-      { name: "Oseltamivir", classTag: "Antiviral (Neuraminidase Inhibitor)", chapter: "Unit II: Infections", moa: "Inhibits influenza virus neuraminidase, preventing virus release from infected cells.", uses: "Treatment and prophylaxis of Influenza A and B.", sideEffects: "Nausea, vomiting, neuropsychiatric events (rare)." },
-      { name: "Remdesivir", classTag: "Antiviral (Nucleotide Analogue)", chapter: "Unit II: Infections", moa: "Inhibits viral RNA-dependent RNA polymerase.", uses: "COVID-19 infection requiring supplemental oxygen.", sideEffects: "Elevated liver enzymes, nausea, hypersensitivity." },
-      { name: "Loperamide", classTag: "Antidiarrheal (Opioid Agonist)", chapter: "Unit III: Gastrointestinal", moa: "Binds to gut opioid receptors, inhibiting peristalsis and prolonging transit time.", uses: "Symptomatic control of acute non-specific diarrhea.", sideEffects: "Constipation, abdominal cramps, dizziness." },
-      { name: "Omeprazole", classTag: "Proton Pump Inhibitor (PPI)", chapter: "Unit III: Gastrointestinal", moa: "Inhibits gastric H+/K+ ATPase pump in parietal cells.", uses: "GERD, peptic ulcer disease, Zollinger-Ellison syndrome.", sideEffects: "Headache, abdominal pain, flatulence, diarrhea." },
-      { name: "Pantoprazole", classTag: "Proton Pump Inhibitor (PPI)", chapter: "Unit III: Gastrointestinal", moa: "Irreversibly binds H+/K+ ATPase pump.", uses: "Erosive esophagitis, GERD, stress ulcer prophylaxis.", sideEffects: "Diarrhea, headache, hypomagnesemia." },
-      { name: "Ranitidine", classTag: "H2 Receptor Antagonist", chapter: "Unit III: Gastrointestinal", moa: "Competitively blocks histamine H2 receptors on parietal cells to reduce acid secretion.", uses: "GERD, duodenal ulcers, heartburn.", sideEffects: "Headache, dizziness, constipation." },
-      { name: "Famotidine", classTag: "H2 Receptor Antagonist", chapter: "Unit III: Gastrointestinal", moa: "Selectively blocks histamine H2 receptors.", uses: "Peptic ulcer disease, GERD, hypersecretory conditions.", sideEffects: "Headache, constipation, diarrhea." },
-      { name: "Dicyclomine", classTag: "Antimuscarinic / Anticholinergic", chapter: "Unit III: Gastrointestinal", moa: "Blocks acetylcholine at M3 muscarinic receptors in enteric smooth muscle.", uses: "Irritable Bowel Syndrome (IBS) spasm relief.", sideEffects: "Dry mouth, blurred vision, urinary retention, constipation." },
-      { name: "Sucralfate", classTag: "Mucosal Protective Agent", chapter: "Unit III: Gastrointestinal", moa: "Polymerizes in acidic environment to form adhesive protective paste over ulcers.", uses: "Duodenal and gastric ulcer treatment and prevention.", sideEffects: "Constipation." },
-      { name: "Misoprostol", classTag: "Prostaglandin E1 Analog", chapter: "Unit III: Gastrointestinal", moa: "Replaces stomach prostaglandins, reducing acid and boosting mucus shield.", uses: "Prevention of NSAID-induced gastric ulcers.", sideEffects: "Diarrhea, abdominal cramps, absolute contraindication in pregnancy (Category X)." },
-      { name: "Metoclopramide", classTag: "Prokinetic / Antiemetic", chapter: "Unit III: Gastrointestinal", moa: "Dopamine D2 receptor antagonist; enhances GI tract motility and accelerates gastric emptying.", uses: "Gastroparesis, nausea, vomiting, GERD.", sideEffects: "Extrapyramidal symptoms, drowsiness, restlessness, tardive dyskinesia." },
-      { name: "Ondansetron", classTag: "Antiemetic (5-HT3 Receptor Antagonist)", chapter: "Unit III: Gastrointestinal", moa: "Selectively blocks serotonin 5-HT3 receptors peripherally on vagal nerve terminals and centrally in chemoreceptor trigger zone.", uses: "Prevention of chemotherapy-, radiation-, and postoperative nausea and vomiting.", sideEffects: "Headache, constipation, QT prolongation." },
-      { name: "Promethazine", classTag: "Antiemetic / Phenothiazine Antihistamine", chapter: "Unit III: Gastrointestinal", moa: "Blocks central H1 histamine and dopamine receptors.", uses: "Nausea, vomiting, motion sickness, allergic conditions.", sideEffects: "Sedation, respiratory depression, severe tissue necrosis if extravasated." },
-      { name: "Apomorphine", classTag: "Emetic / Dopamine Agonist", chapter: "Unit III: Gastrointestinal", moa: "Stimulates dopamine receptors in the chemoreceptor trigger zone to induce rapid emesis.", uses: "Emergency poisoning / toxin ingestion (historical/specialized clinical contexts).", sideEffects: "Severe nausea, hypotension, drowsiness, dyskinesia." },
-      { name: "Bisacodyl", classTag: "Laxative (Stimulant)", chapter: "Unit III: Gastrointestinal", moa: "Directly stimulates colonic nerve plexus to increase peristalsis.", uses: "Constipation, bowel evacuation before clinical procedures.", sideEffects: "Abdominal cramps, electrolyte imbalance, diarrhea." },
-      { name: "Lactulose", classTag: "Laxative (Osmotic) / Ammonia Detoxicant", chapter: "Unit III: Gastrointestinal", moa: "Osmotic action draws water into colon; metabolizes into acids that trap ammonia.", uses: "Chronic constipation, hepatic encephalopathy.", sideEffects: "Flatulence, abdominal cramps, diarrhea, electrolyte shifts." },
-      { name: "Warfarin", classTag: "Anticoagulant (Vitamin K Antagonist)", chapter: "Unit IV: Hematology", moa: "Inhibits synthesis of vitamin K-dependent clotting factors (II, VII, IX, X).", uses: "Prevention of DVT, pulmonary embolism, atrial fibrillation strokes.", sideEffects: "Bleeding tendencies, bruising, tissue necrosis." },
-      { name: "Heparin", classTag: "Anticoagulant (Indirect Thrombin Inhibitor)", chapter: "Unit IV: Hematology", moa: "Potentiates antithrombin III to block thrombin and factor Xa.", uses: "Acute venous thrombosis, pulmonary embolism, MI.", sideEffects: "Bleeding, Heparin-Induced Thrombocytopenia (HIT)." },
-      { name: "Enoxaparin", classTag: "Low Molecular Weight Heparin (LMWH)", chapter: "Unit IV: Hematology", moa: "Selectively potentiates antithrombin III inhibition of Factor Xa.", uses: "DVT prophylaxis, treatment of deep vein thrombosis and unstable angina.", sideEffects: "Bleeding, local injection site hematomas, thrombocytopenia." },
-      { name: "Aspirin", classTag: "Platelet Inhibitor (COX-1 Inhibitor)", chapter: "Unit IV: Hematology", moa: "Irreversibly acetylates COX-1, preventing thromboxane A2 synthesis.", uses: "Arterial thrombosis prevention, acute coronary syndrome, stroke prevention.", sideEffects: "GI bleeding, ulceration, tinnitus, bruising." },
-      { name: "Clopidogrel", classTag: "Platelet Inhibitor (P2Y12 Antagonist)", chapter: "Unit IV: Hematology", moa: "Blocks ADP P2Y12 receptors on platelets to prevent aggregation.", uses: "Secondary prevention of stroke, MI, and peripheral arterial disease.", sideEffects: "Bleeding, bruising, thrombotic thrombocytopenic purpura (rare)." },
-      { name: "Alteplase", classTag: "Thrombolytic / Fibrinolytic (tPA)", chapter: "Unit IV: Hematology", moa: "Converts bound plasminogen to plasmin, actively lysing fibrin clots.", uses: "Acute ischemic stroke, acute massive pulmonary embolism, acute STEMI.", sideEffects: "Severe hemorrhage, intracranial bleeding, allergic reactions." },
-      { name: "Rivaroxaban", classTag: "Direct Oral Anticoagulant (DOAC / Factor Xa Inhibitor)", chapter: "Unit IV: Hematology", moa: "Directly and selectively inhibits Factor Xa.", uses: "Stroke prevention in non-valvular AFib, treatment and prevention of DVT/PE.", sideEffects: "Major bleeding, minor bruising, GI upset." },
-      { name: "Cisplatin", classTag: "Anti-Neoplastic (Alkylating Agent)", chapter: "Unit V: Anti-Neoplastic", moa: "Forms intrastrand and interstrand DNA cross-links, blocking replication.", uses: "Testicular, ovarian, bladder, and lung cancers.", sideEffects: "Nephrotoxicity, severe nausea/vomiting, ototoxicity." },
-      { name: "Cyclophosphamide", classTag: "Anti-Neoplastic (Alkylating Agent)", chapter: "Unit V: Anti-Neoplastic", moa: "Cross-links DNA strands to cause replication arrest.", uses: "Lymphomas, leukemias, breast and ovarian cancers.", sideEffects: "Hemorrhagic cystitis (prevented with Mesna), bone marrow suppression." },
-      { name: "Methotrexate", classTag: "Anti-Neoplastic (Antimetabolite)", chapter: "Unit V: Anti-Neoplastic", moa: "Inhibits dihydrofolate reductase, blocking DNA/RNA synthesis.", uses: "Acute lymphoblastic leukemia, breast cancer, rheumatoid arthritis.", sideEffects: "Bone marrow suppression, mucositis, hepatotoxicity (rescued with Leucovorin)." },
-      { name: "5-Fluorouracil", classTag: "Anti-Neoplastic (Antimetabolite)", chapter: "Unit V: Anti-Neoplastic", moa: "Inhibits thymidylate synthase, disrupting DNA synthesis in S-phase.", uses: "Colorectal, gastric, and pancreatic cancers.", sideEffects: "Severe diarrhea, stomatitis, hand-foot syndrome, myelosuppression." },
-      { name: "Doxorubicin", classTag: "Anti-Neoplastic (Anthracycline Antibiotic)", chapter: "Unit V: Anti-Neoplastic", moa: "Intercalates DNA and inhibits topoisomerase II enzyme.", uses: "Breast cancer, lymphomas, sarcomas, leukemias.", sideEffects: "Cardiotoxicity (dose-dependent), red urine, alopecia." },
-      { name: "Bleomycin", classTag: "Anti-Neoplastic (Antitumor Antibiotic)", chapter: "Unit V: Anti-Neoplastic", moa: "Causes free radical generation and DNA strand breakage.", uses: "Hodgkin lymphoma, testicular cancer, squamous cell carcinomas.", sideEffects: "Pulmonary fibrosis (dose-limiting), mucocutaneous reactions." },
-      { name: "Vincristine", classTag: "Anti-Neoplastic (Vinca Alkaloid / Microtubule Inhibitor)", chapter: "Unit V: Anti-Neoplastic", moa: "Binds tubulin to inhibit mitotic spindle formation (M-phase arrest).", uses: "Acute lymphoblastic leukemia, lymphomas, Wilms tumor.", sideEffects: "Peripheral neuropathy, paralytic ileus (fatal if given intrathecally)." },
-      { name: "Paclitaxel", classTag: "Anti-Neoplastic (Taxane / Microtubule Inhibitor)", chapter: "Unit V: Anti-Neoplastic", moa: "Promotes microtubule assembly and stabilizes them, preventing mitosis.", uses: "Ovarian, breast, and non-small cell lung cancers.", sideEffects: "Peripheral neuropathy, severe hypersensitivity reactions, bone marrow suppression." },
-      { name: "Tamoxifen", classTag: "Hormone Antagonist (SERM)", chapter: "Unit V: Anti-Neoplastic", moa: "Competitively blocks estrogen receptors in breast tissue.", uses: "Estrogen receptor-positive (ER+) breast cancer treatment and prevention.", sideEffects: "Hot flashes, thromboembolism, increased endometrial cancer risk." },
-      { name: "Rituximab", classTag: "Monoclonal Antibody", chapter: "Unit V: Anti-Neoplastic", moa: "Binds CD20 surface antigen on B-lymphocytes, inducing immune lysis.", uses: "Non-Hodgkin lymphoma, chronic lymphocytic leukemia, rheumatoid arthritis.", sideEffects: "Infusion-related reactions (fever, chills), tumor lysis syndrome." },
-      { name: "Trastuzumab", classTag: "Monoclonal Antibody (HER2 Inhibitor)", chapter: "Unit V: Anti-Neoplastic", moa: "Targets HER2/neu receptor protein, inhibiting proliferation of HER2+ tumors.", uses: "HER2-positive breast cancer and metastatic gastric cancer.", sideEffects: "Cardiotoxicity / heart failure, infusion reactions." },
-      { name: "Imatinib", classTag: "Tyrosine Kinase Inhibitor (TKI)", chapter: "Unit V: Anti-Neoplastic", moa: "Inhibits BCR-ABL tyrosine kinase enzyme activity.", uses: "Chronic Myelogenous Leukemia (CML), gastrointestinal stromal tumors (GIST).", sideEffects: "Fluid retention, periorbital edema, muscle cramps, nausea." }
-    ];
-
-    var mnemonicsDB = [
-      { 
-        category: "Unit II: Antimicrobials", 
-        title: "Antifungal Azoles Suffix & Nursing Rule", 
-        formula: "Suffix: -CONAZOLE = CYP450 Inhibitors",
-        breakdown: [
-          { key: "Mechanism:", value: "Inhibits fungal ergosterol synthesis via CYP450 C-14 demethylase." },
-          { key: "Interactions:", value: "Increases blood levels of Warfarin, Statins, & Oral Hypoglycemics." }
-        ],
-        alert: "Nursing Priority: Check LFTs before therapy and monitor INR closely when patient is on Warfarin." 
-      },
-      { 
-        category: "Unit III: Gastrointestinal", 
-        title: "Laxative Classification Rule", 
-        formula: "S-O-S: Stimulant, Osmotic, Softener",
-        breakdown: [
-          { key: "S - Stimulant:", value: "Bisacodyl & Senna (Increase intestinal peristalsis)." },
-          { key: "O - Osmotic:", value: "Lactulose & PEG (Draw water into lumen, acidify colon)." },
-          { key: "S - Softener:", value: "Docusate Sodium (Surfactant, lowers stool surface tension)." }
-        ],
-        alert: "Nursing Priority: Avoid stimulant laxatives in patients with acute undiagnosed abdominal pain." 
-      }
-    ];
-
-    var studyPlansPool = [
-      [
-        "Review Unit I basic pharmacokinetics and half-life formulas",
-        "Read Unit II antimicrobial spectrum and antiviral charts",
-        "Practice daily 5-question clinical MCQ challenge"
-      ]
-    ];
-
-    var fullMCQBank = [
-      { q: "Which medication is classified as an opioid receptor agonist used specifically for acute diarrhea?", opts: ["Loperamide", "Bisacodyl", "Omeprazole", "Fluconazole"], correct: 0, reason: "Loperamide acts on gut opioid receptors to inhibit peristalsis and prolong transit time without central nervous system opioid effects." },
-      { q: "Acyclovir exerts its antiviral mechanism of action primarily by:", opts: ["Inhibiting viral neuraminidase", "Inhibiting viral DNA polymerase after phosphorylation", "Neutralizing stomach acid", "Chelating iron"], correct: 1, reason: "Acyclovir is phosphorylated by viral thymidine kinase and then selectively inhibits viral DNA polymerase." },
-      { q: "What is the primary pharmacological class and clinical use of Fluconazole?", opts: ["Antibiotic for sepsis", "Antiviral for influenza", "Antifungal (Triazole) for candidiasis", "Laxative for constipation"], correct: 2, reason: "Fluconazole is a triazole antifungal that inhibits CYP450 sterol demethylation to treat fungal infections." },
-      { q: "Which of the following chemotherapeutic agents requires concurrent administration of Mesna to prevent hemorrhagic cystitis?", opts: ["Cisplatin", "Cyclophosphamide", "Doxorubicin", "Vincristine"], correct: 1, reason: "Cyclophosphamide metabolizes into acrolein, which causes hemorrhagic cystitis; Mesna binds and neutralizes acrolein in the bladder." },
-      { q: "What is the primary antidote for acute Heparin-induced severe hemorrhage?", opts: ["Vitamin K", "Protamine Sulfate", "Leucovorin", "Mesna"], correct: 1, reason: "Protamine Sulfate binds directly to heparin to form a stable salt complex, instantly neutralizing its anticoagulant activity." }
-    ];
-
-    var todaysMCQList = [];
-    var currentMCQStep = 0;
-    var dailyQuizScore = 0;
-
-    var validAccessCodesList = [
-      "BSN-CLASS-2026", "NEWLIFE-PHARMA-02", "MULTAN-BATCH-03"
-    ];
-    for (var c = 1; c <= 200; c++) {
-      var formattedNum = c < 10 ? "0" + c : "" + c;
-      validAccessCodesList.push("MK-PK-" + formattedNum);
-      validAccessCodesList.push("MK-IND-" + formattedNum);
-    }
-
-    function verifySingleUseCode() {
-      var rawInput = document.getElementById('sidebarAccessInput').value;
-      var enteredCode = rawInput.trim().toUpperCase();
-
-      if (!enteredCode) { 
-        alert('Please enter an access code.'); 
-        return; 
-      }
-
-      var usedCodes = JSON.parse(localStorage.getItem('pharmacologyUsedCodes')) || [];
-
-      if (usedCodes.includes(enteredCode)) {
-        alert('🚫 Access Denied: This access code has ALREADY been used and spent! Single-use codes cannot be reused.');
-        return;
-      }
-
-      if (validAccessCodesList.includes(enteredCode)) {
-        usedCodes.push(enteredCode);
-        localStorage.setItem('pharmacologyUsedCodes', JSON.stringify(usedCodes));
-        localStorage.setItem('pharmacologyUnlocked', 'true');
-        unlockAllChaptersUI();
-        alert('🎉 Success! Access verified. All advanced units and resources are now unlocked on your account.');
-      } else {
-        alert('❌ Invalid Access Code! Please check your code or buy access via WhatsApp (03241064487).');
-      }
-    }
-
-    function unlockAllChaptersUI() {
-      for (var i = 2; i <= 8; i++) {
-        var badge = document.getElementById('lockBadge' + i);
-        if (badge) {
-          badge.innerText = "✓ Unlocked";
-          badge.style.background = "#dcfce7";
-          badge.style.color = "#065f46";
+                        document.getElementById('successState').style.display = 'block';
+                    } else {
+                        document.getElementById('errorState').style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('loadingState').style.display = 'none';
+                    document.getElementById('errorState').style.display = 'block';
+                });
         }
-      }
-      var statusText = document.getElementById('accessStatusText');
-      statusText.innerText = "Status: All Chapters Unlocked ✓";
-      statusText.className = "access-status status-unlocked";
-      document.getElementById('sidebarAccessInput').value = "VERIFIED";
-      document.getElementById('sidebarAccessInput').disabled = true;
-    }
-
-    function checkChapterAccess(event, unitNum) {
-      if (localStorage.getItem('pharmacologyUnlocked') !== 'true') {
-        event.preventDefault();
-        alert('🔒 This chapter is locked! Enter a valid single-use access code in the sidebar to unlock.');
-        return false;
-      }
-      return markUnitRead(event, unitNum);
-    }
-
-    function markUnitRead(event, unitNum) {
-      var unitsReadSet = JSON.parse(localStorage.getItem('pharmacologyUnitsReadSet')) || [];
-      if (unitsReadSet.indexOf(unitNum) === -1) {
-        unitsReadSet.push(unitNum);
-        localStorage.setItem('pharmacologyUnitsReadSet', JSON.stringify(unitsReadSet));
-      }
-      saveAndUpdateProgress();
-      return true;
-    }
-
-    function initDailyMnemonic() {
-      var dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-      var item = mnemonicsDB[dayOfYear % mnemonicsDB.length];
-      document.getElementById('mnemonicCategory').innerText = item.category;
-      document.getElementById('mnemonicTitle').innerText = item.title;
-      document.getElementById('mnemonicFormula').innerText = item.formula;
-
-      var bdContainer = document.getElementById('mnemonicBreakdown');
-      var html = '';
-      for (var i = 0; i < item.breakdown.length; i++) {
-        html += '<div class="mnemonic-breakdown-item"><span class="mnemonic-breakdown-key">' + item.breakdown[i].key + '</span><span>' + item.breakdown[i].value + '</span></div>';
-      }
-      bdContainer.innerHTML = html;
-      document.getElementById('mnemonicAlert').innerText = item.alert;
-    }
-
-    function initDailyStudyPlan() {
-      var dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-      var todaysTasks = studyPlansPool[dayOfYear % studyPlansPool.length];
-      var container = document.getElementById('dailyStudyPlanContainer');
-      var html = '';
-      for (var i = 0; i < todaysTasks.length; i++) {
-        html += '<label class="plan-task-item" id="taskItem' + i + '"><input type="checkbox" id="taskCheckbox' + i + '" onchange="saveAndUpdateProgress()"><span class="plan-task-text">' + todaysTasks[i] + '</span></label>';
-      }
-      container.innerHTML = html;
-    }
-
-    function initDailyMCQs() {
-      var dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-      todaysMCQList = [];
-      for (var i = 0; i < 5; i++) {
-        todaysMCQList.push(fullMCQBank[(dayOfYear * 5 + i) % fullMCQBank.length]);
-      }
-      renderCurrentMCQ();
-    }
-
-    function renderCurrentMCQ() {
-      var mcq = todaysMCQList[currentMCQStep];
-      if (!mcq) return;
-      document.getElementById('mcqQuestionText').innerText = mcq.q;
-      document.getElementById('mcqReasonText').innerText = mcq.reason;
-      document.getElementById('mcqCounterStatus').innerText = "Question " + (currentMCQStep + 1) + " of 5";
-      document.getElementById('mcqStreakCount').innerText = "Score: " + dailyQuizScore + " / 5";
-
-      var optContainer = document.getElementById('mcqOptionsContainer');
-      var html = '';
-      for (var i = 0; i < mcq.opts.length; i++) {
-        html += '<button class="mcq-opt-btn" onclick="submitMCQAnswer(' + i + ', ' + mcq.correct + ')">' + (i + 1) + '. ' + mcq.opts[i] + '</button>';
-      }
-      optContainer.innerHTML = html;
-      document.getElementById('mcqExplanationBox').style.display = 'none';
-      document.getElementById('nextMCQBtn').style.display = 'none';
-    }
-
-    function submitMCQAnswer(selectedIndex, correctIndex) {
-      var optButtons = document.getElementsByClassName('mcq-opt-btn');
-      for (var i = 0; i < optButtons.length; i++) {
-        optButtons[i].disabled = true;
-        if (i === correctIndex) optButtons[i].classList.add('correct');
-        else if (i === selectedIndex) optButtons[i].classList.add('incorrect');
-      }
-      if (selectedIndex === correctIndex) {
-        dailyQuizScore++;
-        document.getElementById('mcqStreakCount').innerText = "Score: " + dailyQuizScore + " / 5";
-      }
-      document.getElementById('mcqExplanationBox').style.display = 'block';
-      document.getElementById('nextMCQBtn').style.display = 'block';
-      saveAndUpdateProgress();
-    }
-
-    function nextMCQQuestion() {
-      currentMCQStep++;
-      if (currentMCQStep < todaysMCQList.length) {
-        renderCurrentMCQ();
-      } else {
-        document.getElementById('mcqQuestionText').innerText = "All daily questions complete! Great job mastering today's clinical quiz.";
-        document.getElementById('mcqOptionsContainer').innerHTML = '';
-        document.getElementById('nextMCQBtn').style.display = 'none';
-        document.getElementById('mcqExplanationBox').style.display = 'none';
-      }
-    }
-
-    function saveAndUpdateProgress() {
-      var unitsReadSet = JSON.parse(localStorage.getItem('pharmacologyUnitsReadSet')) || [];
-      var percent = Math.round((unitsReadSet.length / 7) * 100);
-      document.getElementById('progressText').innerText = "Units Completed: " + percent + " percent";
-      document.getElementById('progressPercentNum').innerText = percent + "%";
-      document.getElementById('progressBarFill').style.width = percent + "%";
-      document.getElementById('unitsReadNum').innerText = unitsReadSet.length + " / 7";
-      document.getElementById('quizScoreNum').innerText = dailyQuizScore + " / 5";
-      document.getElementById('completedCountNum').innerText = dailyQuizScore + " / 5";
-    }
-
-    function loadSavedProgress() { saveAndUpdateProgress(); }
-    
-    function loadUserDataToUI() {
-      var user = JSON.parse(localStorage.getItem('pharmacologyUser'));
-      if (user) {
-        document.getElementById('student-name').innerText = user.name || 'Student';
-        document.getElementById('student-institute').innerText = user.institute || '';
-        document.getElementById('student-email').innerText = user.email || '';
-        document.getElementById('student-semester').innerText = user.semester || '';
-      }
-    }
-
-    function openEditProfileModal() {
-      var user = JSON.parse(localStorage.getItem('pharmacologyUser'));
-      if (user) {
-        document.getElementById('editNameInput').value = user.name || '';
-        document.getElementById('editInstituteInput').value = user.institute || '';
-        document.getElementById('editEmailInput').value = user.email || '';
-        document.getElementById('editSemesterInput').value = user.semester || '';
-      }
-      document.getElementById('editProfileModal').style.display = 'flex';
-    }
-
-    function closeEditProfileModal() { document.getElementById('editProfileModal').style.display = 'none'; }
-
-    function saveProfileChanges() {
-      var updatedUser = {
-        name: document.getElementById('editNameInput').value.trim(),
-        institute: document.getElementById('editInstituteInput').value.trim(),
-        email: document.getElementById('editEmailInput').value.trim(),
-        semester: document.getElementById('editSemesterInput').value.trim()
-      };
-      localStorage.setItem('pharmacologyUser', JSON.stringify(updatedUser));
-      loadUserDataToUI();
-      closeEditProfileModal();
-      alert('✓ Profile updated successfully!');
-    }
-
-    function dismissWelcomeModal() { document.getElementById('desktopWelcomeModal').style.display = 'none'; }
-    
-    function previewImage(event) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('profile-pic').src = e.target.result;
-        localStorage.setItem('pharmacologyUserPic', e.target.result);
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
-    function logout() {
-      localStorage.removeItem('pharmacologyLoggedIn');
-      localStorage.removeItem('pharmacologyUnlocked');
-      localStorage.removeItem('pharmacologyUser');
-      window.location.href = 'login.html';
-    }
-
-    function filterDrugs() {
-      var query = document.getElementById('drugSearchInput').value.toLowerCase().trim();
-      var dropdown = document.getElementById('drugResultsDropdown');
-      if (!query) { dropdown.style.display = 'none'; return; }
-      var html = '';
-      for (var i = 0; i < drugDatabase.length; i++) {
-        if (drugDatabase[i].name.toLowerCase().includes(query)) {
-          html += '<div class="drug-result-item" onclick="openDrugDetailModal(\'' + drugDatabase[i].name + '\')"><div class="drug-name-main">' + drugDatabase[i].name + '<span style="font-size:0.7rem;color:#0284c7;font-weight:600;">' + drugDatabase[i].classTag + '</span></div></div>';
-        }
-      }
-      dropdown.innerHTML = html || '<div class="drug-result-item">No match found</div>';
-      dropdown.style.display = 'block';
-    }
-
-    function openDrugDetailModal(name) {
-      var drug = drugDatabase.find(d => d.name === name);
-      if (drug) {
-        document.getElementById('modalDrugName').innerText = drug.name;
-        document.getElementById('modalDrugCategory').innerText = drug.chapter;
-        document.getElementById('modalDrugClass').innerText = drug.classTag;
-        document.getElementById('modalDrugMoa').innerText = drug.moa;
-        document.getElementById('modalDrugUses').innerText = drug.uses;
-        document.getElementById('modalDrugSideEffects').innerText = drug.sideEffects;
-        document.getElementById('drugDetailModal').style.display = 'flex';
-        document.getElementById('drugResultsDropdown').style.display = 'none';
-        document.getElementById('drugSearchInput').value = '';
-      }
-    }
-    function closeDrugDetailModal() { document.getElementById('drugDetailModal').style.display = 'none'; }
-  </script>
+    </script>
 </body>
 </html>
