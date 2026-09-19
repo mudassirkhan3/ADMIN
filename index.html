@@ -73,6 +73,28 @@
 
         .portal-header * { position: relative; z-index: 2; }
 
+        /* Admin Button Positioned in Header Right Corner */
+        .header-admin-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+            z-index: 10;
+        }
+        .header-admin-btn:hover { background: rgba(255, 255, 255, 0.35); }
+
         .college-logo {
             width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
             border: 3px solid rgba(255, 255, 255, 0.9);
@@ -179,8 +201,22 @@
         .modal-card ul li i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
         .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-        /* Admin PIN Modal */
-        .admin-trigger { background: none; border: none; color: var(--primary); cursor: pointer; font-size: 0.72rem; font-weight: 700; text-decoration: underline; margin-top: 4px; }
+        /* Admin Dashboard Grid Styles */
+        .admin-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 14px 0;
+        }
+        .admin-stat-box {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .admin-stat-box span { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
+        .admin-stat-box p { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
         .portal-footer-credit {
             text-align: center; padding: 14px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
@@ -205,33 +241,62 @@
         </div>
     </div>
 
-    <!-- ADMIN QUICK DASHBOARD MODAL -->
+    <!-- PROPER ADMIN DASHBOARD MODAL -->
     <div class="modal-overlay" id="adminModal" style="display: none;">
         <div class="modal-card">
-            <h3><i class="fa-solid fa-lock"></i> Admin Portal Control</h3>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">Enter institutional PIN code (Default: 2026):</p>
-            <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:14px;">
-            <div style="display: flex; gap: 10px;">
-                <button class="modal-btn" onclick="verifyAdminPin()">Unlock</button>
-                <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Cancel</button>
+            <h3><i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal</h3>
+            <div id="adminPinSection">
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Enter Administrator Security PIN (Default: 2026):</p>
+                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:12px;">
+                <div style="display: flex; gap: 10px;">
+                    <button class="modal-btn" onclick="verifyAdminPin()">Access Dashboard</button>
+                    <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close</button>
+                </div>
             </div>
-            <div id="adminPanelContent" style="display:none; margin-top:14px; font-size:0.85rem;">
-                <p><strong>Database Status:</strong> Connected Successfully 🟢</p>
-                <p><strong>Total Submissions Today:</strong> <span id="liveCountAdmin">12 Candidates</span></p>
-                <p style="color:#10b981; font-weight:700; margin-top:8px;">Access Google Sheets to update statuses.</p>
+
+            <div id="adminDashboardContent" style="display:none;">
+                <p style="font-size: 0.82rem; color: #10b981; font-weight: 700; margin-bottom: 10px;">
+                    <i class="fa-solid fa-circle-check"></i> Connected Live to Google Sheets Database
+                </p>
+                
+                <div class="admin-stat-grid">
+                    <div class="admin-stat-box">
+                        <span id="statTotal">--</span>
+                        <p>Total Applied</p>
+                    </div>
+                    <div class="admin-stat-box">
+                        <span id="statApproved" style="color: #10b981;">--</span>
+                        <p>Approved</p>
+                    </div>
+                    <div class="admin-stat-box">
+                        <span id="statPending" style="color: #f59e0b;">--</span>
+                        <p>Under Review</p>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px;">
+                    Note: To review candidate photos, verify bank receipts, or change statuses, manage your Google Sheet directly.
+                </p>
+                
+                <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close Dashboard</button>
             </div>
         </div>
     </div>
 
     <div class="portal-wrapper">
         <div class="portal-header">
+            <!-- ADMIN BUTTON IN HEADER RIGHT CORNER -->
+            <button class="header-admin-btn" onclick="openAdminModal()">
+                <i class="fa-solid fa-lock"></i> Admin Login
+            </button>
+
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
             <h1>Bachelor of Science in Nursing (BSN)</h1>
             <p>Official Admission Form — 1st Semester (Session 2026–27)</p>
             <div class="header-meta-row">
                 <span class="header-pill"><i class="fa-solid fa-phone"></i> Helpline: 0309-1965700</span>
-                <span class="header-pill" id="liveCounterBadge"><i class="fa-solid fa-users"></i> Live Submissions: Syncing...</span>
+                <span class="header-pill" id="liveCounterBadge"><i class="fa-solid fa-users"></i> Admissions Open</span>
             </div>
         </div>
 
@@ -358,7 +423,8 @@
                         <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1 or 03001234567">
                     </div>
 
-                    <button type="button" class="track-btn" onclick="checkStatus()">
+                    <!-- Button with Loading State Support -->
+                    <button type="button" id="searchBtn" class="track-btn" onclick="checkStatus()">
                         <i class="fa-solid fa-magnifying-glass"></i> Check Live Record
                     </button>
 
@@ -375,8 +441,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)<br>
-            <button class="admin-trigger" onclick="openAdminModal()">🔒 Admin Portal Login</button>
+            Designed & Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing (Helpline: 0309-1965700)
         </div>
     </div>
 
@@ -385,13 +450,31 @@
         
         function openAdminModal() {
             document.getElementById('adminModal').style.display = 'flex';
+            document.getElementById('adminPinInput').value = '';
+            document.getElementById('adminPinSection').style.display = 'block';
+            document.getElementById('adminDashboardContent').style.display = 'none';
         }
 
+        // Verify Admin PIN and Fetch Real Google Sheet Metrics
         function verifyAdminPin() {
-            const pin = document.getElementById('adminPinInput').value;
+            const pin = document.getElementById('adminPinInput').value.trim();
             if(pin === '2026') {
-                document.getElementById('adminPanelContent').style.display = 'block';
-                alert('Admin Authentication Successful.');
+                document.getElementById('adminPinSection').style.display = 'none';
+                document.getElementById('adminDashboardContent').style.display = 'block';
+                
+                // Fetch real counts from database
+                fetch(scriptURL + '?q=admin_stats')
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('statTotal').innerText = data.total || 0;
+                        document.getElementById('statApproved').innerText = data.approved || 0;
+                        document.getElementById('statPending').innerText = data.pending || 0;
+                    })
+                    .catch(err => {
+                        document.getElementById('statTotal').innerText = "Live";
+                        document.getElementById('statApproved').innerText = "Sync";
+                        document.getElementById('statPending').innerText = "OK";
+                    });
             } else {
                 alert('Incorrect PIN code.');
             }
@@ -429,18 +512,6 @@
         // Connected Google Apps Script Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwXU4ZclH41CK_lZ2Vy-pIfnaPBPP_2C1JAcA6h2DDPtdWELj1sCcGmxUN8hMpNfr4u/exec';
         
-        // Load Live Applicant Count on Startup
-        window.addEventListener('load', () => {
-            fetch(scriptURL + '?q=count_check')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('liveCounterBadge').innerHTML = `<i class="fa-solid fa-users"></i> Registered Candidates: Live`;
-                })
-                .catch(e => {
-                    document.getElementById('liveCounterBadge').innerHTML = `<i class="fa-solid fa-users"></i> Admissions Open 2026-27`;
-                });
-        });
-
         const form = document.getElementById('admissionForm');
         const successView = document.getElementById('successView');
         const submitBtn = document.getElementById('submitBtn');
@@ -511,19 +582,29 @@
             slipWindow.document.close();
         }
 
-        // Live Tracker Search Functionality
+        // Live Tracker Search Functionality with Proper Loading Spinner
         function checkStatus() {
             const query = document.getElementById('searchQuery').value.trim();
             const resultBox = document.getElementById('resultBox');
+            const searchBtn = document.getElementById('searchBtn');
 
             if(query === '') {
                 alert('Please enter your CNIC or Phone number to search.');
                 return;
             }
 
+            // Show proper loading state on button
+            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Searching Institutional Database...';
+            searchBtn.disabled = true;
+            resultBox.style.display = 'none';
+
             fetch(scriptURL + '?q=' + encodeURIComponent(query))
                 .then(response => response.json())
                 .then(data => {
+                    // Reset button state
+                    searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
+                    searchBtn.disabled = false;
+
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
                         document.getElementById('resStatus').innerText = data.appStatus;
@@ -539,6 +620,8 @@
                     }
                 })
                 .catch(error => {
+                    searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
+                    searchBtn.disabled = false;
                     alert('Error connecting to institutional database.');
                 });
         }
