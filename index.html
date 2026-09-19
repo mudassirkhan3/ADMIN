@@ -614,7 +614,7 @@
                     <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
                     <div class="footer">
                         <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
-                        <p>Helpline: 0309-1965700 | Developed by Mudassir Khan</p>
+                        <p>Helpline: 0309-1965700</p>
                     </div>
                     <script>window.print();<\/script>
                 </body>
@@ -690,7 +690,7 @@
                             return;
                         }
 
-                        const verificationLink = window.location.href.split('?')[0] + '?q=' + encodeURIComponent(data.cnic);
+                        const verificationLink = "https://mudassirkhan3.github.io/ADMIN/slip.html?q=" + encodeURIComponent(data.cnic);
                         const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(verificationLink)}`;
 
                         const cardWindow = window.open('', '_blank');
@@ -762,7 +762,7 @@
 
                                 <div class="footer-sign">
                                     <div>Address: M.A Jinnah Rd, Multan</div>
-                                    <div>Developed by Mudassir Khan</div>
+                                    <div>Admissions Office, NLIN</div>
                                 </div>
 
                                 <script>window.print();<\/script>
