@@ -1,156 +1,98 @@
-var SHEET_NAME = "Sheet1";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official QR Verification | New Life Institute of Nursing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f0f9ff; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .verify-card { background: #fff; width: 100%; max-width: 480px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 24px; text-align: center; border-top: 6px solid #0284c7; }
+        .verify-card img.logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 10px; }
+        h2 { font-size: 1.1rem; color: #1e293b; margin-bottom: 4px; font-weight: 800; }
+        p.sub { font-size: 0.75rem; color: #64748b; margin-bottom: 20px; }
+        .status-badge { display: inline-block; padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; }
+        .verified { background: #dcfce7; color: #166534; }
+        .pending { background: #fef3c7; color: #b45309; }
+        .details-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; font-size: 0.85rem; margin-bottom: 20px; }
+        .details-row { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
+        .details-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .footer { font-size: 0.7rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 12px; }
+    </style>
+</head>
+<body>
 
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
-  
-  try {
-    var doc = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = doc.getSheetByName(SHEET_NAME);
-    
-    // Auto-setup exact headers if the sheet is empty
-    if (sheet.getLastRow() === 0) {
-      var headers = [
-        "Timestamp",
-        "fullname",
-        "fathername",
-        "cnic",
-        "dob",
-        "district",
-        "temporary_address",
-        "permanent_address",
-        "phone",
-        "emergency_contact",
-        "matric_marks",
-        "fsc_marks",
-        "candidate_photo",
-        "agreement_accepted",
-        "payment_id",
-        "Status",
-        "Payment_Status"
-      ];
-      sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
-    }
-    
-    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    var nextRow = sheet.getLastRow() + 1;
-    
-    var rowData = headers.map(function(header) {
-      if (header === 'Timestamp') {
-        return new Date();
-      }
-      if (header === 'Status') {
-        return 'Under Review';
-      }
-      if (header === 'Payment_Status') {
-        return 'Pending Verification';
-      }
-      // Maps html form field 'payment_id' (or fallback alternatives)
-      if (header === 'payment_id') {
-        return e.parameter['payment_id'] || e.parameter['payment_ref'] || '';
-      }
-      return e.parameter[header] || '';
-    });
-    
-    sheet.getRange(nextRow, 1, 1, rowData.length).setValues([rowData]);
-    
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
-  }
-}
+    <div class="verify-card" id="cardContainer">
+        <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
+        <h2>New Life Institute of Nursing, Multan</h2>
+        <p class="sub">Official Document Verification Portal</p>
 
-function doGet(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
-  
-  try {
-    var doc = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = doc.getSheetByName(SHEET_NAME);
-    var rows = sheet.getDataRange().getValues();
-    
-    if (rows.length === 0) {
-      return ContentService
-        .createTextOutput(JSON.stringify({ 'status': 'error', 'message': 'Sheet is empty' }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    var headers = rows[0];
-    var query = e.parameter.q;
-    
-    // Handle admin stats request
-    if (query === 'admin_stats') {
-      var total = rows.length - 1;
-      var approved = 0;
-      var pending = 0;
-      
-      var statusIdx = headers.indexOf('Status');
-      
-      for (var i = 1; i < rows.length; i++) {
-        var status = rows[i][statusIdx] ? rows[i][statusIdx].toString().toLowerCase() : '';
-        if (status.includes('approved') || status.includes('verified')) {
-          approved++;
+        <div id="loadingView">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: #0284c7; margin: 20px 0;"></i>
+            <p>Verifying candidate record from secure database...</p>
+        </div>
+
+        <div id="resultView" style="display: none;">
+            <div id="statusBadgeContainer" class="status-badge verified">
+                <i class="fa-solid fa-circle-check"></i> AUTHENTIC ADMIT CARD
+            </div>
+
+            <div class="details-box">
+                <div class="details-row"><strong>Candidate Name:</strong> <span id="vName">-</span></div>
+                <div class="details-row"><strong>Father's Name:</strong> <span id="vFather">-</span></div>
+                <div class="details-row"><strong>CNIC / B-Form:</strong> <span id="vCnic">-</span></div>
+                <div class="details-row"><strong>Admission Status:</strong> <span id="vAppStatus" style="color: #0284c7; font-weight:700;">-</span></div>
+                <div class="details-row"><strong>Fee Verification:</strong> <span id="vPayStatus" style="font-weight:700;">-</span></div>
+            </div>
+        </div>
+
+        <div id="errorView" style="display: none;">
+            <div class="status-badge" style="background: #fee2e2; color: #991b1b;">
+                <i class="fa-solid fa-triangle-exclamation"></i> RECORD NOT FOUND
+            </div>
+            <p style="font-size: 0.82rem; color: #64748b;">The scanned QR code does not match any active record in the institutional database.</p>
+        </div>
+
+        <div class="footer">
+            New Life Institute of Nursing | Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsRHdLch1MnZTRT_D1Pj6VkROcQB5wydxkMkbpbZ_chRRQVgF3aU6TGWvC-eCwvSxi/exec';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryCNIC = urlParams.get('q');
+
+        if (!queryCNIC) {
+            document.getElementById('loadingView').style.display = 'none';
+            document.getElementById('errorView').style.display = 'block';
         } else {
-          pending++;
+            fetch(scriptURL + '?q=' + encodeURIComponent(queryCNIC))
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('loadingView').style.display = 'none';
+                    if (data.status === 'success') {
+                        document.getElementById('vName').innerText = data.name;
+                        document.getElementById('vFather').innerText = data.father;
+                        document.getElementById('vCnic').innerText = data.cnic;
+                        document.getElementById('vAppStatus').innerText = data.appStatus;
+                        
+                        const payStatus = data.payStatus || 'Pending Verification';
+                        document.getElementById('vPayStatus').innerText = payStatus;
+                        document.getElementById('vPayStatus').style.color = payStatus.toLowerCase().includes('verified') ? '#166534' : '#b45309';
+
+                        document.getElementById('resultView').style.display = 'block';
+                    } else {
+                        document.getElementById('errorView').style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('loadingView').style.display = 'none';
+                    document.getElementById('errorView').style.display = 'block';
+                });
         }
-      }
-      
-      return ContentService
-        .createTextOutput(JSON.stringify({ 'total': total, 'approved': approved, 'pending': pending }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    if (!query) {
-      return ContentService
-        .createTextOutput(JSON.stringify({ 'status': 'error', 'message': 'No query provided' }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    var cnicIdx = headers.indexOf('cnic');
-    var phoneIdx = headers.indexOf('phone');
-    var nameIdx = headers.indexOf('fullname');
-    var fatherIdx = headers.indexOf('fathername');
-    var statusIdx = headers.indexOf('Status');
-    var payStatusIdx = headers.indexOf('Payment_Status');
-    var photoIdx = headers.indexOf('candidate_photo');
-    
-    for (var i = 1; i < rows.length; i++) {
-      var row = rows[i];
-      var rowCnic = row[cnicIdx] ? row[cnicIdx].toString().trim() : '';
-      var rowPhone = row[phoneIdx] ? row[phoneIdx].toString().trim() : '';
-      
-      if (rowCnic.toLowerCase() === query.toLowerCase() || rowPhone.toLowerCase() === query.toLowerCase()) {
-        return ContentService
-          .createTextOutput(JSON.stringify({
-            'status': 'success',
-            'name': row[nameIdx],
-            'father': row[fatherIdx],
-            'cnic': rowCnic,
-            'phone': rowPhone,
-            'appStatus': row[statusIdx] || 'Under Review',
-            'payStatus': row[payStatusIdx] || 'Pending Verification',
-            'photo': row[photoIdx] || ''
-          }))
-          .setMimeType(ContentService.MimeType.JSON);
-      }
-    }
-    
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'status': 'not_found' }))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'status': 'error', 'message': err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
-  }
-}
+    </script>
+</body>
+</html>
