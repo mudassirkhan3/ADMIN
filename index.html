@@ -137,21 +137,6 @@
 
         .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
-        /* MERIT LIST BANNER BUTTON */
-        .merit-banner-btn {
-            display: flex; align-items: center; justify-content: space-between;
-            background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-            color: #ffffff; padding: 12px 20px; margin: 12px 16px 0 16px; border-radius: 14px;
-            text-decoration: none; box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
-            transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .merit-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35); }
-        .merit-content-left { display: flex; align-items: center; gap: 12px; }
-        .merit-icon-box { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .merit-text h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 2px; }
-        .merit-text p { font-size: 0.72rem; opacity: 0.9; font-weight: 500; }
-        .merit-badge-pill { background: rgba(255, 255, 255, 0.25); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
-
         .portal-body { padding: 20px 16px; }
 
         .section-view { display: none; }
@@ -321,20 +306,6 @@
             <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Status</button>
             <button class="tab-btn" onclick="switchTab('admitCard')"><i class="fa-solid fa-id-card-clip"></i> Admit Card</button>
         </div>
-
-        <!-- MERIT LIST BUTTON -->
-        <a href="merit_list_2026.pdf" target="_blank" class="merit-banner-btn">
-            <div class="merit-content-left">
-                <div class="merit-icon-box"><i class="fa-solid fa-award"></i></div>
-                <div class="merit-text">
-                    <h4>Official Merit List 2026–27</h4>
-                    <p>Click here to view or download finalized selection rankings (PDF)</p>
-                </div>
-            </div>
-            <div class="merit-badge-pill">
-                <span>View List</span> <i class="fa-solid fa-arrow-right-long"></i>
-            </div>
-        </a>
 
         <div class="portal-body">
             
@@ -739,83 +710,276 @@
                             <head>
                                 <title>Entry Test Admit Card - ${data.name}</title>
                                 <style>
-                                    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 25px; color: #1e293b; max-width: 680px; margin: auto; border: 3px solid #0284c7; border-radius: 16px; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                                    .header { text-align: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; margin-bottom: 15px; }
-                                    .header img.logo { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
-                                    .header h2 { color: #0284c7; margin: 4px 0 2px 0; font-size: 1.05rem; }
-                                    .header p { font-size: 0.72rem; color: #64748b; margin: 0; }
-                                    .badge { background: #dcfce7 !important; color: #166534 !important; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.7rem; display: inline-block; margin-top: 6px; }
+                                    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
                                     
-                                    .candidate-top-center { text-align: center; margin-bottom: 15px; }
-                                    .candidate-img { width: 95px; height: 115px; border-radius: 10px; object-fit: cover; border: 3px solid #0284c7; box-shadow: 0 4px 12px rgba(2,132,199,0.25); background: #e2e8f0; }
+                                    body {
+                                        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+                                        background: #f8fafc;
+                                        color: #1e293b;
+                                        padding: 20px;
+                                        margin: 0;
+                                        -webkit-print-color-adjust: exact;
+                                        print-color-adjust: exact;
+                                    }
 
-                                    .card-main-layout { display: flex; justify-content: space-between; align-items: stretch; gap: 12px; margin-bottom: 15px; }
-                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem; background: #f8fafc !important; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; align-content: center; }
-                                    .details-grid div { margin-bottom: 2px; }
-                                    
-                                    .qr-container { text-align: center; background: #f8fafc !important; padding: 8px; border-radius: 10px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 115px; }
-                                    .qr-container img { width: 85px; height: 85px; display: block; }
-                                    .qr-container span { font-size: 0.58rem; color: #64748b; display: block; margin-top: 4px; font-weight: bold; }
+                                    .card-container {
+                                        max-width: 700px;
+                                        margin: auto;
+                                        background: #ffffff;
+                                        border: 2px solid #0284c7;
+                                        border-radius: 16px;
+                                        padding: 24px;
+                                        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                                    }
 
-                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff !important; padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; font-size: 0.82rem; }
-                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 4px; font-size: 0.85rem; }
-                                    .instructions { font-size: 0.7rem; color: #475569; line-height: 1.35; border-top: 1px solid #e2e8f0; padding-top: 6px; }
-                                    .instructions ul { padding-left: 15px; margin: 2px 0; }
-                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.75rem; font-weight: bold; border-top: 1px solid #cbd5e1; padding-top: 6px; }
+                                    .card-header {
+                                        text-align: center;
+                                        border-bottom: 2px solid #e2e8f0;
+                                        padding-bottom: 14px;
+                                        margin-bottom: 18px;
+                                        position: relative;
+                                    }
+
+                                    .card-header img.inst-logo {
+                                        width: 55px;
+                                        height: 55px;
+                                        border-radius: 50%;
+                                        object-fit: cover;
+                                        border: 2px solid #0284c7;
+                                        position: absolute;
+                                        left: 10px;
+                                        top: 5px;
+                                    }
+
+                                    .card-header h2 {
+                                        color: #0369a1;
+                                        font-size: 1.15rem;
+                                        font-weight: 800;
+                                        margin-bottom: 3px;
+                                    }
+
+                                    .card-header p {
+                                        font-size: 0.75rem;
+                                        color: #64748b;
+                                        margin: 2px 0;
+                                    }
+
+                                    .status-badge {
+                                        display: inline-block;
+                                        background: #dcfce7 !important;
+                                        color: #166534 !important;
+                                        padding: 4px 14px;
+                                        border-radius: 20px;
+                                        font-size: 0.72rem;
+                                        font-weight: 700;
+                                        margin-top: 6px;
+                                    }
+
+                                    /* World-class Center Photo Placement */
+                                    .photo-section {
+                                        text-align: center;
+                                        margin-bottom: 16px;
+                                    }
+
+                                    .candidate-photo {
+                                        width: 100px;
+                                        height: 120px;
+                                        object-fit: cover;
+                                        border-radius: 10px;
+                                        border: 3px solid #0284c7;
+                                        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+                                        background: #e2e8f0;
+                                    }
+
+                                    .info-grid-wrapper {
+                                        display: flex;
+                                        gap: 14px;
+                                        margin-bottom: 16px;
+                                    }
+
+                                    .details-box {
+                                        flex: 1;
+                                        display: grid;
+                                        grid-template-columns: 1fr 1fr;
+                                        gap: 10px;
+                                        background: #f8fafc !important;
+                                        border: 1px solid #e2e8f0;
+                                        border-radius: 12px;
+                                        padding: 14px;
+                                        font-size: 0.85rem;
+                                    }
+
+                                    .details-box div span {
+                                        font-size: 0.72rem;
+                                        color: #64748b;
+                                        text-transform: uppercase;
+                                        font-weight: 700;
+                                        display: block;
+                                        margin-bottom: 2px;
+                                    }
+
+                                    .details-box div strong {
+                                        color: #1e293b;
+                                        font-size: 0.9rem;
+                                    }
+
+                                    .qr-box {
+                                        width: 120px;
+                                        background: #f8fafc !important;
+                                        border: 1px solid #e2e8f0;
+                                        border-radius: 12px;
+                                        padding: 10px;
+                                        text-align: center;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
+
+                                    .qr-box img {
+                                        width: 90px;
+                                        height: 90px;
+                                        display: block;
+                                    }
+
+                                    .qr-box span {
+                                        font-size: 0.58rem;
+                                        font-weight: 800;
+                                        color: #64748b;
+                                        margin-top: 4px;
+                                        letter-spacing: 0.5px;
+                                    }
+
+                                    .exam-schedule-box {
+                                        background: #f0f9ff !important;
+                                        border: 2px dashed #0284c7;
+                                        border-radius: 12px;
+                                        padding: 12px 16px;
+                                        margin-bottom: 16px;
+                                        font-size: 0.85rem;
+                                    }
+
+                                    .exam-schedule-box h4 {
+                                        color: #0369a1;
+                                        font-size: 0.9rem;
+                                        margin-bottom: 6px;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 6px;
+                                    }
+
+                                    .instructions-box {
+                                        font-size: 0.73rem;
+                                        color: #475569;
+                                        line-height: 1.4;
+                                        border-top: 1px solid #e2e8f0;
+                                        padding-top: 10px;
+                                        margin-bottom: 20px;
+                                    }
+
+                                    .instructions-box ul {
+                                        padding-left: 16px;
+                                        margin-top: 4px;
+                                    }
+
+                                    .card-footer {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: flex-end;
+                                        border-top: 2px solid #e2e8f0;
+                                        padding-top: 12px;
+                                        font-size: 0.78rem;
+                                        font-weight: 700;
+                                        color: #334155;
+                                    }
+
+                                    .signature-line {
+                                        border-top: 1.5px solid #1e293b;
+                                        width: 150px;
+                                        text-align: center;
+                                        padding-top: 4px;
+                                        font-size: 0.72rem;
+                                        color: #64748b;
+                                    }
 
                                     @media print {
-                                        body { border: none; padding: 5px; }
+                                        body { padding: 0; background: #fff; }
+                                        .card-container { border: 2px solid #000; box-shadow: none; margin: 0; max-width: 100%; }
                                     }
                                 </style>
                             </head>
                             <body>
-                                <div class="header">
-                                    <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
-                                    <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
-                                    <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan | Helpline: 0309-1965700</p>
-                                    <p>Official Entry Test Admit Card — BSN 1st Semester (Session 2026–27)</p>
-                                    <div class="badge">Fee Verified & Eligible for Test ✔</div>
-                                </div>
-
-                                <div class="candidate-top-center">
-                                    <img class="candidate-img" id="printPhoto" src="${data.photo || 'https://via.placeholder.com/95x115?text=Photo'}" alt="Candidate Photo">
-                                </div>
-
-                                <div class="card-main-layout">
-                                    <div class="details-grid">
-                                        <div><strong>Candidate Name:</strong><br>${data.name}</div>
-                                        <div><strong>Father's Name:</strong><br>${data.father}</div>
-                                        <div><strong>CNIC / B-Form:</strong><br>${data.cnic}</div>
-                                        <div><strong>Phone Number:</strong><br>${data.phone}</div>
+                                <div class="card-container">
+                                    <div class="card-header">
+                                        <img class="inst-logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
+                                        <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
+                                        <p>Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan | Helpline: 0309-1965700</p>
+                                        <p><strong>Official Entry Test Admit Card — BSN 1st Semester (Session 2026–27)</strong></p>
+                                        <div class="status-badge">Fee Verified & Eligible for Test ✔</div>
                                     </div>
-                                    <div class="qr-container">
-                                        <img id="printQr" src="${qrCodeUrl}" alt="Verification QR">
-                                        <span>SCAN TO VERIFY</span>
+
+                                    <!-- Candidate Photo Centered Pro-Layout -->
+                                    <div class="photo-section">
+                                        <img class="candidate-photo" id="printPhoto" src="${data.photo || 'https://via.placeholder.com/100x120?text=Photo'}" alt="Candidate Photo">
                                     </div>
-                                </div>
 
-                                <div class="exam-box">
-                                    <h4><i class="fa-solid fa-clipboard-question"></i> Entry Test Schedule & Venue Details</h4>
-                                    <p><strong>Test Date:</strong> Sunday, 18 October 2026 | <strong>Timing:</strong> 10:00 AM – 12:00 PM</p>
-                                    <p><strong>Exam Centre / Venue:</strong> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
-                                </div>
+                                    <!-- Details & QR Layout Row -->
+                                    <div class="info-grid-wrapper">
+                                        <div class="details-box">
+                                            <div>
+                                                <span>Candidate Name</span>
+                                                <strong>${data.name}</strong>
+                                            </div>
+                                            <div>
+                                                <span>Father's Name</span>
+                                                <strong>${data.father}</strong>
+                                            </div>
+                                            <div>
+                                                <span>CNIC / B-Form</span>
+                                                <strong>${data.cnic}</strong>
+                                            </div>
+                                            <div>
+                                                <span>Phone Number</span>
+                                                <strong>${data.phone}</strong>
+                                            </div>
+                                        </div>
 
-                                <div class="instructions">
-                                    <strong>Important Instructions for Candidates:</strong>
-                                    <ul>
-                                        <li>Bring your original CNIC or B-Form along with this printed Admit Card.</li>
-                                        <li>Mobile phones, smartwatches, and electronic devices are strictly prohibited in the exam hall.</li>
-                                        <li>Candidates must report to the examination center 30 minutes before test timing.</li>
-                                    </ul>
-                                </div>
+                                        <div class="qr-box">
+                                            <img id="printQr" src="${qrCodeUrl}" alt="Verification QR">
+                                            <span>SCAN TO VERIFY</span>
+                                        </div>
+                                    </div>
 
-                                <div class="footer-sign">
-                                    <div>Address: M.A Jinnah Rd, Multan</div>
-                                    <div>Admissions Office, NLIN</div>
+                                    <!-- Exam Schedule Box -->
+                                    <div class="exam-schedule-box">
+                                        <h4><i class="fa-solid fa-calendar-check"></i> Examination Center & Timing Details</h4>
+                                        <p style="margin-bottom: 3px;"><strong>Test Date & Time:</strong> Sunday, 18 October 2026 | 10:00 AM – 12:00 PM</p>
+                                        <p><strong>Exam Venue:</strong> New Life Institute of Nursing, M.A Jinnah Rd, Multan</p>
+                                    </div>
+
+                                    <!-- Important Guidelines -->
+                                    <div class="instructions-box">
+                                        <strong>Important Examination Regulations:</strong>
+                                        <ul>
+                                            <li>Candidates must bring their original CNIC / B-Form and this printed Admit Card to enter the examination hall.</li>
+                                            <li>Mobile phones, calculators, smartwatches, and electronic gadgets are strictly banned.</li>
+                                            <li>Reporting Time: Please arrive at the test center 30 minutes before start time.</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Footer Signatures -->
+                                    <div class="card-footer">
+                                        <div>
+                                            <p style="font-size:0.72rem; color:#64748b; margin-bottom:2px;">Issued By:</p>
+                                            <span>Admissions Committee, NLIN</span>
+                                        </div>
+                                        <div class="signature-line">
+                                             Authorized Signature & Stamp
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <script>
-                                    // Wait for both candidate image and QR code to fully load before triggering print/PDF
                                     window.onload = function() {
                                         const img1 = document.getElementById('printPhoto');
                                         const img2 = document.getElementById('printQr');
