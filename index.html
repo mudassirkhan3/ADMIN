@@ -27,7 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 12px;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -43,11 +43,11 @@
 
         .portal-wrapper {
             width: 100%;
-            max-width: 780px;
+            max-width: 800px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -60,7 +60,7 @@
         .portal-header {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
-            padding: 22px 14px;
+            padding: 26px 16px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -72,7 +72,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
             background-size: cover;
-            opacity: 0.18;
+            opacity: 0.15;
             z-index: 1;
         }
 
@@ -80,155 +80,155 @@
 
         .header-admin-btn {
             position: absolute;
-            top: 10px; right: 10px;
+            top: 12px; right: 12px;
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 5px 10px; border-radius: 20px;
-            font-size: 0.68rem; font-weight: 700; cursor: pointer;
-            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 4px; z-index: 10;
+            padding: 6px 12px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; cursor: pointer;
+            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 5px; z-index: 10;
         }
 
         .college-logo {
-            width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
-            border: 2.5px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-bottom: 6px;
+            width: 58px; height: 58px; border-radius: 50%; object-fit: cover;
+            border: 2.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25); margin-bottom: 8px;
         }
-
-        .portal-header h1 { font-size: 1.15rem; font-weight: 800; margin-bottom: 3px; line-height: 1.3; }
-        .portal-header p { font-size: 0.75rem; opacity: 0.95; font-weight: 500; }
 
         .institute-badge {
-            display: inline-block; background: rgba(255, 255, 255, 0.2);
-            padding: 3px 10px; border-radius: 30px; font-size: 0.62rem;
-            font-weight: 700; text-transform: uppercase; margin-bottom: 5px; backdrop-filter: blur(5px);
+            display: inline-block; background: rgba(255, 255, 255, 0.22);
+            padding: 4px 12px; border-radius: 30px; font-size: 0.65rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; backdrop-filter: blur(5px);
         }
 
+        .portal-header h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.2px; }
+        .portal-header p { font-size: 0.78rem; opacity: 0.95; font-weight: 600; letter-spacing: 0.2px; }
+
         .header-meta-row {
-            display: flex; gap: 6px; justify-content: center; align-items: center; margin-top: 6px; flex-wrap: wrap;
+            display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;
         }
 
         .header-pill {
-            font-size: 0.68rem; background: rgba(0, 0, 0, 0.2);
-            padding: 3px 10px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
+            font-size: 0.7rem; background: rgba(0, 0, 0, 0.22);
+            padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
         }
 
         .deadline-banner {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border: 1px solid #f59e0b;
             color: #b45309;
-            padding: 10px 14px;
-            border-radius: 10px;
-            margin-bottom: 14px;
+            padding: 11px 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             gap: 8px;
         }
-        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 5px; }
-        .countdown-timer { background: #b45309; color: #fff; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.78rem; }
+        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .countdown-timer { background: #b45309; color: #fff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8rem; }
 
         .nav-tabs {
-            display: flex; background: #e2e8f0; padding: 3px; gap: 3px; border-bottom: 1px solid var(--border-color);
+            display: flex; background: #e2e8f0; padding: 4px; gap: 4px; border-bottom: 1px solid var(--border-color);
         }
 
         .tab-btn {
-            flex: 1; background: transparent; border: none; padding: 10px 6px; font-size: 0.76rem;
-            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 6px;
-            transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 4px;
+            flex: 1; background: transparent; border: none; padding: 11px 8px; font-size: 0.78rem;
+            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 8px;
+            transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 5px;
         }
 
-        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
 
-        .portal-body { padding: 16px 12px; }
+        .portal-body { padding: 20px 16px; }
 
         .section-view { display: none; }
         .section-view.active { display: block; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .form-group-pro { display: flex; flex-direction: column; gap: 5px; }
+        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .form-group-pro { display: flex; flex-direction: column; gap: 6px; }
         .form-group-pro.full-width { grid-column: 1 / -1; }
 
         .form-group-pro label {
-            font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 5px;
+            font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;
         }
         .form-group-pro label i { color: var(--primary); }
 
         .form-group-pro input, .form-group-pro select {
-            width: 100%; padding: 11px 12px; border-radius: 10px; border: 1.5px solid var(--border-color);
+            width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
             background: var(--bg-main); color: var(--text-main); font-size: 16px; font-family: inherit; outline: none; transition: 0.3s;
         }
-        .form-group-pro input[type="file"] { padding: 7px; cursor: pointer; font-size: 0.8rem; }
+        .form-group-pro input[type="file"] { padding: 8px; cursor: pointer; font-size: 0.82rem; }
         .form-group-pro input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         .terms-container {
             background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 10px;
-            padding: 10px; max-height: 80px; overflow-y: auto; font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;
+            padding: 12px; max-height: 90px; overflow-y: auto; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
         }
 
         .agreement-box {
-            display: flex; align-items: flex-start; gap: 8px; font-size: 0.76rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 5px;
+            display: flex; align-items: flex-start; gap: 8px; font-size: 0.78rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 6px;
         }
-        .agreement-box input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
+        .agreement-box input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
 
         .submit-btn-pro, .track-btn, .pdf-btn {
             grid-column: 1 / -1; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: #fff; border: none; padding: 13px; border-radius: 10px; font-size: 0.9rem; font-weight: 700;
-            cursor: pointer; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.2); display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 4px; width: 100%;
+            color: #fff; border: none; padding: 14px; border-radius: 10px; font-size: 0.92rem; font-weight: 700;
+            cursor: pointer; box-shadow: 0 6px 18px rgba(2, 132, 199, 0.22); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; width: 100%;
         }
-        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 6px 16px rgba(16, 185, 129, 0.2); margin-top: 8px; }
+        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 6px 18px rgba(16, 185, 129, 0.22); margin-top: 10px; }
 
-        .success-overlay { display: none; text-align: center; padding: 20px 10px; }
-        .success-overlay i { font-size: 3rem; color: #10b981; margin-bottom: 12px; }
-        .success-overlay h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
+        .success-overlay { display: none; text-align: center; padding: 24px 12px; }
+        .success-overlay i { font-size: 3.2rem; color: #10b981; margin-bottom: 14px; }
+        .success-overlay h2 { font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
 
-        .tracker-box { text-align: center; padding: 6px 2px; }
-        .tracker-box h3 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 5px; font-weight: 800; }
-        .tracker-box p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.4; }
+        .tracker-box { text-align: center; padding: 8px 4px; }
+        .tracker-box h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
+        .tracker-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
 
         .result-box {
-            margin-top: 16px; background: var(--bg-main); border: 1.5px solid var(--border-color);
-            border-radius: 10px; padding: 14px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.85rem; line-height: 1.5;
+            margin-top: 18px; background: var(--bg-main); border: 1.5px solid var(--border-color);
+            border-radius: 12px; padding: 16px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.88rem; line-height: 1.6;
         }
-        .result-box h4 { color: var(--primary); margin-bottom: 6px; font-weight: 700; }
+        .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
 
         /* Modal Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 12px;
+            backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 14px;
         }
         .modal-card {
-            background: #ffffff; width: 100%; max-width: 460px; border-radius: 16px; padding: 22px 18px;
+            background: #ffffff; width: 100%; max-width: 480px; border-radius: 18px; padding: 24px 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); text-align: left;
         }
-        .modal-card h3 { color: var(--text-main); font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; display: flex; gap: 8px; align-items: center; }
+        .modal-card h3 { color: var(--text-main); font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; display: flex; gap: 8px; align-items: center; }
         .modal-card h3 i { color: var(--primary); }
-        .modal-card ul { list-style: none; padding: 0; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
-        .modal-card ul li { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 6px; line-height: 1.35; }
+        .modal-card ul { list-style: none; padding: 0; margin-bottom: 18px; display: flex; flex-direction: column; gap: 10px; }
+        .modal-card ul li { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.4; }
         .modal-card ul li i { color: #10b981; margin-top: 2px; flex-shrink: 0; }
-        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 11px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.88rem; }
+        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
 
         .admin-stat-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0;
         }
         .admin-stat-box {
-            background: var(--bg-main); border: 1px solid var(--border-color); padding: 8px; border-radius: 8px; text-align: center;
+            background: var(--bg-main); border: 1px solid var(--border-color); padding: 10px; border-radius: 10px; text-align: center;
         }
-        .admin-stat-box span { font-size: 1rem; font-weight: 800; color: var(--primary); }
-        .admin-stat-box p { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+        .admin-stat-box span { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
+        .admin-stat-box p { font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
 
         .portal-footer-credit {
-            text-align: center; padding: 12px; font-size: 0.68rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
+            text-align: center; padding: 14px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
         }
         .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
         @media(max-width: 580px) {
             body { padding: 4px; }
             .portal-wrapper { border-radius: 12px; }
-            .form-grid-pro { grid-template-columns: 1fr; gap: 10px; }
+            .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
             .deadline-banner { flex-direction: column; text-align: center; gap: 6px; }
         }
     </style>
@@ -254,8 +254,8 @@
             <h3><i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal</h3>
             
             <div id="adminPinSection">
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Enter Administrator Security PIN (Default: 2026):</p>
-                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:11px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:10px;">
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Enter Administrator Security PIN (Default: 2026):</p>
+                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:12px;">
                 <div style="display: flex; gap: 8px;">
                     <button class="modal-btn" onclick="verifyAdminPin()">Access Dashboard</button>
                     <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close</button>
@@ -263,7 +263,7 @@
             </div>
 
             <div id="adminDashboardContent" style="display: none;">
-                <p style="font-size: 0.78rem; color: #10b981; font-weight: 700; margin-bottom: 8px;">
+                <p style="font-size: 0.8rem; color: #10b981; font-weight: 700; margin-bottom: 10px;">
                     <i class="fa-solid fa-circle-check"></i> Connected Live to Google Sheets Database
                 </p>
                 
@@ -282,7 +282,7 @@
                     </div>
                 </div>
 
-                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px;">
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
                     Note: To review candidate photos, verify bank receipts, or change statuses, manage your Google Sheet directly.
                 </p>
                 
@@ -297,10 +297,10 @@
                 <i class="fa-solid fa-lock"></i> Admin
             </button>
 
-            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Monogram Logo" class="college-logo">
             <span class="institute-badge">New Life Institute of Nursing, Multan</span>
-            <h1>Bachelor of Science in Nursing (BSN)</h1>
-            <p>Official Admission Portal — BS NURSING (Session 2026–27)</p>
+            <h1>Bachelor of Science in Nursing (BS Nursing)</h1>
+            <p>Official Admission Portal — Session 2026–27</p>
             <div class="header-meta-row">
                 <span class="header-pill"><i class="fa-solid fa-phone"></i> 0309-1965700</span>
                 <span class="header-pill"><i class="fa-solid fa-location-dot"></i> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</span>
@@ -321,7 +321,7 @@
 
                 <div class="deadline-banner">
                     <div>
-                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1rem; color: #d97706;"></i>
+                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.1rem; color: #d97706;"></i>
                         <span>Deadline: Oct 15, 2026</span>
                     </div>
                     <div class="countdown-timer" id="countdownClock">Loading...</div>
@@ -330,8 +330,8 @@
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
                     <h2>Form Submitted Successfully!</h2>
-                    <p style="margin-top: 5px; font-size: 0.85rem;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
-                    <p style="margin-top: 3px; font-size: 0.8rem; color: var(--text-muted);">Your data is securely saved. Download your confirmation slip below.</p>
+                    <p style="margin-top: 6px; font-size: 0.88rem;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
+                    <p style="margin-top: 4px; font-size: 0.82rem; color: var(--text-muted);">Your data is securely saved. Download your confirmation slip below.</p>
                     
                     <button type="button" class="pdf-btn" onclick="downloadAdmissionSlip()">
                         <i class="fa-solid fa-download"></i> Download Official Admission Slip (PDF)
@@ -397,14 +397,14 @@
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-receipt"></i> Payment ID / Bank Slip / TID</label>
                         <input type="text" id="inpPay" name="payment_id" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
-                        <small style="color: var(--text-muted); font-size: 0.7rem;">Deposit admission fee before submitting and enter payment ID here.</small>
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission fee before submitting and enter payment ID here.</small>
                     </div>
 
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
                         <input type="file" id="photoInput" accept="image/*" required>
                         <input type="hidden" id="photoBase64" name="candidate_photo">
-                        <small style="color: var(--text-muted); font-size: 0.7rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
+                        <small style="color: var(--text-muted); font-size: 0.72rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
                     </div>
 
                     <div class="form-group-pro full-width">
@@ -435,7 +435,7 @@
                     <h3>Track Admission & Fee Status</h3>
                     <p>Enter your CNIC or Phone Number to check your committee review and fee verification status instantly.</p>
 
-                    <div class="form-group-pro" style="margin-bottom: 12px; text-align: left;">
+                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
                         <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
@@ -447,7 +447,7 @@
                     <div class="result-box" id="resultBox">
                         <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
                         <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
-                        <p><strong>Program:</strong> BS NURSING / Session 2026–27</p>
+                        <p><strong>Program:</strong> BS Nursing / Session 2026–27</p>
                         <p><strong>Admission Status:</strong> <span id="resStatus" style="color: #0284c7; font-weight: 700;">-</span></p>
                         <p><strong>Fee Status:</strong> <span id="resPayStatus" style="font-weight: 700;">-</span></p>
                     </div>
@@ -460,7 +460,7 @@
                     <h3>Download Entry Test Admit Card</h3>
                     <p>Enter your CNIC or Phone Number to generate your official exam admit card (Available only after fee verification).</p>
 
-                    <div class="form-group-pro" style="margin-bottom: 12px; text-align: left;">
+                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
                         <input type="text" id="admitQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
@@ -611,8 +611,9 @@
                     <style>
                         body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 20px; color: #1e293b; max-width: 600px; margin: auto; border: 2px solid #0284c7; border-radius: 12px; }
                         .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 15px; }
-                        .header img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 5px; }
-                        .header h2 { color: #0284c7; margin: 5px 0; font-size: 1.1rem; }
+                        .header img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 6px; }
+                        .header h2 { color: #0284c7; margin: 4px 0; font-size: 1.1rem; font-weight: 800; }
+                        .header p { font-size: 0.75rem; color: #64748b; }
                         .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 5px; }
                         .footer { margin-top: 20px; text-align: center; font-size: 0.7rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 8px; }
                         .badge { background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 8px; font-size: 0.75rem; }
@@ -624,7 +625,7 @@
                         <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
                         <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
                         <p><strong>Venue Address:</strong> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
-                        <p>BS NURSING Admission Slip (Session 2026–27)</p>
+                        <p>BS Nursing Admission Slip (Session 2026–27)</p>
                         <div class="badge">Tracking ID: ${generatedTrackingId}</div>
                     </div>
                     <div class="row"><strong>Candidate Name:</strong> <span>${name}</span></div>
@@ -752,8 +753,8 @@
                                     }
 
                                     .card-logo-monogram {
-                                        width: 50px;
-                                        height: 50px;
+                                        width: 52px;
+                                        height: 52px;
                                         border-radius: 50%;
                                         object-fit: cover;
                                         border: 2px solid #0284c7;
@@ -764,12 +765,12 @@
 
                                     .card-header h2 {
                                         color: #0f172a;
-                                        font-size: 1rem;
+                                        font-size: 1.05rem;
                                         font-weight: 800;
                                     }
 
                                     .card-header p {
-                                        font-size: 0.7rem;
+                                        font-size: 0.72rem;
                                         color: #64748b;
                                         margin-top: 2px;
                                     }
@@ -967,7 +968,7 @@
                                     </div>
 
                                     <div class="card-bottom-bar">
-                                        <div>Program: <strong>BS NURSING</strong></div>
+                                        <div>Program: <strong>BS Nursing</strong></div>
                                         <div>Issued by: <strong>Admissions Office, NLIN</strong></div>
                                     </div>
                                 </div>
