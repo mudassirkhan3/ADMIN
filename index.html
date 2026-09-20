@@ -19,7 +19,7 @@
             --border-color: #e2e8f0;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -27,7 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 8px;
         }
 
         .portal-wrapper {
@@ -35,7 +35,7 @@
             max-width: 780px;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -49,7 +49,7 @@
         .portal-header {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: #fff;
-            padding: 26px 20px;
+            padding: 22px 14px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -62,168 +62,164 @@
             background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
             background-size: cover;
             opacity: 0.18;
-            animation: bgZoomPulse 12s infinite alternate ease-in-out;
             z-index: 1;
-        }
-
-        @keyframes bgZoomPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
         }
 
         .portal-header * { position: relative; z-index: 2; }
 
         .header-admin-btn {
             position: absolute;
-            top: 14px; right: 14px;
+            top: 10px; right: 10px;
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 6px 12px; border-radius: 20px;
-            font-size: 0.72rem; font-weight: 700; cursor: pointer;
-            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 5px; transition: 0.2s; z-index: 10;
+            padding: 5px 10px; border-radius: 20px;
+            font-size: 0.68rem; font-weight: 700; cursor: pointer;
+            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 4px; z-index: 10;
         }
-        .header-admin-btn:hover { background: rgba(255, 255, 255, 0.35); }
 
         .college-logo {
-            width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-bottom: 8px;
+            width: 52px; height: 52px; border-radius: 50%; object-fit: cover;
+            border: 2.5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); margin-bottom: 6px;
         }
 
-        .portal-header h1 { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
-        .portal-header p { font-size: 0.8rem; opacity: 0.95; font-weight: 500; }
+        .portal-header h1 { font-size: 1.15rem; font-weight: 800; margin-bottom: 3px; line-height: 1.3; }
+        .portal-header p { font-size: 0.75rem; opacity: 0.95; font-weight: 500; }
 
         .institute-badge {
             display: inline-block; background: rgba(255, 255, 255, 0.2);
-            padding: 4px 10px; border-radius: 30px; font-size: 0.68rem;
-            font-weight: 700; text-transform: uppercase; margin-bottom: 6px; backdrop-filter: blur(5px);
+            padding: 3px 10px; border-radius: 30px; font-size: 0.62rem;
+            font-weight: 700; text-transform: uppercase; margin-bottom: 5px; backdrop-filter: blur(5px);
         }
 
         .header-meta-row {
-            display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;
+            display: flex; gap: 6px; justify-content: center; align-items: center; margin-top: 6px; flex-wrap: wrap;
         }
 
         .header-pill {
-            font-size: 0.73rem; background: rgba(0, 0, 0, 0.2);
-            padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
+            font-size: 0.68rem; background: rgba(0, 0, 0, 0.2);
+            padding: 3px 10px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
         }
 
         .deadline-banner {
             background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
             border: 1px solid #f59e0b;
             color: #b45309;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.82rem;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+            font-size: 0.78rem;
+            gap: 8px;
         }
-        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 6px; }
-        .countdown-timer { background: #b45309; color: #fff; padding: 4px 10px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 5px; }
+        .countdown-timer { background: #b45309; color: #fff; padding: 3px 8px; border-radius: 6px; font-weight: 800; font-size: 0.78rem; }
 
         .nav-tabs {
-            display: flex; background: #e2e8f0; padding: 4px; gap: 4px; border-bottom: 1px solid var(--border-color);
+            display: flex; background: #e2e8f0; padding: 3px; gap: 3px; border-bottom: 1px solid var(--border-color);
         }
 
         .tab-btn {
-            flex: 1; background: transparent; border: none; padding: 10px 8px; font-size: 0.8rem;
-            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 8px;
-            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 5px;
+            flex: 1; background: transparent; border: none; padding: 10px 6px; font-size: 0.76rem;
+            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 6px;
+            transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 4px;
         }
 
-        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 
-        .portal-body { padding: 20px 16px; }
+        .portal-body { padding: 16px 12px; }
 
         .section-view { display: none; }
         .section-view.active { display: block; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-        .form-group-pro { display: flex; flex-direction: column; gap: 6px; }
+        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .form-group-pro { display: flex; flex-direction: column; gap: 5px; }
         .form-group-pro.full-width { grid-column: 1 / -1; }
 
         .form-group-pro label {
-            font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;
+            font-size: 0.78rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 5px;
         }
         .form-group-pro label i { color: var(--primary); }
 
         .form-group-pro input, .form-group-pro select {
-            width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
+            width: 100%; padding: 11px 12px; border-radius: 10px; border: 1.5px solid var(--border-color);
             background: var(--bg-main); color: var(--text-main); font-size: 16px; font-family: inherit; outline: none; transition: 0.3s;
         }
-        .form-group-pro input[type="file"] { padding: 8px; cursor: pointer; font-size: 0.85rem; }
+        .form-group-pro input[type="file"] { padding: 7px; cursor: pointer; font-size: 0.8rem; }
         .form-group-pro input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         .terms-container {
             background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 10px;
-            padding: 12px; max-height: 90px; overflow-y: auto; font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;
+            padding: 10px; max-height: 80px; overflow-y: auto; font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;
         }
 
         .agreement-box {
-            display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 6px;
+            display: flex; align-items: flex-start; gap: 8px; font-size: 0.76rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 5px;
         }
-        .agreement-box input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
+        .agreement-box input { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
 
         .submit-btn-pro, .track-btn, .pdf-btn {
             grid-column: 1 / -1; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: #fff; border: none; padding: 14px; border-radius: 12px; font-size: 0.95rem; font-weight: 700;
-            cursor: pointer; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; width: 100%;
-            transition: 0.2s;
+            color: #fff; border: none; padding: 13px; border-radius: 10px; font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.2); display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 4px; width: 100%;
         }
-        .submit-btn-pro:active, .track-btn:active { transform: scale(0.99); }
-        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.25); margin-top: 10px; }
+        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 6px 16px rgba(16, 185, 129, 0.2); margin-top: 8px; }
 
-        .success-overlay { display: none; text-align: center; padding: 25px 15px; }
-        .success-overlay i { font-size: 3.5rem; color: #10b981; margin-bottom: 14px; }
-        .success-overlay h2 { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
+        .success-overlay { display: none; text-align: center; padding: 20px 10px; }
+        .success-overlay i { font-size: 3rem; color: #10b981; margin-bottom: 12px; }
+        .success-overlay h2 { font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; }
 
-        .tracker-box { text-align: center; padding: 10px 5px; }
-        .tracker-box h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
-        .tracker-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+        .tracker-box { text-align: center; padding: 6px 2px; }
+        .tracker-box h3 { font-size: 1.1rem; color: var(--text-main); margin-bottom: 5px; font-weight: 800; }
+        .tracker-box p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.4; }
 
         .result-box {
-            margin-top: 20px; background: var(--bg-main); border: 1.5px solid var(--border-color);
-            border-radius: 12px; padding: 16px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.88rem; line-height: 1.6;
+            margin-top: 16px; background: var(--bg-main); border: 1.5px solid var(--border-color);
+            border-radius: 10px; padding: 14px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.85rem; line-height: 1.5;
         }
-        .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+        .result-box h4 { color: var(--primary); margin-bottom: 6px; font-weight: 700; }
 
         /* Modal Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 16px;
+            backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 12px;
         }
         .modal-card {
-            background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px; padding: 28px 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); text-align: left;
+            background: #ffffff; width: 100%; max-width: 460px; border-radius: 16px; padding: 22px 18px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); text-align: left;
         }
-        .modal-card h3 { color: var(--text-main); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; display: flex; gap: 10px; align-items: center; }
+        .modal-card h3 { color: var(--text-main); font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; display: flex; gap: 8px; align-items: center; }
         .modal-card h3 i { color: var(--primary); }
-        .modal-card ul { list-style: none; padding: 0; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .modal-card ul li { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.4; }
-        .modal-card ul li i { color: #10b981; margin-top: 3px; flex-shrink: 0; }
-        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; }
+        .modal-card ul { list-style: none; padding: 0; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+        .modal-card ul li { font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 6px; line-height: 1.35; }
+        .modal-card ul li i { color: #10b981; margin-top: 2px; flex-shrink: 0; }
+        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 11px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.88rem; }
 
         .admin-stat-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0;
         }
         .admin-stat-box {
-            background: var(--bg-main); border: 1px solid var(--border-color); padding: 10px; border-radius: 10px; text-align: center;
+            background: var(--bg-main); border: 1px solid var(--border-color); padding: 8px; border-radius: 8px; text-align: center;
         }
-        .admin-stat-box span { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
-        .admin-stat-box p { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .admin-stat-box span { font-size: 1rem; font-weight: 800; color: var(--primary); }
+        .admin-stat-box p { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
 
         .portal-footer-credit {
-            text-align: center; padding: 14px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
+            text-align: center; padding: 12px; font-size: 0.68rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
         }
         .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
-        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } .deadline-banner { flex-direction: column; gap: 8px; text-align: center; } }
+        @media(max-width: 580px) {
+            body { padding: 4px; }
+            .portal-wrapper { border-radius: 12px; }
+            .form-grid-pro { grid-template-columns: 1fr; gap: 10px; }
+            .deadline-banner { flex-direction: column; text-align: center; gap: 6px; }
+        }
     </style>
 </head>
 <body>
@@ -247,16 +243,16 @@
             <h3><i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal</h3>
             
             <div id="adminPinSection">
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Enter Administrator Security PIN (Default: 2026):</p>
-                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:12px;">
-                <div style="display: flex; gap: 10px;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Enter Administrator Security PIN (Default: 2026):</p>
+                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:11px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:10px;">
+                <div style="display: flex; gap: 8px;">
                     <button class="modal-btn" onclick="verifyAdminPin()">Access Dashboard</button>
                     <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close</button>
                 </div>
             </div>
 
             <div id="adminDashboardContent" style="display: none;">
-                <p style="font-size: 0.82rem; color: #10b981; font-weight: 700; margin-bottom: 10px;">
+                <p style="font-size: 0.78rem; color: #10b981; font-weight: 700; margin-bottom: 8px;">
                     <i class="fa-solid fa-circle-check"></i> Connected Live to Google Sheets Database
                 </p>
                 
@@ -275,7 +271,7 @@
                     </div>
                 </div>
 
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px;">
+                <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 14px;">
                     Note: To review candidate photos, verify bank receipts, or change statuses, manage your Google Sheet directly.
                 </p>
                 
@@ -287,7 +283,7 @@
     <div class="portal-wrapper">
         <div class="portal-header">
             <button class="header-admin-btn" onclick="openAdminModal()">
-                <i class="fa-solid fa-lock"></i> Admin Login
+                <i class="fa-solid fa-lock"></i> Admin
             </button>
 
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo" class="college-logo">
@@ -314,17 +310,17 @@
 
                 <div class="deadline-banner">
                     <div>
-                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.1rem; color: #d97706;"></i>
-                        <span>Deadline: October 15, 2026</span>
+                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1rem; color: #d97706;"></i>
+                        <span>Deadline: Oct 15, 2026</span>
                     </div>
-                    <div class="countdown-timer" id="countdownClock">Loading Timer...</div>
+                    <div class="countdown-timer" id="countdownClock">Loading...</div>
                 </div>
                 
                 <div class="success-overlay" id="successView">
                     <i class="fa-solid fa-circle-check"></i>
-                    <h2>Admission Form Submitted Successfully!</h2>
-                    <p style="margin-top: 6px;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
-                    <p style="margin-top: 4px;">Your data has been securely saved. Download your official confirmation slip below.</p>
+                    <h2>Form Submitted Successfully!</h2>
+                    <p style="margin-top: 5px; font-size: 0.85rem;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
+                    <p style="margin-top: 3px; font-size: 0.8rem; color: var(--text-muted);">Your data is securely saved. Download your confirmation slip below.</p>
                     
                     <button type="button" class="pdf-btn" onclick="downloadAdmissionSlip()">
                         <i class="fa-solid fa-download"></i> Download Official Admission Slip (PDF)
@@ -390,14 +386,14 @@
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-receipt"></i> Payment ID / Bank Slip / TID</label>
                         <input type="text" id="inpPay" name="payment_id" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission processing fee before submitting and enter payment ID here.</small>
+                        <small style="color: var(--text-muted); font-size: 0.7rem;">Deposit admission fee before submitting and enter payment ID here.</small>
                     </div>
 
                     <div class="form-group-pro full-width">
                         <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
                         <input type="file" id="photoInput" accept="image/*" required>
                         <input type="hidden" id="photoBase64" name="candidate_photo">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
+                        <small style="color: var(--text-muted); font-size: 0.7rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
                     </div>
 
                     <div class="form-group-pro full-width">
@@ -428,9 +424,9 @@
                     <h3>Track Admission & Fee Status</h3>
                     <p>Enter your CNIC or Phone Number to check your committee review and fee verification status instantly.</p>
 
-                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
+                    <div class="form-group-pro" style="margin-bottom: 12px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
-                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1 or 03001234567">
+                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
 
                     <button type="button" id="searchBtn" class="track-btn" onclick="checkStatus()">
@@ -453,7 +449,7 @@
                     <h3>Download Entry Test Admit Card</h3>
                     <p>Enter your CNIC or Phone Number to generate your official exam admit card (Available only after fee verification).</p>
 
-                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
+                    <div class="form-group-pro" style="margin-bottom: 12px; text-align: left;">
                         <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
                         <input type="text" id="admitQuery" placeholder="e.g. 36302-1234567-1">
                     </div>
@@ -467,7 +463,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
+            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Multan
         </div>
     </div>
 
@@ -477,15 +473,14 @@
             const now = new Date().getTime();
             const distance = deadline - now;
             if (distance < 0) {
-                document.getElementById('countdownClock').innerText = "ADMISSIONS CLOSED";
+                document.getElementById('countdownClock').innerText = "CLOSED";
                 clearInterval(timerInterval);
                 return;
             }
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById('countdownClock').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            document.getElementById('countdownClock').innerText = `${days}d ${hours}h ${minutes}m`;
         }, 1000);
 
         function closeModal() { document.getElementById('instructionModal').style.display = 'none'; }
@@ -551,7 +546,7 @@
             }
         });
 
-        // Your exact new Web App URL
+        // Your Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
         
         const form = document.getElementById('admissionForm');
@@ -592,15 +587,13 @@
                 <head>
                     <title>Admission Slip - ${generatedTrackingId}</title>
                     <style>
-                        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 30px; color: #1e293b; max-width: 600px; margin: auto; border: 2px solid #0284c7; border-radius: 12px; }
-                        .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 20px; }
-                        .header h2 { color: #0284c7; margin: 5px 0; font-size: 1.2rem; }
-                        .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
-                        .footer { margin-top: 30px; text-align: center; font-size: 0.75rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-                        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px; }
-                        @media print {
-                            body { border: none; padding: 10px; }
-                        }
+                        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 20px; color: #1e293b; max-width: 600px; margin: auto; border: 2px solid #0284c7; border-radius: 12px; }
+                        .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 15px; }
+                        .header h2 { color: #0284c7; margin: 5px 0; font-size: 1.1rem; }
+                        .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 5px; }
+                        .footer { margin-top: 20px; text-align: center; font-size: 0.7rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 8px; }
+                        .badge { background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 8px; font-size: 0.75rem; }
+                        @media print { body { border: none; padding: 5px; } }
                     </style>
                 </head>
                 <body>
@@ -615,15 +608,13 @@
                     <div class="row"><strong>CNIC / B-Form:</strong> <span>${cnic}</span></div>
                     <div class="row"><strong>Phone Number:</strong> <span>${phone}</span></div>
                     <div class="row"><strong>Payment ID / TID:</strong> <span>${payRef}</span></div>
-                    <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review by Committee</span></div>
+                    <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review</span></div>
                     <div class="footer">
-                        <p>This is a computer-generated official confirmation slip. Please bring this token along with your original documents during the interview stage.</p>
+                        <p>Computer-generated confirmation slip. Bring this during the interview stage.</p>
                         <p>Helpline: 0309-1965700</p>
                     </div>
                     <script>
-                        window.onload = function() {
-                            setTimeout(function() { window.print(); }, 300);
-                        };
+                        window.onload = function() { setTimeout(function() { window.print(); }, 300); };
                     <\/script>
                 </body>
                 </html>
@@ -641,7 +632,7 @@
                 return;
             }
 
-            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking Database...';
+            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
             searchBtn.disabled = true;
             resultBox.style.display = 'none';
 
@@ -650,7 +641,6 @@
                 .then(data => {
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
-                    console.log("Status API Response:", data);
 
                     if(data.status === 'success') {
                         document.getElementById('resName').innerText = data.name;
@@ -669,8 +659,7 @@
                 .catch(error => {
                     searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
                     searchBtn.disabled = false;
-                    console.error("Status API Error:", error);
-                    alert('Error connecting to institutional database.');
+                    alert('Error connecting to database.');
                 });
         }
 
@@ -683,7 +672,7 @@
                 return;
             }
 
-            admitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying Eligibility...';
+            admitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
             admitBtn.disabled = true;
 
             fetch(scriptURL + '?q=' + encodeURIComponent(query))
@@ -691,13 +680,12 @@
                 .then(data => {
                     admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
                     admitBtn.disabled = false;
-                    console.log("Admit Card API Response:", data);
 
                     if(data.status === 'success') {
                         const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
                         
                         if(!isFeeVerified) {
-                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once your Payment is "Verified", you can download your admit card.');
+                            alert('⚠️ Admit Card Locked: Your fee payment status is currently "' + data.payStatus + '". Once your Payment is "Verified", you can download your admit card.');
                             return;
                         }
 
@@ -716,51 +704,37 @@
                                         font-family: 'Plus Jakarta Sans', Arial, sans-serif;
                                         background: #f1f5f9;
                                         color: #1e293b;
-                                        padding: 24px;
+                                        padding: 16px;
                                         margin: 0;
                                         -webkit-print-color-adjust: exact;
                                         print-color-adjust: exact;
                                     }
 
                                     .card-container {
-                                        max-width: 650px;
+                                        max-width: 620px;
                                         margin: auto;
                                         background: #ffffff;
-                                        border-radius: 20px;
-                                        padding: 30px;
-                                        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-                                        border-top: 6px solid #0284c7;
-                                        position: relative;
+                                        border-radius: 16px;
+                                        padding: 20px;
+                                        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+                                        border-top: 5px solid #0284c7;
                                     }
 
                                     .card-header {
                                         text-align: center;
                                         border-bottom: 2px solid #f1f5f9;
-                                        padding-bottom: 16px;
-                                        margin-bottom: 20px;
-                                        position: relative;
-                                    }
-
-                                    .card-header img.inst-logo {
-                                        width: 50px;
-                                        height: 50px;
-                                        border-radius: 50%;
-                                        object-fit: cover;
-                                        border: 2px solid #0284c7;
-                                        position: absolute;
-                                        left: 0;
-                                        top: 2px;
+                                        padding-bottom: 12px;
+                                        margin-bottom: 15px;
                                     }
 
                                     .card-header h2 {
                                         color: #0f172a;
-                                        font-size: 1.1rem;
+                                        font-size: 1rem;
                                         font-weight: 800;
-                                        letter-spacing: -0.3px;
                                     }
 
                                     .card-header p {
-                                        font-size: 0.73rem;
+                                        font-size: 0.7rem;
                                         color: #64748b;
                                         margin-top: 2px;
                                     }
@@ -768,131 +742,131 @@
                                     .verified-pill {
                                         display: inline-flex;
                                         align-items: center;
-                                        gap: 5px;
+                                        gap: 4px;
                                         background: #dcfce7 !important;
                                         color: #166534 !important;
-                                        padding: 4px 14px;
-                                        border-radius: 30px;
-                                        font-size: 0.72rem;
+                                        padding: 3px 12px;
+                                        border-radius: 20px;
+                                        font-size: 0.68rem;
                                         font-weight: 700;
-                                        margin-top: 8px;
+                                        margin-top: 6px;
                                     }
 
                                     .candidate-spot {
                                         text-align: center;
-                                        margin-bottom: 18px;
+                                        margin-bottom: 14px;
                                     }
 
                                     .candidate-photo {
-                                        width: 100px;
-                                        height: 120px;
+                                        width: 90px;
+                                        height: 110px;
                                         object-fit: cover;
-                                        border-radius: 12px;
-                                        border: 3px solid #0284c7;
-                                        box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
+                                        border-radius: 10px;
+                                        border: 2.5px solid #0284c7;
                                         background: #f1f5f9;
+                                        display: inline-block;
                                     }
 
                                     .main-content-row {
                                         display: flex;
-                                        gap: 14px;
-                                        margin-bottom: 18px;
+                                        flex-wrap: wrap;
+                                        gap: 10px;
+                                        margin-bottom: 14px;
+                                        align-items: stretch;
                                     }
 
                                     .data-table-box {
                                         flex: 1;
+                                        min-width: 250px;
                                         display: grid;
                                         grid-template-columns: 1fr 1fr;
-                                        gap: 12px;
+                                        gap: 10px;
                                         background: #f8fafc !important;
                                         border: 1px solid #e2e8f0;
-                                        border-radius: 14px;
-                                        padding: 16px;
+                                        border-radius: 12px;
+                                        padding: 12px;
                                     }
 
                                     .data-item span {
-                                        font-size: 0.68rem;
+                                        font-size: 0.64rem;
                                         color: #64748b;
                                         text-transform: uppercase;
                                         font-weight: 700;
                                         display: block;
-                                        margin-bottom: 2px;
-                                        letter-spacing: 0.4px;
+                                        margin-bottom: 1px;
                                     }
 
                                     .data-item strong {
                                         color: #0f172a;
-                                        font-size: 0.88rem;
+                                        font-size: 0.82rem;
                                         font-weight: 700;
+                                        word-break: break-all;
                                     }
 
                                     .qr-badge-box {
-                                        width: 115px;
+                                        width: 105px;
                                         background: #f8fafc !important;
                                         border: 1px solid #e2e8f0;
-                                        border-radius: 14px;
-                                        padding: 10px;
+                                        border-radius: 12px;
+                                        padding: 8px;
                                         text-align: center;
                                         display: flex;
                                         flex-direction: column;
                                         justify-content: center;
                                         align-items: center;
+                                        margin: auto;
                                     }
 
                                     .qr-badge-box img {
-                                        width: 82px;
-                                        height: 82px;
+                                        width: 75px;
+                                        height: 75px;
                                         display: block;
+                                        max-width: 100%;
                                     }
 
                                     .qr-badge-box span {
-                                        font-size: 0.55rem;
+                                        font-size: 0.52rem;
                                         font-weight: 800;
                                         color: #64748b;
-                                        margin-top: 4px;
-                                        letter-spacing: 0.5px;
+                                        margin-top: 3px;
                                     }
 
                                     .exam-info-card {
                                         background: #eff6ff !important;
                                         border: 1.5px solid #bfdbfe;
-                                        border-radius: 14px;
-                                        padding: 12px 16px;
-                                        margin-bottom: 16px;
-                                        font-size: 0.82rem;
+                                        border-radius: 12px;
+                                        padding: 10px 14px;
+                                        margin-bottom: 12px;
+                                        font-size: 0.78rem;
                                     }
 
                                     .exam-info-card h4 {
                                         color: #1e40af;
-                                        font-size: 0.88rem;
-                                        margin-bottom: 4px;
+                                        font-size: 0.82rem;
+                                        margin-bottom: 3px;
                                         font-weight: 700;
-                                        display: flex;
-                                        align-items: center;
-                                        gap: 6px;
                                     }
 
                                     .guidelines-box {
-                                        font-size: 0.72rem;
+                                        font-size: 0.68rem;
                                         color: #475569;
-                                        line-height: 1.45;
+                                        line-height: 1.4;
                                         border-top: 1px solid #f1f5f9;
-                                        padding-top: 12px;
+                                        padding-top: 10px;
                                     }
 
                                     .guidelines-box ul {
-                                        padding-left: 15px;
-                                        margin-top: 4px;
+                                        padding-left: 14px;
+                                        margin-top: 3px;
                                     }
 
                                     .card-bottom-bar {
-                                        margin-top: 20px;
-                                        border-top: 1.5px solid #e2e8f0;
-                                        padding-top: 12px;
+                                        margin-top: 14px;
+                                        border-top: 1px solid #e2e8f0;
+                                        padding-top: 10px;
                                         display: flex;
                                         justify-content: space-between;
-                                        align-items: center;
-                                        font-size: 0.72rem;
+                                        font-size: 0.68rem;
                                         color: #64748b;
                                         font-weight: 600;
                                     }
@@ -906,14 +880,13 @@
                             <body>
                                 <div class="card-container">
                                     <div class="card-header">
-                                        <img class="inst-logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
                                         <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
-                                        <p>M.A Jinnah Rd, Near (PSO Ibrahim) Pump, Multan | Helpline: 0309-1965700</p>
+                                        <p>M.A Jinnah Rd, Near (PSO Ibrahim) Pump | Helpline: 0309-1965700</p>
                                         <div class="verified-pill">Official Entry Test Admit Card (2026–27) ✔</div>
                                     </div>
 
                                     <div class="candidate-spot">
-                                        <img class="candidate-photo" id="printPhoto" src="${data.photo || 'https://via.placeholder.com/100x120?text=Photo'}" alt="Candidate Photo">
+                                        <img class="candidate-photo" id="printPhoto" src="${data.photo || 'https://via.placeholder.com/90x110?text=Photo'}" alt="Candidate Photo">
                                     </div>
 
                                     <div class="main-content-row">
@@ -944,21 +917,21 @@
 
                                     <div class="exam-info-card">
                                         <h4><i class="fa-solid fa-clock"></i> Test Schedule & Location</h4>
-                                        <p style="margin-bottom: 2px;"><strong>Date & Time:</strong> Sunday, 18 October 2026 | 10:00 AM – 12:00 PM</p>
-                                        <p><strong>Venue:</strong> New Life Institute of Nursing Multan Campus</p>
+                                        <p style="margin-bottom: 2px;"><strong>Date & Time:</strong> Sunday, 18 Oct 2026 | 10:00 AM – 12:00 PM</p>
+                                        <p><strong>Venue:</strong> New Life Institute of Nursing Campus, Multan</p>
                                     </div>
 
                                     <div class="guidelines-box">
                                         <strong>Important Instructions:</strong>
                                         <ul>
-                                            <li>Bring your original CNIC or B-Form along with this printed admit card.</li>
-                                            <li>Electronic devices, mobile phones, and calculators are strictly prohibited.</li>
-                                            <li>Report to the test center at least 30 minutes before commencement.</li>
+                                            <li>Bring original CNIC/B-Form along with this printed admit card.</li>
+                                            <li>Mobile phones and electronic gadgets are strictly prohibited.</li>
+                                            <li>Report 30 minutes before test timing.</li>
                                         </ul>
                                     </div>
 
                                     <div class="card-bottom-bar">
-                                        <div>Program: <strong>BS  NURSING </strong></div>
+                                        <div>Program: <strong>BSN 1st Semester</strong></div>
                                         <div>Issued by: <strong>Admissions Office, NLIN</strong></div>
                                     </div>
                                 </div>
@@ -994,7 +967,6 @@
                 .catch(err => {
                     admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
                     admitBtn.disabled = false;
-                    console.error("Admit Card API Error:", err);
                     alert('Error connecting to institutional database.');
                 });
         }
