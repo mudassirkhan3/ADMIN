@@ -8,59 +8,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f0f9ff; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .verify-card { background: #fff; width: 100%; max-width: 480px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); padding: 24px; text-align: center; border-top: 6px solid #0284c7; overflow: hidden; position: relative; }
-        
-        .header-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 14px; }
-        .verify-card img.logo { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
-        .header-brand-text h2 { font-size: 0.95rem; color: #1e293b; margin: 0; font-weight: 800; text-align: left; }
-        .header-brand-text p { font-size: 0.68rem; color: #64748b; margin: 0; text-align: left; }
-
-        /* Centered Candidate Photo Frame */
-        .candidate-photo-container { margin: 15px 0; display: flex; flex-direction: column; align-items: center; }
-        .candidate-avatar { width: 95px; height: 115px; border-radius: 12px; object-fit: cover; border: 3px solid #0284c7; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.2); background: #e2e8f0; }
-        .candidate-tag { font-size: 0.7rem; font-weight: 700; color: #0284c7; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-        .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 30px; font-size: 0.78rem; font-weight: 700; margin-bottom: 16px; }
-        
-        .details-box { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 14px 16px; text-align: left; font-size: 0.85rem; margin-bottom: 16px; }
+        .verify-card { background: #fff; width: 100%; max-width: 480px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 24px; text-align: center; border-top: 6px solid #0284c7; }
+        .verify-card img.logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 10px; }
+        h2 { font-size: 1.1rem; color: #1e293b; margin-bottom: 4px; font-weight: 800; }
+        p.sub { font-size: 0.75rem; color: #64748b; margin-bottom: 20px; }
+        .status-badge { display: inline-block; padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; }
+        .details-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; font-size: 0.85rem; margin-bottom: 20px; }
         .details-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
         .details-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        
-        .qr-section { background: #f0f9ff; border: 1px dashed #0284c7; border-radius: 12px; padding: 10px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-        .qr-section img { width: 75px; height: 75px; border-radius: 6px; }
-        .qr-text { font-size: 0.72rem; color: #0369a1; text-align: left; font-weight: 600; line-height: 1.3; }
-
-        .footer { font-size: 0.68rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+        .footer { font-size: 0.7rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 12px; }
         .footer span { font-weight: 700; color: #0284c7; }
     </style>
 </head>
 <body>
 
     <div class="verify-card" id="cardContainer">
-        
-        <div class="header-brand">
-            <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
-            <div class="header-brand-text">
-                <h2>New Life Institute of Nursing</h2>
-                <p>Official Document Verification Portal</p>
-            </div>
-        </div>
+        <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
+        <h2>New Life Institute of Nursing, Multan</h2>
+        <p class="sub">Official Document Verification Portal</p>
 
         <div id="loadingView">
-            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: #0284c7; margin: 30px 0;"></i>
-            <p style="font-size: 0.85rem; color: #64748b;">Verifying candidate record from secure database...</p>
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: #0284c7; margin: 20px 0;"></i>
+            <p>Verifying candidate record from secure database...</p>
         </div>
 
         <div id="resultView" style="display: none;">
-            
-            <!-- Centered Candidate Profile Picture -->
-            <div class="candidate-photo-container">
-                <img id="vPhoto" class="candidate-avatar" src="https://via.placeholder.com/95x115?text=Photo" alt="Candidate Photo">
-                <span class="candidate-tag">Verified Candidate</span>
-            </div>
-
             <div id="statusBadgeContainer" class="status-badge" style="background: #dcfce7; color: #166534;">
-                <i class="fa-solid fa-circle-check"></i> AUTHENTIC ADMIT CARD RECORD
+                <i class="fa-solid fa-circle-check"></i> AUTHENTIC ADMIT CARD
             </div>
 
             <div class="details-box">
@@ -70,31 +44,23 @@
                 <div class="details-row"><strong>Admission Status:</strong> <span id="vAppStatus" style="color: #0284c7; font-weight:700;">-</span></div>
                 <div class="details-row"><strong>Fee Verification:</strong> <span id="vPayStatus" style="font-weight:700;">-</span></div>
             </div>
-
-            <!-- Mini QR Stamp Box -->
-            <div class="qr-section">
-                <div class="qr-text">
-                    <i class="fa-solid fa-shield-check" style="color: #0284c7;"></i> Secure Institutional ID<br>
-                    Verified via NLIN Database
-                </div>
-                <img id="vQrCode" src="" alt="QR Verification">
-            </div>
         </div>
 
         <div id="errorView" style="display: none;">
-            <div class="status-badge" style="background: #fee2e2; color: #991b1b; margin-top: 20px;">
+            <div class="status-badge" style="background: #fee2e2; color: #991b1b;">
                 <i class="fa-solid fa-triangle-exclamation"></i> RECORD NOT FOUND
             </div>
-            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 25px;">The scanned QR code does not match any active record in the institutional database.</p>
+            <p style="font-size: 0.82rem; color: #64748b;">The scanned QR code does not match any active record in the institutional database.</p>
         </div>
 
         <div class="footer">
-            Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan<br>
+            New Life Institute of Nursing | Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan<br>
             Developed by <span>Mudassir Khan</span>
         </div>
     </div>
 
     <script>
+        // Your exact new Web App URL
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
         
         const urlParams = new URLSearchParams(window.location.search);
@@ -115,13 +81,7 @@
                         document.getElementById('vFather').innerText = data.father || '-';
                         document.getElementById('vCnic').innerText = data.cnic || '-';
                         
-                        if(data.photo) {
-                            document.getElementById('vPhoto').src = data.photo;
-                        }
-
-                        const verificationLink = window.location.href;
-                        document.getElementById('vQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(verificationLink)}`;
-                        
+                        // Map manual status values directly from your Google Sheet
                         const appStatus = data.appStatus || 'Under Review';
                         const payStatus = data.payStatus || 'Pending Verification';
 
