@@ -137,82 +137,6 @@
 
         .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
-        /* IMPRESSIVE STYLISH MERIT LIST BANNER BUTTON */
-        .merit-banner-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-            color: #ffffff;
-            padding: 12px 20px;
-            margin: 12px 16px 0 16px;
-            border-radius: 14px;
-            text-decoration: none;
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .merit-banner-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.15), transparent);
-            transform: rotate(30deg) translateX(-100%);
-            transition: transform 0.7s ease-in-out;
-        }
-
-        .merit-banner-btn:hover::after {
-            transform: rotate(30deg) translateX(100%);
-        }
-
-        .merit-banner-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35);
-        }
-
-        .merit-content-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .merit-icon-box {
-            width: 38px; height: 38px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem;
-            backdrop-filter: blur(4px);
-        }
-
-        .merit-text h4 {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 0.3px;
-            margin-bottom: 2px;
-        }
-
-        .merit-text p {
-            font-size: 0.72rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .merit-badge-pill {
-            background: rgba(255, 255, 255, 0.25);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            backdrop-filter: blur(4px);
-        }
-
         .portal-body { padding: 20px 16px; }
 
         .section-view { display: none; }
@@ -299,7 +223,7 @@
         }
         .portal-footer-credit span { font-weight: 700; color: var(--primary); }
 
-        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } .deadline-banner { flex-direction: column; gap: 8px; text-align: center; } .merit-banner-btn { flex-direction: column; gap: 10px; text-align: center; } .merit-content-left { flex-direction: column; text-align: center; } }
+        @media(max-width: 600px) { body { padding: 6px; } .form-grid-pro { grid-template-columns: 1fr; gap: 12px; } .deadline-banner { flex-direction: column; gap: 8px; text-align: center; } }
     </style>
 </head>
 <body>
@@ -382,22 +306,6 @@
             <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Status</button>
             <button class="tab-btn" onclick="switchTab('admitCard')"><i class="fa-solid fa-id-card-clip"></i> Admit Card</button>
         </div>
-
-        <!-- STYLISH IMPRESSIVE MERIT LIST BUTTON -->
-        <a href="merit_list_2026.pdf" target="_blank" class="merit-banner-btn">
-            <div class="merit-content-left">
-                <div class="merit-icon-box">
-                    <i class="fa-solid fa-award"></i>
-                </div>
-                <div class="merit-text">
-                    <h4>Official Merit List 2026–27</h4>
-                    <p>Click here to view or download finalized selection rankings (PDF)</p>
-                </div>
-            </div>
-            <div class="merit-badge-pill">
-                <span>View List</span> <i class="fa-solid fa-arrow-right-long"></i>
-            </div>
-        </a>
 
         <div class="portal-body">
             
@@ -559,7 +467,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            Developed by <span>Mudassir Hussain Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
+            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
         </div>
     </div>
 
