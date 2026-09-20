@@ -28,6 +28,17 @@
             align-items: center;
             justify-content: center;
             padding: 8px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input, select, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         .portal-wrapper {
@@ -468,6 +479,17 @@
     </div>
 
     <script>
+        // Security Protections
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S'))) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
         const deadline = new Date('October 15, 2026 23:59:59').getTime();
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
