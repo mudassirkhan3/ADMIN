@@ -137,6 +137,21 @@
 
         .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
+        /* MERIT LIST BANNER BUTTON */
+        .merit-banner-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+            color: #ffffff; padding: 12px 20px; margin: 12px 16px 0 16px; border-radius: 14px;
+            text-decoration: none; box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+            transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .merit-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35); }
+        .merit-content-left { display: flex; align-items: center; gap: 12px; }
+        .merit-icon-box { width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .merit-text h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 2px; }
+        .merit-text p { font-size: 0.72rem; opacity: 0.9; font-weight: 500; }
+        .merit-badge-pill { background: rgba(255, 255, 255, 0.25); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+
         .portal-body { padding: 20px 16px; }
 
         .section-view { display: none; }
@@ -307,6 +322,20 @@
             <button class="tab-btn" onclick="switchTab('admitCard')"><i class="fa-solid fa-id-card-clip"></i> Admit Card</button>
         </div>
 
+        <!-- MERIT LIST BUTTON -->
+        <a href="merit_list_2026.pdf" target="_blank" class="merit-banner-btn">
+            <div class="merit-content-left">
+                <div class="merit-icon-box"><i class="fa-solid fa-award"></i></div>
+                <div class="merit-text">
+                    <h4>Official Merit List 2026–27</h4>
+                    <p>Click here to view or download finalized selection rankings (PDF)</p>
+                </div>
+            </div>
+            <div class="merit-badge-pill">
+                <span>View List</span> <i class="fa-solid fa-arrow-right-long"></i>
+            </div>
+        </a>
+
         <div class="portal-body">
             
             <!-- APPLY FORM SECTION -->
@@ -467,7 +496,7 @@
         </div>
 
         <div class="portal-footer-credit">
-            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
+            Developed by <span>Mudassir Hussain Khan</span> | New Life Institute of Nursing, Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan
         </div>
     </div>
 
@@ -690,7 +719,7 @@
                         const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
                         
                         if(!isFeeVerified) {
-                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once your Payment "Verified",so you can download your admit card.');
+                            alert('⚠️ Admit Card Locked: Your fee payment status in the database is currently "' + data.payStatus + '". Once your Payment is "Verified", you can download your admit card.');
                             return;
                         }
 
@@ -704,26 +733,29 @@
                                 <title>Entry Test Admit Card - ${data.name}</title>
                                 <style>
                                     body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 25px; color: #1e293b; max-width: 680px; margin: auto; border: 3px solid #0284c7; border-radius: 16px; background: #fff; }
-                                    .header { text-align: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; margin-bottom: 20px; }
-                                    .header img.logo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
-                                    .header h2 { color: #0284c7; margin: 4px 0 2px 0; font-size: 1.1rem; }
-                                    .header p { font-size: 0.75rem; color: #64748b; margin: 0; }
-                                    .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.72rem; display: inline-block; margin-top: 6px; }
+                                    .header { text-align: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 12px; margin-bottom: 15px; }
+                                    .header img.logo { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; }
+                                    .header h2 { color: #0284c7; margin: 4px 0 2px 0; font-size: 1.05rem; }
+                                    .header p { font-size: 0.72rem; color: #64748b; margin: 0; }
+                                    .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.7rem; display: inline-block; margin-top: 6px; }
                                     
-                                    .card-main-layout { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 20px; }
-                                    .candidate-img { width: 90px; height: 110px; border-radius: 8px; object-fit: cover; border: 2px solid #0284c7; background: #e2e8f0; }
-                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem; background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; }
-                                    .details-grid div { margin-bottom: 4px; }
-                                    
-                                    .qr-container { text-align: center; background: #f8fafc; padding: 8px; border-radius: 10px; border: 1px solid #e2e8f0; }
-                                    .qr-container img { width: 105px; height: 105px; display: block; margin: auto; }
-                                    .qr-container span { font-size: 0.6rem; color: #64748b; display: block; margin-top: 4px; font-weight: bold; }
+                                    /* Centered Candidate Photo at Top Center */
+                                    .candidate-top-center { text-align: center; margin-bottom: 15px; }
+                                    .candidate-img { width: 95px; height: 115px; border-radius: 10px; object-fit: cover; border: 3px solid #0284c7; box-shadow: 0 4px 12px rgba(2,132,199,0.25); background: #e2e8f0; }
 
-                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff; padding: 12px; border-radius: 10px; margin-bottom: 15px; font-size: 0.85rem; }
-                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 6px; font-size: 0.9rem; }
-                                    .instructions { font-size: 0.72rem; color: #475569; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 8px; }
-                                    .instructions ul { padding-left: 15px; margin: 3px 0; }
-                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 20px; font-size: 0.78rem; font-weight: bold; border-top: 1px solid #cbd5e1; padding-top: 8px; }
+                                    .card-main-layout { display: flex; justify-content: space-between; align-items: stretch; gap: 12px; margin-bottom: 15px; }
+                                    .details-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem; background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; align-content: center; }
+                                    .details-grid div { margin-bottom: 2px; }
+                                    
+                                    .qr-container { text-align: center; background: #f8fafc; padding: 8px; border-radius: 10px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 115px; }
+                                    .qr-container img { width: 85px; height: 85px; display: block; }
+                                    .qr-container span { font-size: 0.58rem; color: #64748b; display: block; margin-top: 4px; font-weight: bold; }
+
+                                    .exam-box { border: 2px dashed #0284c7; background: #f0f9ff; padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; font-size: 0.82rem; }
+                                    .exam-box h4 { color: #0369a1; margin-top: 0; margin-bottom: 4px; font-size: 0.85rem; }
+                                    .instructions { font-size: 0.7rem; color: #475569; line-height: 1.35; border-top: 1px solid #e2e8f0; padding-top: 6px; }
+                                    .instructions ul { padding-left: 15px; margin: 2px 0; }
+                                    .footer-sign { display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.75rem; font-weight: bold; border-top: 1px solid #cbd5e1; padding-top: 6px; }
                                 </style>
                             </head>
                             <body>
@@ -735,8 +767,12 @@
                                     <div class="badge">Fee Verified & Eligible for Test ✔</div>
                                 </div>
 
+                                <!-- Centered Candidate Picture at Top -->
+                                <div class="candidate-top-center">
+                                    <img class="candidate-img" src="${data.photo || 'https://via.placeholder.com/95x115?text=Photo'}" alt="Candidate Photo">
+                                </div>
+
                                 <div class="card-main-layout">
-                                    <img class="candidate-img" src="${data.photo || 'https://via.placeholder.com/90x110?text=Photo'}" alt="Candidate Photo">
                                     <div class="details-grid">
                                         <div><strong>Candidate Name:</strong><br>${data.name}</div>
                                         <div><strong>Father's Name:</strong><br>${data.father}</div>
