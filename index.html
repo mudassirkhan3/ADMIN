@@ -101,8 +101,30 @@
             font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; backdrop-filter: blur(5px);
         }
 
-        .portal-header h1 { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; letter-spacing: -0.2px; }
-        .portal-header p { font-size: 0.78rem; opacity: 0.95; font-weight: 600; letter-spacing: 0.2px; }
+        /* Prominent Institute Name Header */
+        .portal-header h1 { 
+            font-size: 1.25rem; 
+            font-weight: 800; 
+            margin-bottom: 4px; 
+            letter-spacing: -0.2px; 
+            text-transform: uppercase;
+        }
+
+        /* Subtitle Program Name */
+        .portal-header p.program-sub { 
+            font-size: 0.88rem; 
+            opacity: 0.95; 
+            font-weight: 700; 
+            letter-spacing: 0.3px; 
+            margin-bottom: 2px;
+        }
+
+        /* Session details */
+        .portal-header p.session-sub {
+            font-size: 0.76rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
 
         .header-meta-row {
             display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;
@@ -298,9 +320,15 @@
             </button>
 
             <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Monogram Logo" class="college-logo">
-            <span class="institute-badge">New Life Institute of Nursing, Multan</span>
-            <h1>Bachelor of Science in Nursing (BS Nursing)</h1>
-            <p>Official Admission Portal — Session 2026–27</p>
+            <span class="institute-badge">Official Admission Portal</span>
+            
+            <!-- Prominent Institute Name Header -->
+            <h1>New Life Institute of Nursing, Multan</h1>
+            
+            <!-- Program Subtitle -->
+            <p class="program-sub">Bachelor of Science in Nursing (BS Nursing)</p>
+            <p class="session-sub">Session 2026–27</p>
+
             <div class="header-meta-row">
                 <span class="header-pill"><i class="fa-solid fa-phone"></i> 0309-1965700</span>
                 <span class="header-pill"><i class="fa-solid fa-location-dot"></i> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</span>
