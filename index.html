@@ -1,1040 +1,2376 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+import zipfile
+import os
+
+# Create HTML, CSS, JS single page application package as a ZIP file for GitHub Pages
+html_content = """<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Official Admission Portal 2026-27 | New Life Institute of Nursing</title>
-    <link rel="icon" type="image/png" href="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Skills | Interactive Presentation (BSN 5th Semester)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0284c7;
-            --primary-dark: #0369a1;
-            --primary-glow: rgba(2, 132, 199, 0.15);
-            --bg-main: #f8fafc;
-            --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-
-        body {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        input, select, textarea {
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
-        }
-
-        .portal-wrapper {
-            width: 100%;
-            max-width: 800px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .portal-header {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: #fff;
-            padding: 26px 16px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portal-header::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://tse4.mm.bing.net/th/id/OIP.t35cCMxSjjZPXi4zFoahgQHaF9?r=0&pid=Api&h=220&P=0') no-repeat center center;
-            background-size: cover;
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .portal-header * { position: relative; z-index: 2; }
-
-        .header-admin-btn {
-            position: absolute;
-            top: 12px; right: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 6px 12px; border-radius: 20px;
-            font-size: 0.7rem; font-weight: 700; cursor: pointer;
-            backdrop-filter: blur(5px); display: flex; align-items: center; gap: 5px; z-index: 10;
-        }
-
-        .college-logo {
-            width: 58px; height: 58px; border-radius: 50%; object-fit: cover;
-            border: 2.5px solid rgba(255, 255, 255, 0.95);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25); margin-bottom: 8px;
-        }
-
-        .institute-badge {
-            display: inline-block; background: rgba(255, 255, 255, 0.22);
-            padding: 4px 12px; border-radius: 30px; font-size: 0.65rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; backdrop-filter: blur(5px);
-        }
-
-        /* Prominent Institute Name Header */
-        .portal-header h1 { 
-            font-size: 1.25rem; 
-            font-weight: 800; 
-            margin-bottom: 4px; 
-            letter-spacing: -0.2px; 
-            text-transform: uppercase;
-        }
-
-        /* Subtitle Program Name */
-        .portal-header p.program-sub { 
-            font-size: 0.88rem; 
-            opacity: 0.95; 
-            font-weight: 700; 
-            letter-spacing: 0.3px; 
-            margin-bottom: 2px;
-        }
-
-        /* Session details */
-        .portal-header p.session-sub {
-            font-size: 0.76rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .header-meta-row {
-            display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 8px; flex-wrap: wrap;
-        }
-
-        .header-pill {
-            font-size: 0.7rem; background: rgba(0, 0, 0, 0.22);
-            padding: 4px 12px; border-radius: 20px; font-weight: 600; backdrop-filter: blur(4px);
-        }
-
-        .deadline-banner {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 1px solid #f59e0b;
-            color: #b45309;
-            padding: 11px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            gap: 8px;
-        }
-        .deadline-banner div { font-weight: 700; display: flex; align-items: center; gap: 6px; }
-        .countdown-timer { background: #b45309; color: #fff; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 0.8rem; }
-
-        .nav-tabs {
-            display: flex; background: #e2e8f0; padding: 4px; gap: 4px; border-bottom: 1px solid var(--border-color);
-        }
-
-        .tab-btn {
-            flex: 1; background: transparent; border: none; padding: 11px 8px; font-size: 0.78rem;
-            font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: 8px;
-            transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 5px;
-        }
-
-        .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
-
-        .portal-body { padding: 20px 16px; }
-
-        .section-view { display: none; }
-        .section-view.active { display: block; animation: fadeIn 0.3s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .form-grid-pro { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-        .form-group-pro { display: flex; flex-direction: column; gap: 6px; }
-        .form-group-pro.full-width { grid-column: 1 / -1; }
-
-        .form-group-pro label {
-            font-size: 0.8rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px;
-        }
-        .form-group-pro label i { color: var(--primary); }
-
-        .form-group-pro input, .form-group-pro select {
-            width: 100%; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border-color);
-            background: var(--bg-main); color: var(--text-main); font-size: 16px; font-family: inherit; outline: none; transition: 0.3s;
-        }
-        .form-group-pro input[type="file"] { padding: 8px; cursor: pointer; font-size: 0.82rem; }
-        .form-group-pro input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
-
-        .terms-container {
-            background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 10px;
-            padding: 12px; max-height: 90px; overflow-y: auto; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;
-        }
-
-        .agreement-box {
-            display: flex; align-items: flex-start; gap: 8px; font-size: 0.78rem; font-weight: 600; color: var(--text-main); cursor: pointer; margin-top: 6px;
-        }
-        .agreement-box input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; margin-top: 1px; }
-
-        .submit-btn-pro, .track-btn, .pdf-btn {
-            grid-column: 1 / -1; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            color: #fff; border: none; padding: 14px; border-radius: 10px; font-size: 0.92rem; font-weight: 700;
-            cursor: pointer; box-shadow: 0 6px 18px rgba(2, 132, 199, 0.22); display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; width: 100%;
-        }
-        .pdf-btn { background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 6px 18px rgba(16, 185, 129, 0.22); margin-top: 10px; }
-
-        .success-overlay { display: none; text-align: center; padding: 24px 12px; }
-        .success-overlay i { font-size: 3.2rem; color: #10b981; margin-bottom: 14px; }
-        .success-overlay h2 { font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
-
-        .tracker-box { text-align: center; padding: 8px 4px; }
-        .tracker-box h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 6px; font-weight: 800; }
-        .tracker-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
-
-        .result-box {
-            margin-top: 18px; background: var(--bg-main); border: 1.5px solid var(--border-color);
-            border-radius: 12px; padding: 16px; text-align: left; display: none; border-left: 5px solid var(--primary); font-size: 0.88rem; line-height: 1.6;
-        }
-        .result-box h4 { color: var(--primary); margin-bottom: 8px; font-weight: 700; }
-
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 14px;
-        }
-        .modal-card {
-            background: #ffffff; width: 100%; max-width: 480px; border-radius: 18px; padding: 24px 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); text-align: left;
-        }
-        .modal-card h3 { color: var(--text-main); font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; display: flex; gap: 8px; align-items: center; }
-        .modal-card h3 i { color: var(--primary); }
-        .modal-card ul { list-style: none; padding: 0; margin-bottom: 18px; display: flex; flex-direction: column; gap: 10px; }
-        .modal-card ul li { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.4; }
-        .modal-card ul li i { color: #10b981; margin-top: 2px; flex-shrink: 0; }
-        .modal-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 12px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
-
-        .admin-stat-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0;
-        }
-        .admin-stat-box {
-            background: var(--bg-main); border: 1px solid var(--border-color); padding: 10px; border-radius: 10px; text-align: center;
-        }
-        .admin-stat-box span { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
-        .admin-stat-box p { font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
-
-        .portal-footer-credit {
-            text-align: center; padding: 14px; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-main);
-        }
-        .portal-footer-credit span { font-weight: 700; color: var(--primary); }
-
-        @media(max-width: 580px) {
-            body { padding: 4px; }
-            .portal-wrapper { border-radius: 12px; }
-            .form-grid-pro { grid-template-columns: 1fr; gap: 12px; }
-            .deadline-banner { flex-direction: column; text-align: center; gap: 6px; }
-        }
-    </style>
 </head>
 <body>
+    <!-- Background Scientific Particles Canvas -->
+    <canvas id="particleCanvas"></canvas>
 
-    <!-- INSTRUCTION POPUP MODAL -->
-    <div class="modal-overlay" id="instructionModal">
-        <div class="modal-card">
-            <h3><i class="fa-solid fa-circle-info"></i> Candidate Registration Guide</h3>
-            <ul>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Accurate Info:</strong> Fill your name, father's name, and CNIC exactly as on your Matric certificate.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Fee Payment:</strong> Deposit your admission processing fee beforehand and keep your bank receipt or payment ID ready.</li>
-                <li><i class="fa-solid fa-check-circle"></i> <strong>Official Slip & Admit Card:</strong> Download your confirmation PDF slip upon submitting, and your exam Admit Card once your fee is verified.</li>
-            </ul>
-            <button class="modal-btn" onclick="closeModal()">Proceed to Application Portal <i class="fa-solid fa-arrow-right"></i></button>
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <span class="module-badge">BSN 5th Semester | PERLs</span>
+            <span class="group-badge">Group 5</span>
         </div>
-    </div>
-
-    <!-- ADMIN DASHBOARD MODAL -->
-    <div class="modal-overlay" id="adminModal" style="display: none;">
-        <div class="modal-card">
-            <h3><i class="fa-solid fa-shield-halved"></i> Institutional Admin Portal</h3>
-            
-            <div id="adminPinSection">
-                <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Enter Administrator Security PIN (Default: 2026):</p>
-                <input type="password" id="adminPinInput" placeholder="Enter 4-digit PIN" style="width:100%; padding:12px; border-radius:10px; border:1.5px solid var(--border-color); margin-bottom:12px;">
-                <div style="display: flex; gap: 8px;">
-                    <button class="modal-btn" onclick="verifyAdminPin()">Access Dashboard</button>
-                    <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close</button>
-                </div>
-            </div>
-
-            <div id="adminDashboardContent" style="display: none;">
-                <p style="font-size: 0.8rem; color: #10b981; font-weight: 700; margin-bottom: 10px;">
-                    <i class="fa-solid fa-circle-check"></i> Connected Live to Google Sheets Database
-                </p>
-                
-                <div class="admin-stat-grid">
-                    <div class="admin-stat-box">
-                        <span id="statTotal">...</span>
-                        <p>Total Applied</p>
-                    </div>
-                    <div class="admin-stat-box">
-                        <span id="statApproved" style="color: #10b981;">...</span>
-                        <p>Approved</p>
-                    </div>
-                    <div class="admin-stat-box">
-                        <span id="statPending" style="color: #f59e0b;">...</span>
-                        <p>Under Review</p>
-                    </div>
-                </div>
-
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
-                    Note: To review candidate photos, verify bank receipts, or change statuses, manage your Google Sheet directly.
-                </p>
-                
-                <button class="modal-btn" style="background:#64748b;" onclick="document.getElementById('adminModal').style.display='none'">Close Dashboard</button>
-            </div>
+        <div class="header-right">
+            <button id="overviewBtn" class="nav-btn" title="Slide Overview"><i class="fa-solid fa-grid-2"><span>Overview</span></i></button>
+            <button id="fullscreenBtn" class="nav-btn" title="Toggle Fullscreen"><i class="fa-solid fa-expand"></i></button>
         </div>
-    </div>
+    </header>
 
-    <div class="portal-wrapper">
-        <div class="portal-header">
-            <button class="header-admin-btn" onclick="openAdminModal()">
-                <i class="fa-solid fa-lock"></i> Admin
-            </button>
-
-            <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Monogram Logo" class="college-logo">
-            <span class="institute-badge">Official Admission Portal</span>
-            
-            <!-- Prominent Institute Name Header -->
-            <h1>New Life Institute of Nursing, Multan</h1>
-            
-            <!-- Program Subtitle -->
-            <p class="program-sub">Bachelor of Science in Nursing (BS Nursing)</p>
-            <p class="session-sub">Session 2026–27</p>
-
-            <div class="header-meta-row">
-                <span class="header-pill"><i class="fa-solid fa-phone"></i> 0309-1965700</span>
-                <span class="header-pill"><i class="fa-solid fa-location-dot"></i> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</span>
-            </div>
+    <!-- Main Presentation Container -->
+    <main class="presentation-container">
+        <!-- Progress Bar -->
+        <div class="progress-track">
+            <div id="progressBar" class="progress-fill"></div>
         </div>
 
-        <!-- NAVIGATION TABS -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('apply')"><i class="fa-solid fa-file-pen"></i> Apply</button>
-            <button class="tab-btn" onclick="switchTab('track')"><i class="fa-solid fa-magnifying-glass"></i> Status</button>
-            <button class="tab-btn" onclick="switchTab('admitCard')"><i class="fa-solid fa-id-card-clip"></i> Admit Card</button>
-        </div>
-
-        <div class="portal-body">
-            
-            <!-- APPLY FORM SECTION -->
-            <div id="applySection" class="section-view active">
-
-                <div class="deadline-banner">
-                    <div>
-                        <i class="fa-solid fa-clock-rotate-left" style="font-size: 1.1rem; color: #d97706;"></i>
-                        <span>Deadline: Oct 15, 2026</span>
-                    </div>
-                    <div class="countdown-timer" id="countdownClock">Loading...</div>
-                </div>
-                
-                <div class="success-overlay" id="successView">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <h2>Form Submitted Successfully!</h2>
-                    <p style="margin-top: 6px; font-size: 0.88rem;">Tracking ID: <strong id="refIdDisplay" style="color: var(--primary);">NLIN-2027-000</strong></p>
-                    <p style="margin-top: 4px; font-size: 0.82rem; color: var(--text-muted);">Your data is securely saved. Download your confirmation slip below.</p>
+        <!-- SLIDE 1: OPENING TITLE -->
+        <section class="slide active" data-slide="1">
+            <div class="slide-content-wrapper split-layout">
+                <div class="slide-text">
+                    <div class="tag-pill animate-fade"><i class="fa-solid fa-microscope"></i> PERLs Module • Research Skills</div>
+                    <h1 class="main-title animate-slide">RESEARCH SKILLS</h1>
+                    <p class="subtitle animate-slide-delayed">Locating Credible Scientific Data & Developing a Research Proposal</p>
                     
-                    <button type="button" class="pdf-btn" onclick="downloadAdmissionSlip()">
-                        <i class="fa-solid fa-download"></i> Download Official Admission Slip (PDF)
-                    </button>
+                    <div class="metadata-card animate-fade-delayed">
+                        <div class="meta-row">
+                            <span class="meta-label">Program:</span>
+                            <span class="meta-value">BSN 5th Semester | Group 5</span>
+                        </div>
+                        <div class="meta-row presenter-row">
+                            <span class="meta-label">Presented By:</span>
+                            <div class="presenters-list">
+                                <span class="presenter-item leader"><strong>Mudassir Khan</strong> (Group Leader)</span>
+                                <span class="presenter-item">Zain Luqman</span>
+                                <span class="presenter-item">Muhammad Murtaza</span>
+                                <span class="presenter-item">Aroosa Gull</span>
+                                <span class="presenter-item">Amna Safdar</span>
+                                <span class="presenter-item">Muneeba Waheed</span>
+                                <span class="presenter-item">Laraib Afzal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-visual animate-scale">
+                    <div class="visual-card-glow">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Nursing students healthcare researchers" class="hero-img">
+                        <div class="floating-badge badge-1"><i class="fa-solid fa-shield-check"></i> Evidence-Based</div>
+                        <div class="floating-badge badge-2"><i class="fa-solid fa-dna"></i> Scientific Rigor</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: INTRODUCTION TO RESEARCH SKILLS -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Module Foundation</span>
+                    <h2>Introduction to Research Skills</h2>
+                    <p class="section-desc">Building the core competencies for modern professional nursing practice.</p>
+                </div>
+                
+                <div class="grid-2col">
+                    <div class="glass-card animate-left">
+                        <div class="card-icon teal"><i class="fa-solid fa-brain"></i></div>
+                        <h3>What Are Research Skills?</h3>
+                        <p>Research skills are the core abilities needed to find, evaluate, understand, and use scientific information to improve healthcare outcomes.</p>
+                    </div>
+
+                    <div class="glass-card animate-right">
+                        <div class="card-icon gold"><i class="fa-solid fa-star-of-life"></i></div>
+                        <h3>Why Important in Nursing?</h3>
+                        <ul class="check-list">
+                            <li><i class="fa-solid fa-check"></i> Improve patient care and safety.</li>
+                            <li><i class="fa-solid fa-check"></i> Support evidence-based practice (EBP).</li>
+                            <li><i class="fa-solid fa-check"></i> Help nurses make informed clinical decisions.</li>
+                            <li><i class="fa-solid fa-check"></i> Elevate healthcare research quality.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <form id="admissionForm" class="form-grid-pro">
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-user"></i> Full Name</label>
-                        <input type="text" id="inpName" name="fullname" required placeholder="As per Matric certificate">
+                <div class="competencies-banner animate-up">
+                    <div class="comp-tag active-glow">
+                        <span class="comp-num">Competency 23</span>
+                        <span class="comp-text">Locate Credible Scientific Data</span>
+                    </div>
+                    <div class="comp-tag active-glow">
+                        <span class="comp-num">Competency 24</span>
+                        <span class="comp-text">Develop a Research Proposal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: COMPETENCY 23: LOCATE CREDIBLE SCIENTIFIC DATA -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Competency 23</span>
+                    <h2>Locate Credible Scientific Data</h2>
+                    <p class="section-desc">Mastering the foundation of trustworthy health information discovery.</p>
+                </div>
+
+                <div class="definition-spotlight animate-fade">
+                    <div class="spotlight-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div>
+                        <h3>What Does It Mean?</h3>
+                        <p>Locating credible scientific data means finding accurate, trustworthy, and evidence-based information from reliable scientific sources rather than unverified opinion.</p>
+                    </div>
+                </div>
+
+                <div class="grid-3col mt-4">
+                    <div class="feature-card animate-up">
+                        <div class="icon-wrap"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h4>Safe Patient Care</h4>
+                        <p>Protects patients by grounding clinical interventions in validated scientific proof.</p>
+                    </div>
+                    <div class="feature-card animate-up" style="animation-delay: 0.1s;">
+                        <div class="icon-wrap"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h4>Clinical Decisions</h4>
+                        <p>Empowers nurses with robust evidence for complex bedside decisions.</p>
+                    </div>
+                    <div class="feature-card animate-up" style="animation-delay: 0.2s;">
+                        <div class="icon-wrap"><i class="fa-solid fa-ban"></i></div>
+                        <h4>Prevent Misinformation</h4>
+                        <p>Filters out clinical myths, social media rumors, and unsupported claims.</p>
+                    </div>
+                </div>
+
+                <div class="source-types-banner animate-slide-delayed mt-4">
+                    <h4>Two Main Types of Scientific Sources:</h4>
+                    <div class="source-pills">
+                        <span class="pill primary"><i class="fa-solid fa-circle-dot"></i> 1. Primary Sources (Original Research)</span>
+                        <span class="pill secondary"><i class="fa-solid fa-circle-nodes"></i> 2. Secondary Sources (Synthesized Analysis)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: PRIMARY AND SECONDARY SOURCES -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Source Classification</span>
+                    <h2>Primary vs. Secondary Sources & Databases</h2>
+                </div>
+
+                <div class="split-comparison">
+                    <div class="comp-box primary-box animate-left">
+                        <div class="box-header">
+                            <i class="fa-solid fa-flask"></i>
+                            <div>
+                                <h3>Primary Sources</h3>
+                                <span class="box-sub">Original Research Evidence</span>
+                            </div>
+                        </div>
+                        <p>Provide original, first-hand information collected or reported by researchers.</p>
+                        <ul class="mini-list">
+                            <li>Original research articles & clinical trials</li>
+                            <li>Surveys, questionnaires, & interviews</li>
+                            <li>Direct observations & experimental studies</li>
+                        </ul>
+                        <div class="example-box">
+                            <strong>Nursing Example:</strong> Conducting a survey to assess hand hygiene practices among BSN nursing students.
+                        </div>
                     </div>
 
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-user-shield"></i> Father's Name</label>
-                        <input type="text" id="inpFather" name="fathername" required placeholder="Enter father's name">
+                    <div class="comp-box secondary-box animate-right">
+                        <div class="box-header">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                            <div>
+                                <h3>Secondary Sources</h3>
+                                <span class="box-sub">Existing Research Analysis</span>
+                            </div>
+                        </div>
+                        <p>Summarize, interpret, or analyze findings from previously published research.</p>
+                        <ul class="mini-list">
+                            <li>Systematic reviews & meta-analyses</li>
+                            <li>Literature reviews & review articles</li>
+                            <li>Research textbooks</li>
+                        </ul>
+                        <div class="example-box">
+                            <strong>Nursing Example:</strong> Reading a systematic review summarizing 15 studies on hand hygiene & infection control.
+                        </div>
                     </div>
+                </div>
 
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-id-card"></i> CNIC / B-Form Number</label>
-                        <input type="text" id="inpCnic" name="cnic" required placeholder="36302-1234567-1" maxlength="15">
+                <div class="databases-section animate-up">
+                    <h4>Where Can We Find Scientific Data? (Research Databases & Organizations)</h4>
+                    <div class="db-grid">
+                        <div class="db-item"><strong>PubMed</strong><span>Medical & biomedical</span></div>
+                        <div class="db-item"><strong>Google Scholar</strong><span>Academic scholarly papers</span></div>
+                        <div class="db-item"><strong>CINAHL</strong><span>Nursing & allied health</span></div>
+                        <div class="db-item"><strong>WHO</strong><span>Global health guidelines</span></div>
                     </div>
+                    <p class="db-note"><i class="fa-solid fa-circle-info"></i> <em>Note: PubMed, Google Scholar & CINAHL are research databases providing access to primary/secondary sources, while WHO is a global health organization.</em></p>
+                </div>
+            </div>
+        </section>
 
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
-                        <input type="date" name="dob" required>
-                    </div>
+        <!-- SLIDE 5: THE CRAP TEST -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Evaluation Framework</span>
+                    <h2>The CRAP Test for Online Information</h2>
+                    <p class="section-desc">Click each card to reveal evaluation criteria and guiding questions.</p>
+                </div>
 
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-map-location-dot"></i> District</label>
-                        <input type="text" name="district" required placeholder="e.g. Multan">
-                    </div>
-
-                    <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-house"></i> Temporary Address</label>
-                        <input type="text" name="temporary_address" required placeholder="Current residential address">
-                    </div>
-
-                    <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-house-chimney"></i> Permanent Address</label>
-                        <input type="text" name="permanent_address" required placeholder="Permanent address as per CNIC/B-Form">
-                    </div>
-
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-phone"></i> Phone Number</label>
-                        <input type="tel" id="inpPhone" name="phone" required placeholder="0300 1234567">
-                    </div>
-
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-phone-volume"></i> Emergency Contact</label>
-                        <input type="tel" name="emergency_contact" required placeholder="Guardian contact number">
-                    </div>
-
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-award"></i> Matric Marks</label>
-                        <input type="text" name="matric_marks" required placeholder="e.g. 850/1100">
-                    </div>
-
-                    <div class="form-group-pro">
-                        <label><i class="fa-solid fa-graduation-cap"></i> FSc Marks</label>
-                        <input type="text" name="fsc_marks" required placeholder="e.g. 780/1100">
-                    </div>
-
-                    <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-receipt"></i> Payment ID / Bank Slip / TID</label>
-                        <input type="text" id="inpPay" name="payment_id" required placeholder="e.g. Bank slip no or JazzCash/EasyPaisa TID">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Deposit admission fee before submitting and enter payment ID here.</small>
-                    </div>
-
-                    <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-image"></i> Candidate Passport Size Picture</label>
-                        <input type="file" id="photoInput" accept="image/*" required>
-                        <input type="hidden" id="photoBase64" name="candidate_photo">
-                        <small style="color: var(--text-muted); font-size: 0.72rem;">Upload clear photo (JPG/PNG, Max 2MB)</small>
-                    </div>
-
-                    <div class="form-group-pro full-width">
-                        <label><i class="fa-solid fa-file-contract"></i> Institutional Terms & Conditions</label>
-                        <div class="terms-container">
-                            <strong>Official Policy Guidelines:</strong>
+                <div class="crap-grid">
+                    <!-- Currency -->
+                    <div class="crap-card" onclick="toggleCrap(this)">
+                        <div class="crap-front">
+                            <div class="crap-icon"><i class="fa-regular fa-calendar-days"></i></div>
+                            <h3>C – Currency</h3>
+                            <span class="tap-hint">Click to expand <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="crap-back">
+                            <h3>Currency Evaluation</h3>
                             <ul>
-                                <li>Tuition fee & graduation fees are subject to institutional schedules.</li>
-                                <li>Students must clear semester fees in full according to deadlines.</li>
-                                <li>Fees deposited are strictly non-refundable at any stage.</li>
+                                <li>When was the information published or posted?</li>
+                                <li>Has it been recently revised or updated?</li>
+                                <li>Is the timeframe recent enough for your specific nursing topic?</li>
                             </ul>
                         </div>
-                        <label class="agreement-box">
-                            <input type="checkbox" id="termsCheck" name="agreement_accepted" value="Yes" required>
-                            <span>I agree to all institutional rules and financial policies.</span>
-                        </label>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="submit-btn-pro">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Official Admission Form
-                    </button>
-                </form>
+                    <!-- Relevance -->
+                    <div class="crap-card" onclick="toggleCrap(this)">
+                        <div class="crap-front">
+                            <div class="crap-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <h3>R – Relevance</h3>
+                            <span class="tap-hint">Click to expand <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="crap-back">
+                            <h3>Relevance Evaluation</h3>
+                            <ul>
+                                <li>Does the information directly relate to your research question?</li>
+                                <li>Is the depth and tone appropriate for academic research?</li>
+                                <li>Did you examine alternative sources before selecting?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Authority -->
+                    <div class="crap-card" onclick="toggleCrap(this)">
+                        <div class="crap-front">
+                            <div class="crap-icon"><i class="fa-solid fa-user-shield"></i></div>
+                            <h3>A – Authority</h3>
+                            <span class="tap-hint">Click to expand <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="crap-back">
+                            <h3>Authority Evaluation</h3>
+                            <ul>
+                                <li>Who is the author, creator, or publisher?</li>
+                                <li>What are their credentials, institutional affiliations, or degrees?</li>
+                                <li>Is the source peer-reviewed and reputable in healthcare?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Purpose -->
+                    <div class="crap-card" onclick="toggleCrap(this)">
+                        <div class="crap-front">
+                            <div class="crap-icon"><i class="fa-solid fa-circle-question"></i></div>
+                            <h3>P – Purpose</h3>
+                            <span class="tap-hint">Click to expand <i class="fa-solid fa-chevron-down"></i></span>
+                        </div>
+                        <div class="crap-back">
+                            <h3>Purpose Evaluation</h3>
+                            <ul>
+                                <li>Why was the information published (educate, inform, persuade, sell)?</li>
+                                <li>Is there evident political, corporate, or emotional bias?</li>
+                                <li>Are the opinions objective and supported by data?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="crap-footer-note animate-fade">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>Key Reminder:</strong> The CRAP Test is a vital screening tool, not an absolute guarantee of scientific validity.
+                </div>
             </div>
+        </section>
 
-            <!-- TRACK STATUS SECTION -->
-            <div id="trackSection" class="section-view">
-                <div class="tracker-box">
-                    <h3>Track Admission & Fee Status</h3>
-                    <p>Enter your CNIC or Phone Number to check your committee review and fee verification status instantly.</p>
+        <!-- SLIDE 6: RELIABLE VS UNRELIABLE INFORMATION -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Critical Appraisal</span>
+                    <h2>Reliable vs. Unreliable Information in Nursing</h2>
+                </div>
 
-                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
-                        <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
-                        <input type="text" id="searchQuery" placeholder="e.g. 36302-1234567-1">
+                <div class="split-comparison">
+                    <div class="comp-box reliable-box animate-left">
+                        <div class="box-header">
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                            <h3>Reliable Information</h3>
+                        </div>
+                        <ul class="check-list">
+                            <li><i class="fa-solid fa-check"></i> Written by qualified healthcare researchers/authors.</li>
+                            <li><i class="fa-solid fa-check"></i> Published in peer-reviewed medical journals.</li>
+                            <li><i class="fa-solid fa-check"></i> Supported by rigorous scientific evidence & citations.</li>
+                            <li><i class="fa-solid fa-check"></i> Transparent methodology and reproducible results.</li>
+                        </ul>
                     </div>
 
-                    <button type="button" id="searchBtn" class="track-btn" onclick="checkStatus()">
-                        <i class="fa-solid fa-magnifying-glass"></i> Check Live Record
-                    </button>
+                    <div class="comp-box unreliable-box animate-right">
+                        <div class="box-header">
+                            <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+                            <h3>Unreliable Information</h3>
+                        </div>
+                        <ul class="cross-list">
+                            <li><i class="fa-solid fa-xmark"></i> Anonymous social media posts & blogs.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Lacks scientific references or peer review.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Personal opinions or anecdotal claims presented as facts.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Misleading, sensationalized, or outdated health claims.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <div class="result-box" id="resultBox">
-                        <h4><i class="fa-solid fa-circle-info"></i> Candidate Status Result</h4>
-                        <p><strong>Candidate Name:</strong> <span id="resName">-</span></p>
-                        <p><strong>Program:</strong> BS Nursing / Session 2026–27</p>
-                        <p><strong>Admission Status:</strong> <span id="resStatus" style="color: #0284c7; font-weight: 700;">-</span></p>
-                        <p><strong>Fee Status:</strong> <span id="resPayStatus" style="font-weight: 700;">-</span></p>
+                <div class="practical-example-card animate-up">
+                    <div class="ex-title"><i class="fa-solid fa-stethoscope"></i> Practical Nursing Example: Hand Hygiene & Hospital Infections</div>
+                    <div class="ex-steps">
+                        <span><strong>1. Search:</strong> PubMed / CINAHL</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span><strong>2. Select:</strong> Peer-reviewed articles</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span><strong>3. Verify:</strong> Authors, dates, references</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span><strong>4. Apply:</strong> Evidence-based practice</span>
+                    </div>
+                    <div class="golden-rule"><strong>Key Message:</strong> Never accept online medical information without verifying its credibility!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: COMPETENCY 24: DEVELOP A RESEARCH PROPOSAL -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Competency 24</span>
+                    <h2>Develop a Research Proposal</h2>
+                    <p class="section-desc">Understanding the blueprint of scientific investigation.</p>
+                </div>
+
+                <div class="grid-2col align-center">
+                    <div class="proposal-intro animate-left">
+                        <div class="def-box">
+                            <h3>What Is a Research Proposal?</h3>
+                            <p>A research proposal is a structured written plan that meticulously explains <strong>WHAT</strong> the researcher wants to study, <strong>WHY</strong> the study is important, and <strong>HOW</strong> the research will be conducted.</p>
+                        </div>
+                        <div class="roadmap-quote">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <span>Think of it as the navigation roadmap that guides a researcher before starting any empirical study.</span>
+                        </div>
+                    </div>
+
+                    <div class="proposal-purposes animate-right">
+                        <h3>Core Purposes of a Research Proposal</h3>
+                        <div class="purpose-items">
+                            <div class="p-item"><i class="fa-solid fa-bullseye"></i> Identify and define the research problem clearly</div>
+                            <div class="p-item"><i class="fa-solid fa-compass"></i> Establish precise research objectives & questions</div>
+                            <div class="p-item"><i class="fa-solid fa-route"></i> Plan robust research methodology & sampling</div>
+                            <div class="p-item"><i class="fa-solid fa-award"></i> Justify the clinical significance and importance</div>
+                            <div class="p-item"><i class="fa-solid fa-file-shield"></i> Obtain ethical & institutional approval before data collection</div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- ADMIT CARD SECTION -->
-            <div id="admitCardSection" class="section-view">
-                <div class="tracker-box">
-                    <h3>Download Entry Test Admit Card</h3>
-                    <p>Enter your CNIC or Phone Number to generate your official exam admit card (Available only after fee verification).</p>
+        <!-- SLIDE 8: MAIN COMPONENTS OF A RESEARCH PROPOSAL -->
+        <section class="slide" data-slide="8">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Proposal Structure</span>
+                    <h2>Nine Essential Components of a Research Proposal</h2>
+                </div>
 
-                    <div class="form-group-pro" style="margin-bottom: 14px; text-align: left;">
-                        <label><i class="fa-solid fa-id-card"></i> Enter CNIC or Phone Number</label>
-                        <input type="text" id="admitQuery" placeholder="e.g. 36302-1234567-1">
+                <div class="components-grid">
+                    <div class="comp-step">
+                        <span class="step-num">01</span>
+                        <h4>Title</h4>
+                        <p>Clear name of the study.</p>
                     </div>
-
-                    <button type="button" id="admitBtn" class="track-btn" onclick="generateAdmitCard()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-                        <i class="fa-solid fa-print"></i> Generate & Print Admit Card
-                    </button>
+                    <div class="comp-step">
+                        <span class="step-num">02</span>
+                        <h4>Introduction</h4>
+                        <p>Sets background context.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">03</span>
+                        <h4>Problem Statement</h4>
+                        <p>Core issue investigated.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">04</span>
+                        <h4>Objectives</h4>
+                        <p>Aims to be achieved.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">05</span>
+                        <h4>Research Questions</h4>
+                        <p>Specific questions answered.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">06</span>
+                        <h4>Literature Review</h4>
+                        <p>Synthesis of prior work.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">07</span>
+                        <h4>Methodology</h4>
+                        <p>Design, tools & analysis.</p>
+                    </div>
+                    <div class="comp-step">
+                        <span class="step-num">08</span>
+                        <h4>Ethical Considerations</h4>
+                        <p>Participant rights & safety.</p>
+                    </div>
+                    <div class="comp-step highlight-step">
+                        <span class="step-num">09</span>
+                        <h4>References</h4>
+                        <p>Credible sources cited.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- SLIDE 9: STEPS TO DEVELOP A RESEARCH PROPOSAL -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content-wrapper">
+                <div class="slide-header">
+                    <span class="section-tag">Methodological Steps</span>
+                    <h2>From Research Idea to Final Proposal</h2>
+                </div>
 
-        <div class="portal-footer-credit">
-            Developed by <span>Mudassir Khan</span> | New Life Institute of Nursing, Multan
+                <div class="grid-2col">
+                    <div class="steps-timeline animate-left">
+                        <div class="timeline-item"><span>1</span> Select a relevant nursing research topic</div>
+                        <div class="timeline-item"><span>2</span> Identify the clinical research problem</div>
+                        <div class="timeline-item"><span>3</span> Review scientific literature thoroughly</div>
+                        <div class="timeline-item"><span>4</span> Formulate objectives and research questions</div>
+                        <div class="timeline-item"><span>5</span> Choose appropriate research design</div>
+                        <div class="timeline-item"><span>6</span> Determine study population and sampling</div>
+                        <div class="timeline-item"><span>7</span> Plan data collection and analysis methods</div>
+                        <div class="timeline-item"><span>8</span> Address ethical considerations & IRB approval</div>
+                        <div class="timeline-item"><span>9</span> Compile references and finalize proposal document</div>
+                    </div>
+
+                    <div class="nursing-example-box animate-right">
+                        <div class="ex-card-header"><i class="fa-solid fa-hospital-user"></i> Practical Nursing Example</div>
+                        <div class="ex-body">
+                            <p><strong>Topic:</strong> Hand Hygiene Compliance Among Nursing Students.</p>
+                            <p><strong>Problem:</strong> Some students may not consistently follow proper hand hygiene protocols.</p>
+                            <p><strong>Objective:</strong> To assess hand hygiene compliance levels among nursing students.</p>
+                            <p><strong>Research Question:</strong> What is the level of compliance among nursing students?</p>
+                            <p><strong>Methodology:</strong> Descriptive cross-sectional study using validated observation checklists.</p>
+                            <p><strong>Importance:</strong> Findings enhance hospital infection prevention strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: KNOWLEDGE CHECK & THANK YOU -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content-wrapper">
+                <div id="quizContainer">
+                    <div class="slide-header quiz-header">
+                        <span class="section-tag">Interactive Evaluation</span>
+                        <h2>Let's Test Our Knowledge! (Quiz)</h2>
+                        <span id="quizProgressNum">Question 1 of 5</span>
+                    </div>
+
+                    <div class="quiz-card animate-fade">
+                        <h3 id="questionText">Loading question...</h3>
+                        <div id="optionsContainer" class="options-grid">
+                            <!-- Options injected dynamically -->
+                        </div>
+                        <div id="quizFeedback" class="quiz-feedback hidden"></div>
+                        <div class="quiz-actions">
+                            <button id="nextQuizBtn" class="btn-primary hidden" onclick="nextQuizQuestion()">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizScoreCard" class="quiz-score-card hidden animate-scale">
+                    <div class="score-icon"><i class="fa-solid fa-award"></i></div>
+                    <h2>Quiz Completed Successfully!</h2>
+                    <p class="score-result">Your Score: <strong id="finalScoreNum">0</strong> / 5</p>
+                    <p id="scoreMessage" class="score-msg">Great job mastering research skills!</p>
+                    <button class="btn-primary mt-3" onclick="restartQuiz()"><i class="fa-solid fa-rotate-right"></i> Restart Quiz</button>
+                </div>
+
+                <div class="closing-divider"></div>
+
+                <div class="closing-screen">
+                    <h2>THANK YOU!</h2>
+                    <p class="closing-tagline">"Good research begins with credible evidence and a well-planned proposal."</p>
+                    <div class="closing-team">
+                        <h4>Questions & Discussion Welcome</h4>
+                        <p class="closing-group-info"><strong>BSN 5th Semester | PERLs Module | Group 5</strong></p>
+                        <div class="closing-members">
+                            <span>Mudassir Khan (Leader)</span> • 
+                            <span>Zain Luqman</span> • 
+                            <span>Muhammad Murtaza</span> • 
+                            <span>Aroosa Gull</span> • 
+                            <span>Amna Safdar</span> • 
+                            <span>Muneeba Waheed</span> • 
+                            <span>Laraib Afzal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Presentation Control Bar -->
+    <nav class="presentation-nav">
+        <button id="prevBtn" class="control-btn" title="Previous Slide (Left Arrow)"><i class="fa-solid fa-arrow-left"></i><span>Prev</span></button>
+        <div class="slide-indicator"><span id="currentSlideNum">01</span> / <span id="totalSlidesNum">10</span></div>
+        <button id="nextBtn" class="control-btn primary-control" title="Next Slide (Right Arrow / Space)"><span>Next</span><i class="fa-solid fa-arrow-right"></i></button>
+    </nav>
+
+    <!-- Slide Overview Modal / Grid -->
+    <div id="overviewModal" class="overview-modal hidden">
+        <div class="overview-content">
+            <div class="overview-header">
+                <h3>Presentation Slide Overview</h3>
+                <button id="closeOverview" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="overviewGrid" class="overview-grid">
+                <!-- Injected via JS -->
+            </div>
         </div>
     </div>
 
-    <script>
-        // Security Protections
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && (e.key === 'U' || e.key === 'S'))) {
-                e.preventDefault();
-                return false;
-            }
-        });
-        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-
-        const deadline = new Date('October 15, 2026 23:59:59').getTime();
-        const timerInterval = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = deadline - now;
-            if (distance < 0) {
-                document.getElementById('countdownClock').innerText = "CLOSED";
-                clearInterval(timerInterval);
-                return;
-            }
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('countdownClock').innerText = `${days}d ${hours}h ${minutes}m`;
-        }, 1000);
-
-        function closeModal() { document.getElementById('instructionModal').style.display = 'none'; }
-        
-        function openAdminModal() {
-            document.getElementById('adminModal').style.display = 'flex';
-            document.getElementById('adminPinInput').value = '';
-            document.getElementById('adminPinSection').style.display = 'block';
-            document.getElementById('adminDashboardContent').style.display = 'none';
-        }
-
-        function verifyAdminPin() {
-            const pin = document.getElementById('adminPinInput').value.trim();
-            if(pin === '2026') {
-                document.getElementById('adminPinSection').style.display = 'none';
-                document.getElementById('adminDashboardContent').style.display = 'block';
-                
-                fetch(scriptURL + '?q=admin_stats')
-                    .then(res => res.json())
-                    .then(data => {
-                        document.getElementById('statTotal').innerText = data.total || 0;
-                        document.getElementById('statApproved').innerText = data.approved || 0;
-                        document.getElementById('statPending').innerText = data.pending || 0;
-                    })
-                    .catch(err => {
-                        document.getElementById('statTotal').innerText = "Live";
-                        document.getElementById('statApproved').innerText = "Sync";
-                        document.getElementById('statPending').innerText = "OK";
-                    });
-            } else {
-                alert('Incorrect PIN code.');
-            }
-        }
-
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
-            if(tab === 'apply') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('applySection').classList.add('active');
-            } else if(tab === 'track') {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('trackSection').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab-btn')[2].classList.add('active');
-                document.getElementById('admitCardSection').classList.add('active');
-            }
-        }
-
-        const photoInput = document.getElementById('photoInput');
-        photoInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('⚠️ File is too large! Please upload a photograph smaller than 2MB.');
-                    photoInput.value = '';
-                    document.getElementById('photoBase64').value = '';
-                    return;
-                }
-                const reader = new FileReader();
-                reader.onload = function(event) { document.getElementById('photoBase64').value = event.target.result; };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Your Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
-        
-        const form = document.getElementById('admissionForm');
-        const successView = document.getElementById('successView');
-        const submitBtn = document.getElementById('submitBtn');
-        let generatedTrackingId = '';
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Form & Saving...';
-            submitBtn.disabled = true;
-
-            generatedTrackingId = 'NLIN-2027-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('refIdDisplay').innerText = generatedTrackingId;
-
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => response.json())
-                .then(data => {
-                    form.style.display = 'none';
-                    successView.style.display = 'block';
-                })
-                .catch(error => {
-                    form.style.display = 'none';
-                    successView.style.display = 'block';
-                });
-        });
-
-        function downloadAdmissionSlip() {
-            const name = document.getElementById('inpName').value;
-            const father = document.getElementById('inpFather').value;
-            const cnic = document.getElementById('inpCnic').value;
-            const phone = document.getElementById('inpPhone').value;
-            const payRef = document.getElementById('inpPay').value;
-
-            const slipWindow = window.open('', '_blank');
-            slipWindow.document.write(`
-                <html>
-                <head>
-                    <title>Admission Slip - ${generatedTrackingId}</title>
-                    <style>
-                        body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; padding: 20px; color: #1e293b; max-width: 600px; margin: auto; border: 2px solid #0284c7; border-radius: 12px; }
-                        .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 15px; }
-                        .header img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 6px; }
-                        .header h2 { color: #0284c7; margin: 4px 0; font-size: 1.1rem; font-weight: 800; }
-                        .header p { font-size: 0.75rem; color: #64748b; }
-                        .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 5px; }
-                        .footer { margin-top: 20px; text-align: center; font-size: 0.7rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 8px; }
-                        .badge { background: #e0f2fe; color: #0369a1; padding: 3px 10px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 8px; font-size: 0.75rem; }
-                        @media print { body { border: none; padding: 5px; } }
-                    </style>
-                </head>
-                <body>
-                    <div class="header">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
-                        <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
-                        <p><strong>Venue Address:</strong> Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan</p>
-                        <p>BS Nursing Admission Slip (Session 2026–27)</p>
-                        <div class="badge">Tracking ID: ${generatedTrackingId}</div>
-                    </div>
-                    <div class="row"><strong>Candidate Name:</strong> <span>${name}</span></div>
-                    <div class="row"><strong>Father's Name:</strong> <span>${father}</span></div>
-                    <div class="row"><strong>CNIC / B-Form:</strong> <span>${cnic}</span></div>
-                    <div class="row"><strong>Phone Number:</strong> <span>${phone}</span></div>
-                    <div class="row"><strong>Payment ID / TID:</strong> <span>${payRef}</span></div>
-                    <div class="row"><strong>Application Status:</strong> <span style="color:#0284c7; font-weight:bold;">Under Review</span></div>
-                    <div class="footer">
-                        <p>Computer-generated confirmation slip. Bring this during the interview stage.</p>
-                        <p>Helpline: 0309-1965700</p>
-                    </div>
-                    <script>
-                        window.onload = function() { setTimeout(function() { window.print(); }, 300); };
-                    <\/script>
-                </body>
-                </html>
-            `);
-            slipWindow.document.close();
-        }
-
-        function checkStatus() {
-            const query = document.getElementById('searchQuery').value.trim();
-            const resultBox = document.getElementById('resultBox');
-            const searchBtn = document.getElementById('searchBtn');
-
-            if(query === '') {
-                alert('Please enter your CNIC or Phone number to search.');
-                return;
-            }
-
-            searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Checking...';
-            searchBtn.disabled = true;
-            resultBox.style.display = 'none';
-
-            fetch(scriptURL + '?q=' + encodeURIComponent(query))
-                .then(response => response.json())
-                .then(data => {
-                    searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
-                    searchBtn.disabled = false;
-
-                    if(data.status === 'success') {
-                        document.getElementById('resName').innerText = data.name;
-                        document.getElementById('resStatus').innerText = data.appStatus;
-                        
-                        const paySpan = document.getElementById('resPayStatus');
-                        paySpan.innerText = data.payStatus || "Pending Verification";
-                        paySpan.style.color = (data.payStatus && data.payStatus.toLowerCase().includes('verified')) ? '#10b981' : '#f59e0b';
-
-                        resultBox.style.display = 'block';
-                    } else {
-                        alert('No application record found matching this CNIC or Phone number.');
-                        resultBox.style.display = 'none';
-                    }
-                })
-                .catch(error => {
-                    searchBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Check Live Record';
-                    searchBtn.disabled = false;
-                    alert('Error connecting to database.');
-                });
-        }
-
-        function generateAdmitCard() {
-            const query = document.getElementById('admitQuery').value.trim();
-            const admitBtn = document.getElementById('admitBtn');
-
-            if(query === '') {
-                alert('Please enter your CNIC or Phone number.');
-                return;
-            }
-
-            admitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
-            admitBtn.disabled = true;
-
-            fetch(scriptURL + '?q=' + encodeURIComponent(query))
-                .then(response => response.json())
-                .then(data => {
-                    admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
-                    admitBtn.disabled = false;
-
-                    if(data.status === 'success') {
-                        const isFeeVerified = data.payStatus && data.payStatus.toLowerCase().includes('verified');
-                        
-                        if(!isFeeVerified) {
-                            alert('⚠️ Admit Card Locked: Your fee payment status is currently "' + data.payStatus + '". Once your Payment is "Verified", you can download your admit card.');
-                            return;
-                        }
-
-                        const verificationLink = "https://mudassirkhan3.github.io/ADMIN/slip.html?q=" + encodeURIComponent(data.cnic);
-                        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(verificationLink)}`;
-
-                        const cardWindow = window.open('', '_blank');
-                        cardWindow.document.write(`
-                            <html>
-                            <head>
-                                <title>Entry Test Admit Card - ${data.name}</title>
-                                <style>
-                                    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-                                    
-                                    body {
-                                        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-                                        background: #f1f5f9;
-                                        color: #1e293b;
-                                        padding: 16px;
-                                        margin: 0;
-                                        -webkit-print-color-adjust: exact;
-                                        print-color-adjust: exact;
-                                    }
-
-                                    .card-container {
-                                        max-width: 620px;
-                                        margin: auto;
-                                        background: #ffffff;
-                                        border-radius: 16px;
-                                        padding: 20px;
-                                        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-                                        border-top: 5px solid #0284c7;
-                                    }
-
-                                    .card-header {
-                                        text-align: center;
-                                        border-bottom: 2px solid #f1f5f9;
-                                        padding-bottom: 12px;
-                                        margin-bottom: 15px;
-                                    }
-
-                                    .card-logo-monogram {
-                                        width: 52px;
-                                        height: 52px;
-                                        border-radius: 50%;
-                                        object-fit: cover;
-                                        border: 2px solid #0284c7;
-                                        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-                                        margin-bottom: 6px;
-                                        display: inline-block;
-                                    }
-
-                                    .card-header h2 {
-                                        color: #0f172a;
-                                        font-size: 1.05rem;
-                                        font-weight: 800;
-                                    }
-
-                                    .card-header p {
-                                        font-size: 0.72rem;
-                                        color: #64748b;
-                                        margin-top: 2px;
-                                    }
-
-                                    .verified-pill {
-                                        display: inline-flex;
-                                        align-items: center;
-                                        gap: 4px;
-                                        background: #dcfce7 !important;
-                                        color: #166534 !important;
-                                        padding: 3px 12px;
-                                        border-radius: 20px;
-                                        font-size: 0.68rem;
-                                        font-weight: 700;
-                                        margin-top: 6px;
-                                    }
-
-                                    .candidate-spot {
-                                        text-align: center;
-                                        margin-bottom: 14px;
-                                    }
-
-                                    .candidate-photo {
-                                        width: 90px;
-                                        height: 110px;
-                                        object-fit: cover;
-                                        border-radius: 10px;
-                                        border: 2.5px solid #0284c7;
-                                        background: #f1f5f9;
-                                        display: inline-block;
-                                    }
-
-                                    .main-content-row {
-                                        display: flex;
-                                        flex-wrap: wrap;
-                                        gap: 10px;
-                                        margin-bottom: 14px;
-                                        align-items: stretch;
-                                    }
-
-                                    .data-table-box {
-                                        flex: 1;
-                                        min-width: 250px;
-                                        display: grid;
-                                        grid-template-columns: 1fr 1fr;
-                                        gap: 10px;
-                                        background: #f8fafc !important;
-                                        border: 1px solid #e2e8f0;
-                                        border-radius: 12px;
-                                        padding: 12px;
-                                    }
-
-                                    .data-item span {
-                                        font-size: 0.64rem;
-                                        color: #64748b;
-                                        text-transform: uppercase;
-                                        font-weight: 700;
-                                        display: block;
-                                        margin-bottom: 1px;
-                                    }
-
-                                    .data-item strong {
-                                        color: #0f172a;
-                                        font-size: 0.82rem;
-                                        font-weight: 700;
-                                        word-break: break-all;
-                                    }
-
-                                    .qr-badge-box {
-                                        width: 105px;
-                                        background: #f8fafc !important;
-                                        border: 1px solid #e2e8f0;
-                                        border-radius: 12px;
-                                        padding: 8px;
-                                        text-align: center;
-                                        display: flex;
-                                        flex-direction: column;
-                                        justify-content: center;
-                                        align-items: center;
-                                        margin: auto;
-                                    }
-
-                                    .qr-badge-box img {
-                                        width: 75px;
-                                        height: 75px;
-                                        display: block;
-                                        max-width: 100%;
-                                    }
-
-                                    .qr-badge-box span {
-                                        font-size: 0.52rem;
-                                        font-weight: 800;
-                                        color: #64748b;
-                                        margin-top: 3px;
-                                    }
-
-                                    .exam-info-card {
-                                        background: #eff6ff !important;
-                                        border: 1.5px solid #bfdbfe;
-                                        border-radius: 12px;
-                                        padding: 10px 14px;
-                                        margin-bottom: 12px;
-                                        font-size: 0.78rem;
-                                    }
-
-                                    .exam-info-card h4 {
-                                        color: #1e40af;
-                                        font-size: 0.82rem;
-                                        margin-bottom: 3px;
-                                        font-weight: 700;
-                                    }
-
-                                    .guidelines-box {
-                                        font-size: 0.68rem;
-                                        color: #475569;
-                                        line-height: 1.4;
-                                        border-top: 1px solid #f1f5f9;
-                                        padding-top: 10px;
-                                    }
-
-                                    .guidelines-box ul {
-                                        padding-left: 14px;
-                                        margin-top: 3px;
-                                    }
-
-                                    .card-bottom-bar {
-                                        margin-top: 14px;
-                                        border-top: 1px solid #e2e8f0;
-                                        padding-top: 10px;
-                                        display: flex;
-                                        justify-content: space-between;
-                                        font-size: 0.68rem;
-                                        color: #64748b;
-                                        font-weight: 600;
-                                    }
-
-                                    @media print {
-                                        body { padding: 0; background: #fff; }
-                                        .card-container { box-shadow: none; border-radius: 0; border: 2px solid #0284c7; width: 100%; }
-                                    }
-                                </style>
-                            </head>
-                            <body>
-                                <div class="card-container">
-                                    <div class="card-header">
-                                        <img class="card-logo-monogram" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="College Logo Monogram">
-                                        <h2>NEW LIFE INSTITUTE OF NURSING, MULTAN</h2>
-                                        <p>M.A Jinnah Rd, Near (PSO Ibrahim) Pump | Helpline: 0309-1965700</p>
-                                        <div class="verified-pill">Official Entry Test Admit Card (2026–27) ✔</div>
-                                    </div>
-
-                                    <div class="candidate-spot">
-                                        <img class="candidate-photo" id="printPhoto" src="${data.photo || 'https://via.placeholder.com/90x110?text=Photo'}" alt="Candidate Photo">
-                                    </div>
-
-                                    <div class="main-content-row">
-                                        <div class="data-table-box">
-                                            <div class="data-item">
-                                                <span>Candidate Name</span>
-                                                <strong>${data.name}</strong>
-                                            </div>
-                                            <div class="data-item">
-                                                <span>Father's Name</span>
-                                                <strong>${data.father}</strong>
-                                            </div>
-                                            <div class="data-item">
-                                                <span>CNIC / B-Form</span>
-                                                <strong>${data.cnic}</strong>
-                                            </div>
-                                            <div class="data-item">
-                                                <span>Phone Number</span>
-                                                <strong>${data.phone}</strong>
-                                            </div>
-                                        </div>
-
-                                        <div class="qr-badge-box">
-                                            <img id="printQr" src="${qrCodeUrl}" alt="Verification QR">
-                                            <span>SCAN TO VERIFY</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="exam-info-card">
-                                        <h4><i class="fa-solid fa-clock"></i> Test Schedule & Location</h4>
-                                        <p style="margin-bottom: 2px;"><strong>Date & Time:</strong> Sunday, 18 Oct 2026 | 10:00 AM – 12:00 PM</p>
-                                        <p><strong>Venue:</strong> New Life Institute of Nursing Campus, Multan</p>
-                                    </div>
-
-                                    <div class="guidelines-box">
-                                        <strong>Important Instructions:</strong>
-                                        <ul>
-                                            <li>Bring original CNIC/B-Form along with this printed admit card.</li>
-                                            <li>Mobile phones and electronic gadgets are strictly prohibited.</li>
-                                            <li>Report 30 minutes before test timing.</li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="card-bottom-bar">
-                                        <div>Program: <strong>BS Nursing</strong></div>
-                                        <div>Issued by: <strong>Admissions Office, NLIN</strong></div>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    window.onload = function() {
-                                        const img1 = document.getElementById('printPhoto');
-                                        const img2 = document.getElementById('printQr');
-                                        
-                                        let loadedCount = 0;
-                                        function checkAndPrint() {
-                                            loadedCount++;
-                                            if (loadedCount >= 2) {
-                                                setTimeout(function() {
-                                                    window.print();
-                                                }, 350);
-                                            }
-                                        }
-
-                                        if(img1.complete) checkAndPrint(); else img1.onload = checkAndPrint;
-                                        if(img2.complete) checkAndPrint(); else img2.onload = checkAndPrint;
-                                    };
-                                <\/script>
-                            </body>
-                            </html>
-                        `);
-                        cardWindow.document.close();
-
-                    } else {
-                        alert('No application record found matching this CNIC or Phone number.');
-                    }
-                })
-                .catch(err => {
-                    admitBtn.innerHTML = '<i class="fa-solid fa-print"></i> Generate & Print Admit Card';
-                    admitBtn.disabled = false;
-                    alert('Error connecting to institutional database.');
-                });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+"""
+
+css_content = """/* ==========================================================================
+   RESEARCH SKILLS PRESENTATION - PREMIUM STYLESHEET
+   ========================================================================== */
+
+:root {
+    --bg-navy: #070B19;
+    --bg-navy-light: #111832;
+    --bg-glass: rgba(17, 24, 50, 0.7);
+    --border-glass: rgba(0, 229, 255, 0.2);
+    --teal: #00E5FF;
+    --teal-glow: rgba(0, 229, 255, 0.4);
+    --gold: #FFD700;
+    --gold-glow: rgba(255, 215, 0, 0.3);
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --card-bg: rgba(15, 23, 42, 0.85);
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-navy);
+    color: var(--white);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+/* Background Particle Canvas */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* App Header */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 100;
+    background: rgba(7, 11, 25, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.module-badge, .group-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--teal);
+    border: 1px solid var(--border-glass);
+}
+
+.group-badge {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--gold);
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: var(--bg-navy-light);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.nav-btn:hover {
+    background: var(--teal);
+    color: var(--bg-navy);
+    border-color: var(--teal);
+    box-shadow: 0 0 15px var(--teal-glow);
+}
+
+/* Presentation Container & Slides */
+.presentation-container {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 120px);
+    margin-top: 60px;
+    z-index: 10;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.98) translateY(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+}
+
+.slide-content-wrapper {
+    width: 100%;
+    max-width: 1280px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    padding: 20px 10px;
+}
+
+.slide-content-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+.slide-content-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* Progress Track */
+.progress-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 101;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    width: 10%;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px var(--teal);
+}
+
+/* Slide Header Styles */
+.slide-header {
+    margin-bottom: 25px;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--teal);
+    background: rgba(0, 229, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--teal);
+}
+
+.slide-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* Slide 1 Specifics */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--teal);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-glass);
+}
+
+.main-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #FFFFFF 30%, var(--teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px var(--teal-glow);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.metadata-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.meta-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.meta-label {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.meta-value {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.presenter-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.presenters-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.presenter-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.presenter-item.leader {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.slide-visual {
+    position: relative;
+}
+
+.visual-card-glow {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--teal-glow);
+    border: 1px solid var(--border-glass);
+}
+
+.hero-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.8s ease;
+}
+
+.visual-card-glow:hover .hero-img {
+    transform: scale(1.06);
+}
+
+.floating-badge {
+    position: absolute;
+    background: rgba(7, 11, 25, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glass);
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.badge-1 {
+    bottom: 25px;
+    left: 25px;
+    color: var(--teal);
+}
+
+.badge-2 {
+    top: 25px;
+    right: 25px;
+    color: var(--gold);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Grid Layouts */
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 229, 255, 0.1);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.card-icon.teal {
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--teal);
+}
+
+.card-icon.gold {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--gold);
+}
+
+.glass-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--white);
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.check-list, .cross-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.check-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.check-list li i {
+    color: var(--teal);
+    font-size: 0.9rem;
+}
+
+.cross-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.cross-list li i {
+    color: #FF5252;
+    font-size: 0.9rem;
+}
+
+.competencies-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.comp-tag {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(17, 24, 50, 0.9));
+    border: 1px solid var(--teal);
+    padding: 18px 25px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.comp-num {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 1px;
+}
+
+.comp-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+/* Slide 3 Specifics */
+.definition-spotlight {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(15, 23, 42, 0.9));
+    border: 1px solid var(--teal);
+    border-radius: 16px;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+}
+
+.spotlight-icon {
+    font-size: 2.5rem;
+    color: var(--teal);
+    background: rgba(0, 229, 255, 0.15);
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.definition-spotlight h3 {
+    font-size: 1.2rem;
+    color: var(--teal);
+    margin-bottom: 8px;
+}
+
+.definition-spotlight p {
+    color: var(--white);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 25px;
+    transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+}
+
+.icon-wrap {
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--teal);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--white);
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.source-types-banner {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px 25px;
+    text-align: center;
+}
+
+.source-types-banner h4 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--gold);
+}
+
+.source-pills {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pill {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pill.primary {
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--teal);
+    border: 1px solid var(--border-glass);
+}
+
+.pill.secondary {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--gold);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Slide 4 Comparison & Databases */
+.split-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.comp-box {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.primary-box {
+    border-top: 4px solid var(--teal);
+}
+
+.secondary-box {
+    border-top: 4px solid var(--gold);
+}
+
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.box-header i {
+    font-size: 1.8rem;
+    color: var(--teal);
+}
+
+.secondary-box .box-header i {
+    color: var(--gold);
+}
+
+.box-header h3 {
+    font-size: 1.25rem;
+    color: var(--white);
+}
+
+.box-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.comp-box > p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.mini-list {
+    list-style: disc;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.example-box {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--teal);
+}
+
+.secondary-box .example-box {
+    border-left-color: var(--gold);
+}
+
+.databases-section {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px 25px;
+}
+
+.databases-section h4 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--white);
+    text-align: center;
+}
+
+.db-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.db-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.db-item strong {
+    display: block;
+    color: var(--teal);
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.db-item span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.db-note {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Slide 5 CRAP Test Grid */
+.crap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.crap-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px 20px;
+    cursor: pointer;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.crap-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+}
+
+.crap-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.crap-icon {
+    font-size: 2.2rem;
+    color: var(--teal);
+    background: rgba(0, 229, 255, 0.12);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crap-card h3 {
+    font-size: 1.15rem;
+    color: var(--white);
+}
+
+.tap-hint {
+    font-size: 0.75rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: auto;
+}
+
+.crap-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-navy-light);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.crap-card.expanded .crap-back {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.crap-back h3 {
+    font-size: 1rem;
+    color: var(--teal);
+    margin-bottom: 10px;
+}
+
+.crap-back ul {
+    list-style: disc;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.crap-footer-note {
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--gold);
+}
+
+/* Slide 6 Reliable vs Unreliable */
+.reliable-box {
+    border-top: 4px solid #10B981;
+}
+
+.unreliable-box {
+    border-top: 4px solid #EF4444;
+}
+
+.text-success { color: #10B981 !important; }
+.text-warning { color: #EF4444 !important; }
+
+.practical-example-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 20px 25px;
+    margin-top: 20px;
+}
+
+.ex-title {
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ex-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.ex-steps i {
+    color: var(--text-muted);
+}
+
+.golden-rule {
+    font-size: 0.9rem;
+    color: var(--gold);
+    text-align: center;
+}
+
+/* Slide 7 Research Proposal */
+.def-box {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.def-box h3 {
+    color: var(--teal);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.def-box p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.roadmap-quote {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid var(--border-glass);
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 0.95rem;
+}
+
+.roadmap-quote i {
+    font-size: 1.8rem;
+    color: var(--teal);
+}
+
+.proposal-purposes {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.proposal-purposes h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.purpose-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.p-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.p-item i {
+    color: var(--teal);
+    font-size: 0.9rem;
+}
+
+/* Slide 8 Nine Components Grid */
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.comp-step {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.comp-step:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 229, 255, 0.1);
+}
+
+.step-num {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.comp-step h4 {
+    font-size: 1.05rem;
+    color: var(--teal);
+    margin-bottom: 6px;
+}
+
+.comp-step p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.highlight-step {
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.highlight-step h4 {
+    color: var(--gold);
+}
+
+/* Slide 9 Timeline & Practical Example */
+.steps-timeline {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 440px;
+    overflow-y: auto;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.timeline-item span {
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.nursing-example-box {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.ex-card-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ex-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.ex-body p strong {
+    color: var(--white);
+}
+
+/* Slide 10 Quiz & Closing */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+#quizProgressNum {
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+}
+
+.quiz-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+}
+
+.quiz-card h3 {
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.option-btn:hover:not(:disabled) {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--teal);
+}
+
+.option-btn.correct {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10B981;
+    color: #10B981;
+}
+
+.option-btn.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #EF4444;
+    color: #EF4444;
+}
+
+.quiz-feedback {
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.quiz-feedback.correct-fb {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10B981;
+}
+
+.quiz-feedback.incorrect-fb {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #EF4444;
+}
+
+.quiz-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-primary {
+    background: var(--teal);
+    color: var(--bg-navy);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px var(--teal-glow);
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.quiz-score-card {
+    background: var(--card-bg);
+    border: 1px solid var(--teal);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+.score-icon {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.quiz-score-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.score-result {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.score-result strong {
+    color: var(--teal);
+    font-size: 1.5rem;
+}
+
+.score-msg {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.closing-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+
+.closing-screen {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.closing-screen h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--teal);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.closing-tagline {
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.closing-team h4 {
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.closing-group-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.closing-members {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Presentation Control Bar */
+.presentation-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 100;
+    background: rgba(7, 11, 25, 0.85);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.control-btn {
+    background: var(--bg-navy-light);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.control-btn:hover:not(:disabled) {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.control-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.primary-control {
+    background: var(--teal);
+    color: var(--bg-navy);
+    border-color: var(--teal);
+}
+
+.primary-control:hover {
+    background: #00b4cc;
+    color: var(--bg-navy);
+    box-shadow: 0 0 15px var(--teal-glow);
+}
+
+.slide-indicator {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+#currentSlideNum {
+    color: var(--teal);
+    font-weight: 700;
+}
+
+/* Slide Overview Modal */
+.overview-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(7, 11, 25, 0.92);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    transition: opacity 0.3s ease;
+}
+
+.overview-content {
+    background: var(--bg-navy-light);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+.overview-header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.overview-header h3 {
+    font-size: 1.25rem;
+    color: var(--white);
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.close-btn:hover {
+    background: #EF4444;
+    border-color: #EF4444;
+}
+
+.overview-grid {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.overview-thumb {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 100px;
+    justify-content: center;
+}
+
+.overview-thumb:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15);
+}
+
+.overview-thumb.active-thumb {
+    border-color: var(--teal);
+    background: rgba(0, 229, 255, 0.1);
+}
+
+.thumb-num {
+    font-size: 0.75rem;
+    color: var(--teal);
+    font-weight: 700;
+}
+
+.thumb-title {
+    font-size: 0.8rem;
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .split-layout, .grid-2col, .split-comparison, .crap-grid, .db-grid, .components-grid, .overview-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-title {
+        font-size: 2.8rem;
+    }
+    .slide {
+        padding: 15px 20px;
+    }
+}
+"""
+
+js_content = """/* ==========================================================================
+   RESEARCH SKILLS PRESENTATION - INTERACTIVE LOGIC & ANIMATIONS
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // State Management
+    let currentSlide = 1;
+    const totalSlides = 10;
+
+    // DOM Elements
+    const slides = document.querySelectorAll('.slide');
+    const currentSlideNumEl = document.getElementById('currentSlideNum');
+    const totalSlidesNumEl = document.getElementById('totalSlidesNum');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const overviewBtn = document.getElementById('overviewBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const overviewModal = document.getElementById('overviewModal');
+    const closeOverview = document.getElementById('closeOverview');
+    const overviewGrid = document.getElementById('overviewGrid');
+
+    totalSlidesNumEl.textContent = String(totalSlides).padStart(2, '0');
+
+    // Initialize Presentation
+    function updatePresentation() {
+        slides.forEach((slide, index) => {
+            if (index + 1 === currentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        currentSlideNumEl.textContent = String(currentSlide).padStart(2, '0');
+        const progressPercent = (currentSlide / totalSlides) * 100;
+        progressBar.style.width = `${progressPercent}%`;
+
+        prevBtn.disabled = currentSlide === 1;
+        nextBtn.disabled = currentSlide === totalSlides;
+    }
+
+    // Navigation functions
+    window.goToSlide = function(slideNum) {
+        if (slideNum >= 1 && slideNum <= totalSlides) {
+            currentSlide = slideNum;
+            updatePresentation();
+            closeOverviewModal();
+        }
+    };
+
+    function nextSlide() {
+        if (currentSlide < totalSlides) {
+            currentSlide++;
+            updatePresentation();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 1) {
+            currentSlide--;
+            updatePresentation();
+        }
+    }
+
+    // Event Listeners for Nav Buttons
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevSlide();
+        } else if (e.key === 'Escape') {
+            closeOverviewModal();
+        }
+    });
+
+    // Fullscreen Toggle
+    fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+            fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>';
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+            fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        }
+    });
+
+    // Slide Overview Modal Logic
+    function buildOverviewGrid() {
+        overviewGrid.innerHTML = '';
+        const slideTitles = [
+            "01. Opening Title",
+            "02. Introduction to Research Skills",
+            "03. Competency 23: Credible Data",
+            "04. Primary & Secondary Sources",
+            "05. The CRAP Test",
+            "06. Reliable vs Unreliable Info",
+            "07. Competency 24: Research Proposal",
+            "08. Nine Proposal Components",
+            "09. Steps to Develop Proposal",
+            "10. Knowledge Check & Thank You"
+        ];
+
+        slideTitles.forEach((title, idx) => {
+            const num = idx + 1;
+            const thumb = document.createElement('div');
+            thumb.className = `overview-thumb ${num === currentSlide ? 'active-thumb' : ''}`;
+            thumb.innerHTML = `
+                <span class="thumb-num">Slide ${String(num).padStart(2, '0')}</span>
+                <span class="thumb-title">${title}</span>
+            `;
+            thumb.addEventListener('click', () => goToSlide(num));
+            overviewGrid.appendChild(thumb);
+        });
+    }
+
+    overviewBtn.addEventListener('click', () => {
+        buildOverviewGrid();
+        overviewModal.classList.remove('hidden');
+    });
+
+    function closeOverviewModal() {
+        overviewModal.classList.add('hidden');
+    }
+
+    closeOverview.addEventListener('click', closeOverviewModal);
+    overviewModal.addEventListener('click', (e) => {
+        if (e.target === overviewModal) closeOverviewModal();
+    });
+
+    // CRAP Test Card Toggle
+    window.toggleCrap = function(card) {
+        card.classList.toggle('expanded');
+    };
+
+    // Interactive Quiz System
+    const quizData = [
+        {
+            question: "Q1. Which is a reliable database for medical research?",
+            options: ["A. Facebook", "B. PubMed", "C. WhatsApp", "D. Personal blog"],
+            answer: 1,
+            explanation: "PubMed is a trusted, peer-reviewed database maintained by the NIH for medical and biomedical research."
+        },
+        {
+            question: "Q2. Which is an example of a primary source?",
+            options: ["A. Systematic review", "B. Research textbook", "C. Original clinical trial", "D. Literature review"],
+            answer: 2,
+            explanation: "An original clinical trial provides direct, first-hand research evidence (primary source)."
+        },
+        {
+            question: "Q3. What does A represent in the CRAP Test?",
+            options: ["A. Accuracy", "B. Authority", "C. Analysis", "D. Application"],
+            answer: 1,
+            explanation: "A stands for Authority, evaluating author credentials and institutional credibility."
+        },
+        {
+            question: "Q4. Which section explains how a research study will be conducted?",
+            options: ["A. Title", "B. References", "C. Methodology", "D. Background"],
+            answer: 2,
+            explanation: "The Methodology section details the study design, population, sampling, and data collection procedures."
+        },
+        {
+            question: "Q5. What is the main purpose of a research proposal?",
+            options: ["A. To advertise a product", "B. To plan a research study", "C. To share personal opinions", "D. To present final research results"],
+            answer: 1,
+            explanation: "A research proposal serves as a written blueprint or plan before conducting the study."
+        }
+    ];
+
+    let currentQuizIndex = 0;
+    let score = 0;
+    let answerSelected = false;
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsContainerEl = document.getElementById('optionsContainer');
+    const quizFeedbackEl = document.getElementById('quizFeedback');
+    const nextQuizBtn = document.getElementById('nextQuizBtn');
+    const quizProgressNumEl = document.getElementById('quizProgressNum');
+    const quizContainerEl = document.getElementById('quizContainer');
+    const quizScoreCardEl = document.getElementById('quizScoreCard');
+    const finalScoreNumEl = document.getElementById('finalScoreNum');
+    const scoreMessageEl = document.getElementById('scoreMessage');
+
+    function loadQuizQuestion() {
+        const q = quizData[currentQuizIndex];
+        quizProgressNumEl.textContent = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+        questionTextEl.textContent = q.question;
+        optionsContainerEl.innerHTML = '';
+        quizFeedbackEl.className = 'quiz-feedback hidden';
+        nextQuizBtn.classList.add('hidden');
+        answerSelected = false;
+
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt;
+            btn.addEventListener('click', () => selectQuizAnswer(idx, btn));
+            optionsContainerEl.appendChild(btn);
+        });
+    }
+
+    function selectQuizAnswer(selectedIndex, selectedBtn) {
+        if (answerSelected) return;
+        answerSelected = true;
+
+        const q = quizData[currentQuizIndex];
+        const optionButtons = optionsContainerEl.querySelectorAll('.option-btn');
+
+        optionButtons.forEach((btn, idx) => {
+            btn.disabled = true;
+            if (idx === q.answer) {
+                btn.classList.add('correct');
+            } else if (idx === selectedIndex) {
+                btn.classList.add('incorrect');
+            }
+        });
+
+        if (selectedIndex === q.answer) {
+            score++;
+            quizFeedbackEl.textContent = `Correct! ${q.explanation}`;
+            quizFeedbackEl.className = 'quiz-feedback correct-fb';
+        } else {
+            quizFeedbackEl.textContent = `Incorrect. ${q.explanation}`;
+            quizFeedbackEl.className = 'quiz-feedback incorrect-fb';
+        }
+
+        nextQuizBtn.classList.remove('hidden');
+    }
+
+    window.nextQuizQuestion = function() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizData.length) {
+            loadQuizQuestion();
+        } else {
+            showQuizScore();
+        }
+    };
+
+    function showQuizScore() {
+        quizContainerEl.classList.add('hidden');
+        quizScoreCardEl.classList.remove('hidden');
+        finalScoreNumEl.textContent = score;
+
+        if (score === 5) {
+            scoreMessageEl.textContent = "Outstanding! Perfect score! You have mastered research skills!";
+        } else if (score >= 3) {
+            scoreMessageEl.textContent = "Great job! Strong understanding of credible data and research proposals.";
+        } else {
+            scoreMessageEl.textContent = "Good effort! Review the presentation slides to strengthen your research knowledge.";
+        }
+    }
+
+    window.restartQuiz = function() {
+        currentQuizIndex = 0;
+        score = 0;
+        quizScoreCardEl.classList.add('hidden');
+        quizContainerEl.classList.remove('hidden');
+        loadQuizQuestion();
+    };
+
+    // Initialize Quiz
+    loadQuizQuestion();
+
+    // Animated Scientific Particles Background Canvas
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const particles = [];
+    const particleCount = 45;
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            radius: Math.random() * 2 + 1
+        });
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(0, 229, 255, 0.25)';
+        ctx.strokeStyle = 'rgba(0, 229, 255, 0.08)';
+        ctx.lineWidth = 1;
+
+        particles.forEach((p, index) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Connect nearby particles
+            for (let j = index + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 130) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        });
+
+        requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+    updatePresentation();
+});
+"""
+
+# Write files
+os.makedirs("research_presentation", exist_ok=True)
+with open("research_presentation/index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+with open("research_presentation/style.css", "w", encoding="utf-8") as f:
+    f.write(css_content)
+with open("research_presentation/script.js", "w", encoding="utf-8") as f:
+    f.write(js_content)
+
+# Create ZIP archive
+zip_filename = "research_presentation.zip"
+with zipfile.ZipFile(zip_filename, 'w') as zipf:
+    zipf.write("research_presentation/index.html", "index.html")
+    zipf.write("research_presentation/style.css", "style.css")
+    zipf.write("research_presentation/script.js", "script.js")
+
+print(f"Successfully generated {zip_filename}")
