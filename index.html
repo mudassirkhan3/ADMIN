@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ==========================================================================
-           ULTIMATE IMMERSIVE 15-SLIDE RESEARCH PRESENTATION STYLESHEET
+           ULTIMATE IMMERSIVE ENHANCED 15-SLIDE RESEARCH PRESENTATION STYLESHEET
            ========================================================================== */
         :root {
             --bg-navy: #050814;
             --bg-navy-light: #0D132D;
-            --bg-glass: rgba(13, 19, 45, 0.85);
-            --border-glass: rgba(0, 229, 255, 0.28);
+            --bg-glass: rgba(13, 19, 45, 0.88);
+            --border-glass: rgba(0, 229, 255, 0.35);
             --teal: #00E5FF;
-            --teal-glow: rgba(0, 229, 255, 0.5);
+            --teal-glow: rgba(0, 229, 255, 0.6);
             --gold: #FFD700;
-            --gold-glow: rgba(255, 215, 0, 0.35);
+            --gold-glow: rgba(255, 215, 0, 0.45);
             --white: #FFFFFF;
             --text-muted: #94A3B8;
-            --card-bg: rgba(11, 17, 36, 0.94);
+            --card-bg: rgba(11, 17, 36, 0.95);
             --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -62,7 +62,7 @@
             align-items: center;
             padding: 0 30px;
             z-index: 100;
-            background: rgba(5, 8, 20, 0.9);
+            background: rgba(5, 8, 20, 0.92);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -210,21 +210,28 @@
             font-size: 0.95rem;
         }
 
-        /* Animations */
+        /* Enhanced Eye-Catching Animations */
         @keyframes floatSlow {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px rgba(0,229,255,0.2); }
-            50% { box-shadow: 0 0 28px rgba(0,229,255,0.45); }
-            100% { box-shadow: 0 0 15px rgba(0,229,255,0.2); }
+            0% { box-shadow: 0 0 15px rgba(0,229,255,0.2), inset 0 0 15px rgba(0,229,255,0.05); }
+            50% { box-shadow: 0 0 35px rgba(0,229,255,0.5), inset 0 0 25px rgba(0,229,255,0.15); }
+            100% { box-shadow: 0 0 15px rgba(0,229,255,0.2), inset 0 0 15px rgba(0,229,255,0.05); }
+        }
+
+        @keyframes shimmerBorder {
+            0% { border-color: rgba(0, 229, 255, 0.3); }
+            50% { border-color: rgba(255, 215, 0, 0.7); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            100% { border-color: rgba(0, 229, 255, 0.3); }
         }
 
         .floating-element { animation: floatSlow 4s ease-in-out infinite; }
         .pulsing-box { animation: pulseGlow 3s infinite; }
+        .shimmer-box { animation: shimmerBorder 4s infinite; }
 
         .split-layout {
             display: grid;
@@ -295,9 +302,11 @@
             position: relative;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--teal-glow);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--teal-glow);
             border: 1px solid var(--border-glass);
+            transition: var(--transition-smooth);
         }
+        .visual-card-glow:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 40px var(--gold-glow); }
 
         .hero-img {
             width: 100%;
@@ -305,13 +314,13 @@
             object-fit: cover;
             display: block;
             transform: scale(1.02);
-            transition: transform 0.8s ease;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .visual-card-glow:hover .hero-img { transform: scale(1.05); }
+        .visual-card-glow:hover .hero-img { transform: scale(1.06); }
 
         .floating-badge {
             position: absolute;
-            background: rgba(5, 8, 20, 0.9);
+            background: rgba(5, 8, 20, 0.92);
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-glass);
             padding: 8px 15px;
@@ -322,6 +331,7 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            animation: floatSlow 3.5s ease-in-out infinite alternate;
         }
         .badge-1 { bottom: 18px; left: 18px; color: var(--teal); }
         .badge-2 { top: 18px; right: 18px; color: var(--gold); border-color: rgba(255, 215, 0, 0.3); }
@@ -337,15 +347,19 @@
             padding: 20px;
             backdrop-filter: blur(10px);
             transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
         }
-        .glass-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0, 229, 255, 0.12); }
+        .glass-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0, 229, 255, 0.2); }
 
         .card-icon {
-            width: 40px; height: 40px;
+            width: 42px; height: 42px;
             border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; margin-bottom: 12px;
+            font-size: 1.2rem; margin-bottom: 12px;
+            transition: transform 0.4s ease;
         }
+        .glass-card:hover .card-icon { transform: scale(1.1) rotate(5deg); }
         .card-icon.teal { background: rgba(0, 229, 255, 0.15); color: var(--teal); }
         .card-icon.gold { background: rgba(255, 215, 0, 0.15); color: var(--gold); }
 
@@ -360,21 +374,24 @@
 
         .competencies-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
         .comp-tag {
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(13, 19, 45, 0.9));
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(13, 19, 45, 0.9));
             border: 1px solid var(--teal);
             padding: 14px 18px; border-radius: 12px;
             display: flex; flex-direction: column; gap: 3px;
+            transition: var(--transition-smooth);
         }
+        .comp-tag:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,229,255,0.2); }
         .comp-num { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--teal); letter-spacing: 1px; }
         .comp-text { font-size: 0.98rem; font-weight: 700; color: var(--white); }
 
         .definition-spotlight {
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(11, 17, 36, 0.9));
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(11, 17, 36, 0.95));
             border: 1px solid var(--teal);
             border-radius: 14px; padding: 20px 22px;
             display: flex; align-items: center; gap: 20px;
+            box-shadow: 0 10px 25px rgba(0,229,255,0.1);
         }
-        .spotlight-icon { font-size: 2rem; color: var(--teal); background: rgba(0, 229, 255, 0.15); padding: 15px; border-radius: 10px; }
+        .spotlight-icon { font-size: 2rem; color: var(--teal); background: rgba(0, 229, 255, 0.18); padding: 15px; border-radius: 10px; }
         .definition-spotlight h3 { font-size: 1.1rem; color: var(--teal); margin-bottom: 5px; }
         .definition-spotlight p { color: var(--white); font-size: 0.95rem; line-height: 1.45; }
 
@@ -382,20 +399,14 @@
             background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px; padding: 18px; transition: var(--transition-smooth);
         }
-        .feature-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+        .feature-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,229,255,0.15); }
         .icon-wrap { width: 38px; height: 38px; background: rgba(0, 229, 255, 0.1); color: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-bottom: 10px; }
         .feature-card h4 { font-size: 0.98rem; margin-bottom: 5px; color: var(--white); }
         .feature-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.35; }
 
-        .source-types-banner { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px; text-align: center; }
-        .source-types-banner h4 { margin-bottom: 8px; font-size: 0.92rem; color: var(--gold); }
-        .source-pills { display: flex; justify-content: center; gap: 12px; }
-        .pill { padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; }
-        .pill.primary { background: rgba(0, 229, 255, 0.15); color: var(--teal); border: 1px solid var(--border-glass); }
-        .pill.secondary { background: rgba(255, 215, 0, 0.15); color: var(--gold); border: 1px solid rgba(255, 215, 0, 0.3); }
-
         .split-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 12px; }
-        .comp-box { background: var(--card-bg); border-radius: 14px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .comp-box { background: var(--card-bg); border-radius: 14px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); transition: var(--transition-smooth); }
+        .comp-box:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
         .primary-box { border-top: 4px solid var(--teal); }
         .secondary-box { border-top: 4px solid var(--gold); }
         .box-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -411,16 +422,18 @@
         .databases-section { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 14px 18px; }
         .databases-section h4 { font-size: 0.92rem; margin-bottom: 8px; color: var(--white); text-align: center; }
         .db-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 8px; }
-        .db-item { background: rgba(255, 255, 255, 0.05); padding: 7px 10px; border-radius: 8px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .db-item { background: rgba(255, 255, 255, 0.05); padding: 7px 10px; border-radius: 8px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08); transition: var(--transition-smooth); }
+        .db-item:hover { background: rgba(0,229,255,0.1); border-color: var(--teal); transform: translateY(-2px); }
         .db-item strong { display: block; color: var(--teal); font-size: 0.88rem; margin-bottom: 2px; }
         .db-item span { font-size: 0.7rem; color: var(--text-muted); }
         .db-note { text-align: center; font-size: 0.75rem; color: var(--text-muted); }
 
         .crap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 12px; }
         .crap-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 18px 14px; cursor: pointer; min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: var(--transition-smooth); }
-        .crap-card:hover { border-color: var(--teal); box-shadow: 0 10px 25px rgba(0, 229, 255, 0.15); }
+        .crap-card:hover { border-color: var(--teal); box-shadow: 0 10px 25px rgba(0, 229, 255, 0.2); transform: translateY(-3px); }
         .crap-front { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
-        .crap-icon { font-size: 1.8rem; color: var(--teal); background: rgba(0, 229, 255, 0.12); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .crap-icon { font-size: 1.8rem; color: var(--teal); background: rgba(0, 229, 255, 0.12); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
+        .crap-card:hover .crap-icon { transform: scale(1.15) rotate(10deg); }
         .crap-card h3 { font-size: 1.02rem; color: var(--white); }
         .tap-hint { font-size: 0.7rem; color: var(--teal); font-weight: 600; margin-top: auto; }
         .crap-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-navy-light); padding: 16px; display: flex; flex-direction: column; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
@@ -438,7 +451,6 @@
         .ex-title { font-weight: 700; color: var(--teal); margin-bottom: 8px; font-size: 0.92rem; display: flex; align-items: center; gap: 8px; }
         .ex-steps { display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.04); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; color: var(--white); margin-bottom: 8px; }
         .ex-steps i { color: var(--text-muted); }
-        .golden-rule { font-size: 0.82rem; color: var(--gold); text-align: center; }
 
         .def-box { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 18px; margin-bottom: 12px; }
         .def-box h3 { color: var(--teal); margin-bottom: 6px; font-size: 1.05rem; }
@@ -455,7 +467,7 @@
 
         .components-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
         .comp-step { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 15px; position: relative; overflow: hidden; transition: var(--transition-smooth); }
-        .comp-step:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1); }
+        .comp-step:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15); }
         .step-num { position: absolute; top: 8px; right: 10px; font-size: 1.4rem; font-weight: 800; color: rgba(255, 255, 255, 0.05); }
         .comp-step h4 { font-size: 0.95rem; color: var(--teal); margin-bottom: 4px; }
         .comp-step p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.3; }
@@ -463,7 +475,8 @@
         .highlight-step h4 { color: var(--gold); }
 
         .steps-timeline { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 6px; max-height: 380px; overflow-y: auto; }
-        .timeline-item { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; color: var(--text-muted); padding: 5px 8px; background: rgba(255, 255, 255, 0.03); border-radius: 6px; }
+        .timeline-item { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; color: var(--text-muted); padding: 5px 8px; background: rgba(255, 255, 255, 0.03); border-radius: 6px; transition: background 0.3s ease; }
+        .timeline-item:hover { background: rgba(0,229,255,0.08); color: var(--white); }
         .timeline-item span { width: 20px; height: 20px; background: rgba(0, 229, 255, 0.15); color: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; flex-shrink: 0; }
 
         .nursing-example-box { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 14px; padding: 20px; }
@@ -473,8 +486,10 @@
 
         /* Key Takeaways Slide */
         .takeaway-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-        .takeaway-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; }
-        .takeaway-icon { font-size: 1.8rem; color: var(--teal); margin-bottom: 10px; }
+        .takeaway-card { background: var(--card-bg); border: 1px solid var(--border-glass); border-radius: 14px; padding: 20px; text-align: center; transition: var(--transition-smooth); }
+        .takeaway-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,229,255,0.2); }
+        .takeaway-icon { font-size: 1.8rem; color: var(--teal); margin-bottom: 10px; transition: transform 0.3s ease; }
+        .takeaway-card:hover .takeaway-icon { transform: scale(1.2); }
         .takeaway-card h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 6px; }
         .takeaway-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; }
 
@@ -486,8 +501,8 @@
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
         .option-btn { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--white); padding: 10px 14px; border-radius: 8px; text-align: left; font-size: 0.82rem; cursor: pointer; transition: var(--transition-smooth); line-height: 1.4; }
         .option-btn:hover:not(:disabled) { background: rgba(0, 229, 255, 0.15); border-color: var(--teal); }
-        .option-btn.correct { background: rgba(16, 185, 129, 0.2); border-color: #10B981; color: #10B981; }
-        .option-btn.incorrect { background: rgba(239, 68, 68, 0.2); border-color: #EF4444; color: #EF4444; }
+        .option-btn.correct { background: rgba(16, 185, 129, 0.25); border-color: #10B981; color: #10B981; }
+        .option-btn.incorrect { background: rgba(239, 68, 68, 0.25); border-color: #EF4444; color: #EF4444; }
         .quiz-feedback { padding: 10px 14px; border-radius: 8px; font-size: 0.82rem; margin-bottom: 10px; line-height: 1.45; }
         .quiz-feedback.correct-fb { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; }
         .quiz-feedback.incorrect-fb { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; }
@@ -516,7 +531,7 @@
             width: 100%; height: 60px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 40px; z-index: 100;
-            background: rgba(5, 8, 20, 0.9);
+            background: rgba(5, 8, 20, 0.92);
             backdrop-filter: blur(14px);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -599,7 +614,7 @@
                     <h1 class="main-title">RESEARCH SKILLS</h1>
                     <p class="subtitle">Locating Credible Scientific Data & Developing a Research Proposal</p>
                     
-                    <div class="metadata-card pulsing-box">
+                    <div class="metadata-card pulsing-box shimmer-box">
                         <div class="meta-row">
                             <span class="meta-label">Program:</span>
                             <span class="meta-value">BSN 5th Semester | Group 5</span>
@@ -634,25 +649,34 @@
                 <div class="slide-header">
                     <span class="section-tag">Module Foundation</span>
                     <h2>Introduction to Research Skills</h2>
-                    <p class="section-desc">Empowering nursing professionals with rigorous investigative tools for modern healthcare.</p>
+                    <p class="section-desc">Empowering nursing professionals with rigorous investigative tools for modern healthcare excellence.</p>
                 </div>
                 
-                <div class="grid-2col">
-                    <div class="glass-card">
-                        <div class="card-icon teal"><i class="fa-solid fa-brain"></i></div>
-                        <h3>What Are Research Skills?</h3>
-                        <p>Core abilities required to discover, appraise, interpret, and integrate valid scientific evidence into daily clinical nursing practice.</p>
+                <div class="split-layout">
+                    <div class="grid-2col" style="grid-template-columns: 1fr; gap: 14px;">
+                        <div class="glass-card">
+                            <div class="card-icon teal"><i class="fa-solid fa-brain"></i></div>
+                            <h3>What Are Research Skills?</h3>
+                            <p>Research skills encompass the systematic abilities required to discover, critically appraise, interpret, and integrate valid scientific evidence into daily clinical nursing practice to solve patient care challenges.</p>
+                        </div>
+
+                        <div class="glass-card">
+                            <div class="card-icon gold"><i class="fa-solid fa-star-of-life"></i></div>
+                            <h3>Why Important in Nursing?</h3>
+                            <ul class="check-list">
+                                <li><i class="fa-solid fa-check"></i> Enhances overall patient safety and clinical outcomes.</li>
+                                <li><i class="fa-solid fa-check"></i> Supports evidence-based practice (EBP) decision making.</li>
+                                <li><i class="fa-solid fa-check"></i> Empowers nurses during complex bedside dilemmas.</li>
+                                <li><i class="fa-solid fa-check"></i> Advances the nursing profession through empirical discovery.</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="glass-card">
-                        <div class="card-icon gold"><i class="fa-solid fa-star-of-life"></i></div>
-                        <h3>Why Important in Nursing?</h3>
-                        <ul class="check-list">
-                            <li><i class="fa-solid fa-check"></i> Enhances overall patient safety and outcomes.</li>
-                            <li><i class="fa-solid fa-check"></i> Supports evidence-based practice (EBP).</li>
-                            <li><i class="fa-solid fa-check"></i> Empowers nurses during clinical decision-making.</li>
-                            <li><i class="fa-solid fa-check"></i> Advances the nursing profession globally.</li>
-                        </ul>
+                    <div class="slide-visual">
+                        <div class="visual-card-glow">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Nursing research collaboration" class="hero-img" style="height: 330px;">
+                            <div class="floating-badge badge-1"><i class="fa-solid fa-hospital-user"></i> Patient Care</div>
+                        </div>
                     </div>
                 </div>
 
@@ -675,14 +699,23 @@
                 <div class="slide-header">
                     <span class="section-tag">Competency 23 Focus</span>
                     <h2>Locating Credible Scientific Data</h2>
-                    <p class="section-desc">Unpacking the art and science of finding trustworthy health information.</p>
+                    <p class="section-desc">Unpacking the art and science of finding trustworthy health information for safe practice.</p>
                 </div>
 
-                <div class="definition-spotlight">
-                    <div class="spotlight-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                    <div>
-                        <h3>Core Meaning & Definition</h3>
-                        <p>Locating credible data means systematically retrieving accurate, unbiased, and peer-reviewed scientific evidence from reputable databases, ensuring zero compromise on patient care.</p>
+                <div class="split-layout">
+                    <div class="definition-spotlight" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div class="spotlight-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                            <h3>Core Meaning & Definition</h3>
+                        </div>
+                        <p>Locating credible data means systematically retrieving accurate, unbiased, and peer-reviewed scientific evidence from reputable biomedical databases, ensuring zero compromise on patient care and clinical safety standards.</p>
+                    </div>
+
+                    <div class="slide-visual">
+                        <div class="visual-card-glow">
+                            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="Scientific data analysis and medical research" class="hero-img" style="height: 220px;">
+                            <div class="floating-badge badge-1"><i class="fa-solid fa-laptop-medical"></i> Verified Evidence</div>
+                        </div>
                     </div>
                 </div>
 
@@ -690,17 +723,17 @@
                     <div class="feature-card">
                         <div class="icon-wrap"><i class="fa-solid fa-shield-heart"></i></div>
                         <h4>Safe Interventions</h4>
-                        <p>Protects patients by anchoring treatments in verified scientific facts.</p>
+                        <p>Protects patients by anchoring clinical treatments in verified scientific facts rather than guesswork.</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon-wrap"><i class="fa-solid fa-stethoscope"></i></div>
                         <h4>Bedside Confidence</h4>
-                        <p>Guides nurses through complex clinical dilemmas with robust data.</p>
+                        <p>Guides nurses through complex clinical dilemmas with robust data and proven methodologies.</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon-wrap"><i class="fa-solid fa-filter"></i></div>
                         <h4>Eliminating Myths</h4>
-                        <p>Filters out internet rumors and unverified anecdotal medical advice.</p>
+                        <p>Filters out internet rumors, unverified folklore, and anecdotal medical advice.</p>
                     </div>
                 </div>
             </div>
@@ -712,6 +745,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Source Classification</span>
                     <h2>Primary vs. Secondary Scientific Sources</h2>
+                    <p class="section-desc">Differentiating between original empirical research and synthesized literature reviews.</p>
                 </div>
 
                 <div class="split-comparison">
@@ -723,14 +757,14 @@
                                 <span class="box-sub">Original Research Evidence</span>
                             </div>
                         </div>
-                        <p>First-hand empirical data collected directly by researchers.</p>
+                        <p>First-hand empirical data collected directly by researchers through direct observation or trials.</p>
                         <ul class="mini-list">
-                            <li>Randomized Controlled Trials (RCTs)</li>
-                            <li>Surveys, questionnaires, & interviews</li>
-                            <li>Direct clinical observations</li>
+                            <li>Randomized Controlled Trials (RCTs) evaluating treatments</li>
+                            <li>Surveys, questionnaires, & direct clinical interviews</li>
+                            <li>Direct laboratory and clinical observations</li>
                         </ul>
-                        <div class="example-box">
-                            <strong>Nursing Example:</strong> Surveying hospital hand hygiene compliance.
+                        <div class="example-box" style="margin-top: 10px;">
+                            <strong>Nursing Example:</strong> Surveying hospital hand hygiene compliance among 200 ICU nurses.
                         </div>
                     </div>
 
@@ -742,14 +776,14 @@
                                 <span class="box-sub">Synthesized Research Analysis</span>
                             </div>
                         </div>
-                        <p>Evaluations and summaries of multiple primary studies.</p>
+                        <p>Evaluations, interpretations, and summaries combining multiple primary studies together.</p>
                         <ul class="mini-list">
-                            <li>Systematic reviews & meta-analyses</li>
-                            <li>Critical literature review papers</li>
-                            <li>Medical & nursing textbooks</li>
+                            <li>Systematic reviews & meta-analyses of clinical trials</li>
+                            <li>Critical literature review papers published in journals</li>
+                            <li>Advanced medical & nursing textbooks</li>
                         </ul>
-                        <div class="example-box">
-                            <strong>Nursing Example:</strong> Reading a review summarizing 20 infection control trials.
+                        <div class="example-box" style="margin-top: 10px;">
+                            <strong>Nursing Example:</strong> Reading a review summarizing 20 infection control trials worldwide.
                         </div>
                     </div>
                 </div>
@@ -765,20 +799,29 @@
                     <p class="section-desc">Navigating premier biomedical search engines and global health authorities.</p>
                 </div>
 
-                <div class="databases-section" style="margin-bottom: 20px;">
-                    <h4>Essential Research Databases & Global Agencies</h4>
-                    <div class="db-grid">
-                        <div class="db-item"><strong>PubMed</strong><span>NIH biomedical repository</span></div>
-                        <div class="db-item"><strong>Google Scholar</strong><span>Scholarly articles & papers</span></div>
-                        <div class="db-item"><strong>CINAHL</strong><span>Nursing & allied health index</span></div>
-                        <div class="db-item"><strong>WHO</strong><span>Global health reports & stats</span></div>
+                <div class="split-layout">
+                    <div class="databases-section">
+                        <h4>Essential Research Databases & Global Agencies</h4>
+                        <div class="db-grid">
+                            <div class="db-item"><strong>PubMed</strong><span>NIH biomedical repository</span></div>
+                            <div class="db-item"><strong>Google Scholar</strong><span>Scholarly articles & papers</span></div>
+                            <div class="db-item"><strong>CINAHL</strong><span>Nursing & allied health index</span></div>
+                            <div class="db-item"><strong>WHO</strong><span>Global health reports & stats</span></div>
+                        </div>
+                        <p class="db-note" style="margin-top: 10px;"><i class="fa-solid fa-circle-info"></i> <em>Crucial Distinction: PubMed, Google Scholar, and CINAHL are search databases providing access to literature, whereas WHO is an international health organization publishing official guidelines.</em></p>
                     </div>
-                    <p class="db-note"><i class="fa-solid fa-circle-info"></i> <em>Crucial Distinction: PubMed, Google Scholar, and CINAHL are search databases providing access to literature, whereas WHO is an international health organization publishing official guidelines.</em></p>
+
+                    <div class="slide-visual">
+                        <div class="visual-card-glow">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Medical databases and research search" class="hero-img" style="height: 220px;">
+                            <div class="floating-badge badge-1"><i class="fa-solid fa-globe"></i> Global Repositories</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="glass-card">
+                <div class="glass-card" style="margin-top: 14px;">
                     <h3>Tips for Effective Database Searching</h3>
-                    <p>Use Boolean operators (AND, OR, NOT) and specific medical subject headings (MeSH terms) to narrow down your search results to high-impact peer-reviewed journals.</p>
+                    <p>Use Boolean operators (AND, OR, NOT) and specific medical subject headings (MeSH terms) to narrow down your search results to high-impact peer-reviewed journals, ensuring maximum relevance and academic validity.</p>
                 </div>
             </div>
         </section>
@@ -789,7 +832,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Evaluation Framework</span>
                     <h2>The CRAP Test for Online Information</h2>
-                    <p class="section-desc">Click each card to reveal critical evaluation criteria for online healthcare sources.</p>
+                    <p class="section-desc">Click each card below to reveal critical evaluation criteria for online healthcare sources.</p>
                 </div>
 
                 <div class="crap-grid">
@@ -802,8 +845,8 @@
                         <div class="crap-back">
                             <h3>Currency Evaluation</h3>
                             <ul>
-                                <li>When was it published or revised?</li>
-                                <li>Is it recent enough for fast-evolving medical guidelines?</li>
+                                <li>When was the article published or revised?</li>
+                                <li>Is it recent enough for fast-evolving medical and nursing guidelines?</li>
                             </ul>
                         </div>
                     </div>
@@ -817,8 +860,8 @@
                         <div class="crap-back">
                             <h3>Relevance Evaluation</h3>
                             <ul>
-                                <li>Does it directly answer your clinical question?</li>
-                                <li>Is the academic depth suitable for nursing research?</li>
+                                <li>Does the content directly answer your clinical question?</li>
+                                <li>Is the academic depth appropriate for professional nursing research?</li>
                             </ul>
                         </div>
                     </div>
@@ -832,8 +875,8 @@
                         <div class="crap-back">
                             <h3>Authority Evaluation</h3>
                             <ul>
-                                <li>Who is the author or publisher?</li>
-                                <li>Do they possess verified healthcare credentials?</li>
+                                <li>Who is the author, institution, or publisher?</li>
+                                <li>Do they possess verified healthcare credentials and academic standing?</li>
                             </ul>
                         </div>
                     </div>
@@ -847,15 +890,15 @@
                         <div class="crap-back">
                             <h3>Purpose Evaluation</h3>
                             <ul>
-                                <li>Why was it published (educate, sell, persuade)?</li>
-                                <li>Is there commercial or ideological bias?</li>
+                                <li>Why was it published (to educate, sell a product, or persuade)?</li>
+                                <li>Is there commercial, political, or ideological bias present?</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="crap-footer-note">
-                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>Key Reminder:</strong> The CRAP Test is a quick screening filter, not an absolute guarantee of clinical validity.
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>Key Reminder:</strong> The CRAP Test is a quick screening filter, not an absolute guarantee of clinical validity. Always combine with peer review.
                 </div>
             </div>
         </section>
@@ -866,6 +909,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Critical Appraisal</span>
                     <h2>Reliable vs. Unreliable Healthcare Information</h2>
+                    <p class="section-desc">Distinguishing between trustworthy scientific evidence and unverified anecdotes.</p>
                 </div>
 
                 <div class="split-comparison">
@@ -875,9 +919,9 @@
                             <h3>Reliable Information</h3>
                         </div>
                         <ul class="check-list">
-                            <li><i class="fa-solid fa-check"></i> Authored by credentialed health researchers.</li>
-                            <li><i class="fa-solid fa-check"></i> Published in peer-reviewed medical journals.</li>
-                            <li><i class="fa-solid fa-check"></i> Backed by verifiable scientific citations.</li>
+                            <li><i class="fa-solid fa-check"></i> Authored by credentialed health researchers and scientists.</li>
+                            <li><i class="fa-solid fa-check"></i> Published in peer-reviewed medical and nursing journals.</li>
+                            <li><i class="fa-solid fa-check"></i> Backed by verifiable scientific citations and data.</li>
                             <li><i class="fa-solid fa-check"></i> Transparent, reproducible study methods.</li>
                         </ul>
                     </div>
@@ -888,10 +932,10 @@
                             <h3>Unreliable Information</h3>
                         </div>
                         <ul class="cross-list">
-                            <li><i class="fa-solid fa-xmark"></i> Anonymous blogs and social media posts.</li>
-                            <li><i class="fa-solid fa-xmark"></i> Total lack of scientific references.</li>
-                            <li><i class="fa-solid fa-xmark"></i> Personal opinions marketed as medical cures.</li>
-                            <li><i class="fa-solid fa-xmark"></i> Outdated or sensationalized health claims.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Anonymous personal blogs and unverified social media posts.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Total lack of scientific references or empirical data.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Personal opinions marketed as miraculous medical cures.</li>
+                            <li><i class="fa-solid fa-xmark"></i> Outdated, biased, or sensationalized health claims.</li>
                         </ul>
                     </div>
                 </div>
@@ -917,14 +961,14 @@
                 <div class="slide-header">
                     <span class="section-tag">Competency 24 Focus</span>
                     <h2>Developing a Research Proposal</h2>
-                    <p class="section-desc">Mastering the roadmap of scientific investigation.</p>
+                    <p class="section-desc">Mastering the roadmap of scientific investigation in professional nursing.</p>
                 </div>
 
-                <div class="grid-2col align-center">
+                <div class="split-layout">
                     <div class="proposal-intro">
                         <div class="def-box">
                             <h3>What Is a Research Proposal?</h3>
-                            <p>A structured written document that details <strong>WHAT</strong> you intend to investigate, <strong>WHY</strong> the study is clinically significant, and <strong>HOW</strong> you will execute the research.</p>
+                            <p>A structured written document that details <strong>WHAT</strong> you intend to investigate, <strong>WHY</strong> the study is clinically significant, and <strong>HOW</strong> you will execute the research methodology.</p>
                         </div>
                         <div class="roadmap-quote">
                             <i class="fa-solid fa-map-location-dot"></i>
@@ -952,6 +996,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Proposal Structure (1 to 5)</span>
                     <h2>First Five Components of a Research Proposal</h2>
+                    <p class="section-desc">Establishing the core foundation, background, and guiding inquiries of your study.</p>
                 </div>
 
                 <div class="components-grid">
@@ -960,10 +1005,10 @@
                     <div class="comp-step"><span class="step-num">03</span><h4>Problem Statement</h4><p>Specific healthcare gap or issue being investigated.</p></div>
                     <div class="comp-step"><span class="step-num">04</span><h4>Objectives</h4><p>Broad aims and specific goals the study aims to achieve.</p></div>
                     <div class="comp-step"><span class="step-num">05</span><h4>Research Questions</h4><p>Precise inquiries the researcher seeks to answer.</p></div>
-                    <div class="comp-step" style="background: rgba(0,229,255,0.05); border-color: var(--teal);">
+                    <div class="comp-step" style="background: rgba(0,229,255,0.06); border-color: var(--teal);">
                         <span class="step-num">★</span>
                         <h4>Structural Note</h4>
-                        <p>These initial sections build the foundational rationale for your study.</p>
+                        <p>These initial sections build the foundational rationale for your research.</p>
                     </div>
                 </div>
             </div>
@@ -975,6 +1020,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Proposal Structure (6 to 9)</span>
                     <h2>Remaining Components & Execution Plan</h2>
+                    <p class="section-desc">Detailing the literature synthesis, methodological design, ethics, and citations.</p>
                 </div>
 
                 <div class="components-grid">
@@ -982,7 +1028,7 @@
                     <div class="comp-step"><span class="step-num">07</span><h4>Methodology</h4><p>Study design, population, sampling, tools & analysis plan.</p></div>
                     <div class="comp-step"><span class="step-num">08</span><h4>Ethical Considerations</h4><p>Informed consent, participant privacy, safety & IRB clearance.</p></div>
                     <div class="comp-step highlight-step"><span class="step-num">09</span><h4>References</h4><p>Credible scientific sources cited in APA format.</p></div>
-                    <div class="comp-step" style="background: rgba(255,215,0,0.05); border-color: var(--gold);">
+                    <div class="comp-step" style="background: rgba(255,215,0,0.06); border-color: var(--gold);">
                         <span class="step-num">✓</span>
                         <h4>Ready for Review</h4>
                         <p>A complete 9-component proposal ensures flawless institutional review.</p>
@@ -997,6 +1043,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Methodological Application</span>
                     <h2>From Research Idea to Final Proposal</h2>
+                    <p class="section-desc">Step-by-step workflow illustrated with a real nursing research scenario.</p>
                 </div>
 
                 <div class="grid-2col">
@@ -1016,9 +1063,9 @@
                         <div class="ex-card-header"><i class="fa-solid fa-hospital-user"></i> Practical Nursing Example</div>
                         <div class="ex-body">
                             <p><strong>Topic:</strong> Hand Hygiene Compliance Among Nursing Students.</p>
-                            <p><strong>Problem:</strong> Inconsistent adherence to hygiene protocols.</p>
-                            <p><strong>Objective:</strong> To assess compliance levels among students.</p>
-                            <p><strong>Research Question:</strong> What is the level of compliance?</p>
+                            <p><strong>Problem:</strong> Inconsistent adherence to hygiene protocols in clinical settings.</p>
+                            <p><strong>Objective:</strong> To assess compliance levels and barriers among students.</p>
+                            <p><strong>Research Question:</strong> What is the current level of compliance?</p>
                             <p><strong>Methodology:</strong> Descriptive cross-sectional observational study.</p>
                             <p><strong>Importance:</strong> Enhances hospital infection control standards.</p>
                         </div>
@@ -1033,7 +1080,7 @@
                 <div class="slide-header">
                     <span class="section-tag">Summary & Review</span>
                     <h2>Key Takeaways for Professional Nurses</h2>
-                    <p class="section-desc">Essential principles for academic and clinical excellence.</p>
+                    <p class="section-desc">Essential principles for academic and clinical nursing excellence.</p>
                 </div>
 
                 <div class="takeaway-grid" style="margin-top: 20px;">
@@ -1580,8 +1627,8 @@
 
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = 'rgba(0, 229, 255, 0.25)';
-                ctx.strokeStyle = 'rgba(0, 229, 255, 0.08)';
+                ctx.fillStyle = 'rgba(0, 229, 255, 0.28)';
+                ctx.strokeStyle = 'rgba(0, 229, 255, 0.1)';
                 ctx.lineWidth = 1;
 
                 particles.forEach((p, index) => {
