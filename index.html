@@ -233,6 +233,39 @@
   .member-card.leader { background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(16, 185, 129, 0.16)); border-color: var(--accent-cyan); }
   .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-cyan); color: #040914; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
 
+  /* Engaging Objectives Interactive Grid */
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .obj-tile {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .obj-tile:hover {
+    background: rgba(0, 212, 255, 0.12);
+    border-color: var(--accent-cyan);
+    transform: translateY(-4px);
+  }
+  .obj-num {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    margin-bottom: 6px;
+  }
+  .obj-text {
+    font-size: 0.82rem;
+    color: #e2e8f0;
+    line-height: 1.35;
+  }
+
   /* Venn Diagrams for Boolean Operators */
   .venn-wrap { display: flex; justify-content: center; align-items: center; height: 70px; margin: 8px 0; position: relative; }
   .circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
@@ -290,18 +323,29 @@
   .result-panel h4 { color: var(--accent-teal); font-size: 1rem; margin-bottom: 4px; }
   .result-panel p { font-size: 0.92rem; color: #f1f5f9; line-height: 1.5; }
 
-  /* Animated Thank You Badge */
-  .animated-thank-box {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(16, 185, 129, 0.12));
-    border: 2px dashed var(--accent-cyan);
-    border-radius: 20px;
-    padding: 30px;
+  /* Animated Thank You GIF / Badge Slide */
+  .thank-you-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    animation: pulseGlow 3s infinite alternate ease-in-out;
+    height: 100%;
+    padding: 10px;
   }
-  @keyframes pulseGlow {
-    0% { border-color: rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0,212,255,0.1); }
-    100% { border-color: rgba(16, 185, 129, 0.8); box-shadow: 0 0 30px rgba(16,185,129,0.25); }
+  .gif-frame {
+    width: 240px;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
+    margin-bottom: 16px;
+  }
+  .gif-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* Footer */
@@ -313,7 +357,7 @@
   .hint-text { font-size: 0.82rem; color: var(--text-muted); }
 
   @media (max-width: 900px) {
-    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; }
+    .grid-2, .grid-equal, .grid-3, .obj-grid, .flow-grid, .options-grid { grid-template-columns: 1fr; }
     .slide { padding: 20px; }
     h1 { font-size: 2rem; }
     h2 { font-size: 1.35rem; }
@@ -366,7 +410,7 @@
   <section class="slide">
     <div class="tag teal">Presentation Team</div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute)[cite: 2, 3].</p>
+    <p class="lead">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     <div class="members-grid">
       <div class="member-card leader">
         <div class="avatar">MK</div>
@@ -420,45 +464,52 @@
     </div>
   </section>
 
-  <!-- SLIDE 3: LEARNING OBJECTIVES (ALL 10 ENGAGINGLY ORGANIZED) -->
+  <!-- SLIDE 3: LEARNING OBJECTIVES (ENGAGING INTERACTIVE TILES — NON-BORING) -->
   <section class="slide">
     <div class="tag gold">Presentation Roadmap</div>
     <h2>LEARNING OBJECTIVES</h2>
-    <p class="lead" style="margin-bottom: 10px; font-size: 0.98rem;">By the end of this presentation, students will be able to:</p>
-    <div class="grid-equal" style="gap: 12px;">
-      <div style="display: flex; flex-direction: column; gap: 7px;">
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>01.</strong> Define research skills and explain their importance in evidence-based nursing practice.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>02.</strong> Differentiate between primary and secondary data with nursing examples.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>03.</strong> Classify research data into quantitative and qualitative types with characteristics.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>04.</strong> Identify reliable scientific databases and online sources for nursing literature.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>05.</strong> Evaluate information credibility using the CRAAP Test.</p>
-        </div>
+    <p class="lead" style="margin-bottom: 12px; font-size: 0.98rem;">By the end of this presentation, students will master these 10 core milestones:</p>
+    
+    <div class="obj-grid">
+      <div class="obj-tile">
+        <div class="obj-num">01</div>
+        <div class="obj-text">Define research & EBP in nursing practice.</div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 7px;">
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>06.</strong> Apply Boolean Operators (AND, OR, NOT) to improve literature searches.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>07.</strong> Develop clinical research questions using the PICO framework.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>08.</strong> Compare quantitative, qualitative, and mixed-method research designs.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>09.</strong> Identify main components and steps of a research proposal.</p>
-        </div>
-        <div class="card" style="padding: 9px 12px;">
-          <p style="font-size: 0.9rem;"><strong>10.</strong> Explain research ethics, informed consent, confidentiality, and referencing.</p>
-        </div>
+      <div class="obj-tile">
+        <div class="obj-num">02</div>
+        <div class="obj-text">Differentiate primary vs secondary data.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">03</div>
+        <div class="obj-text">Classify quantitative vs qualitative data.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">04</div>
+        <div class="obj-text">Identify reliable scientific databases.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">05</div>
+        <div class="obj-text">Evaluate sources using CRAAP Test.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">06</div>
+        <div class="obj-text">Apply Boolean Operators for searches.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">07</div>
+        <div class="obj-text">Build questions with PICO framework.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">08</div>
+        <div class="obj-text">Compare research design methods.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">09</div>
+        <div class="obj-text">Outline research proposal steps.</div>
+      </div>
+      <div class="obj-tile">
+        <div class="obj-num">10</div>
+        <div class="obj-text">Practice nursing ethics & consent.</div>
       </div>
     </div>
   </section>
@@ -466,16 +517,16 @@
   <!-- SLIDE 4: MAIN TOPIC & SUBTOPICS 23 & 24 -->
   <section class="slide">
     <div class="tag gold">Main Topic & Subtopics • PERLs Module</div>
-    <h2>Main Topic: Research Skills (Competencies 23 & 24)[cite: 2, 3]</h2>
-    <p class="lead">Our presentation focuses directly on the core <strong>Research Skills</strong> main topic, specifically highlighting two crucial subtopics under the Writer & Presenter attribute[cite: 2, 3]:</p>
+    <h2>Main Topic: Research Skills (Competencies 23 & 24)</h2>
+    <p class="lead">Our presentation focuses directly on the core <strong>Research Skills</strong> main topic, specifically highlighting two crucial subtopics under the Writer & Presenter attribute:</p>
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
-        <h3>📌 Subtopic 23: Locate credible scientific data[cite: 2, 3]</h3>
+        <h3>📌 Subtopic 23: Locate credible scientific data</h3>
         <p style="margin-bottom: 8px;">Mastering indexed medical databases and critical appraisal to find trustworthy, peer-reviewed nursing evidence.</p>
         <p style="color: var(--accent-cyan); font-size: 0.88rem;"><strong>Focus:</strong> Database searches, Boolean logic, and the CRAAP test.</p>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-gold);">
-        <h3>📌 Subtopic 24: Develop a research proposal[cite: 2, 3]</h3>
+        <h3>📌 Subtopic 24: Develop a research proposal</h3>
         <p style="margin-bottom: 8px;">Designing a rigorous, structured study plan outlining clinical problems, literature gaps, methodology, and participant ethics.</p>
         <p style="color: var(--accent-gold); font-size: 0.88rem;"><strong>Focus:</strong> Proposal sections, step-by-step design, and ethics.</p>
       </div>
@@ -539,7 +590,7 @@
 
   <!-- SLIDE 7: TOPIC 3 - SUBTOPIC 23 (LOCATE CREDIBLE SCIENTIFIC DATA) -->
   <section class="slide">
-    <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data[cite: 2, 3]</div>
+    <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
     <h2>Reliable Scientific Databases for Nurses</h2>
     <p class="lead">Never rely on random blogs or social media for patient care. Use trusted medical search engines:</p>
     <div class="grid-equal">
@@ -564,7 +615,7 @@
 
   <!-- SLIDE 8: TOPIC 4 - THE CRAAP TEST -->
   <section class="slide">
-    <div class="tag gold">Subtopic 23 • Quality Check[cite: 2, 3]</div>
+    <div class="tag gold">Subtopic 23 • Quality Check</div>
     <h2>Evaluating Information with the CRAAP Test</h2>
     <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
       <div class="card" style="text-align:center; padding: 12px;">
@@ -600,7 +651,7 @@
 
   <!-- SLIDE 9: TOPIC 5 - BOOLEAN OPERATORS -->
   <section class="slide">
-    <div class="tag">Subtopic 23 • Smart Searching[cite: 2, 3]</div>
+    <div class="tag">Subtopic 23 • Smart Searching</div>
     <h2>Refining Searches with Boolean Operators</h2>
     <p class="lead" style="margin-bottom: 10px;">Use <strong>AND, OR, NOT</strong> in capital letters to control database results:</p>
     <div class="grid-3">
@@ -634,7 +685,7 @@
 
   <!-- SLIDE 10: TOPIC 6 - PICO FRAMEWORK -->
   <section class="slide">
-    <div class="tag teal">Subtopic 23 • Clinical Questions[cite: 2, 3]</div>
+    <div class="tag teal">Subtopic 23 • Clinical Questions</div>
     <h2>Building Focused Questions with PICO</h2>
     <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 14px;">
       <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 14px;">
@@ -704,7 +755,7 @@
 
   <!-- SLIDE 12: TOPIC 8 - SUBTOPIC 24 (DEVELOP A RESEARCH PROPOSAL) -->
   <section class="slide">
-    <div class="tag gold">Subtopic 24 • Develop a Research Proposal[cite: 2, 3]</div>
+    <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
     <h2>9 Essential Components of a Research Proposal</h2>
     <p class="lead" style="margin-bottom: 10px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
     <div class="flow-grid">
@@ -724,7 +775,7 @@
   <section class="slide">
     <div class="grid-2">
       <div>
-        <div class="tag teal">Subtopic 24 • Step-by-Step Workflow[cite: 2, 3]</div>
+        <div class="tag teal">Subtopic 24 • Step-by-Step Workflow</div>
         <h2>How to Develop Your Proposal Step-by-Step</h2>
         <ul class="clean-list">
           <li><strong>Step 1 — Pick a Clinical Problem:</strong> Notice a real issue on the ward (e.g., needle-stick injuries).</li>
@@ -810,18 +861,21 @@
     </div>
   </section>
 
-  <!-- SLIDE 16: ANIMATED & ENGAGING THANK YOU SLIDE -->
+  <!-- SLIDE 16: ANIMATED GIF THANK YOU SLIDE -->
   <section class="slide">
-    <div class="animated-thank-box">
-      <div class="tag teal" style="margin-bottom: 8px;">Presentation Complete</div>
-      <h1 style="font-size: 2.6rem; margin-bottom: 10px;">Thank You!</h1>
-      <p class="lead" style="max-width: 750px; margin: 0 auto 16px auto;">
-        By mastering how to <strong>locate credible scientific data</strong> (Competency 23) and <strong>develop a research proposal</strong> (Competency 24), Group 05 is ready to lead evidence-based nursing care[cite: 2, 3]!
+    <div class="thank-you-container">
+      <div class="tag teal" style="margin-bottom: 6px;">Presentation Complete</div>
+      <div class="gif-frame">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Team Success">
+      </div>
+      <h1 style="font-size: 2.4rem; margin-bottom: 8px;">Thank You!</h1>
+      <p class="lead" style="max-width: 700px; margin: 0 auto 12px auto; font-size: 1rem;">
+        By mastering how to <strong>locate credible scientific data</strong> (Competency 23) and <strong>develop a research proposal</strong> (Competency 24), Group 05 is ready to lead evidence-based nursing care!
       </p>
-      <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px;">
+      <div style="font-size: 1.05rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 6px;">
         Group Leader: Mudassir Khan
       </div>
-      <div style="font-size: 0.88rem; color: var(--text-muted);">
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
         Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
       </div>
     </div>
