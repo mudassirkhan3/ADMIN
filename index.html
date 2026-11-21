@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research Skills in Nursing | BSN 5th Semester - Group 5</title>
+<title>Research Skills in Nursing | BSN 5th Semester - Group 05</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-dark: #071120;
-    --bg-card: rgba(15, 29, 52, 0.78);
+    --bg-card: rgba(15, 29, 52, 0.82);
     --accent-cyan: #00d4ff;
     --accent-teal: #10b981;
     --accent-gold: #f59e0b;
@@ -125,7 +125,7 @@
     backdrop-filter: blur(16px);
     border: 1px solid var(--border-glass);
     border-radius: 24px;
-    padding: 36px 44px;
+    padding: 34px 44px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
     overflow-y: auto;
     animation: slideEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -142,18 +142,7 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* Staggered Text Animations */
-  .slide.active .anim-1 { animation: fadeUp 0.5s 0.08s both; }
-  .slide.active .anim-2 { animation: fadeUp 0.5s 0.18s both; }
-  .slide.active .anim-3 { animation: fadeUp 0.5s 0.28s both; }
-  .slide.active .anim-4 { animation: fadeUp 0.5s 0.38s both; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Styling Elements */
+  /* Typography & Layout Helpers */
   .tag {
     display: inline-block;
     padding: 5px 12px;
@@ -165,7 +154,7 @@
     background: rgba(0, 212, 255, 0.14);
     color: var(--accent-cyan);
     border: 1px solid rgba(0, 212, 255, 0.3);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     width: fit-content;
   }
 
@@ -174,27 +163,27 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 2.7rem;
     line-height: 1.15;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     background: linear-gradient(135deg, #ffffff 30%, #7dd3fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   h2 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #cbd5e1;
-    line-height: 1.6;
-    margin-bottom: 18px;
+    line-height: 1.55;
+    margin-bottom: 16px;
   }
 
   .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 32px; align-items: center; }
@@ -203,7 +192,7 @@
 
   .img-frame {
     width: 100%;
-    height: 310px;
+    height: 300px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.18);
@@ -226,56 +215,56 @@
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-glass);
     border-radius: 14px;
-    padding: 16px 18px;
+    padding: 15px 18px;
     transition: transform 0.25s ease, border-color 0.25s ease;
   }
 
   .card:hover { transform: translateY(-3px); border-color: rgba(0, 212, 255, 0.45); }
-  .card h3 { font-size: 1.1rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-  .card p, .card li { font-size: 0.94rem; color: #cbd5e1; line-height: 1.5; }
+  .card h3 { font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .card p, .card li { font-size: 0.92rem; color: #cbd5e1; line-height: 1.5; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  ul.clean-list li { position: relative; padding-left: 24px; font-size: 0.98rem; line-height: 1.5; color: #e2e8f0; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  ul.clean-list li { position: relative; padding-left: 24px; font-size: 0.95rem; line-height: 1.5; color: #e2e8f0; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
   /* Members Grid */
-  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 10px; }
-  .member-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); padding: 12px 16px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+  .member-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
   .member-card.leader { background: linear-gradient(135deg, rgba(0, 212, 255, 0.18), rgba(16, 185, 129, 0.14)); border-color: var(--accent-cyan); }
-  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-cyan); color: #050b14; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; flex-shrink: 0; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-cyan); color: #050b14; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
 
   /* Quiz Section Styles */
-  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border-glass); }
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-glass); }
   .scoreboard { display: flex; gap: 10px; align-items: center; }
-  .score-pill { display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; }
+  .score-pill { display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 10px; font-weight: 700; font-size: 0.82rem; }
   .score-boys { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; }
   .score-girls { background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); color: #fda4af; }
-  .score-btn { background: rgba(255,255,255,0.15); border: none; color: #fff; width: 22px; height: 22px; border-radius: 5px; cursor: pointer; font-weight: 800; }
+  .score-btn { background: rgba(255,255,255,0.15); border: none; color: #fff; width: 20px; height: 20px; border-radius: 5px; cursor: pointer; font-weight: 800; }
   .score-btn:hover { background: rgba(255,255,255,0.3); }
 
-  .q-nav-dots { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
-  .q-dot { padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; }
+  .q-nav-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+  .q-dot { padding: 3px 8px; border-radius: 5px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.75rem; cursor: pointer; }
   .q-dot.active { background: var(--accent-cyan); color: #050b14; border-color: var(--accent-cyan); }
   .q-dot.answered { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-  .scenario-box { background: rgba(0, 212, 255, 0.07); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 0 12px 12px 0; font-size: 0.98rem; line-height: 1.55; color: #f1f5f9; margin-bottom: 14px; }
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-  .opt-btn { text-align: left; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #e2e8f0; font-size: 0.9rem; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; gap: 8px; align-items: flex-start; }
+  .scenario-box { background: rgba(0, 212, 255, 0.07); border-left: 4px solid var(--accent-cyan); padding: 12px 16px; border-radius: 0 12px 12px 0; font-size: 0.95rem; line-height: 1.5; color: #f1f5f9; margin-bottom: 12px; }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+  .opt-btn { text-align: left; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #e2e8f0; font-size: 0.88rem; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; gap: 8px; align-items: flex-start; }
   .opt-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-cyan); }
   .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.15); }
   .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.22); color: #fff; font-weight: 600; }
   .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.16); opacity: 0.75; }
 
   .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #050b14; border: none; padding: 10px 20px; border-radius: 9px; font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: transform 0.2s; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #050b14; border: none; padding: 9px 18px; border-radius: 9px; font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: transform 0.2s; }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 212, 255, 0.35); }
-  .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border-glass); padding: 9px 16px; border-radius: 9px; font-weight: 600; cursor: pointer; }
+  .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border-glass); padding: 8px 15px; border-radius: 9px; font-weight: 600; cursor: pointer; }
   .btn-secondary:hover { background: rgba(255,255,255,0.16); }
 
-  .result-panel { display: none; margin-top: 12px; padding: 14px 18px; border-radius: 12px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.45); animation: fadeUp 0.35s ease; }
+  .result-panel { display: none; margin-top: 10px; padding: 12px 16px; border-radius: 12px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.45); animation: fadeUp 0.35s ease; }
   .result-panel.show { display: block; }
-  .result-panel h4 { color: var(--accent-teal); font-size: 1rem; margin-bottom: 4px; }
-  .result-panel p { font-size: 0.9rem; color: #e2e8f0; line-height: 1.5; }
+  .result-panel h4 { color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 4px; }
+  .result-panel p { font-size: 0.88rem; color: #e2e8f0; line-height: 1.45; }
 
   /* Footer Controls */
   footer { position: relative; z-index: 10; padding: 10px 36px; display: flex; justify-content: space-between; align-items: center; background: rgba(7, 17, 32, 0.8); border-top: 1px solid var(--border-glass); }
@@ -287,10 +276,10 @@
 
   @media (max-width: 900px) {
     .grid-2, .grid-equal, .grid-3, .options-grid { grid-template-columns: 1fr; }
-    .slide { padding: 20px; }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.4rem; }
-    .img-frame { height: 200px; }
+    .slide { padding: 18px; }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.3rem; }
+    .img-frame { height: 180px; }
   }
 </style>
 </head>
@@ -316,20 +305,20 @@
   <section class="slide active">
     <div class="grid-2">
       <div>
-        <div class="tag anim-1">PERLs Module Presentation</div>
-        <h1 class="anim-2">Research Skills in Nursing</h1>
-        <p class="lead anim-3">
+        <div class="tag">PERLs Module Presentation</div>
+        <h1>Research Skills in Nursing</h1>
+        <p class="lead">
           Mastering evidence-based practice, scientific literature searching, research proposals, and ethics in simple, engaging terms.
         </p>
-        <div class="card anim-4" style="border-left: 4px solid var(--accent-teal);">
+        <div class="card" style="border-left: 4px solid var(--accent-teal);">
           <p style="font-size: 0.95rem; color: #fff;">
             <strong>Group 05 Presentation</strong><br>
-            <span style="color: var(--text-muted);">BSN 5th Semester Nursing Academic Module</span>
+            <span style="color: var(--text-muted);">BSN 5th Semester Academic Module</span>
           </p>
         </div>
       </div>
-      <div class="img-frame anim-3">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85" alt="Nursing Research and Healthcare">
+      <div class="img-frame">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=85" alt="Nursing Research">
         <div class="img-caption">Connecting scientific research with daily bedside patient care</div>
       </div>
     </div>
@@ -337,14 +326,14 @@
 
   <!-- SLIDE 2: GROUP 5 MEMBERS -->
   <section class="slide">
-    <div class="tag teal anim-1">Presentation Team</div>
-    <h2 class="anim-2">BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead anim-2">Collaborative academic presentation led by Group Leader Mudassir Hussain Khan.</p>
-    <div class="members-grid anim-3">
+    <div class="tag teal">Presentation Team</div>
+    <h2>BSN 5th Semester — Group 05 Members</h2>
+    <p class="lead">Collaborative academic presentation led by Group Leader Mudassir Khan.</p>
+    <div class="members-grid">
       <div class="member-card leader">
         <div class="avatar">MK</div>
         <div>
-          <div style="font-weight: 800; color: #fff;">Mudassir Hussain Khan</div>
+          <div style="font-weight: 800; color: #fff;">Mudassir Khan</div>
           <div style="font-size: 0.78rem; color: var(--accent-cyan);">Group Leader</div>
         </div>
       </div>
@@ -393,269 +382,291 @@
     </div>
   </section>
 
-  <!-- SLIDE 3: LEARNING OBJECTIVES (PART 1) -->
+  <!-- SLIDE 3: LEARNING OBJECTIVES (ALL 10 ON ONE SINGLE SLIDE) -->
   <section class="slide">
-    <div class="tag gold anim-1">Roadmap</div>
-    <h2 class="anim-2">Learning Objectives (Part 1)</h2>
-    <p class="lead anim-2">By the end of this presentation, students will be able to:</p>
-    <div style="display:flex; flex-direction:column; gap:12px;" class="anim-3">
-      <div class="card">
-        <h3>1. Research Skills & EBP</h3>
-        <p>Define research skills and explain their importance in evidence-based nursing practice.</p>
+    <div class="tag gold">Roadmap</div>
+    <h2>Learning Objectives</h2>
+    <p class="lead" style="margin-bottom: 12px;">By the end of this presentation, students will be able to:</p>
+    <div class="grid-equal" style="gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="card" style="padding: 10px 14px;">
+          <h3>01. Research Skills & EBP</h3>
+          <p>Define research skills and explain their importance in evidence-based nursing practice.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>02. Primary vs Secondary Data</h3>
+          <p>Differentiate between primary and secondary data with nursing examples.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>03. Quantitative vs Qualitative</h3>
+          <p>Classify research data into quantitative and qualitative types with examples.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>04. Reliable Databases</h3>
+          <p>Identify reliable scientific databases and online sources for nursing literature.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>05. The CRAAP Test</h3>
+          <p>Evaluate the credibility of research information using currency, relevance, authority, accuracy, and purpose.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>2. Primary vs Secondary Data</h3>
-        <p>Differentiate between primary and secondary data with relevant nursing examples.</p>
-      </div>
-      <div class="card">
-        <h3>3. Quantitative vs Qualitative</h3>
-        <p>Classify research data into quantitative and qualitative types, including their characteristics and examples.</p>
-      </div>
-      <div class="card">
-        <h3>4. Reliable Scientific Databases</h3>
-        <p>Identify reliable scientific databases and online sources for accessing nursing research literature.</p>
-      </div>
-      <div class="card">
-        <h3>5. The CRAAP Test</h3>
-        <p>Assess the accuracy, relevance, authority, currency, and purpose of information using the CRAAP Test.</p>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="card" style="padding: 10px 14px;">
+          <h3>06. Boolean Operators</h3>
+          <p>Apply Boolean Operators (AND, OR, NOT) to improve and refine research searches.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>07. PICO Framework</h3>
+          <p>Develop clinical research questions using Population, Intervention, Comparison, Outcome.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>08. Research Designs</h3>
+          <p>Compare quantitative, qualitative, and mixed-method research designs.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>09. Research Proposals</h3>
+          <p>Identify the main components and steps involved in developing a research proposal.</p>
+        </div>
+        <div class="card" style="padding: 10px 14px;">
+          <h3>10. Research Ethics</h3>
+          <p>Explain research ethics, informed consent, confidentiality, and proper referencing.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 4: LEARNING OBJECTIVES (PART 2) -->
-  <section class="slide">
-    <div class="tag gold anim-1">Roadmap</div>
-    <h2 class="anim-2">Learning Objectives (Part 2)</h2>
-    <p class="lead anim-2">Continuing our core learning outcomes for today:</p>
-    <div style="display:flex; flex-direction:column; gap:12px;" class="anim-3">
-      <div class="card">
-        <h3>6. Boolean Operators</h3>
-        <p>Apply Boolean Operators (AND, OR, NOT) to improve and refine scientific literature searches.</p>
-      </div>
-      <div class="card">
-        <h3>7. PICO Framework</h3>
-        <p>Construct focused clinical research questions using the PICO Framework.</p>
-      </div>
-      <div class="card">
-        <h3>8. Research Designs</h3>
-        <p>Compare quantitative, qualitative, and mixed-method research designs based on their purpose and approach.</p>
-      </div>
-      <div class="card">
-        <h3>9. Research Proposals</h3>
-        <p>Identify the essential components and sequential steps of a research proposal.</p>
-      </div>
-      <div class="card">
-        <h3>10. Ethical Principles</h3>
-        <p>Discuss ethical principles in nursing research, including informed consent, confidentiality, and proper referencing.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 5: OBJECTIVE 1 - RESEARCH SKILLS & EBP -->
+  <!-- SLIDE 4: TOPIC 1 - INTRODUCTION TO RESEARCH & EBP -->
   <section class="slide">
     <div class="grid-2">
       <div>
-        <div class="tag anim-1">Objective 01</div>
-        <h2 class="anim-2">Research Skills in Evidence-Based Nursing</h2>
-        <p class="lead anim-3">Evidence-Based Practice (EBP) combines scientific research, clinical expertise, and patient preferences to make the best care decisions.</p>
-        <ul class="clean-list anim-4">
-          <li><strong>Patient Safety:</strong> Prevents medical errors and hospital infections using proven protocols.</li>
+        <div class="tag">Topic 01</div>
+        <h2>Research & Evidence-Based Practice (EBP)</h2>
+        <p class="lead">Evidence-Based Practice combines scientific research, clinical expertise, and patient values to make the best care decisions.</p>
+        <ul class="clean-list">
+          <li><strong>Patient Safety:</strong> Replaces old habits with proven protocols to prevent medical errors.</li>
           <li><strong>Better Outcomes:</strong> Up-to-date wound care and pain management shorten recovery times.</li>
-          <li><strong>Critical Thinking:</strong> Teaches nurses to question old habits and verify facts.</li>
+          <li><strong>Critical Thinking:</strong> Teaches nurses to question assumptions and verify clinical facts.</li>
         </ul>
       </div>
-      <div class="img-frame anim-3">
+      <div class="img-frame">
         <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1000&q=85" alt="Evidence Based Practice">
-        <div class="img-caption">Nursing science drives modern patient recovery and safety</div>
+        <div class="img-caption">Nursing science bridges clinical research with bedside patient safety</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 6: OBJECTIVE 2 & 3 - DATA TYPES -->
+  <!-- SLIDE 5: TOPIC 2 - TYPES OF DATA (PART A: SOURCE) -->
   <section class="slide">
-    <div class="tag teal anim-1">Objectives 02 & 03</div>
-    <h2 class="anim-2">Classifying Research Data</h2>
-    <div class="grid-equal anim-3">
+    <div class="tag teal">Topic 02 (Part A)</div>
+    <h2>Data Sources: Primary vs Secondary Data</h2>
+    <p class="lead">Data can be classified based on who collected it first-hand versus existing published records.</p>
+    <div class="grid-equal">
       <div class="card">
-        <h3>📊 Primary vs Secondary Data</h3>
-        <p><strong>Primary Data:</strong> First-hand information collected directly by the researcher (e.g., surveying patients in a ward about pain levels).</p>
-        <p style="margin-top:8px;"><strong>Secondary Data:</strong> Existing data collected by someone else (e.g., hospital admission records or published journal articles).</p>
+        <h3>🟢 Primary Data (First-Hand)</h3>
+        <p>Information collected directly by the researcher for a specific study.</p>
+        <p style="margin-top: 10px; color: var(--accent-cyan);"><strong>Nursing Example:</strong> Conducting a direct survey among 50 surgical ward patients regarding their post-op pain scores.</p>
       </div>
       <div class="card">
-        <h3>📈 Quantitative vs Qualitative</h3>
-        <p><strong>Quantitative:</strong> Numerical data measured with numbers and statistics (e.g., blood pressure readings, temperature, heart rate).</p>
-        <p style="margin-top:8px;"><strong>Qualitative:</strong> Descriptive words and experiences (e.g., patient interviews describing chronic pain feelings).</p>
+        <h3>🔵 Secondary Data (Pre-existing)</h3>
+        <p>Information already collected, analyzed, or published by someone else.</p>
+        <p style="margin-top: 10px; color: var(--accent-teal);"><strong>Nursing Example:</strong> Reviewing hospital admission logs, annual infection rates, or published journal articles.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 7: OBJECTIVE 4 - RELIABLE DATABASES -->
+  <!-- SLIDE 6: TOPIC 2 - TYPES OF DATA (PART B: NATURE) -->
+  <section class="slide">
+    <div class="tag teal">Topic 02 (Part B)</div>
+    <h2>Data Nature: Quantitative vs Qualitative Data</h2>
+    <p class="lead">Data is also classified by whether it is expressed in numbers or descriptive words.</p>
+    <div class="grid-equal">
+      <div class="card">
+        <h3>📊 Quantitative Data (Numbers)</h3>
+        <p>Numerical information, measurements, and statistical variables.</p>
+        <p style="margin-top: 10px; color: var(--accent-cyan);"><strong>Nursing Example:</strong> Measuring patient blood pressure readings ($120/80$ mmHg), heart rate, or temperature.</p>
+      </div>
+      <div class="card">
+        <h3>📝 Qualitative Data (Words)</h3>
+        <p>Descriptive information capturing experiences, opinions, and feelings.</p>
+        <p style="margin-top: 10px; color: var(--accent-teal);"><strong>Nursing Example:</strong> Conducting open interviews where patients describe how chronic back pain affects their daily life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: TOPIC 3 - RESEARCH DATABASES -->
   <section class="slide">
     <div class="grid-2">
       <div>
-        <div class="tag anim-1">Objective 04</div>
-        <h2 class="anim-2">Reliable Scientific Databases</h2>
-        <p class="lead anim-3">When searching for nursing literature, avoid random web searches and use indexed health databases:</p>
-        <ul class="clean-list anim-4">
+        <div class="tag">Topic 03</div>
+        <h2>Research Databases & Literature Sources</h2>
+        <p class="lead">To find credible scientific evidence, nurses avoid random web blogs and search indexed health repositories:</p>
+        <ul class="clean-list">
           <li><strong>PubMed:</strong> Free U.S. National Library of Medicine database with millions of biomedical studies.</li>
           <li><strong>CINAHL:</strong> The premier database specifically dedicated to nursing and allied health literature.</li>
-          <li><strong>Cochrane Library:</strong> The global standard for systematic reviews and clinical trial summaries.</li>
+          <li><strong>Cochrane Library:</strong> The global gold standard for systematic reviews and clinical trial summaries.</li>
+          <li><strong>Google Scholar:</strong> Broad academic search engine for locating peer-reviewed articles.</li>
         </ul>
       </div>
-      <div class="img-frame anim-3">
-        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=85" alt="Scientific Database Search">
+      <div class="img-frame">
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=85" alt="Database Search">
         <div class="img-caption">Indexed databases ensure access to peer-reviewed medical journals</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 8: OBJECTIVE 5 - CRAAP TEST -->
+  <!-- SLIDE 8: TOPIC 4 - THE CRAAP TEST -->
   <section class="slide">
-    <div class="tag gold anim-1">Objective 05</div>
-    <h2 class="anim-2">Assessing Information with the CRAAP Test</h2>
-    <div class="grid-3 anim-3" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="tag gold">Topic 04</div>
+    <h2>Evaluating Sources with the CRAAP Test</h2>
+    <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
       <div class="card" style="text-align:center;">
         <h3 style="color:var(--accent-cyan); justify-content:center;">C</h3>
         <strong>Currency</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is the information recent and up-to-date?</p>
+        <p style="font-size:0.78rem; margin-top:4px;">Is the information recent and up-to-date?</p>
       </div>
       <div class="card" style="text-align:center;">
         <h3 style="color:var(--accent-teal); justify-content:center;">R</h3>
         <strong>Relevance</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Does it directly fit your clinical question?</p>
+        <p style="font-size:0.78rem; margin-top:4px;">Does it directly fit your clinical question?</p>
       </div>
       <div class="card" style="text-align:center;">
         <h3 style="color:var(--accent-gold); justify-content:center;">A</h3>
         <strong>Authority</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Are the authors qualified experts?</p>
+        <p style="font-size:0.78rem; margin-top:4px;">Are the authors qualified health experts?</p>
       </div>
       <div class="card" style="text-align:center;">
         <h3 style="color:var(--accent-rose); justify-content:center;">A</h3>
         <strong>Accuracy</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is it backed by evidence and citations?</p>
+        <p style="font-size:0.78rem; margin-top:4px;">Is it backed by evidence and citations?</p>
       </div>
       <div class="card" style="text-align:center;">
         <h3 style="color:#a78bfa; justify-content:center;">P</h3>
         <strong>Purpose</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is it objective, or trying to sell something?</p>
+        <p style="font-size:0.78rem; margin-top:4px;">Is it objective, or trying to sell something?</p>
       </div>
+    </div>
+    <div class="card" style="margin-top: 14px; background: rgba(245, 158, 11, 0.08);">
+      <p style="font-size: 0.92rem; color: #fff;">
+        <strong>Practical Takeaway:</strong> If an online health article has no author credentials, no publication date, and a "Buy Now" button at the bottom, it fails the CRAAP test and should not be used in nursing research.
+      </p>
     </div>
   </section>
 
-  <!-- SLIDE 9: OBJECTIVE 6 - BOOLEAN OPERATORS -->
+  <!-- SLIDE 9: TOPIC 5 - BOOLEAN OPERATORS -->
   <section class="slide">
     <div class="grid-2">
       <div>
-        <div class="tag anim-1">Objective 06</div>
-        <h2 class="anim-2">Refining Searches with Boolean Operators</h2>
-        <p class="lead anim-3">Boolean operators connect your search keywords to find precisely what you need:</p>
-        <ul class="clean-list anim-4">
-          <li><strong>AND:</strong> Narrows results. (e.g., <code>Diabetes AND Insulin</code> shows articles containing both terms).</li>
-          <li><strong>OR:</strong> Broadens results. (e.g., <code>Hypertension OR High Blood Pressure</code> captures synonyms).</li>
-          <li><strong>NOT:</strong> Excludes terms. (e.g., <code>Diabetes NOT Type 1</code> removes unwanted topics).</li>
+        <div class="tag">Topic 05</div>
+        <h2>Refining Searches with Boolean Operators</h2>
+        <p class="lead">Boolean operators connect your search keywords to control database results:</p>
+        <ul class="clean-list">
+          <li><strong>AND:</strong> Narrows results. <br><em>Example:</em> `Nursing AND Patient Safety` (shows articles containing both).</li>
+          <li><strong>OR:</strong> Broadens results with synonyms. <br><em>Example:</em> `Nurse OR Nursing` (captures either term).</li>
+          <li><strong>NOT:</strong> Excludes unwanted topics. <br><em>Example:</em> `Infection NOT COVID-19` (removes specific terms).</li>
         </ul>
       </div>
-      <div class="img-frame anim-3">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85" alt="Data Searching Strategy">
+      <div class="img-frame">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85" alt="Search Strategy">
         <div class="img-caption">Boolean logic cuts through database clutter to find exact answers</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 10: OBJECTIVE 7 - PICO FRAMEWORK -->
+  <!-- SLIDE 10: TOPIC 6 - PICO FRAMEWORK -->
   <section class="slide">
-    <div class="tag teal anim-1">Objective 07</div>
-    <h2 class="anim-2">Constructing Questions with PICO</h2>
-    <div class="grid-3 anim-3" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+    <div class="tag teal">Topic 06</div>
+    <h2>Constructing Research Questions with PICO</h2>
+    <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 14px;">
       <div class="card">
         <h3 style="color:var(--accent-cyan);">P</h3>
-        <strong>Patient / Population</strong>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">e.g., ICU patients</p>
+        <strong>Population</strong>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">e.g., ICU patients</p>
       </div>
       <div class="card">
         <h3 style="color:var(--accent-teal);">I</h3>
         <strong>Intervention</strong>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">e.g., Oral chlorhexidine</p>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">e.g., Oral chlorhexidine</p>
       </div>
       <div class="card">
         <h3 style="color:var(--accent-gold);">C</h3>
         <strong>Comparison</strong>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">e.g., Standard saline</p>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">e.g., Standard saline care</p>
       </div>
       <div class="card">
         <h3 style="color:var(--accent-rose);">O</h3>
         <strong>Outcome</strong>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">e.g., Reduced pneumonia</p>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">e.g., Reduced pneumonia</p>
       </div>
     </div>
-    <div class="card anim-4">
-      <p style="text-align:center; color:#fff; font-weight:600;">
-        Using PICO transforms a vague clinical curiosity into a searchable, answerable research question.
+    <div class="card">
+      <p style="color:#fff; font-size:0.95rem;">
+        <strong>Example:</strong> In ICU patients (P), does oral chlorhexidine (I) compared to standard saline (C) reduce ventilator-associated pneumonia (O)?
       </p>
     </div>
   </section>
 
-  <!-- SLIDE 11: OBJECTIVE 8 - RESEARCH DESIGNS -->
+  <!-- SLIDE 11: TOPIC 7 - RESEARCH DESIGNS -->
   <section class="slide">
-    <div class="tag anim-1">Objective 08</div>
-    <h2 class="anim-2">Comparing Research Designs</h2>
-    <div class="grid-3 anim-3">
+    <div class="tag">Topic 07</div>
+    <h2>Comparing Research Designs</h2>
+    <div class="grid-3">
       <div class="card">
         <h3>1. Quantitative Design</h3>
-        <p>Focuses on numbers, measurements, and statistical testing (e.g., randomized controlled trials testing drug dosages).</p>
+        <p><strong>Purpose:</strong> Test hypotheses and establish cause-and-effect.<br><strong>Method:</strong> Numbers and statistical analysis.<br><strong>Example:</strong> Randomized Controlled Trial (RCT) testing medication dosage.</p>
       </div>
       <div class="card">
         <h3>2. Qualitative Design</h3>
-        <p>Focuses on human experiences, interviews, and deep descriptive text (e.g., living with chronic illness).</p>
+        <p><strong>Purpose:</strong> Explore human experiences and meanings.<br><strong>Method:</strong> Open interviews and descriptive text.<br><strong>Example:</strong> Exploring how cancer survivors cope emotionally.</p>
       </div>
       <div class="card">
         <h3>3. Mixed-Methods Design</h3>
-        <p>Combines both numerical data and qualitative interviews for a complete picture of a clinical problem.</p>
+        <p><strong>Purpose:</strong> Gain comprehensive depth.<br><strong>Method:</strong> Combines numerical data and qualitative interviews.<br><strong>Example:</strong> Measuring blood pressure alongside patient stress interviews.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 12: OBJECTIVE 9 - RESEARCH PROPOSAL -->
+  <!-- SLIDE 12: TOPIC 8 - RESEARCH PROPOSAL -->
   <section class="slide">
     <div class="grid-2">
-      <div class="img-frame anim-2">
-        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85" alt="Research Proposal Planning">
-        <div class="img-caption">A proposal is your structured plan before starting research</div>
+      <div class="img-frame">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85" alt="Proposal Planning">
+        <div class="img-caption">A proposal is your structured roadmap before starting research</div>
       </div>
       <div>
-        <div class="tag teal anim-1">Objective 09</div>
-        <h2 class="anim-2">Steps of a Research Proposal</h2>
-        <p class="lead anim-3">A research proposal outlines your study plan before data collection begins:</p>
-        <ul class="clean-list anim-4">
+        <div class="tag teal">Topic 08</div>
+        <h2>Developing a Research Proposal</h2>
+        <p class="lead">A research proposal is a formal plan submitted and approved before data collection begins:</p>
+        <ul class="clean-list">
           <li><strong>Title & Introduction:</strong> Clear statement of the clinical problem.</li>
-          <li><strong>Objectives & Literature:</strong> What is already known and what gap you are filling.</li>
+          <li><strong>Objectives & Literature:</strong> What is known and what gap you are filling.</li>
           <li><strong>Methodology:</strong> Study design, population sample, and data collection tools.</li>
           <li><strong>Timeline & Budget:</strong> Work schedule and resource planning.</li>
+          <li><strong>References:</strong> Standardized citations (APA/Vancouver).</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 13: OBJECTIVE 10 - ETHICAL PRINCIPLES -->
+  <!-- SLIDE 13: TOPIC 9 - RESEARCH ETHICS -->
   <section class="slide">
-    <div class="tag gold anim-1">Objective 10</div>
-    <h2 class="anim-2">Ethical Principles in Nursing Research</h2>
-    <div class="grid-equal anim-3">
+    <div class="tag gold">Topic 09</div>
+    <h2>Research Ethics in Nursing</h2>
+    <div class="grid-equal">
       <div class="card">
-        <h3>🤝 Informed Consent</h3>
-        <p>Participants must voluntarily agree to join after understanding all risks, benefits, and their right to withdraw anytime without penalty.</p>
+        <h3>🤝 Informed Consent & Voluntary Participation</h3>
+        <p>Participants must freely agree to join after understanding all risks and benefits, with the unconditional right to withdraw anytime.</p>
       </div>
       <div class="card">
         <h3>🔒 Confidentiality & Privacy</h3>
         <p>Protecting participant identities by coding data so personal medical records and responses are never exposed.</p>
       </div>
       <div class="card">
-        <h3>⚖️ Beneficence & Safety</h3>
-        <p>Ensuring the study maximizes benefits while preventing any physical or psychological harm to human subjects.</p>
+        <h3>⚖️ Beneficence & Non-Maleficence</h3>
+        <p>Maximizing clinical benefits while ensuring absolute protection from physical or psychological harm.</p>
       </div>
       <div class="card">
-        <h3>📝 Proper Referencing</h3>
-        <p>Giving full credit to original authors using APA or Vancouver formatting to avoid plagiarism.</p>
+        <h3>📝 Avoiding Plagiarism</h3>
+        <p>Giving full credit to original authors using proper academic referencing.</p>
       </div>
     </div>
   </section>
@@ -665,7 +676,7 @@
     <div class="quiz-header">
       <div>
         <span class="tag gold" style="margin-bottom:2px;">Live Class Challenge • 10 Scenarios</span>
-        <h2 style="font-size: 1.3rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
+        <h2 style="font-size: 1.25rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
       </div>
       <div class="scoreboard">
         <div class="score-pill score-boys">
@@ -703,19 +714,19 @@
   <section class="slide">
     <div class="grid-2">
       <div>
-        <div class="tag teal anim-1">Summary</div>
-        <h1 class="anim-2">Thank You!</h1>
-        <p class="lead anim-3">
-          By mastering these research skills, Group 5 and our BSN cohort are ready to lead evidence-based nursing care with confidence.
+        <div class="tag teal">Summary</div>
+        <h1>Thank You!</h1>
+        <p class="lead">
+          By mastering these research skills, Group 05 and our BSN cohort are ready to lead evidence-based nursing care with confidence.
         </p>
-        <div class="card anim-4" style="border-left: 4px solid var(--accent-cyan);">
-          <p style="color:#fff; font-weight:700; margin-bottom:4px;">Presented by Group 05 (Leader: Mudassir Hussain Khan)</p>
+        <div class="card" style="border-left: 4px solid var(--accent-cyan);">
+          <p style="color:#fff; font-weight:700; margin-bottom:4px;">Presented by Group 05 (Leader: Mudassir Khan)</p>
           <p style="font-size:0.85rem; color:var(--text-muted);">
             Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
           </p>
         </div>
       </div>
-      <div class="img-frame anim-3">
+      <div class="img-frame">
         <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1000&q=85" alt="Group Presentation">
         <div class="img-caption">Questions & Open Discussion</div>
       </div>
@@ -764,10 +775,10 @@
     if (e.key === 'ArrowLeft') changeSlide(-1);
   });
 
-  // 10 Scenario Questions mapped to the 10 objectives
+  // 10 Scenario Questions mapped to presentation topics
   const quizData = [
     {
-      scenario: "Scenario 1 (Objective 1): A senior nurse insists on using a dry gauze dressing because 'we have done it for 20 years.' You want to find scientific proof for moist wound healing. Why is this research skill important in nursing?",
+      scenario: "Scenario 1 (Research & EBP): A senior nurse insists on using a dry gauze dressing because 'we have done it for 20 years.' You want to find scientific proof for moist wound healing. Why is this research skill important in nursing?",
       options: [
         "It helps nurses win academic awards",
         "It ensures patient safety and replaces outdated habits with proven evidence",
@@ -778,7 +789,7 @@
       rationale: "Research skills empower nurses to practice Evidence-Based Practice (EBP), improving patient recovery and safety instead of relying on unverified tradition."
     },
     {
-      scenario: "Scenario 2 (Objective 2): You conduct a survey interviewing 50 patients directly about their post-operative pain levels. Later, you also read hospital readmission charts from last year. How do these data types differ?",
+      scenario: "Scenario 2 (Data Sources): You conduct a survey interviewing 50 patients directly about their post-operative pain levels. Later, you also read hospital readmission charts from last year. How do these data types differ?",
       options: [
         "Surveying patients is Primary Data; hospital records are Secondary Data",
         "Both are qualitative data types",
@@ -789,7 +800,7 @@
       rationale: "Primary data is collected first-hand by the researcher (patient survey), while secondary data was previously gathered by someone else (hospital records)."
     },
     {
-      scenario: "Scenario 3 (Objective 3): In your clinical study, you record patient body temperatures in degrees Celsius and interview patients about their emotional anxiety. How should you classify these two types of data?",
+      scenario: "Scenario 3 (Data Nature): In your clinical study, you record patient body temperatures in degrees Celsius and interview patients about their emotional anxiety. How should you classify these two types of data?",
       options: [
         "Temperature is qualitative; anxiety interview is quantitative",
         "Temperature is quantitative (numerical); anxiety interview is qualitative (descriptive)",
@@ -800,7 +811,7 @@
       rationale: "Quantitative data relies on measurable numbers (temperature), whereas qualitative data captures descriptive words, feelings, and experiences (interviews)."
     },
     {
-      scenario: "Scenario 4 (Objective 4): You need peer-reviewed nursing articles for your assignment. Instead of using social media blogs, you open PubMed and CINAHL. Why are these specific databases ideal?",
+      scenario: "Scenario 4 (Databases): You need peer-reviewed nursing articles for your assignment. Instead of using social media blogs, you open PubMed and CINAHL. Why are these specific databases ideal?",
       options: [
         "They only publish fictional stories",
         "They are indexed repositories providing peer-reviewed, credible scientific nursing literature",
@@ -811,7 +822,7 @@
       rationale: "PubMed and CINAHL index peer-reviewed health and nursing journals, ensuring your literature review is built on credible, scientifically verified sources."
     },
     {
-      scenario: "Scenario 5 (Objective 5): You find an online article claiming a herbal drink cures diabetes in 24 hours, but it lists no author, no date, and has a 'Buy Now' button. Which CRAAP test pillar does it fail?",
+      scenario: "Scenario 5 (CRAAP Test): You find an online article claiming a herbal drink cures diabetes in 24 hours, but it lists no author, no date, and has a 'Buy Now' button. Which CRAAP test pillar does it fail?",
       options: [
         "It passes all criteria easily",
         "Authority, Accuracy, and Purpose due to commercial bias and lack of credentials",
@@ -822,7 +833,7 @@
       rationale: "The article fails Authority (no expert credentials), Accuracy (no citations), and Purpose (commercial sales agenda), proving it lacks credibility."
     },
     {
-      scenario: "Scenario 6 (Objective 6): When searching PubMed for literature on nursing burnout, your search retrieves too many unrelated articles. Which Boolean operator combination will narrow your search?",
+      scenario: "Scenario 6 (Boolean Operators): When searching PubMed for literature on nursing burnout, your search retrieves too many unrelated articles. Which Boolean operator combination will narrow your search?",
       options: [
         "Type 'Burnout OR Nursing OR Hospital'",
         "Use AND: 'Burnout AND Nursing AND ICU'",
@@ -833,7 +844,7 @@
       rationale: "The 'AND' operator narrows your search results by requiring the database to match all specified search criteria simultaneously."
     },
     {
-      scenario: "Scenario 7 (Objective 7): You want to know if hand hygiene reduces infections in ICU patients compared to standard care. Using the PICO framework, what does 'I' stand for?",
+      scenario: "Scenario 7 (PICO Framework): You want to know if hand hygiene reduces infections in ICU patients compared to standard care. Using the PICO framework, what does 'I' stand for?",
       options: [
         "Inpatient population",
         "Infection outcome rate",
@@ -844,7 +855,7 @@
       rationale: "In the PICO acronym, 'I' stands for Intervention—the specific treatment, nursing action, or preventive measure being tested."
     },
     {
-      scenario: "Scenario 8 (Objective 8): Group 5 is designing a study that measures patient blood pressure (numbers) while also interviewing patients about their stress. What type of research design is this?",
+      scenario: "Scenario 8 (Research Designs): Group 05 is designing a study that measures patient blood pressure (numbers) while also interviewing patients about their stress. What type of research design is this?",
       options: [
         "Mixed-Methods research design combining quantitative and qualitative approaches",
         "Pure animal laboratory study",
@@ -855,7 +866,7 @@
       rationale: "A mixed-methods design integrates both numerical (quantitative) measurements and descriptive (qualitative) interviews for comprehensive findings."
     },
     {
-      scenario: "Scenario 9 (Objective 9): Before collecting any data for your nursing project, you draft a formal document outlining your problem, literature review, methodology, and timeline. What is this document called?",
+      scenario: "Scenario 9 (Research Proposal): Before collecting any data for your nursing project, you draft a formal document outlining your problem, literature review, methodology, and timeline. What is this document called?",
       options: [
         "A discharge summary",
         "A research proposal",
@@ -866,7 +877,7 @@
       rationale: "A research proposal is a structured formal plan submitted and approved prior to starting any study or data collection."
     },
     {
-      scenario: "Scenario 10 (Objective 10): During your study, a patient signs consent but halfway through the interview feels tired and asks to stop. What is your ethical obligation?",
+      scenario: "Scenario 10 (Research Ethics): During your study, a patient signs consent but halfway through the interview feels tired and asks to stop. What is your ethical obligation?",
       options: [
         "Force them to finish because they signed the paper",
         "Immediately respect their autonomy, stop the interview, and withdraw their data without penalty",
