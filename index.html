@@ -207,7 +207,7 @@
   /* Media & Animated GIF Frames */
   .media-frame {
     width: 100%;
-    height: 250px;
+    height: 240px;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -224,30 +224,29 @@
     font-weight: 700;
   }
 
-  /* Strict Vertical Group Member List (Top to Down) */
-  .vertical-members {
-    display: flex;
-    flex-direction: column;
+  /* Strict Single-Screen Vertical Group Member List (No Scroll/No Buttons) */
+  .vertical-members-single {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    max-height: 330px;
-    overflow-y: auto;
-    padding-right: 4px;
+    margin-top: 6px;
   }
   .member-row {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    padding: 10px 16px;
-    border-radius: 12px;
+    padding: 9px 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
   }
   .member-row.leader {
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(16, 185, 129, 0.16));
     border-color: var(--accent-cyan);
+    grid-column: span 2;
   }
   .avatar {
-    width: 36px; height: 36px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     background: var(--accent-cyan);
     color: #040914;
@@ -255,7 +254,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     flex-shrink: 0;
   }
 
@@ -382,13 +381,14 @@
     .deck { padding: 10px 12px; }
     .slide { padding: 16px 16px 22px 16px; border-radius: 14px; }
     .slide.active { justify-content: flex-start; }
-    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; gap: 10px; }
+    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid, .vertical-members-single { grid-template-columns: 1fr; gap: 8px; }
+    .member-row.leader { grid-column: span 1; }
     .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
     h1 { font-size: 1.7rem; }
     h2 { font-size: 1.25rem; }
     p.lead { font-size: 0.9rem; }
-    .media-frame { height: 160px; }
+    .media-frame { height: 150px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
     .nav-btn { flex: 1; text-align: center; padding: 10px 10px; font-size: 0.86rem; }
@@ -430,66 +430,66 @@
         </div>
       </div>
       <div class="media-frame">
-        <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="Nursing Research Animation">
-        <div class="media-caption">🎬 Animated GIF: Clinical Evidence & Nursing Research</div>
+        <img src="https://media.giphy.com/media/xTiTnqUxyWbsAXq7Ju/giphy.gif" alt="Nursing Clinical Research Animation">
+        <div class="media-caption">🎬 Nursing Evidence & Clinical Research Animation</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (VERTICAL TOP-TO-DOWN LIST) -->
+  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE SCREEN - NO SCROLL) -->
   <section class="slide">
     <div class="tag teal">Presentation Team</div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead" style="margin-bottom: 8px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
+    <p class="lead" style="margin-bottom: 6px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     
-    <div class="vertical-members">
+    <div class="vertical-members-single">
       <div class="member-row leader">
         <div class="avatar">MK</div>
         <div style="flex:1;">
-          <div style="font-weight: 800; color: #fff; font-size: 0.98rem;">Mudassir Khan</div>
-          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 700;">Group Leader & Presenter</div>
+          <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">Mudassir Khan</div>
+          <div style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700;">Group Leader & Presenter</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#38bdf8;">ZL</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Zain Luqman</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Zain Luqman</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#34d399;">MM</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Muhammad Murtaza</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Muhammad Murtaza</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#f472b6;">AG</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Aroosa Gull</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Aroosa Gull</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#fbbf24;">AS</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Amna Safdar</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Amna Safdar</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#a78bfa;">MW</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Muneeba Waheed</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Muneeba Waheed</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-row">
         <div class="avatar" style="background:#fb7185;">LA</div>
         <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.92rem;">Laraib Afzal</div>
-          <div style="font-size: 0.76rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Laraib Afzal</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
     </div>
@@ -544,7 +544,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 4: DEFINITIONS OF RESEARCH & RESEARCH SKILLS (GIF 1) -->
+  <!-- SLIDE 4: DEFINITIONS OF RESEARCH & RESEARCH SKILLS (NURSING SCIENTIFIC GIF) -->
   <section class="slide">
     <div class="tag">Topic 01 • Core Definitions</div>
     <h2>What Are Research & Research Skills?</h2>
@@ -560,8 +560,8 @@
         </div>
       </div>
       <div class="media-frame">
-        <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Scientific Inquiry Animation">
-        <div class="media-caption">🎬 Animated GIF: Scientific Inquiry & Investigation</div>
+        <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Medical Science Inquiry Animation">
+        <div class="media-caption">🎬 Scientific Healthcare Investigation Animation</div>
       </div>
     </div>
   </section>
@@ -608,7 +608,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES (GIF 2) -->
+  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES (MEDICAL SEARCH GIF) -->
   <section class="slide">
     <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
     <h2>Where to Find Reliable Nursing Literature</h2>
@@ -635,8 +635,8 @@
         </div>
       </div>
       <div class="media-frame">
-        <img src="https://media.giphy.com/media/xTiTnqUxyWbsAXq7Ju/giphy.gif" alt="Data Search Animation">
-        <div class="media-caption">🎬 Animated GIF: Digital Database Literature Search</div>
+        <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="Medical Database Search Animation">
+        <div class="media-caption">🎬 Medical Database Search & Evidence Review</div>
       </div>
     </div>
   </section>
@@ -783,7 +783,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL COMPONENTS (GIF 3) -->
+  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL COMPONENTS (RESEARCH PLANNING GIF) -->
   <section class="slide">
     <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
     <h2>9 Essential Components of a Research Proposal</h2>
@@ -800,8 +800,8 @@
         </div>
       </div>
       <div class="media-frame">
-        <img src="https://media.giphy.com/media/l0HlRnAWXxn0MhOBK/giphy.gif" alt="Planning & Proposal Animation">
-        <div class="media-caption">🎬 Animated GIF: Research Proposal Planning & Drafting</div>
+        <img src="https://media.giphy.com/media/l0HlRnAWXxn0MhOBK/giphy.gif" alt="Research Proposal Writing Animation">
+        <div class="media-caption">🎬 Research Proposal Planning & Clinical Study Design</div>
       </div>
     </div>
   </section>
@@ -820,9 +820,9 @@
           <li><strong>Step 5 — Submit Approval:</strong> Get clearance from supervisor before starting.</li>
         </ul>
       </div>
-      <div class="media-frame">
-        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80" alt="Workflow Planning">
-        <div class="media-caption">Careful planning prevents mistakes during data collection</div>
+      <div class="card" style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-teal);">
+        <h3 style="color: var(--accent-teal);">💡 Group 05 Pro-Tip</h3>
+        <p style="color: #fff; font-size: 0.95rem;">Always consult your nursing faculty mentor early when drafting your problem statement and ethical review board application to ensure a smooth approval process!</p>
       </div>
     </div>
   </section>
