@@ -122,17 +122,23 @@
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: 18px;
-    padding: 26px 36px;
+    padding: 24px 36px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+    animation: slideFade 0.28s ease forwards;
   }
 
   .slide.active {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  @keyframes slideFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Typography */
@@ -198,49 +204,198 @@
   ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.9rem; line-height: 1.42; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
-  /* Media & Nursing Animated GIF Frames */
-  .media-frame {
+  /* =========================================================
+     CUSTOM NURSING-SPECIFIC ANIMATED INFOGRAPHICS (OFFLINE READY)
+     ========================================================= */
+  .nursing-anim-box {
     width: 100%;
-    height: 230px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 245px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(8, 22, 42, 0.95), rgba(15, 39, 68, 0.95));
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
-  .media-frame img { width: 100%; height: 100%; object-fit: cover; }
-  .media-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 8px 12px;
-    background: linear-gradient(transparent, rgba(4, 9, 20, 0.94));
-    font-size: 0.78rem;
-    color: var(--accent-cyan);
-    font-weight: 700;
+    overflow: hidden;
   }
 
-  /* Strict Single-Screen Vertical Group Member List */
-  .vertical-members-single {
+  .anim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    margin-right: 6px;
+    animation: pulseLive 1.4s infinite;
+  }
+
+  @keyframes pulseLive {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.4; }
+  }
+
+  /* Graphic 1: ECG Monitor + EBP Shield */
+  .ecg-svg {
+    width: 100%;
+    height: 90px;
+  }
+  .ecg-line {
+    fill: none;
+    stroke: var(--accent-teal);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+    animation: drawECG 2.6s linear infinite;
+  }
+  @keyframes drawECG {
+    0% { stroke-dashoffset: 420; }
+    70% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -420; }
+  }
+
+  .ebp-pills {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    margin-top: 6px;
+    text-align: center;
+  }
+  .ebp-pill {
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    border-radius: 8px;
+    padding: 6px 4px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* Graphic 2: Bedside to Evidence Loop */
+  .loop-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    my-auto;
+  }
+  .loop-node {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.06);
+    border-left: 4px solid var(--accent-cyan);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    animation: nodeGlow 3s infinite;
+  }
+  .loop-node:nth-child(2) { border-left-color: var(--accent-gold); animation-delay: 1s; }
+  .loop-node:nth-child(3) { border-left-color: var(--accent-teal); animation-delay: 2s; }
+
+  @keyframes nodeGlow {
+    0%, 100% { transform: translateX(0); background: rgba(255,255,255,0.05); }
+    35% { transform: translateX(6px); background: rgba(0, 212, 255, 0.16); }
+  }
+
+  /* Graphic 3: Database Search Radar */
+  .db-scanner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .db-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .db-valid {
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    color: #6ee7b7;
+  }
+  .db-invalid {
+    background: rgba(244, 63, 94, 0.14);
+    border: 1px dashed rgba(244, 63, 94, 0.5);
+    color: #fda4af;
+    animation: fadeReject 2.4s infinite;
+  }
+  @keyframes fadeReject {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* Graphic 4: Proposal Blueprint */
+  .blueprint-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bp-bar {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+  }
+  .bp-check {
+    color: var(--accent-teal);
+    animation: pulseLive 1.5s infinite;
+  }
+
+  /* =========================================================
+     SINGLE-COLUMN TOP-TO-DOWN GROUP MEMBERS (NO SCROLLBAR)
+     ========================================================= */
+  .vertical-members-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    max-width: 760px;
+    margin: 4px auto 0 auto;
   }
   .member-row {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    padding: 8px 12px;
+    padding: 6px 14px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .member-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   .member-row.leader {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(16, 185, 129, 0.16));
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.22), rgba(16, 185, 129, 0.18));
     border-color: var(--accent-cyan);
-    grid-column: span 2;
   }
   .avatar {
-    width: 32px; height: 32px;
+    width: 28px; height: 28px;
     border-radius: 50%;
     background: var(--accent-cyan);
     color: #040914;
@@ -248,8 +403,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     flex-shrink: 0;
+  }
+  .member-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.88rem;
+  }
+  .member-role {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .member-row.leader .member-role {
+    color: var(--accent-cyan);
   }
 
   /* Objectives Tiles */
@@ -336,7 +504,7 @@
     50% { transform: translateY(-12px) scale(1.1); }
   }
 
-  /* Fixed Bottom Navigation Bar (Always active & tappable) */
+  /* Fixed Bottom Navigation Bar */
   footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
@@ -361,7 +529,6 @@
     font-size: 0.92rem;
     cursor: pointer;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
   }
   .nav-btn.primary-nav {
     background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
@@ -371,22 +538,21 @@
   .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
   .hint-text { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
 
-  /* Responsive Rules for Projectors & Mobile */
+  /* Mobile Responsive Rules */
   @media (max-width: 850px) {
     .deck { padding: 10px 12px; bottom: 64px; }
     .slide { padding: 14px 14px 20px 14px; border-radius: 14px; }
     .slide.active { justify-content: flex-start; }
-    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid, .vertical-members-single { grid-template-columns: 1fr; gap: 8px; }
-    .member-row.leader { grid-column: span 1; }
+    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; gap: 8px; }
     .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
     h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.2rem; }
-    p.lead { font-size: 0.88rem; }
-    .media-frame { height: 140px; }
+    h2 { font-size: 1.18rem; }
+    p.lead { font-size: 0.86rem; }
+    .nursing-anim-box { height: 205px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
-    .nav-btn { flex: 1; text-align: center; padding: 12px 8px; font-size: 0.88rem; }
+    .nav-btn { flex: 1; text-align: center; padding: 12px 8px; font-size: 0.86rem; }
   }
 </style>
 </head>
@@ -408,7 +574,7 @@
 
 <main class="deck" id="deckContainer">
 
-  <!-- SLIDE 1: TITLE SLIDE -->
+  <!-- SLIDE 1: TITLE SLIDE + NURSING CLINICAL MONITOR ANIMATION -->
   <section class="slide active">
     <div class="grid-2">
       <div>
@@ -424,68 +590,78 @@
           </p>
         </div>
       </div>
-      <div class="media-frame">
-        <img src="https://media.giphy.com/media/xTiTnqUxyWbsAXq7Ju/giphy.gif" alt="Nursing Clinical Research Animation">
-        <div class="media-caption">🎬 Nursing Evidence & Clinical Research Animation</div>
+
+      <!-- Custom Animated Nursing Clinical Monitor -->
+      <div class="nursing-anim-box">
+        <div class="anim-header">
+          <span><span class="live-dot"></span>Clinical EBP Vital Monitor</span>
+          <span>BSN 5TH SEM</span>
+        </div>
+        <svg class="ecg-svg" viewBox="0 0 360 90">
+          <polyline class="ecg-line" points="0,50 60,50 75,35 90,50 110,50 120,12 132,82 144,25 155,50 200,50 215,35 230,50 250,50 260,12 272,82 284,25 295,50 360,50"/>
+        </svg>
+        <div class="ebp-pills">
+          <div class="ebp-pill">🩺 Best Evidence</div>
+          <div class="ebp-pill">👩‍⚕️ Nurse Skill</div>
+          <div class="ebp-pill">❤️ Patient Care</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE SCREEN - NO SCROLL) -->
+  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE VERTICAL COLUMN - TOP TO DOWN) -->
   <section class="slide">
     <div class="tag teal">Presentation Team</div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead" style="margin-bottom: 6px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
+    <p class="lead" style="margin-bottom: 4px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     
-    <div class="vertical-members-single">
+    <div class="vertical-members-column">
       <div class="member-row leader">
         <div class="avatar">MK</div>
-        <div style="flex:1;">
-          <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">Mudassir Khan</div>
-          <div style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 700;">Group Leader & Presenter</div>
-        </div>
+        <span class="member-name">1. Mudassir Khan</span>
+        <span class="member-role">Group Leader & Presenter</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#38bdf8;">ZL</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Zain Luqman</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#38bdf8;">ZL</div>
+          <span class="member-name">2. Zain Luqman</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#34d399;">MM</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Muhammad Murtaza</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#34d399;">MM</div>
+          <span class="member-name">3. Muhammad Murtaza</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#f472b6;">AG</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Aroosa Gull</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#f472b6;">AG</div>
+          <span class="member-name">4. Aroosa Gull</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#fbbf24;">AS</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Amna Safdar</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#fbbf24;">AS</div>
+          <span class="member-name">5. Amna Safdar</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#a78bfa;">MW</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Muneeba Waheed</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#a78bfa;">MW</div>
+          <span class="member-name">6. Muneeba Waheed</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
       <div class="member-row">
-        <div class="avatar" style="background:#fb7185;">LA</div>
-        <div style="flex:1;">
-          <div style="font-weight: 700; color: #fff; font-size: 0.86rem;">Laraib Afzal</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Group Member</div>
+        <div class="member-left">
+          <div class="avatar" style="background:#fb7185;">LA</div>
+          <span class="member-name">7. Laraib Afzal</span>
         </div>
+        <span class="member-role">Group Member</span>
       </div>
     </div>
   </section>
@@ -539,7 +715,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 4: DEFINITIONS OF RESEARCH & RESEARCH SKILLS (NURSING PATIENT CARE GIF) -->
+  <!-- SLIDE 4: DEFINITIONS + NURSING BEDSIDE-TO-RESEARCH ANIMATION -->
   <section class="slide">
     <div class="tag">Topic 01 • Core Definitions</div>
     <h2>What Are Research & Research Skills?</h2>
@@ -549,14 +725,26 @@
           <h3>🔬 Definition of Research</h3>
           <p>A careful, step-by-step scientific investigation to discover new facts, solve clinical problems, and verify what works best for patients.</p>
         </div>
-        <div class="card" style="border-top: 4px solid var(--accent-teal); margin-bottom: 10px;">
+        <div class="card" style="border-top: 4px solid var(--accent-teal);">
           <h3>🧠 Definition of Research Skills</h3>
           <p>Practical abilities to ask clear clinical questions, find reliable scientific data, judge its quality, and design an ethical study.</p>
         </div>
       </div>
-      <div class="media-frame">
-        <img src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" alt="Nursing Patient Care Animation">
-        <div class="media-caption">🎬 Nursing Bedside Care & Clinical Inquiry Animation</div>
+
+      <!-- Custom Animated Bedside-to-Research Workflow -->
+      <div class="nursing-anim-box">
+        <div class="anim-header">
+          <span><span class="live-dot"></span>Nursing Inquiry Cycle</span>
+          <span>EBP PATHWAY</span>
+        </div>
+        <div class="loop-flow">
+          <div class="loop-node">🏥 1. Ward Observation (e.g., Infection Risk)</div>
+          <div class="loop-node">🔎 2. Scientific Investigation & Data Check</div>
+          <div class="loop-node">🛡️ 3. Safe Evidence-Based Patient Care</div>
+        </div>
+        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
+          Replacing guesswork with verified clinical proof
+        </div>
       </div>
     </div>
   </section>
@@ -603,7 +791,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES (CLINICAL DATA SEARCH GIF) -->
+  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES + ANIMATED MEDICAL FILTER -->
   <section class="slide">
     <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
     <h2>Where to Find Reliable Nursing Literature</h2>
@@ -629,9 +817,30 @@
           </div>
         </div>
       </div>
-      <div class="media-frame">
-        <img src="https://media.giphy.com/media/L1R1tvI9svk4wpVYrM/giphy.gif" alt="Medical Database Search Animation">
-        <div class="media-caption">🎬 Clinical Data Analytics & Medical Search Animation</div>
+
+      <!-- Custom Animated Nursing Literature Filter -->
+      <div class="nursing-anim-box">
+        <div class="anim-header">
+          <span><span class="live-dot"></span>Peer-Review Evidence Filter</span>
+          <span>CREDIBILITY</span>
+        </div>
+        <div class="db-scanner">
+          <div class="db-row db-valid">
+            <span>✅ CINAHL & PubMed Journals</span>
+            <span>VERIFIED</span>
+          </div>
+          <div class="db-row db-valid">
+            <span>✅ Cochrane Systematic Reviews</span>
+            <span>GOLD STD</span>
+          </div>
+          <div class="db-row db-invalid">
+            <span>❌ Unverified Social Media Blogs</span>
+            <span>REJECTED</span>
+          </div>
+        </div>
+        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
+          Always verify clinical guidelines from indexed medical repositories
+        </div>
       </div>
     </div>
   </section>
@@ -778,7 +987,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL COMPONENTS (HOSPITAL RESEARCH PLANNING GIF) -->
+  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL + ANIMATED BLUEPRINT -->
   <section class="slide">
     <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
     <h2>9 Essential Components of a Research Proposal</h2>
@@ -794,9 +1003,30 @@
           <div class="flow-step"><strong>6. Ethics</strong><span>Patient rights</span></div>
         </div>
       </div>
-      <div class="media-frame">
-        <img src="https://media.giphy.com/media/xT5LMzLzW8OIHLSZO0/giphy.gif" alt="Hospital Clinical Study Planning Animation">
-        <div class="media-caption">🎬 Hospital Clinical Study Planning & Medical Protocol Animation</div>
+
+      <!-- Custom Animated Clinical Research Proposal Blueprint -->
+      <div class="nursing-anim-box">
+        <div class="anim-header">
+          <span><span class="live-dot"></span>IRB & Ethics Approval Blueprint</span>
+          <span>SUBTOPIC 24</span>
+        </div>
+        <div class="blueprint-bars">
+          <div class="bp-bar">
+            <span>📋 Clinical Problem & PICO</span>
+            <span class="bp-check">✔ READY</span>
+          </div>
+          <div class="bp-bar">
+            <span>🧪 Sample & Tool Validation</span>
+            <span class="bp-check">✔ READY</span>
+          </div>
+          <div class="bp-bar">
+            <span>⚖️ Informed Consent & Ethics</span>
+            <span class="bp-check">✔ APPROVED</span>
+          </div>
+        </div>
+        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
+          Ethical clearance is mandatory before hospital data collection
+        </div>
       </div>
     </div>
   </section>
@@ -914,7 +1144,7 @@
 </main>
 
 <footer>
-  <div class="hint-text">Use <strong>← / →</strong> Keys or Tap Navigation</div>
+  <div class="hint-text">Use <strong>← / →</strong> Keys or Swipe</div>
   <div class="nav-controls">
     <button class="nav-btn" type="button" id="prevSlideBtn" onclick="changeSlide(-1)">← Previous</button>
     <button class="nav-btn" type="button" onclick="toggleFullScreen()">⛶ Fullscreen</button>
@@ -975,7 +1205,7 @@
     }
   });
 
-  // Bulletproof Mobile Touch / Swipe Handling
+  // Mobile Touch / Swipe Handling
   let touchStartX = 0;
   let touchStartY = 0;
 
@@ -990,12 +1220,11 @@
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
 
-    // Swipe threshold validation
     if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX < 0) {
-        changeSlide(1);  // Swipe Left -> Next
+        changeSlide(1);
       } else {
-        changeSlide(-1); // Swipe Right -> Prev
+        changeSlide(-1);
       }
     }
   }, { passive: true });
