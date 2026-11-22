@@ -142,7 +142,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Distinct Main Topic & Subtopic Headings */
+  /* Headings & Banners */
   .topic-banner {
     display: flex;
     align-items: center;
@@ -219,7 +219,7 @@
   ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.4; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
-  /* Offline Vector Infographic Panels */
+  /* Infographic Panels */
   .infographic-panel {
     width: 100%;
     min-height: 240px;
@@ -308,7 +308,6 @@
     color: #f8fafc;
   }
 
-  /* Blueprint Sequential Animation for Slide 12 */
   .blueprint-step {
     background: rgba(255, 255, 255, 0.06);
     border-left: 4px solid var(--accent-gold);
@@ -393,7 +392,7 @@
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
 
-  /* 9 Proposal Components Grid */
+  /* Proposal Grid 9 */
   .proposal-grid-9 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -497,7 +496,7 @@
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
     h1 { font-size: 1.65rem; }
     h2 { font-size: 1.2rem; }
-    p.lead { font-size: 0.85rem; }
+    p.lead { font-size: 0.86rem; }
     .infographic-panel { min-height: 185px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
@@ -559,7 +558,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE GROUP LEADER DESIGNATION) -->
+  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE LEADER DESIGNATION) -->
   <section class="slide">
     <div class="topic-banner">
       <span class="tag teal">Presentation Team</span>
@@ -626,7 +625,7 @@
       <span class="tag gold">PERLs Curriculum • Main Structure</span>
     </div>
     <h2>Main Topic: Research Skills — Two Core Competencies</h2>
-    <p class="lead">Under the PERLs Module, <strong>Research Skills</strong> is organized into two primary subtopics that guide our entire presentation:</p>
+    <p class="lead">Under the PERLs Module, <strong>Research Skills</strong> is divided into two primary subtopics that guide our entire presentation:</p>
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>📌 Main Topic 1 — Competency 23: Locate Credible Scientific Data</h3>
@@ -836,39 +835,46 @@
     </div>
   </section>
 
-  <!-- SLIDE 9: COMPETENCY 23 — BOOLEAN OPERATORS -->
+  <!-- SLIDE 9: COMPETENCY 23 — BOOLEAN OPERATORS (SIMPLIFIED & ENHANCED WITH EXAMPLES) -->
   <section class="slide">
     <div class="topic-banner">
       <span class="tag">Main Topic 1 • Competency 23</span>
       <span class="subtopic-label">• Smart Search Techniques</span>
     </div>
     <h2>Refining Searches with Boolean Operators</h2>
-    <p class="lead" style="margin-bottom: 8px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
+    
+    <!-- Clear Simple Definition Box -->
+    <div class="card" style="border-left: 4px solid var(--accent-cyan); background: rgba(0, 212, 255, 0.08); margin-bottom: 10px; padding: 10px 16px;">
+      <p style="font-size: 0.9rem; color: #fff;">
+        <strong style="color: var(--accent-cyan);">What are Boolean Operators?</strong> They are simple logical commands written in <strong>CAPITAL letters</strong> (AND, OR, NOT) that tell medical search engines how to combine or separate your keywords to find exact nursing research articles.
+      </p>
+    </div>
+
     <div class="grid-3">
       <div class="card" style="text-align:center; padding: 12px;">
-        <h3>AND (Narrows)</h3>
+        <h3>AND (Narrows Search)</h3>
         <div class="venn-wrap venn-and">
           <div class="circle c-left">Nursing</div>
           <div class="venn-and-mid"></div>
           <div class="circle c-right">Safety</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Nursing AND Patient Safety</strong><br>Finds articles with <em>both</em> terms.</p>
+        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Nursing AND Patient Safety<br><em>Result:</em> Finds articles containing <strong>both</strong> terms to narrow your search.</p>
       </div>
       <div class="card" style="text-align:center; padding: 12px;">
-        <h3>OR (Broadens)</h3>
+        <h3>OR (Broadens Search)</h3>
         <div class="venn-wrap venn-or">
           <div class="circle c-left">Nurse</div>
           <div class="circle c-right">Nursing</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Nurse OR Nursing</strong><br>Finds articles with <em>either</em> term.</p>
+        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Nurse OR Nursing<br><em>Result:</em> Finds articles with <strong>either</strong> term to expand your options.</p>
       </div>
       <div class="card" style="text-align:center; padding: 12px;">
-        <h3>NOT (Excludes)</h3>
+        <h3>NOT (Excludes Terms)</h3>
         <div class="venn-wrap venn-not">
           <div class="circle c-left">Infection</div>
           <div class="circle c-right">COVID</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Infection NOT COVID-19</strong><br>Removes unwanted topics.</p>
+        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Infection NOT COVID-19<br><em>Result:</em> Removes unwanted topics to clean up results.</p>
       </div>
     </div>
   </section>
@@ -951,7 +957,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 12: COMPETENCY 24 — DEFINITION OF RESEARCH PROPOSAL + ALL 9 ELEMENTS -->
+  <!-- SLIDE 12: COMPETENCY 24 — RESEARCH PROPOSAL DEFINITION & ALL 9 ELEMENTS -->
   <section class="slide">
     <div class="topic-banner">
       <span class="tag gold">Main Topic 2 • Competency 24: Develop a Research Proposal</span>
