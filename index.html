@@ -123,7 +123,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: 20px;
-    padding: 30px 42px;
+    padding: 26px 38px;
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -142,28 +142,42 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Typography Optimized for Projectors & Mobile */
+  /* Distinct Main Topic & Subtopic Headings */
+  .topic-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
   .tag {
     display: inline-block;
-    padding: 6px 16px;
+    padding: 5px 14px;
     border-radius: 30px;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.1px;
     background: rgba(0, 212, 255, 0.18);
     color: var(--accent-cyan);
     border: 1px solid rgba(0, 212, 255, 0.45);
-    margin-bottom: 10px;
     width: fit-content;
   }
 
-  .tag.gold { background: rgba(245, 158, 11, 0.2); color: var(--accent-gold); border-color: rgba(245, 158, 11, 0.5); }
-  .tag.teal { background: rgba(16, 185, 129, 0.2); color: var(--accent-teal); border-color: rgba(16, 185, 129, 0.5); }
+  .tag.gold { background: rgba(245, 158, 11, 0.22); color: var(--accent-gold); border-color: rgba(245, 158, 11, 0.55); }
+  .tag.teal { background: rgba(16, 185, 129, 0.22); color: var(--accent-teal); border-color: rgba(16, 185, 129, 0.55); }
+
+  .subtopic-label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+  }
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.7rem;
+    font-size: 2.75rem;
     line-height: 1.15;
     margin-bottom: 12px;
     background: linear-gradient(135deg, #ffffff 25%, #7dd3fc 100%);
@@ -172,22 +186,22 @@
   }
 
   h2 {
-    font-size: 1.7rem;
+    font-size: 1.65rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     color: #e2e8f0;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    line-height: 1.48;
+    margin-bottom: 10px;
   }
 
   /* Grids & Cards */
-  .grid-2 { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 26px; align-items: center; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: center; }
   .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
@@ -199,58 +213,124 @@
   }
 
   .card h3 { font-size: 1.02rem; color: var(--accent-cyan); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 0.9rem; color: #e2e8f0; line-height: 1.42; }
+  .card p { font-size: 0.88rem; color: #e2e8f0; line-height: 1.42; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.9rem; line-height: 1.4; color: #f1f5f9; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.4; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
-  /* Real High-Resolution Nursing Photo Frame */
-  .photo-card {
+  /* Offline Vector Infographic Panels */
+  .infographic-panel {
     width: 100%;
-    height: 255px;
+    min-height: 240px;
     border-radius: 16px;
-    overflow: hidden;
+    background: linear-gradient(145deg, rgba(8, 22, 44, 0.96), rgba(15, 38, 68, 0.96));
     border: 1px solid rgba(0, 212, 255, 0.45);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-    position: relative;
-    background: linear-gradient(145deg, #091930, #102a4c);
-  }
-  .photo-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s ease;
-  }
-  .photo-card:hover img { transform: scale(1.04); }
-  .photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(4, 9, 20, 0.94) 12%, rgba(4, 9, 20, 0.25) 55%, transparent 100%);
+    padding: 16px 18px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 14px 16px;
+    justify-content: space-between;
   }
-  .photo-badge {
-    display: inline-block;
-    width: fit-content;
-    background: rgba(0, 212, 255, 0.22);
-    border: 1px solid rgba(0, 212, 255, 0.55);
-    color: var(--accent-cyan);
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 4px;
-  }
-  .photo-caption { font-size: 0.88rem; font-weight: 700; color: #fff; line-height: 1.3; }
-  .fallback-box { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; gap: 8px; }
 
-  /* Single-Column Top-to-Down Group Members (No Scroll) */
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 6px;
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    margin-right: 6px;
+    animation: pulseLive 1.5s infinite;
+  }
+
+  @keyframes pulseLive {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.4; }
+  }
+
+  .ecg-line {
+    fill: none;
+    stroke: var(--accent-teal);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    animation: drawECG 2.6s linear infinite;
+  }
+
+  @keyframes drawECG {
+    0% { stroke-dashoffset: 450; }
+    75% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -450; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ecg-line, .live-dot, .animated-trophy, .blueprint-step { animation: none; stroke-dashoffset: 0; opacity: 1; }
+  }
+
+  .formula-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    text-align: center;
+  }
+  .formula-pill {
+    background: rgba(0, 212, 255, 0.14);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 10px;
+    padding: 8px 4px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .flow-stack { display: flex; flex-direction: column; gap: 7px; }
+  .flow-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid var(--accent-cyan);
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  /* Blueprint Sequential Animation for Slide 12 */
+  .blueprint-step {
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid var(--accent-gold);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f8fafc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: pulseStep 4s infinite ease-in-out;
+  }
+  .blueprint-step:nth-child(2) { animation-delay: 1s; border-left-color: var(--accent-cyan); }
+  .blueprint-step:nth-child(3) { animation-delay: 2s; border-left-color: var(--accent-teal); }
+
+  @keyframes pulseStep {
+    0%, 100% { background: rgba(255, 255, 255, 0.05); transform: translateX(0); }
+    40% { background: rgba(245, 158, 11, 0.16); transform: translateX(4px); }
+  }
+
+  /* Group Members Roster */
   .vertical-members-column {
     display: flex;
     flex-direction: column;
@@ -313,11 +393,21 @@
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
 
-  /* Flowchart Steps */
-  .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 9px 12px; border-radius: 8px; }
-  .flow-step strong { color: var(--accent-teal); font-size: 0.85rem; display: block; margin-bottom: 2px; }
-  .flow-step span { font-size: 0.78rem; color: #e2e8f0; }
+  /* 9 Proposal Components Grid */
+  .proposal-grid-9 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .prop-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-left: 3px solid var(--accent-gold);
+    padding: 7px 10px;
+    border-radius: 8px;
+  }
+  .prop-item strong { color: var(--accent-gold); font-size: 0.82rem; display: block; margin-bottom: 1px; }
+  .prop-item span { font-size: 0.74rem; color: #e2e8f0; line-height: 1.25; display: block; }
 
   /* Table */
   .table-scroll { width: 100%; overflow-x: auto; }
@@ -402,13 +492,13 @@
     .deck { padding: 10px 14px; bottom: 68px; }
     .slide { padding: 14px 14px 20px 14px; border-radius: 16px; }
     .slide.active { justify-content: flex-start; }
-    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; gap: 8px; }
+    .grid-2, .grid-equal, .grid-3, .proposal-grid-9, .options-grid { grid-template-columns: 1fr; gap: 8px; }
     .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.18rem; }
+    h1 { font-size: 1.65rem; }
+    h2 { font-size: 1.2rem; }
     p.lead { font-size: 0.85rem; }
-    .photo-card { height: 170px; }
+    .infographic-panel { min-height: 185px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
     .nav-btn { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.85rem; }
@@ -437,32 +527,43 @@
   <section class="slide active">
     <div class="grid-2">
       <div>
-        <div class="tag">PERLs Module • Main Topic</div>
+        <div class="topic-banner">
+          <span class="tag">PERLs Module • Main Topic</span>
+        </div>
         <h1>Research Skills in Nursing</h1>
         <p class="lead">
-          A professional academic guide to finding credible scientific evidence and developing clinical research proposals for safe patient care.
+          A clear, structured, and projector-optimized guide to locating credible scientific evidence and developing clinical research proposals for safe patient care.
         </p>
         <div class="card" style="border-left: 4px solid var(--accent-teal);">
-          <p style="font-size: 0.95rem; color: #fff;">
+          <p style="font-size: 0.98rem; color: #fff;">
             <strong>BSN 5th Semester — Group 05</strong><br>
+            <span style="color: var(--text-muted);">Evidence-Based Nursing Practice & Clinical Inquiry</span>
           </p>
         </div>
       </div>
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=85"
-             alt="Clinical Healthcare Research & Evidence Review"
-             onerror="this.parentElement.innerHTML='<div class=\'fallback-box\'><div style=\'font-size:3rem;\'>🩺</div><div style=\'color:#00d4ff;font-weight:800;\'>Evidence-Based Nursing</div><div style=\'color:#cbd5e1;font-size:0.85rem;\'>Connecting scientific research with clinical bedside care.</div></div>'">
-        <div class="photo-overlay">
-          <span class="photo-badge">Evidence-Based Practice</span>
-          <div class="photo-caption">Translating Clinical Research into Safe Patient Care</div>
+
+      <div class="infographic-panel">
+        <div class="panel-header">
+          <span><span class="live-dot"></span>Evidence-Based Care Shield</span>
+          <span>BSN 5TH SEM</span>
+        </div>
+        <svg viewBox="0 0 360 95" style="width:100%; height:95px;">
+          <polyline class="ecg-line" points="0,50 60,50 75,35 90,50 110,50 120,12 132,82 144,25 155,50 200,50 215,35 230,50 250,50 260,12 272,82 284,25 295,50 360,50"/>
+        </svg>
+        <div class="formula-row">
+          <div class="formula-pill">🔬 Scientific Proof</div>
+          <div class="formula-pill">🩺 Nursing Skill</div>
+          <div class="formula-pill">🛡️ Patient Safety</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS -->
+  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE GROUP LEADER DESIGNATION) -->
   <section class="slide">
-    <div class="tag teal">Presentation Team</div>
+    <div class="topic-banner">
+      <span class="tag teal">Presentation Team</span>
+    </div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
     <p class="lead" style="margin-bottom: 6px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     
@@ -472,7 +573,7 @@
           <div class="avatar">MK</div>
           <span class="member-name">1. Mudassir Khan</span>
         </div>
-        <span class="member-role">Group Leader & Presenter</span>
+        <span class="member-role">Group Leader</span>
       </div>
       <div class="member-row">
         <div class="member-left">
@@ -519,10 +620,33 @@
     </div>
   </section>
 
-  <!-- SLIDE 3: LEARNING OBJECTIVES -->
+  <!-- SLIDE 3: TWO MAIN SUBTOPICS (COMPETENCIES 23 & 24) -->
   <section class="slide">
-    <div class="tag gold">Presentation Roadmap</div>
-    <h2>LEARNING OBJECTIVES</h2>
+    <div class="topic-banner">
+      <span class="tag gold">PERLs Curriculum • Main Structure</span>
+    </div>
+    <h2>Main Topic: Research Skills — Two Core Competencies</h2>
+    <p class="lead">Under the PERLs Module, <strong>Research Skills</strong> is organized into two primary subtopics that guide our entire presentation:</p>
+    <div class="grid-equal">
+      <div class="card" style="border-top: 4px solid var(--accent-cyan);">
+        <h3>📌 Main Topic 1 — Competency 23: Locate Credible Scientific Data</h3>
+        <p style="margin-bottom: 8px;">Finding trustworthy, peer-reviewed medical studies using indexed databases (PubMed, CINAHL, Cochrane), Boolean search operators, PICO questioning, and the CRAAP evaluation test.</p>
+        <p style="color: var(--accent-cyan); font-size: 0.86rem;"><strong>Clinical Goal:</strong> Protects patients from false, biased, or outdated medical claims.</p>
+      </div>
+      <div class="card" style="border-top: 4px solid var(--accent-gold);">
+        <h3>📌 Main Topic 2 — Competency 24: Develop a Research Proposal</h3>
+        <p style="margin-bottom: 8px;">Writing a structured, step-by-step research plan that defines your clinical problem, objectives, 9 proposal components, study methodology, and ethical safeguards.</p>
+        <p style="color: var(--accent-gold); font-size: 0.86rem;"><strong>Clinical Goal:</strong> Transforms a bedside problem into an ethical, approved clinical study.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: LEARNING OBJECTIVES -->
+  <section class="slide">
+    <div class="topic-banner">
+      <span class="tag gold">Presentation Roadmap</span>
+    </div>
+    <h2>Learning Objectives</h2>
     <p class="lead" style="margin-bottom: 8px;">By the end of this presentation, students will master these 10 core outcomes:</p>
     <div class="obj-grid">
       <div class="obj-tile">
@@ -559,7 +683,7 @@
       </div>
       <div class="obj-tile">
         <div class="obj-num">09</div>
-        <div class="obj-text">Outline research proposal steps.</div>
+        <div class="obj-text">Master all 9 research proposal elements.</div>
       </div>
       <div class="obj-tile">
         <div class="obj-num">10</div>
@@ -568,54 +692,44 @@
     </div>
   </section>
 
-  <!-- SLIDE 4: DEFINITIONS & WHY RESEARCH SKILLS ARE IMPORTANT IN NURSING -->
+  <!-- SLIDE 5: DEFINITIONS & CLINICAL IMPORTANCE -->
   <section class="slide">
-    <div class="tag">Topic 01 • Core Foundations</div>
-    <h2>Why Research Skills Are Essential in Nursing</h2>
-    <div class="grid-2">
-      <div>
-        <p class="lead" style="margin-bottom: 8px;">Research skills bridge the gap between clinical theory and bedside practice. They are vital because:</p>
+    <div class="topic-banner">
+      <span class="tag">Core Foundations</span>
+      <span class="subtopic-label">• Definitions & Nursing Relevance</span>
+    </div>
+    <h2>Definitions & Why Research Skills Matter in Nursing</h2>
+    <div class="grid-equal" style="margin-bottom: 12px;">
+      <div class="card" style="border-top: 4px solid var(--accent-cyan);">
+        <h3>🔬 Definition of Research</h3>
+        <p>A systematic, scientific investigation carried out step-by-step to discover new facts, verify clinical knowledge, and solve healthcare problems.</p>
+      </div>
+      <div class="card" style="border-top: 4px solid var(--accent-teal);">
+        <h3>🧠 Definition of Research Skills</h3>
+        <p>The practical ability to ask focused clinical questions, search trusted scientific databases, evaluate evidence quality, and design an ethical study.</p>
+      </div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent-gold); background: rgba(245, 158, 11, 0.07);">
+      <h3 style="color: var(--accent-gold); margin-bottom: 6px;">🩺 Why Research Skills Are Essential in Nursing:</h3>
+      <div class="grid-equal" style="gap: 10px;">
         <ul class="clean-list">
-          <li><strong>Improves Patient Outcomes:</strong> Replaces outdated habits with proven, high-quality evidence.</li>
-          <li><strong>Enhances Critical Thinking:</strong> Teaches nurses to question assumptions and validate procedures.</li>
-          <li><strong>Supports Safe Decision-Making:</strong> Ensures clinical interventions are backed by verified science.</li>
-          <li><strong>Advances the Nursing Profession:</strong> Generates new knowledge for better healthcare delivery.</li>
+          <li><strong>Ensures Patient Safety:</strong> Replaces outdated ward habits with scientifically proven nursing care.</li>
+          <li><strong>Strengthens Critical Thinking:</strong> Helps nurses verify drug protocols, wound care, and infection control.</li>
+        </ul>
+        <ul class="clean-list">
+          <li><strong>Supports Evidence-Based Practice (EBP):</strong> Connects classroom science directly to bedside decisions.</li>
+          <li><strong>Improves Recovery Outcomes:</strong> Reduces hospital readmissions and clinical complications.</li>
         </ul>
       </div>
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?auto=format&fit=crop&w=900&q=85"
-             alt="Nursing Clinical Practice & Patient Care"
-             onerror="this.parentElement.innerHTML='<div class=\'fallback-box\'><div style=\'font-size:3rem;\'>💡</div><div style=\'color:#00d4ff;font-weight:800;\'>Clinical Inquiry</div><div style=\'color:#cbd5e1;font-size:0.85rem;\'>Ward observation → Literature search → Safe patient care.</div></div>'">
-        <div class="photo-overlay">
-          <span class="photo-badge">Bedside Inquiry</span>
-          <div class="photo-caption">Observation → Literature Search → Evidence-Based Care</div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- SLIDE 5: MAIN TOPIC & SUBTOPICS 23 & 24 -->
+  <!-- SLIDE 6: COMPETENCY 23 — TYPES OF RESEARCH DATA -->
   <section class="slide">
-    <div class="tag gold">PERLs Curriculum • Core Competencies</div>
-    <h2>Main Topic: Research Skills (Competencies 23 & 24)</h2>
-    <p class="lead">Under the PERLs Module, <strong>Research Skills</strong> contains two main subtopics that every 5th-semester nurse must master:</p>
-    <div class="grid-equal">
-      <div class="card" style="border-top: 4px solid var(--accent-cyan);">
-        <h3>📌 Subtopic 23: Locate credible scientific data</h3>
-        <p style="margin-bottom: 6px;">Finding trustworthy, peer-reviewed medical studies using indexed databases, Boolean search logic, and the CRAAP quality test.</p>
-        <p style="color: var(--accent-cyan); font-size: 0.85rem;"><strong>Why it matters:</strong> Protects patients from false or outdated advice.</p>
-      </div>
-      <div class="card" style="border-top: 4px solid var(--accent-gold);">
-        <h3>📌 Subtopic 24: Develop a research proposal</h3>
-        <p style="margin-bottom: 6px;">Writing a clear, organized research plan that explains your clinical problem, objectives, study method, and ethical safeguards.</p>
-        <p style="color: var(--accent-gold); font-size: 0.85rem;"><strong>Why it matters:</strong> Turns a ward problem into a safe, approved study.</p>
-      </div>
+    <div class="topic-banner">
+      <span class="tag">Main Topic 1 • Competency 23</span>
+      <span class="subtopic-label">• Data Classification</span>
     </div>
-  </section>
-
-  <!-- SLIDE 6: TOPIC 2 - TYPES OF DATA -->
-  <section class="slide">
-    <div class="tag teal">Topic 02 • Data Classification</div>
     <h2>Types of Research Data (Two Separate Classifications)</h2>
     <p class="lead" style="margin-bottom: 8px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
     <div class="grid-equal">
@@ -636,48 +750,60 @@
     </div>
   </section>
 
-  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES -->
+  <!-- SLIDE 7: COMPETENCY 23 — RELIABLE SCIENTIFIC DATABASES -->
   <section class="slide">
-    <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
-    <h2>Where to Find Reliable Nursing Literature</h2>
+    <div class="topic-banner">
+      <span class="tag">Main Topic 1 • Competency 23</span>
+      <span class="subtopic-label">• Locate Credible Scientific Data</span>
+    </div>
+    <h2>Reliable Scientific Databases for Nursing Literature</h2>
     <div class="grid-2">
       <div>
-        <p class="lead">Avoid random websites or social media posts. Use trusted, peer-reviewed medical search engines:</p>
+        <p class="lead">Avoid unverified blogs or social media posts. Use indexed health databases—and always critically appraise individual search results:</p>
         <div class="grid-equal" style="gap: 10px;">
           <div class="card" style="padding: 10px 14px;">
             <h3 style="font-size:0.95rem;">1. PubMed</h3>
-            <p style="font-size:0.82rem;">36M+ biomedical articles.</p>
+            <p style="font-size:0.82rem;">36M+ biomedical & clinical articles.</p>
           </div>
           <div class="card" style="padding: 10px 14px;">
             <h3 style="font-size:0.95rem;">2. CINAHL</h3>
-            <p style="font-size:0.82rem;">Top nursing journals database.</p>
+            <p style="font-size:0.82rem;">Premier nursing & allied health index.</p>
           </div>
           <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">3. Cochrane</h3>
-            <p style="font-size:0.82rem;">Highest authority for reviews.</p>
+            <h3 style="font-size:0.95rem;">3. Cochrane Library</h3>
+            <p style="font-size:0.82rem;">Gold standard for systematic reviews.</p>
           </div>
           <div class="card" style="padding: 10px 14px;">
             <h3 style="font-size:0.95rem;">4. Google Scholar</h3>
-            <p style="font-size:0.82rem;">Academic article search.</p>
+            <p style="font-size:0.82rem;">Broad scholarly search (verify peer-review).</p>
           </div>
         </div>
       </div>
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=85"
-             alt="Biomedical Scientific Research Laboratory"
-             onerror="this.parentElement.innerHTML='<div class=\'fallback-box\'><div style=\'font-size:3rem;\'>🔍</div><div style=\'color:#00d4ff;font-weight:800;\'>Indexed Repositories</div><div style=\'color:#cbd5e1;font-size:0.85rem;\'>Peer-reviewed journals ensure clinical safety.</div></div>'">
-        <div class="photo-overlay">
-          <span class="photo-badge">Peer-Reviewed Literature</span>
-          <div class="photo-caption">Verified Scientific Evidence from Indexed Medical Databases</div>
+
+      <div class="infographic-panel">
+        <div class="panel-header">
+          <span><span class="live-dot"></span>Database Credibility Filter</span>
+          <span>COMPETENCY 23</span>
+        </div>
+        <div class="flow-stack">
+          <div class="flow-item" style="border-left-color: var(--accent-teal);">✅ CINAHL & PubMed Peer-Reviewed Journals</div>
+          <div class="flow-item" style="border-left-color: var(--accent-gold);">⚠️ Google Scholar Preprints (Verify Peer Review)</div>
+          <div class="flow-item" style="border-left-color: var(--accent-rose);">❌ Unverified Social Media & Commercial Blogs</div>
+        </div>
+        <div style="font-size:0.76rem; color:var(--text-muted); text-align:center;">
+          Always verify source credibility before applying to patient care
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 8: SUBTOPIC 23 - THE CRAAP TEST -->
+  <!-- SLIDE 8: COMPETENCY 23 — THE CRAAP TEST -->
   <section class="slide">
-    <div class="tag gold">Subtopic 23 • Checking Credibility</div>
-    <h2>The CRAAP Test: How to Judge Any Source</h2>
+    <div class="topic-banner">
+      <span class="tag">Main Topic 1 • Competency 23</span>
+      <span class="subtopic-label">• Evaluating Source Credibility</span>
+    </div>
+    <h2>The CRAAP Test: Five Checkpoints for Credibility</h2>
     <div class="grid-3 craap-grid" style="grid-template-columns: repeat(5, 1fr);">
       <div class="card" style="text-align:center; padding: 10px;">
         <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.2rem;">C</h3>
@@ -706,13 +832,16 @@
       </div>
     </div>
     <div class="card" style="margin-top: 10px; border-left: 4px solid var(--accent-rose);">
-      <p style="font-size: 0.85rem;"><strong>Practical Example:</strong> A blog claiming "Herbal tea cures diabetes in 2 days" with no author and a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
+      <p style="font-size: 0.85rem;"><strong>Practical Outcome:</strong> A peer-reviewed CINAHL article passes all five checks, whereas a commercial blog claiming "Herbal tea cures diabetes in 2 days" with a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
     </div>
   </section>
 
-  <!-- SLIDE 9: SUBTOPIC 23 - BOOLEAN OPERATORS -->
+  <!-- SLIDE 9: COMPETENCY 23 — BOOLEAN OPERATORS -->
   <section class="slide">
-    <div class="tag">Subtopic 23 • Smart Search Techniques</div>
+    <div class="topic-banner">
+      <span class="tag">Main Topic 1 • Competency 23</span>
+      <span class="subtopic-label">• Smart Search Techniques</span>
+    </div>
     <h2>Refining Searches with Boolean Operators</h2>
     <p class="lead" style="margin-bottom: 8px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
     <div class="grid-3">
@@ -744,10 +873,13 @@
     </div>
   </section>
 
-  <!-- SLIDE 10: SUBTOPIC 23 - PICO FRAMEWORK -->
+  <!-- SLIDE 10: COMPETENCY 23 — PICO FRAMEWORK -->
   <section class="slide">
-    <div class="tag teal">Subtopic 23 • Clinical Research Questions</div>
-    <h2>Building Focused Questions with PICO</h2>
+    <div class="topic-banner">
+      <span class="tag">Main Topic 1 • Competency 23</span>
+      <span class="subtopic-label">• Clinical Question Formulation</span>
+    </div>
+    <h2>Building Focused Clinical Questions with PICO</h2>
     <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 10px;">
       <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 12px;">
         <h3 style="font-size:1.1rem;">P</h3>
@@ -777,11 +909,14 @@
     </div>
   </section>
 
-  <!-- SLIDE 11: TOPIC 07 - RESEARCH DESIGNS -->
+  <!-- SLIDE 11: COMPETENCY 24 — RESEARCH DESIGNS -->
   <section class="slide">
-    <div class="tag">Topic 07 • Study Methodology</div>
+    <div class="topic-banner">
+      <span class="tag gold">Main Topic 2 • Competency 24</span>
+      <span class="subtopic-label">• Study Methodology Selection</span>
+    </div>
     <h2>Comparing Research Designs</h2>
-    <p class="lead" style="margin-bottom: 6px;">A research design is your overall plan for collecting and analyzing data:</p>
+    <p class="lead" style="margin-bottom: 6px;">A research design is your overall plan for collecting and analyzing data in your proposal:</p>
     <div class="table-scroll">
       <table class="clean-table">
         <thead>
@@ -816,70 +951,103 @@
     </div>
   </section>
 
-  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL -->
+  <!-- SLIDE 12: COMPETENCY 24 — DEFINITION OF RESEARCH PROPOSAL + ALL 9 ELEMENTS -->
   <section class="slide">
-    <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
-    <h2>9 Essential Components of a Research Proposal</h2>
-    <div class="grid-2">
-      <div>
-        <p class="lead" style="margin-bottom: 6px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
-        <div class="flow-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="flow-step"><strong>1. Title</strong><span>Clear study name</span></div>
-          <div class="flow-step"><strong>2. Intro</strong><span>Clinical background</span></div>
-          <div class="flow-step"><strong>3. Problem</strong><span>Gap in literature</span></div>
-          <div class="flow-step"><strong>4. Objectives</strong><span>Study goals</span></div>
-          <div class="flow-step"><strong>5. Methodology</strong><span>Design & sample</span></div>
-          <div class="flow-step"><strong>6. Ethics</strong><span>Patient rights</span></div>
-        </div>
+    <div class="topic-banner">
+      <span class="tag gold">Main Topic 2 • Competency 24: Develop a Research Proposal</span>
+    </div>
+    <h2>Research Proposal: Definition & 9 Essential Elements</h2>
+    
+    <!-- Explicit Definition Box -->
+    <div class="card" style="border-left: 4px solid var(--accent-gold); background: rgba(245, 158, 11, 0.09); margin-bottom: 10px; padding: 10px 16px;">
+      <p style="font-size: 0.9rem; color: #fff;">
+        <strong style="color: var(--accent-gold);">Definition of Research Proposal:</strong> A formal, structured written plan prepared <em>before</em> starting a study that explains <strong>what</strong> clinical problem will be investigated, <strong>why</strong> it is important, and <strong>how</strong> data will be collected and protected ethically.
+      </p>
+    </div>
+
+    <div class="grid-2" style="align-items: stretch;">
+      <!-- Complete 9 Elements Grid -->
+      <div class="proposal-grid-9">
+        <div class="prop-item"><strong>1. Title</strong><span>Clear, concise study title</span></div>
+        <div class="prop-item"><strong>2. Introduction</strong><span>Clinical context & background</span></div>
+        <div class="prop-item"><strong>3. Problem Statement</strong><span>Specific gap in nursing care</span></div>
+        <div class="prop-item"><strong>4. Research Objectives</strong><span>Measurable study goals</span></div>
+        <div class="prop-item"><strong>5. Research Questions</strong><span>Focused PICO inquiry</span></div>
+        <div class="prop-item"><strong>6. Literature Review</strong><span>Summary of prior evidence</span></div>
+        <div class="prop-item"><strong>7. Methodology</strong><span>Design, sample & tools</span></div>
+        <div class="prop-item"><strong>8. Ethical Considerations</strong><span>Consent & privacy safeguards</span></div>
+        <div class="prop-item"><strong>9. References</strong><span>Accurate APA citations</span></div>
       </div>
-      <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=900&q=85"
-             alt="Healthcare Clinical Study Planning & Ethics Review"
-             onerror="this.parentElement.innerHTML='<div class=\'fallback-box\'><div style=\'font-size:3rem;\'>📋</div><div style=\'color:#00d4ff;font-weight:800;\'>Proposal Blueprint</div><div style=\'color:#cbd5e1;font-size:0.85rem;\'>Securing supervisor review and ethical clearance prior to data collection.</div></div>'">
-        <div class="photo-overlay">
-          <span class="photo-badge">IRB & Supervisor Approval</span>
-          <div class="photo-caption">Formal Clinical Study Planning & Ethical Protocol Review</div>
+
+      <!-- Offline Animated Proposal Assembly Blueprint -->
+      <div class="infographic-panel" style="min-height: auto;">
+        <div class="panel-header">
+          <span><span class="live-dot"></span>Proposal Assembly Blueprint</span>
+          <span>COMPETENCY 24</span>
+        </div>
+        <div class="flow-stack">
+          <div class="blueprint-step">
+            <span>Phase A: Title, Problem & Objectives (1–5)</span>
+            <span style="color:var(--accent-gold);">DRAFT</span>
+          </div>
+          <div class="blueprint-step">
+            <span>Phase B: Literature & Methodology (6–7)</span>
+            <span style="color:var(--accent-cyan);">DESIGN</span>
+          </div>
+          <div class="blueprint-step">
+            <span>Phase C: Ethics & References (8–9)</span>
+            <span style="color:var(--accent-teal);">REVIEW</span>
+          </div>
+        </div>
+        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center; margin-top: 6px;">
+          All 9 sections are assembled prior to Ethics Board submission
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 13: SUBTOPIC 24 - STEP-BY-STEP WORKFLOW -->
+  <!-- SLIDE 13: COMPETENCY 24 — STEP-BY-STEP WORKFLOW -->
   <section class="slide">
+    <div class="topic-banner">
+      <span class="tag gold">Main Topic 2 • Competency 24: Develop a Research Proposal</span>
+      <span class="subtopic-label">• Step-by-Step Workflow</span>
+    </div>
+    <h2>Steps in Developing a Research Proposal</h2>
     <div class="grid-2">
       <div>
-        <div class="tag teal">Subtopic 24 • Step-by-Step Guide</div>
-        <h2>Steps in Developing a Research Proposal</h2>
         <ul class="clean-list">
-          <li><strong>Step 1 — Identify Problem:</strong> Notice real ward issue (e.g., low hand hygiene).</li>
-          <li><strong>Step 2 — Review Literature:</strong> Search PubMed & CINAHL for existing studies.</li>
-          <li><strong>Step 3 — Formulate Objectives:</strong> Choose study design and questionnaire.</li>
-          <li><strong>Step 4 — Plan Ethics & Timeline:</strong> Prepare consent forms and work schedule.</li>
-          <li><strong>Step 5 — Submit Approval:</strong> Get clearance from supervisor before starting.</li>
+          <li><strong>Step 1 — Clinical Problem:</strong> Identify a real ward issue (e.g., hand hygiene compliance).</li>
+          <li><strong>Step 2 — Literature Review:</strong> Search PubMed & CINAHL for existing studies.</li>
+          <li><strong>Step 3 — Research Question & Design:</strong> Choose PICO question, sample, and instrument.</li>
+          <li><strong>Step 4 — Ethical Planning:</strong> Prepare informed consent and confidentiality safeguards.</li>
+          <li><strong>Step 5 — Proposal Submission:</strong> Submit to faculty & Ethics Review Board for formal approval.</li>
         </ul>
       </div>
       <div class="card" style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-teal);">
-        <h3 style="color: var(--accent-teal);">💡 Group 05 Pro-Tip</h3>
-        <p style="color: #fff; font-size: 0.95rem;">Always consult your nursing faculty mentor early when drafting your problem statement and ethical review board application to ensure a smooth approval process!</p>
+        <h3 style="color: var(--accent-teal);">💡 Key Academic Distinction</h3>
+        <p style="color: #fff; font-size: 0.94rem;"><strong>Proposal Development</strong> is drafting your 9-part research blueprint, whereas <strong>Formal Ethical Approval</strong> is the independent review committee permission required before approaching any participants.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 14: TOPIC 09 - RESEARCH ETHICS -->
+  <!-- SLIDE 14: COMPETENCY 24 — RESEARCH ETHICS -->
   <section class="slide">
-    <div class="tag gold">Topic 09 • Protecting Participants</div>
+    <div class="topic-banner">
+      <span class="tag gold">Main Topic 2 • Competency 24</span>
+      <span class="subtopic-label">• Protecting Human Participants</span>
+    </div>
     <h2>Ethical Principles in Nursing Research</h2>
     <div class="grid-equal">
       <div class="card">
-        <h3>🤝 Informed Consent</h3>
-        <p>Explain risks and benefits clearly. Participants must join freely and can stop anytime without penalty.</p>
+        <h3>🤝 Informed Consent & Privacy</h3>
+        <p>Participants join voluntarily after understanding risks and benefits, can withdraw anytime, and personal identity stays protected.</p>
       </div>
       <div class="card">
         <h3>🔒 Confidentiality</h3>
-        <p>Never publish patient names or IDs. Use secret codes (e.g., Student #01) to keep personal records private.</p>
+        <p>Never publish patient names or IDs. Use secret codes (e.g., Participant #01) to keep personal records private.</p>
       </div>
       <div class="card">
-        <h3>⚖️ Beneficence & Justice</h3>
+        <h3>⚖️ Beneficence, Non-Maleficence & Justice</h3>
         <p><strong>Do Good</strong>, <strong>Do No Harm</strong>, and treat every participant fairly and equitably.</p>
       </div>
       <div class="card">
@@ -934,7 +1102,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 16: ANIMATED THANK YOU SLIDE -->
+  <!-- SLIDE 16: THANK YOU SLIDE -->
   <section class="slide">
     <div class="thank-you-container">
       <div class="tag teal" style="margin-bottom: 6px;">Presentation Complete</div>
@@ -945,10 +1113,10 @@
       </p>
       <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 640px; width: 100%; padding: 12px;">
         <div style="font-size: 0.95rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px;">
-           Mudassir Khan • Group 05 (BSN 5th Semester)
+          BSN 5th Semester — Group 05 • PERLs Module
         </div>
         <div style="font-size: 0.78rem; color: var(--text-muted);">
-          Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
+          Mudassir Khan • Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
         </div>
       </div>
     </div>
@@ -1133,7 +1301,7 @@
       rationale: "A mixed-methods design integrates both numerical (quantitative) measurements and descriptive (qualitative) interviews for comprehensive findings."
     },
     {
-      scenario: "Scenario 9 (Research Proposal): Before collecting any data for your nursing project, you draft a formal document outlining your problem, literature review, methodology, and timeline. What is this document called?",
+      scenario: "Scenario 9 (Research Proposal): Before collecting any data for your nursing project, you draft a formal document outlining your problem, literature review, methodology, and ethical safeguards. What is this document called?",
       options: [
         "A discharge summary",
         "A research proposal",
