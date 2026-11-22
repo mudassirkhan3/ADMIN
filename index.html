@@ -7,22 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-dark: #060f1e;
-    --bg-card: rgba(13, 27, 48, 0.98);
+    --bg-dark: #040914;
+    --bg-card: rgba(10, 22, 40, 0.98);
     --accent-cyan: #00d4ff;
     --accent-teal: #10b981;
     --accent-gold: #f59e0b;
     --accent-rose: #f43f5e;
     --text-main: #f8fafc;
     --text-muted: #cbd5e1;
-    --border-glass: rgba(255, 255, 255, 0.16);
+    --border-glass: rgba(255, 255, 255, 0.18);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-touch-callout: none; }
 
   html, body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: radial-gradient(circle at top right, #0e2a4d, #040914 75%);
+    background: radial-gradient(circle at top right, #0e2a4d, #040914 80%);
     color: var(--text-main);
     width: 100%;
     height: 100%;
@@ -34,53 +34,54 @@
   .ambient-orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(110px);
+    filter: blur(120px);
     z-index: 0;
-    opacity: 0.32;
+    opacity: 0.35;
     pointer-events: none;
   }
-  .orb-1 { width: 450px; height: 450px; background: #0284c7; top: -100px; left: -100px; }
-  .orb-2 { width: 400px; height: 400px; background: #0d9488; bottom: -100px; right: -100px; }
+  .orb-1 { width: 500px; height: 500px; background: #0284c7; top: -120px; left: -120px; }
+  .orb-2 { width: 450px; height: 450px; background: #0d9488; bottom: -120px; right: -120px; }
 
   /* Fixed Top Header */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 52px;
+    height: 56px;
     z-index: 50;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
-    background: rgba(6, 15, 30, 0.95);
-    backdrop-filter: blur(12px);
+    padding: 0 28px;
+    background: rgba(4, 9, 20, 0.96);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-glass);
   }
 
   .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--accent-cyan);
+    letter-spacing: 0.5px;
   }
 
   .brand span.badge {
     background: rgba(0, 212, 255, 0.18);
-    border: 1px solid rgba(0, 212, 255, 0.45);
-    padding: 3px 10px;
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    padding: 4px 12px;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: #fff;
   }
 
   .progress-wrap {
     flex: 1;
-    max-width: 320px;
-    margin: 0 18px;
+    max-width: 360px;
+    margin: 0 24px;
     background: rgba(255, 255, 255, 0.14);
-    height: 6px;
+    height: 7px;
     border-radius: 10px;
     overflow: hidden;
   }
@@ -94,7 +95,7 @@
 
   .slide-counter {
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #fff;
     white-space: nowrap;
   }
@@ -102,14 +103,14 @@
   /* Main Slide Container */
   .deck {
     position: fixed;
-    top: 52px;
-    bottom: 64px;
+    top: 56px;
+    bottom: 68px;
     left: 0;
     right: 0;
     z-index: 5;
-    max-width: 1360px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 14px 24px;
+    padding: 16px 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,13 +122,13 @@
     height: 100%;
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
-    border-radius: 18px;
-    padding: 24px 36px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    padding: 30px 42px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
-    animation: slideFade 0.28s ease forwards;
+    animation: slideFade 0.3s ease forwards;
   }
 
   .slide.active {
@@ -137,265 +138,119 @@
   }
 
   @keyframes slideFade {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Typography */
+  /* Typography Optimized for Projectors */
   .tag {
     display: inline-block;
-    padding: 5px 14px;
+    padding: 6px 16px;
     border-radius: 30px;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    background: rgba(0, 212, 255, 0.16);
+    letter-spacing: 1.2px;
+    background: rgba(0, 212, 255, 0.18);
     color: var(--accent-cyan);
-    border: 1px solid rgba(0, 212, 255, 0.4);
-    margin-bottom: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    margin-bottom: 10px;
     width: fit-content;
   }
 
-  .tag.gold { background: rgba(245, 158, 11, 0.18); color: var(--accent-gold); border-color: rgba(245, 158, 11, 0.45); }
-  .tag.teal { background: rgba(16, 185, 129, 0.18); color: var(--accent-teal); border-color: rgba(16, 185, 129, 0.45); }
+  .tag.gold { background: rgba(245, 158, 11, 0.2); color: var(--accent-gold); border-color: rgba(245, 158, 11, 0.5); }
+  .tag.teal { background: rgba(16, 185, 129, 0.2); color: var(--accent-teal); border-color: rgba(16, 185, 129, 0.5); }
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     line-height: 1.15;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     background: linear-gradient(135deg, #ffffff 25%, #7dd3fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     color: #e2e8f0;
-    line-height: 1.48;
-    margin-bottom: 10px;
+    line-height: 1.5;
+    margin-bottom: 14px;
   }
 
   /* Grids & Cards */
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: center; }
-  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center; }
+  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    border-radius: 14px;
-    padding: 14px 18px;
+    border-radius: 16px;
+    padding: 16px 20px;
   }
 
-  .card h3 { font-size: 1.02rem; color: var(--accent-cyan); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 0.9rem; color: #e2e8f0; line-height: 1.42; }
+  .card h3 { font-size: 1.08rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .card p { font-size: 0.94rem; color: #e2e8f0; line-height: 1.45; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.9rem; line-height: 1.42; color: #f1f5f9; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  ul.clean-list li { position: relative; padding-left: 22px; font-size: 0.94rem; line-height: 1.45; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
-  /* =========================================================
-     CUSTOM NURSING-SPECIFIC ANIMATED INFOGRAPHICS (OFFLINE READY)
-     ========================================================= */
-  .nursing-anim-box {
+  /* Simple, Clean Nursing Visual Cards */
+  .nursing-simple-graphic {
     width: 100%;
-    height: 245px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(8, 22, 42, 0.95), rgba(15, 39, 68, 0.95));
-    border: 1px solid rgba(0, 212, 255, 0.35);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
-    padding: 16px;
+    height: 240px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(8, 22, 44, 0.96), rgba(15, 38, 68, 0.96));
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+    padding: 22px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .anim-header {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    font-size: 0.74rem;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--accent-cyan);
-  }
-
-  .live-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent-teal);
-    margin-right: 6px;
-    animation: pulseLive 1.4s infinite;
-  }
-
-  @keyframes pulseLive {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.6); opacity: 0.4; }
-  }
-
-  /* Graphic 1: ECG Monitor + EBP Shield */
-  .ecg-svg {
-    width: 100%;
-    height: 90px;
-  }
-  .ecg-line {
-    fill: none;
-    stroke: var(--accent-teal);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 420;
-    stroke-dashoffset: 420;
-    animation: drawECG 2.6s linear infinite;
-  }
-  @keyframes drawECG {
-    0% { stroke-dashoffset: 420; }
-    70% { stroke-dashoffset: 0; }
-    100% { stroke-dashoffset: -420; }
-  }
-
-  .ebp-pills {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
     text-align: center;
+    gap: 12px;
   }
-  .ebp-pill {
-    background: rgba(0, 212, 255, 0.12);
-    border: 1px solid rgba(0, 212, 255, 0.35);
-    border-radius: 8px;
-    padding: 6px 4px;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: #fff;
-  }
+  .graphic-icon { font-size: 3rem; margin-bottom: 4px; }
+  .graphic-title { font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan); }
+  .graphic-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.4; max-width: 300px; }
 
-  /* Graphic 2: Bedside to Evidence Loop */
-  .loop-flow {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    my-auto;
-  }
-  .loop-node {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.06);
-    border-left: 4px solid var(--accent-cyan);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    animation: nodeGlow 3s infinite;
-  }
-  .loop-node:nth-child(2) { border-left-color: var(--accent-gold); animation-delay: 1s; }
-  .loop-node:nth-child(3) { border-left-color: var(--accent-teal); animation-delay: 2s; }
-
-  @keyframes nodeGlow {
-    0%, 100% { transform: translateX(0); background: rgba(255,255,255,0.05); }
-    35% { transform: translateX(6px); background: rgba(0, 212, 255, 0.16); }
-  }
-
-  /* Graphic 3: Database Search Radar */
-  .db-scanner {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .db-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 7px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-  .db-valid {
-    background: rgba(16, 185, 129, 0.16);
-    border: 1px solid rgba(16, 185, 129, 0.45);
-    color: #6ee7b7;
-  }
-  .db-invalid {
-    background: rgba(244, 63, 94, 0.14);
-    border: 1px dashed rgba(244, 63, 94, 0.5);
-    color: #fda4af;
-    animation: fadeReject 2.4s infinite;
-  }
-  @keyframes fadeReject {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-
-  /* Graphic 4: Proposal Blueprint */
-  .blueprint-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .bp-bar {
-    background: rgba(255,255,255,0.06);
-    border-radius: 8px;
-    padding: 7px 12px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid rgba(245, 158, 11, 0.35);
-  }
-  .bp-check {
-    color: var(--accent-teal);
-    animation: pulseLive 1.5s infinite;
-  }
-
-  /* =========================================================
-     SINGLE-COLUMN TOP-TO-DOWN GROUP MEMBERS (NO SCROLLBAR)
-     ========================================================= */
+  /* Single-Column Top-to-Down Group Members (No Scroll) */
   .vertical-members-column {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
     width: 100%;
-    max-width: 760px;
-    margin: 4px auto 0 auto;
+    max-width: 800px;
+    margin: 6px auto 0 auto;
   }
   .member-row {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    padding: 6px 14px;
-    border-radius: 10px;
+    padding: 7px 16px;
+    border-radius: 11px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 14px;
   }
-  .member-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .member-left { display: flex; align-items: center; gap: 14px; }
   .member-row.leader {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.22), rgba(16, 185, 129, 0.18));
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(16, 185, 129, 0.2));
     border-color: var(--accent-cyan);
   }
   .avatar {
-    width: 28px; height: 28px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     background: var(--accent-cyan);
     color: #040914;
@@ -403,87 +258,77 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     flex-shrink: 0;
   }
-  .member-name {
-    font-weight: 700;
-    color: #fff;
-    font-size: 0.88rem;
-  }
-  .member-role {
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--text-muted);
-  }
-  .member-row.leader .member-role {
-    color: var(--accent-cyan);
-  }
+  .member-name { font-weight: 700; color: #fff; font-size: 0.92rem; }
+  .member-role { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+  .member-row.leader .member-role { color: var(--accent-cyan); }
 
   /* Objectives Tiles */
-  .obj-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 6px; }
+  .obj-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px; }
   .obj-tile {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    border-radius: 12px;
-    padding: 10px 8px;
+    border-radius: 13px;
+    padding: 11px 8px;
     text-align: center;
   }
-  .obj-num { font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 2px; }
-  .obj-text { font-size: 0.75rem; color: #f1f5f9; line-height: 1.3; }
+  .obj-num { font-size: 1.15rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px; }
+  .obj-text { font-size: 0.78rem; color: #f1f5f9; line-height: 1.35; }
 
   /* Venn Diagrams */
-  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 54px; margin: 3px 0; position: relative; }
-  .circle { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; }
-  .c-left { margin-right: -10px; }
-  .c-right { margin-left: -10px; }
+  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 58px; margin: 4px 0; position: relative; }
+  .circle { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; }
+  .c-left { margin-right: -11px; }
+  .c-right { margin-left: -11px; }
   .venn-and .c-left, .venn-and .c-right { background: rgba(0, 212, 255, 0.08); }
-  .venn-and-mid { position: absolute; width: 20px; height: 36px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
+  .venn-and-mid { position: absolute; width: 22px; height: 40px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
   .venn-or .c-left, .venn-or .c-right { background: rgba(16, 185, 129, 0.45); border-color: var(--accent-teal); }
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
 
   /* Flowchart Steps */
-  .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 9px 12px; border-radius: 8px; }
-  .flow-step strong { color: var(--accent-teal); font-size: 0.85rem; display: block; margin-bottom: 2px; }
-  .flow-step span { font-size: 0.78rem; color: #e2e8f0; }
+  .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 10px 14px; border-radius: 9px; }
+  .flow-step strong { color: var(--accent-teal); font-size: 0.88rem; display: block; margin-bottom: 2px; }
+  .flow-step span { font-size: 0.8rem; color: #e2e8f0; }
 
   /* Table */
   .table-scroll { width: 100%; overflow-x: auto; }
-  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 500px; }
-  table.clean-table th, table.clean-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.84rem; }
-  table.clean-table th { background: rgba(0, 212, 255, 0.14); color: var(--accent-cyan); font-weight: 700; }
+  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 6px; min-width: 520px; }
+  table.clean-table th, table.clean-table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.88rem; }
+  table.clean-table th { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); font-weight: 700; }
 
   /* Quiz Section */
-  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border-glass); }
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-glass); }
   .scoreboard { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .score-pill { display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 8px; font-weight: 700; font-size: 0.78rem; }
-  .score-auto { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #6ee7b7; }
-  .score-boys { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; }
-  .score-girls { background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); color: #fda4af; }
-  .score-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; font-weight: 800; }
+  .score-pill { display: flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 9px; font-weight: 700; font-size: 0.8rem; }
+  .score-auto { background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.45); color: #6ee7b7; }
+  .score-boys { background: rgba(56, 189, 248, 0.16); border: 1px solid rgba(56, 189, 248, 0.45); color: #7dd3fc; }
+  .score-girls { background: rgba(244, 63, 94, 0.16); border: 1px solid rgba(244, 63, 94, 0.45); color: #fda4af; }
+  .score-btn { background: rgba(255,255,255,0.22); border: none; color: #fff; width: 24px; height: 24px; border-radius: 5px; cursor: pointer; font-weight: 800; }
 
-  .q-nav-dots { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
-  .q-dot { padding: 4px 8px; border-radius: 5px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.76rem; cursor: pointer; }
+  .q-nav-dots { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .q-dot { padding: 5px 9px; border-radius: 6px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; }
   .q-dot.active { background: var(--accent-cyan); color: #040914; border-color: var(--accent-cyan); }
   .q-dot.answered { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-  .scenario-box { background: rgba(0, 212, 255, 0.08); border-left: 3px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 0.88rem; line-height: 1.4; color: #f8fafc; margin-bottom: 8px; }
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .opt-btn { text-align: left; padding: 10px 14px; border-radius: 9px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.84rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
-  .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.18); }
-  .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700; }
-  .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.18); opacity: 0.75; }
+  .scenario-box { background: rgba(0, 212, 255, 0.09); border-left: 4px solid var(--accent-cyan); padding: 12px 16px; border-radius: 0 11px 11px 0; font-size: 0.92rem; line-height: 1.45; color: #f8fafc; margin-bottom: 10px; }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .opt-btn { text-align: left; padding: 11px 15px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.88rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
+  .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.2); }
+  .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.28); color: #fff; font-weight: 700; }
+  .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.2); opacity: 0.75; }
 
-  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; font-size: 0.84rem; cursor: pointer; }
-  .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--border-glass); padding: 7px 12px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; cursor: pointer; }
+  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 9px 18px; border-radius: 9px; font-weight: 800; font-size: 0.86rem; cursor: pointer; }
+  .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid var(--border-glass); padding: 8px 14px; border-radius: 9px; font-weight: 600; font-size: 0.84rem; cursor: pointer; }
 
-  .result-panel { display: none; margin-top: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.5); }
+  .result-panel { display: none; margin-top: 10px; padding: 12px 16px; border-radius: 11px; background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.55); }
   .result-panel.show { display: block; }
-  .result-panel h4 { color: var(--accent-teal); font-size: 0.9rem; margin-bottom: 2px; }
-  .result-panel p { font-size: 0.84rem; color: #f1f5f9; line-height: 1.38; }
+  .result-panel h4 { color: var(--accent-teal); font-size: 0.94rem; margin-bottom: 3px; }
+  .result-panel p { font-size: 0.86rem; color: #f1f5f9; line-height: 1.42; }
 
   /* Thank You */
   .thank-you-container {
@@ -492,41 +337,41 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+    padding: 12px;
   }
   .animated-trophy {
-    font-size: 3.5rem;
-    margin-bottom: 8px;
+    font-size: 3.8rem;
+    margin-bottom: 10px;
     animation: bounceCelebrate 1.8s infinite ease-in-out;
   }
   @keyframes bounceCelebrate {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-12px) scale(1.1); }
+    50% { transform: translateY(-14px) scale(1.12); }
   }
 
   /* Fixed Bottom Navigation Bar */
   footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    height: 64px;
+    height: 68px;
     z-index: 100;
-    padding: 0 24px;
+    padding: 0 28px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(6, 15, 30, 0.98);
-    backdrop-filter: blur(12px);
+    background: rgba(4, 9, 20, 0.98);
+    backdrop-filter: blur(14px);
     border-top: 1px solid var(--border-glass);
   }
-  .nav-controls { display: flex; gap: 12px; width: 100%; justify-content: flex-end; align-items: center; }
+  .nav-controls { display: flex; gap: 14px; width: 100%; justify-content: flex-end; align-items: center; }
   .nav-btn {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    padding: 12px 22px;
-    border-radius: 10px;
+    padding: 12px 24px;
+    border-radius: 11px;
     font-weight: 800;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     cursor: pointer;
     touch-action: manipulation;
   }
@@ -536,23 +381,23 @@
     border: none;
   }
   .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-  .hint-text { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+  .hint-text { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
 
   /* Mobile Responsive Rules */
   @media (max-width: 850px) {
-    .deck { padding: 10px 12px; bottom: 64px; }
-    .slide { padding: 14px 14px 20px 14px; border-radius: 14px; }
+    .deck { padding: 10px 14px; bottom: 68px; }
+    .slide { padding: 16px 16px 22px 16px; border-radius: 16px; }
     .slide.active { justify-content: flex-start; }
-    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; gap: 8px; }
-    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid { grid-template-columns: 1fr; gap: 10px; }
+    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.18rem; }
-    p.lead { font-size: 0.86rem; }
-    .nursing-anim-box { height: 205px; }
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.22rem; }
+    p.lead { font-size: 0.88rem; }
+    .nursing-simple-graphic { height: 180px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
-    .nav-btn { flex: 1; text-align: center; padding: 12px 8px; font-size: 0.86rem; }
+    .nav-btn { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.88rem; }
   }
 </style>
 </head>
@@ -574,7 +419,7 @@
 
 <main class="deck" id="deckContainer">
 
-  <!-- SLIDE 1: TITLE SLIDE + NURSING CLINICAL MONITOR ANIMATION -->
+  <!-- SLIDE 1: TITLE SLIDE -->
   <section class="slide active">
     <div class="grid-2">
       <div>
@@ -584,41 +429,32 @@
           A clear, detailed, and projector-optimized guide to finding trusted scientific evidence and writing strong research proposals for safe patient care.
         </p>
         <div class="card" style="border-left: 4px solid var(--accent-teal);">
-          <p style="font-size: 0.95rem; color: #fff;">
+          <p style="font-size: 0.98rem; color: #fff;">
             <strong>BSN 5th Semester — Group 05</strong><br>
             <span style="color: var(--text-muted);">Group Leader: Mudassir Khan</span>
           </p>
         </div>
       </div>
-
-      <!-- Custom Animated Nursing Clinical Monitor -->
-      <div class="nursing-anim-box">
-        <div class="anim-header">
-          <span><span class="live-dot"></span>Clinical EBP Vital Monitor</span>
-          <span>BSN 5TH SEM</span>
-        </div>
-        <svg class="ecg-svg" viewBox="0 0 360 90">
-          <polyline class="ecg-line" points="0,50 60,50 75,35 90,50 110,50 120,12 132,82 144,25 155,50 200,50 215,35 230,50 250,50 260,12 272,82 284,25 295,50 360,50"/>
-        </svg>
-        <div class="ebp-pills">
-          <div class="ebp-pill">🩺 Best Evidence</div>
-          <div class="ebp-pill">👩‍⚕️ Nurse Skill</div>
-          <div class="ebp-pill">❤️ Patient Care</div>
-        </div>
+      <div class="nursing-simple-graphic">
+        <div class="graphic-icon">🩺</div>
+        <div class="graphic-title">Evidence-Based Nursing</div>
+        <div class="graphic-desc">Connecting scientific research with clinical bedside practice for optimal patient outcomes.</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS (SINGLE VERTICAL COLUMN - TOP TO DOWN) -->
+  <!-- SLIDE 2: GROUP 05 TEAM MEMBERS -->
   <section class="slide">
     <div class="tag teal">Presentation Team</div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead" style="margin-bottom: 4px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
+    <p class="lead" style="margin-bottom: 6px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     
     <div class="vertical-members-column">
       <div class="member-row leader">
-        <div class="avatar">MK</div>
-        <span class="member-name">1. Mudassir Khan</span>
+        <div class="member-left">
+          <div class="avatar">MK</div>
+          <span class="member-name">1. Mudassir Khan</span>
+        </div>
         <span class="member-role">Group Leader & Presenter</span>
       </div>
       <div class="member-row">
@@ -670,7 +506,7 @@
   <section class="slide">
     <div class="tag gold">Presentation Roadmap</div>
     <h2>LEARNING OBJECTIVES</h2>
-    <p class="lead" style="margin-bottom: 8px;">By the end of this presentation, students will master these 10 core outcomes:</p>
+    <p class="lead" style="margin-bottom: 10px;">By the end of this presentation, students will master these 10 core outcomes:</p>
     <div class="obj-grid">
       <div class="obj-tile">
         <div class="obj-num">01</div>
@@ -715,13 +551,13 @@
     </div>
   </section>
 
-  <!-- SLIDE 4: DEFINITIONS + NURSING BEDSIDE-TO-RESEARCH ANIMATION -->
+  <!-- SLIDE 4: DEFINITIONS -->
   <section class="slide">
     <div class="tag">Topic 01 • Core Definitions</div>
     <h2>What Are Research & Research Skills?</h2>
     <div class="grid-2">
       <div>
-        <div class="card" style="border-top: 4px solid var(--accent-cyan); margin-bottom: 10px;">
+        <div class="card" style="border-top: 4px solid var(--accent-cyan); margin-bottom: 12px;">
           <h3>🔬 Definition of Research</h3>
           <p>A careful, step-by-step scientific investigation to discover new facts, solve clinical problems, and verify what works best for patients.</p>
         </div>
@@ -730,21 +566,10 @@
           <p>Practical abilities to ask clear clinical questions, find reliable scientific data, judge its quality, and design an ethical study.</p>
         </div>
       </div>
-
-      <!-- Custom Animated Bedside-to-Research Workflow -->
-      <div class="nursing-anim-box">
-        <div class="anim-header">
-          <span><span class="live-dot"></span>Nursing Inquiry Cycle</span>
-          <span>EBP PATHWAY</span>
-        </div>
-        <div class="loop-flow">
-          <div class="loop-node">🏥 1. Ward Observation (e.g., Infection Risk)</div>
-          <div class="loop-node">🔎 2. Scientific Investigation & Data Check</div>
-          <div class="loop-node">🛡️ 3. Safe Evidence-Based Patient Care</div>
-        </div>
-        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
-          Replacing guesswork with verified clinical proof
-        </div>
+      <div class="nursing-simple-graphic">
+        <div class="graphic-icon">💡</div>
+        <div class="graphic-title">Clinical Inquiry</div>
+        <div class="graphic-desc">Identify a ward problem → Search literature → Apply evidence to patient care.</div>
       </div>
     </div>
   </section>
@@ -757,13 +582,13 @@
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>📌 Subtopic 23: Locate credible scientific data</h3>
-        <p style="margin-bottom: 6px;">Finding trustworthy, peer-reviewed medical studies using indexed databases, Boolean search logic, and the CRAAP quality test.</p>
-        <p style="color: var(--accent-cyan); font-size: 0.85rem;"><strong>Why it matters:</strong> Protects patients from false or outdated advice.</p>
+        <p style="margin-bottom: 8px;">Finding trustworthy, peer-reviewed medical studies using indexed databases, Boolean search logic, and the CRAAP quality test.</p>
+        <p style="color: var(--accent-cyan); font-size: 0.88rem;"><strong>Why it matters:</strong> Protects patients from false or outdated advice.</p>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-gold);">
         <h3>📌 Subtopic 24: Develop a research proposal</h3>
-        <p style="margin-bottom: 6px;">Writing a clear, organized research plan that explains your clinical problem, objectives, study method, and ethical safeguards.</p>
-        <p style="color: var(--accent-gold); font-size: 0.85rem;"><strong>Why it matters:</strong> Turns a ward problem into a safe, approved study.</p>
+        <p style="margin-bottom: 8px;">Writing a clear, organized research plan that explains your clinical problem, objectives, study method, and ethical safeguards.</p>
+        <p style="color: var(--accent-gold); font-size: 0.88rem;"><strong>Why it matters:</strong> Turns a ward problem into a safe, approved study.</p>
       </div>
     </div>
   </section>
@@ -772,18 +597,18 @@
   <section class="slide">
     <div class="tag teal">Topic 02 • Data Classification</div>
     <h2>Types of Research Data (Two Separate Classifications)</h2>
-    <p class="lead" style="margin-bottom: 8px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
+    <p class="lead" style="margin-bottom: 10px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>A. By Source (Who collected it?)</h3>
-        <ul class="clean-list" style="margin-top: 4px;">
+        <ul class="clean-list" style="margin-top: 6px;">
           <li><strong>Primary Data (First-Hand):</strong> Collected directly by you.<br><em>Example:</em> Surveying 60 students on hand hygiene.</li>
           <li><strong>Secondary Data (Existing):</strong> Already collected by others.<br><em>Example:</em> Reading hospital infection logs.</li>
         </ul>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-teal);">
         <h3>B. By Nature (Numbers or Words?)</h3>
-        <ul class="clean-list" style="margin-top: 4px;">
+        <ul class="clean-list" style="margin-top: 6px;">
           <li><strong>Quantitative (Numbers):</strong> Measured in digits.<br><em>Example:</em> Blood pressure (120/80 mmHg).</li>
           <li><strong>Qualitative (Words):</strong> Feelings & experiences.<br><em>Example:</em> Interviewing stressed ICU nurses.</li>
         </ul>
@@ -791,56 +616,36 @@
     </div>
   </section>
 
-  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES + ANIMATED MEDICAL FILTER -->
+  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES -->
   <section class="slide">
     <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
     <h2>Where to Find Reliable Nursing Literature</h2>
     <div class="grid-2">
       <div>
         <p class="lead">Avoid random websites or social media posts. Use trusted, peer-reviewed medical search engines:</p>
-        <div class="grid-equal" style="gap: 10px;">
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">1. PubMed</h3>
-            <p style="font-size:0.82rem;">36M+ biomedical articles.</p>
+        <div class="grid-equal" style="gap: 12px;">
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:0.98rem;">1. PubMed</h3>
+            <p style="font-size:0.84rem;">36M+ biomedical articles.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">2. CINAHL</h3>
-            <p style="font-size:0.82rem;">Top nursing journals database.</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:0.98rem;">2. CINAHL</h3>
+            <p style="font-size:0.84rem;">Top nursing journals database.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">3. Cochrane</h3>
-            <p style="font-size:0.82rem;">Highest authority for reviews.</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:0.98rem;">3. Cochrane</h3>
+            <p style="font-size:0.84rem;">Highest authority for reviews.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">4. Google Scholar</h3>
-            <p style="font-size:0.82rem;">Academic article search.</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:0.98rem;">4. Google Scholar</h3>
+            <p style="font-size:0.84rem;">Academic article search.</p>
           </div>
         </div>
       </div>
-
-      <!-- Custom Animated Nursing Literature Filter -->
-      <div class="nursing-anim-box">
-        <div class="anim-header">
-          <span><span class="live-dot"></span>Peer-Review Evidence Filter</span>
-          <span>CREDIBILITY</span>
-        </div>
-        <div class="db-scanner">
-          <div class="db-row db-valid">
-            <span>✅ CINAHL & PubMed Journals</span>
-            <span>VERIFIED</span>
-          </div>
-          <div class="db-row db-valid">
-            <span>✅ Cochrane Systematic Reviews</span>
-            <span>GOLD STD</span>
-          </div>
-          <div class="db-row db-invalid">
-            <span>❌ Unverified Social Media Blogs</span>
-            <span>REJECTED</span>
-          </div>
-        </div>
-        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
-          Always verify clinical guidelines from indexed medical repositories
-        </div>
+      <div class="nursing-simple-graphic">
+        <div class="graphic-icon">🔍</div>
+        <div class="graphic-title">Indexed Repositories</div>
+        <div class="graphic-desc">Peer-reviewed journals ensure clinical safety and scientific validity.</div>
       </div>
     </div>
   </section>
@@ -850,34 +655,34 @@
     <div class="tag gold">Subtopic 23 • Checking Credibility</div>
     <h2>The CRAAP Test: How to Judge Any Source</h2>
     <div class="grid-3 craap-grid" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.2rem;">C</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.25rem;">C</h3>
         <strong>Currency</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Recent? (<5 yrs)</p>
+        <p style="font-size:0.78rem; margin-top:3px;">Recent? (<5 yrs)</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.2rem;">R</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.25rem;">R</h3>
         <strong>Relevance</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Fits topic?</p>
+        <p style="font-size:0.78rem; margin-top:3px;">Fits topic?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.2rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.25rem;">A</h3>
         <strong>Authority</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Expert author?</p>
+        <p style="font-size:0.78rem; margin-top:3px;">Expert author?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.2rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.25rem;">A</h3>
         <strong>Accuracy</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Backed by data?</p>
+        <p style="font-size:0.78rem; margin-top:3px;">Backed by data?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:#a78bfa; justify-content:center; font-size:1.2rem;">P</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:#a78bfa; justify-content:center; font-size:1.25rem;">P</h3>
         <strong>Purpose</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Science or sales?</p>
+        <p style="font-size:0.78rem; margin-top:3px;">Science or sales?</p>
       </div>
     </div>
-    <div class="card" style="margin-top: 10px; border-left: 4px solid var(--accent-rose);">
-      <p style="font-size: 0.86rem;"><strong>Practical Example:</strong> A blog claiming "Herbal tea cures diabetes in 2 days" with no author and a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
+    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--accent-rose);">
+      <p style="font-size: 0.88rem;"><strong>Practical Example:</strong> A blog claiming "Herbal tea cures diabetes in 2 days" with no author and a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
     </div>
   </section>
 
@@ -885,32 +690,32 @@
   <section class="slide">
     <div class="tag">Subtopic 23 • Smart Search Techniques</div>
     <h2>Refining Searches with Boolean Operators</h2>
-    <p class="lead" style="margin-bottom: 8px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
+    <p class="lead" style="margin-bottom: 10px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
     <div class="grid-3">
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>AND (Narrows)</h3>
         <div class="venn-wrap venn-and">
           <div class="circle c-left">Nursing</div>
           <div class="venn-and-mid"></div>
           <div class="circle c-right">Safety</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Nursing AND Patient Safety</strong><br>Finds articles with <em>both</em> terms.</p>
+        <p style="font-size: 0.84rem;"><strong>Nursing AND Patient Safety</strong><br>Finds articles with <em>both</em> terms.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>OR (Broadens)</h3>
         <div class="venn-wrap venn-or">
           <div class="circle c-left">Nurse</div>
           <div class="circle c-right">Nursing</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Nurse OR Nursing</strong><br>Finds articles with <em>either</em> term.</p>
+        <p style="font-size: 0.84rem;"><strong>Nurse OR Nursing</strong><br>Finds articles with <em>either</em> term.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>NOT (Excludes)</h3>
         <div class="venn-wrap venn-not">
           <div class="circle c-left">Infection</div>
           <div class="circle c-right">COVID</div>
         </div>
-        <p style="font-size: 0.82rem;"><strong>Infection NOT COVID-19</strong><br>Removes unwanted topics.</p>
+        <p style="font-size: 0.84rem;"><strong>Infection NOT COVID-19</strong><br>Removes unwanted topics.</p>
       </div>
     </div>
   </section>
@@ -919,30 +724,30 @@
   <section class="slide">
     <div class="tag teal">Subtopic 23 • Clinical Research Questions</div>
     <h2>Building Focused Questions with PICO</h2>
-    <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 10px;">
-      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 12px;">
-        <h3 style="font-size:1.15rem;">P</h3>
+    <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 12px;">
+      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 14px;">
+        <h3 style="font-size:1.18rem;">P</h3>
         <strong>Population</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Who?<br><em>Nursing students</em></p>
+        <p style="font-size:0.8rem; margin-top:3px;">Who?<br><em>Nursing students</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 12px;">
-        <h3 style="font-size:1.15rem; color:var(--accent-teal);">I</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 14px;">
+        <h3 style="font-size:1.18rem; color:var(--accent-teal);">I</h3>
         <strong>Intervention</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Action?<br><em>Video training</em></p>
+        <p style="font-size:0.8rem; margin-top:3px;">Action?<br><em>Video training</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 12px;">
-        <h3 style="font-size:1.15rem; color:var(--accent-gold);">C</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 14px;">
+        <h3 style="font-size:1.18rem; color:var(--accent-gold);">C</h3>
         <strong>Comparison</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Versus?<br><em>Standard lecture</em></p>
+        <p style="font-size:0.8rem; margin-top:3px;">Versus?<br><em>Standard lecture</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 12px;">
-        <h3 style="font-size:1.15rem; color:var(--accent-rose);">O</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 14px;">
+        <h3 style="font-size:1.18rem; color:var(--accent-rose);">O</h3>
         <strong>Outcome</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Result?<br><em>Better hygiene</em></p>
+        <p style="font-size:0.8rem; margin-top:3px;">Result?<br><em>Better hygiene</em></p>
       </div>
     </div>
-    <div class="card" style="background: rgba(0, 212, 255, 0.08);">
-      <p style="font-size: 0.88rem; color: #fff;">
+    <div class="card" style="background: rgba(0, 212, 255, 0.09);">
+      <p style="font-size: 0.9rem; color: #fff;">
         <strong>Complete PICO Question:</strong> "In <strong>nursing students (P)</strong>, does <strong>video training (I)</strong> compared to a <strong>standard lecture (C)</strong> improve <strong>hand hygiene compliance (O)</strong>?"
       </p>
     </div>
@@ -952,7 +757,7 @@
   <section class="slide">
     <div class="tag">Topic 07 • Study Methodology</div>
     <h2>Comparing Research Designs</h2>
-    <p class="lead" style="margin-bottom: 6px;">A research design is your overall plan for collecting and analyzing data:</p>
+    <p class="lead" style="margin-bottom: 8px;">A research design is your overall plan for collecting and analyzing data:</p>
     <div class="table-scroll">
       <table class="clean-table">
         <thead>
@@ -987,13 +792,13 @@
     </div>
   </section>
 
-  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL + ANIMATED BLUEPRINT -->
+  <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL -->
   <section class="slide">
     <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
     <h2>9 Essential Components of a Research Proposal</h2>
     <div class="grid-2">
       <div>
-        <p class="lead" style="margin-bottom: 6px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
+        <p class="lead" style="margin-bottom: 8px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
         <div class="flow-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="flow-step"><strong>1. Title</strong><span>Clear study name</span></div>
           <div class="flow-step"><strong>2. Intro</strong><span>Clinical background</span></div>
@@ -1003,30 +808,10 @@
           <div class="flow-step"><strong>6. Ethics</strong><span>Patient rights</span></div>
         </div>
       </div>
-
-      <!-- Custom Animated Clinical Research Proposal Blueprint -->
-      <div class="nursing-anim-box">
-        <div class="anim-header">
-          <span><span class="live-dot"></span>IRB & Ethics Approval Blueprint</span>
-          <span>SUBTOPIC 24</span>
-        </div>
-        <div class="blueprint-bars">
-          <div class="bp-bar">
-            <span>📋 Clinical Problem & PICO</span>
-            <span class="bp-check">✔ READY</span>
-          </div>
-          <div class="bp-bar">
-            <span>🧪 Sample & Tool Validation</span>
-            <span class="bp-check">✔ READY</span>
-          </div>
-          <div class="bp-bar">
-            <span>⚖️ Informed Consent & Ethics</span>
-            <span class="bp-check">✔ APPROVED</span>
-          </div>
-        </div>
-        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center;">
-          Ethical clearance is mandatory before hospital data collection
-        </div>
+      <div class="nursing-simple-graphic">
+        <div class="graphic-icon">📋</div>
+        <div class="graphic-title">Proposal Blueprint</div>
+        <div class="graphic-desc">Securing supervisor review and ethical clearance prior to clinical data collection.</div>
       </div>
     </div>
   </section>
@@ -1047,7 +832,7 @@
       </div>
       <div class="card" style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-teal);">
         <h3 style="color: var(--accent-teal);">💡 Group 05 Pro-Tip</h3>
-        <p style="color: #fff; font-size: 0.95rem;">Always consult your nursing faculty mentor early when drafting your problem statement and ethical review board application to ensure a smooth approval process!</p>
+        <p style="color: #fff; font-size: 0.98rem;">Always consult your nursing faculty mentor early when drafting your problem statement and ethical review board application to ensure a smooth approval process!</p>
       </div>
     </div>
   </section>
@@ -1081,7 +866,7 @@
     <div class="quiz-header">
       <div>
         <span class="tag gold" style="margin-bottom:2px;">Live Class Challenge • 10 Scenarios</span>
-        <h2 style="font-size: 1.1rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
+        <h2 style="font-size: 1.15rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
       </div>
       <div class="scoreboard">
         <div class="score-pill score-auto">
@@ -1105,11 +890,11 @@
     <div class="options-grid" id="qOptions"></div>
 
     <div class="quiz-actions">
-      <div style="display:flex; gap:6px;">
+      <div style="display:flex; gap:8px;">
         <button class="btn-secondary" type="button" onclick="prevQuestion()">← Prev Q</button>
         <button class="btn-secondary" type="button" onclick="nextQuestion()">Next Q →</button>
       </div>
-      <div style="display:flex; gap:6px;">
+      <div style="display:flex; gap:8px;">
         <button class="btn-secondary" type="button" onclick="showQuizSummary()">📊 Summary</button>
         <button class="btn-primary" type="button" id="revealBtn" onclick="revealResult()">🔍 Show Answer</button>
       </div>
@@ -1124,17 +909,17 @@
   <!-- SLIDE 16: ANIMATED THANK YOU SLIDE -->
   <section class="slide">
     <div class="thank-you-container">
-      <div class="tag teal" style="margin-bottom: 6px;">Presentation Complete</div>
+      <div class="tag teal" style="margin-bottom: 8px;">Presentation Complete</div>
       <div class="animated-trophy">🎓✨</div>
-      <h1 style="font-size: 2.4rem; margin-bottom: 8px;">Thank You!</h1>
-      <p class="lead" style="max-width: 680px; margin: 0 auto 10px auto;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Thank You!</h1>
+      <p class="lead" style="max-width: 700px; margin: 0 auto 12px auto;">
         By mastering how to <strong>locate credible scientific data</strong> (Competency 23) and <strong>develop a research proposal</strong> (Competency 24), Group 05 is ready to lead safe, evidence-based nursing care!
       </p>
-      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 640px; width: 100%; padding: 12px;">
-        <div style="font-size: 0.95rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px;">
+      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 660px; width: 100%; padding: 14px;">
+        <div style="font-size: 0.98rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 4px;">
           Group Leader: Mudassir Khan • Group 05 (BSN 5th Semester)
         </div>
-        <div style="font-size: 0.78rem; color: var(--text-muted);">
+        <div style="font-size: 0.8rem; color: var(--text-muted);">
           Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
         </div>
       </div>
