@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Research Skills in Nursing | BSN 5th Semester - Group 05</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg-dark: #060f1e;
-    --bg-card: rgba(13, 27, 48, 0.90);
+    --bg-card: rgba(13, 27, 48, 0.95);
     --accent-cyan: #00d4ff;
     --accent-teal: #10b981;
     --accent-gold: #f59e0b;
@@ -20,44 +20,39 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
+  html, body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: radial-gradient(circle at top right, #0e2a4d, #040914 75%);
     color: var(--text-main);
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  /* Ambient Glow Animation */
+  /* Ambient Glow */
   .ambient-orb {
     position: fixed;
     border-radius: 50%;
     filter: blur(100px);
     z-index: 0;
-    opacity: 0.3;
-    animation: floatOrb 14s infinite alternate ease-in-out;
+    opacity: 0.28;
     pointer-events: none;
   }
-  .orb-1 { width: 450px; height: 450px; background: #0284c7; top: -120px; left: -120px; }
-  .orb-2 { width: 400px; height: 400px; background: #0d9488; bottom: -120px; right: -100px; animation-delay: 5s; }
+  .orb-1 { width: 420px; height: 420px; background: #0284c7; top: -120px; left: -120px; }
+  .orb-2 { width: 380px; height: 380px; background: #0d9488; bottom: -120px; right: -100px; }
 
-  @keyframes floatOrb {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(35px, 25px) scale(1.08); }
-  }
-
-  /* Top Header */
+  /* Fixed Top Header */
   header {
-    position: relative;
-    z-index: 10;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    z-index: 50;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 36px;
-    background: rgba(6, 15, 30, 0.85);
+    padding: 0 20px;
+    background: rgba(6, 15, 30, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-glass);
   }
@@ -65,28 +60,27 @@
   .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--accent-cyan);
-    letter-spacing: 0.4px;
   }
 
   .brand span.badge {
     background: rgba(0, 212, 255, 0.15);
     border: 1px solid rgba(0, 212, 255, 0.4);
-    padding: 4px 12px;
+    padding: 2px 9px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     color: #fff;
   }
 
   .progress-wrap {
     flex: 1;
-    max-width: 340px;
-    margin: 0 24px;
-    background: rgba(255, 255, 255, 0.12);
-    height: 7px;
+    max-width: 260px;
+    margin: 0 14px;
+    background: rgba(255, 255, 255, 0.14);
+    height: 6px;
     border-radius: 10px;
     overflow: hidden;
   }
@@ -95,24 +89,27 @@
     height: 100%;
     width: 6.25%;
     background: linear-gradient(90deg, var(--accent-cyan), var(--accent-teal));
-    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: width 0.3s ease;
   }
 
   .slide-counter {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: #fff;
+    white-space: nowrap;
   }
 
-  /* Main Slide Area */
+  /* Main Slide Container */
   .deck {
-    position: relative;
+    position: fixed;
+    top: 52px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
     z-index: 5;
-    flex: 1;
-    width: 100%;
-    max-width: 1340px;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 18px 36px;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,13 +120,14 @@
     width: 100%;
     height: 100%;
     background: var(--bg-card);
-    backdrop-filter: blur(16px);
     border: 1px solid var(--border-glass);
-    border-radius: 22px;
-    padding: 28px 42px;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+    border-radius: 18px;
+    padding: 26px 34px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
     overflow-y: auto;
-    animation: slideEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    animation: slideEnter 0.32s ease forwards;
   }
 
   .slide.active {
@@ -139,19 +137,19 @@
   }
 
   @keyframes slideEnter {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* Typography */
   .tag {
     display: inline-block;
-    padding: 5px 14px;
+    padding: 4px 12px;
     border-radius: 30px;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     background: rgba(0, 212, 255, 0.14);
     color: var(--accent-cyan);
     border: 1px solid rgba(0, 212, 255, 0.35);
@@ -164,198 +162,220 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.7rem;
+    font-size: 2.3rem;
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     background: linear-gradient(135deg, #ffffff 30%, #7dd3fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 1.04rem;
+    font-size: 0.96rem;
     color: #e2e8f0;
-    line-height: 1.5;
-    margin-bottom: 14px;
+    line-height: 1.48;
+    margin-bottom: 12px;
   }
 
   /* Grids & Cards */
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center; }
-  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; align-items: center; }
+  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
   .card {
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid var(--border-glass);
-    border-radius: 15px;
-    padding: 16px 18px;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    border-radius: 14px;
+    padding: 14px 16px;
   }
 
-  .card:hover { transform: translateY(-3px); border-color: rgba(0, 212, 255, 0.45); }
-  .card h3 { font-size: 1.08rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 0.94rem; color: #e2e8f0; line-height: 1.48; }
+  .card h3 { font-size: 1rem; color: var(--accent-cyan); margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+  .card p { font-size: 0.88rem; color: #e2e8f0; line-height: 1.42; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  ul.clean-list li { position: relative; padding-left: 22px; font-size: 0.94rem; line-height: 1.48; color: #f1f5f9; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.42; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
   .img-frame {
     width: 100%;
-    height: 295px;
-    border-radius: 16px;
+    height: 250px;
+    border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
     position: relative;
   }
-
   .img-frame img { width: 100%; height: 100%; object-fit: cover; }
   .img-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 9px 14px;
+    padding: 8px 12px;
     background: linear-gradient(transparent, rgba(4, 9, 20, 0.92));
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #e2e8f0;
   }
 
   /* Group Members */
-  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 10px; }
-  .member-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); padding: 14px 16px; border-radius: 14px; display: flex; align-items: center; gap: 12px; }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 10px; margin-top: 8px; }
+  .member-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14); padding: 11px 13px; border-radius: 12px; display: flex; align-items: center; gap: 10px; }
   .member-card.leader { background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(16, 185, 129, 0.16)); border-color: var(--accent-cyan); }
-  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-cyan); color: #040914; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-cyan); color: #040914; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; flex-shrink: 0; }
 
-  /* Engaging Objectives Interactive Grid */
-  .obj-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-top: 8px;
-  }
+  /* Objectives Tiles */
+  .obj-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 6px; }
   .obj-tile {
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid var(--border-glass);
-    border-radius: 14px;
-    padding: 14px 12px;
+    border-radius: 12px;
+    padding: 10px 8px;
     text-align: center;
-    transition: all 0.3s ease;
   }
-  .obj-tile:hover {
-    background: rgba(0, 212, 255, 0.14);
-    border-color: var(--accent-cyan);
-    transform: translateY(-4px);
-  }
-  .obj-num {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--accent-cyan);
-    margin-bottom: 6px;
-  }
-  .obj-text {
-    font-size: 0.82rem;
-    color: #f1f5f9;
-    line-height: 1.38;
-  }
+  .obj-num { font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px; }
+  .obj-text { font-size: 0.76rem; color: #f1f5f9; line-height: 1.32; }
 
-  /* Venn Diagrams for Boolean Operators */
-  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 68px; margin: 6px 0; position: relative; }
-  .circle { width: 58px; height: 58px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; }
-  .c-left { margin-right: -14px; }
-  .c-right { margin-left: -14px; }
+  /* Venn Diagrams */
+  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 58px; margin: 4px 0; position: relative; }
+  .circle { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; font-weight: 700; }
+  .c-left { margin-right: -12px; }
+  .c-right { margin-left: -12px; }
   .venn-and .c-left, .venn-and .c-right { background: rgba(0, 212, 255, 0.08); }
-  .venn-and-mid { position: absolute; width: 28px; height: 48px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
+  .venn-and-mid { position: absolute; width: 22px; height: 40px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
   .venn-or .c-left, .venn-or .c-right { background: rgba(16, 185, 129, 0.45); border-color: var(--accent-teal); }
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
 
   /* Flowchart Steps */
-  .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 4px solid var(--accent-teal); padding: 10px 14px; border-radius: 10px; }
-  .flow-step strong { color: var(--accent-teal); font-size: 0.9rem; display: block; margin-bottom: 2px; }
-  .flow-step span { font-size: 0.84rem; color: #e2e8f0; }
+  .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 8px 12px; border-radius: 8px; }
+  .flow-step strong { color: var(--accent-teal); font-size: 0.84rem; display: block; margin-bottom: 2px; }
+  .flow-step span { font-size: 0.78rem; color: #e2e8f0; }
 
-  /* Comparison Table */
-  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
-  table.clean-table th, table.clean-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.9rem; }
+  /* Table */
+  .table-scroll { width: 100%; overflow-x: auto; }
+  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 520px; }
+  table.clean-table th, table.clean-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.84rem; }
   table.clean-table th { background: rgba(0, 212, 255, 0.14); color: var(--accent-cyan); font-weight: 700; }
-  table.clean-table tr:hover td { background: rgba(255, 255, 255, 0.03); }
 
   /* Quiz Section */
-  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-glass); }
-  .scoreboard { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-  .score-pill { display: flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: 10px; font-weight: 700; font-size: 0.84rem; }
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border-glass); }
+  .scoreboard { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .score-pill { display: flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; }
   .score-auto { background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #6ee7b7; }
   .score-boys { background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; }
   .score-girls { background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); color: #fda4af; }
-  .score-btn { background: rgba(255,255,255,0.18); border: none; color: #fff; width: 22px; height: 22px; border-radius: 5px; cursor: pointer; font-weight: 800; }
-  .score-btn:hover { background: rgba(255,255,255,0.35); }
+  .score-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; font-weight: 800; }
 
-  .q-nav-dots { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
-  .q-dot { padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.78rem; cursor: pointer; }
+  .q-nav-dots { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+  .q-dot { padding: 4px 8px; border-radius: 5px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.74rem; cursor: pointer; }
   .q-dot.active { background: var(--accent-cyan); color: #040914; border-color: var(--accent-cyan); }
   .q-dot.answered { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-  .scenario-box { background: rgba(0, 212, 255, 0.08); border-left: 4px solid var(--accent-cyan); padding: 12px 16px; border-radius: 0 12px 12px 0; font-size: 0.96rem; line-height: 1.5; color: #f8fafc; margin-bottom: 12px; }
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-  .opt-btn { text-align: left; padding: 11px 15px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.9rem; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; gap: 10px; align-items: flex-start; }
-  .opt-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-cyan); }
+  .scenario-box { background: rgba(0, 212, 255, 0.08); border-left: 3px solid var(--accent-cyan); padding: 10px 12px; border-radius: 0 10px 10px 0; font-size: 0.88rem; line-height: 1.4; color: #f8fafc; margin-bottom: 8px; }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .opt-btn { text-align: left; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.84rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
   .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.18); }
   .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700; }
   .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.18); opacity: 0.75; }
 
-  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 10px 20px; border-radius: 9px; font-weight: 800; font-size: 0.88rem; cursor: pointer; }
-  .btn-primary:hover { box-shadow: 0 6px 16px rgba(0, 212, 255, 0.35); }
-  .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid var(--border-glass); padding: 8px 15px; border-radius: 9px; font-weight: 600; cursor: pointer; }
-  .btn-secondary:hover { background: rgba(255,255,255,0.16); }
+  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; cursor: pointer; }
+  .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid var(--border-glass); padding: 7px 11px; border-radius: 8px; font-weight: 600; font-size: 0.8rem; cursor: pointer; }
 
-  .result-panel { display: none; margin-top: 10px; padding: 12px 16px; border-radius: 12px; background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.5); }
-  .result-panel.show { display: block; animation: slideEnter 0.3s ease; }
-  .result-panel h4 { color: var(--accent-teal); font-size: 0.98rem; margin-bottom: 4px; }
-  .result-panel p { font-size: 0.9rem; color: #f1f5f9; line-height: 1.48; }
+  .result-panel { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.5); }
+  .result-panel.show { display: block; }
+  .result-panel h4 { color: var(--accent-teal); font-size: 0.9rem; margin-bottom: 2px; }
+  .result-panel p { font-size: 0.84rem; color: #f1f5f9; line-height: 1.38; }
 
-  /* Animated Thank You Slide */
+  /* Thank You */
   .thank-you-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100%;
-    padding: 10px;
+    padding: 8px;
   }
   .animated-trophy {
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-size: 3.2rem;
+    margin-bottom: 6px;
     animation: bounceCelebrate 1.8s infinite ease-in-out;
   }
   @keyframes bounceCelebrate {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-14px) scale(1.1); }
+    50% { transform: translateY(-10px) scale(1.08); }
   }
 
-  /* Footer */
-  footer { position: relative; z-index: 10; padding: 10px 36px; display: flex; justify-content: space-between; align-items: center; background: rgba(6, 15, 30, 0.85); border-top: 1px solid var(--border-glass); }
-  .nav-controls { display: flex; gap: 10px; }
-  .nav-btn { background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-glass); color: #fff; padding: 8px 18px; border-radius: 9px; font-weight: 700; cursor: pointer; }
-  .nav-btn:hover:not(:disabled) { background: var(--accent-cyan); color: #040914; }
+  /* Fixed Bottom Navigation Bar (Always visible on Mobile & PC) */
+  footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    z-index: 50;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(6, 15, 30, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-glass);
+  }
+  .nav-controls { display: flex; gap: 10px; width: 100%; justify-content: flex-end; align-items: center; }
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  .nav-btn.primary-nav {
+    background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+    color: #040914;
+    border: none;
+  }
   .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-  .hint-text { font-size: 0.82rem; color: var(--text-muted); }
+  .hint-text { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
 
-  @media (max-width: 900px) {
-    .grid-2, .grid-equal, .grid-3, .obj-grid, .flow-grid, .options-grid { grid-template-columns: 1fr; }
-    .slide { padding: 18px; }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.35rem; }
-    .img-frame { height: 180px; }
+  /* Mobile Responsive Rules */
+  @media (max-width: 850px) {
+    .deck { padding: 10px 12px; }
+    .slide {
+      padding: 16px 16px 24px 16px;
+      border-radius: 14px;
+    }
+    .slide.active {
+      justify-content: flex-start;
+    }
+    .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .obj-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .craap-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .pico-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    h1 { font-size: 1.65rem; }
+    h2 { font-size: 1.2rem; }
+    p.lead { font-size: 0.88rem; }
+    .img-frame { height: 150px; }
+    .hint-text { display: none; }
+    .nav-controls { justify-content: space-between; }
+    .nav-btn { flex: 1; text-align: center; padding: 10px 10px; font-size: 0.86rem; }
   }
 </style>
 </head>
@@ -366,16 +386,16 @@
 
 <header>
   <div class="brand">
-    <span>PERLs MODULE • BSN 5TH SEMESTER</span>
+    <span>PERLs • BSN 5TH</span>
     <span class="badge">GROUP 05</span>
   </div>
   <div class="progress-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="slide-counter" id="slideCounter">Slide 1 / 16</div>
+  <div class="slide-counter" id="slideCounter">1 / 16</div>
 </header>
 
-<main class="deck">
+<main class="deck" id="deckContainer">
 
   <!-- SLIDE 1: TITLE SLIDE -->
   <section class="slide active">
@@ -387,7 +407,7 @@
           A clear, detailed, and practical guide to finding trusted scientific evidence and writing strong research proposals for safe patient care.
         </p>
         <div class="card" style="border-left: 4px solid var(--accent-teal);">
-          <p style="font-size: 1rem; color: #fff;">
+          <p style="font-size: 0.92rem; color: #fff;">
             <strong>BSN 5th Semester — Group 05</strong><br>
             <span style="color: var(--text-muted);">Group Leader: Mudassir Khan</span>
           </p>
@@ -409,60 +429,60 @@
       <div class="member-card leader">
         <div class="avatar">MK</div>
         <div>
-          <div style="font-weight: 800; color: #fff; font-size: 1.02rem;">Mudassir Khan</div>
-          <div style="font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700;">Group Leader</div>
+          <div style="font-weight: 800; color: #fff; font-size: 0.95rem;">Mudassir Khan</div>
+          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 700;">Group Leader</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#38bdf8;">ZL</div>
         <div>
-          <div style="font-weight: 700;">Zain Luqman</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Zain Luqman</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#34d399;">MM</div>
         <div>
-          <div style="font-weight: 700;">Muhammad Murtaza</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Muhammad Murtaza</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#f472b6;">AG</div>
         <div>
-          <div style="font-weight: 700;">Aroosa Gull</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Aroosa Gull</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#fbbf24;">AS</div>
         <div>
-          <div style="font-weight: 700;">Amna Safdar</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Amna Safdar</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#a78bfa;">MW</div>
         <div>
-          <div style="font-weight: 700;">Muneeba Waheed</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Muneeba Waheed</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
       <div class="member-card">
         <div class="avatar" style="background:#fb7185;">LA</div>
         <div>
-          <div style="font-weight: 700;">Laraib Afzal</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted);">Group Member</div>
+          <div style="font-weight: 700; font-size: 0.88rem;">Laraib Afzal</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">Group Member</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 3: LEARNING OBJECTIVES (INTERACTIVE VISUAL TILES) -->
+  <!-- SLIDE 3: LEARNING OBJECTIVES -->
   <section class="slide">
     <div class="tag gold">Presentation Roadmap</div>
     <h2>LEARNING OBJECTIVES</h2>
-    <p class="lead" style="margin-bottom: 10px; font-size: 0.96rem;">By the end of this presentation, students will master these 10 core outcomes:</p>
+    <p class="lead" style="margin-bottom: 8px;">By the end of this presentation, students will master these 10 core outcomes:</p>
     <div class="obj-grid">
       <div class="obj-tile">
         <div class="obj-num">01</div>
@@ -511,25 +531,25 @@
   <section class="slide">
     <div class="tag">Topic 01 • Core Definitions</div>
     <h2>What Are Research & Research Skills?</h2>
-    <div class="grid-equal" style="margin-bottom: 14px;">
+    <div class="grid-equal" style="margin-bottom: 10px;">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>🔬 Definition of Research</h3>
         <p><strong>Research</strong> is a careful, step-by-step scientific investigation to discover new facts, solve clinical problems, and verify what works best for patients.</p>
-        <p style="margin-top:8px; color: var(--accent-cyan); font-size: 0.9rem;"><em>In simple words:</em> Searching for solid proof instead of guessing.</p>
+        <p style="margin-top:6px; color: var(--accent-cyan); font-size: 0.84rem;"><em>In simple words:</em> Searching for solid proof instead of guessing.</p>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-teal);">
         <h3>🧠 Definition of Research Skills</h3>
-        <p><strong>Research Skills</strong> are the practical abilities to ask clear clinical questions, find reliable scientific data, judge its quality, and design an ethical study.</p>
-        <p style="margin-top:8px; color: var(--accent-teal); font-size: 0.9rem;"><em>In simple words:</em> Knowing how to find, check, and use true medical knowledge.</p>
+        <p><strong>Research Skills</strong> are practical abilities to ask clear clinical questions, find reliable scientific data, judge its quality, and design an ethical study.</p>
+        <p style="margin-top:6px; color: var(--accent-teal); font-size: 0.84rem;"><em>In simple words:</em> Knowing how to find, check, and use true medical knowledge.</p>
       </div>
     </div>
     <div class="card" style="border-left: 4px solid var(--accent-gold);">
       <h3>🏥 Evidence-Based Practice (EBP)</h3>
-      <p><strong>EBP</strong> combines the <strong>best research evidence</strong> + <strong>nurse clinical skill</strong> + <strong>patient preferences</strong>. For example, using proven hand-hygiene protocols reduces ward infections and saves lives.</p>
+      <p><strong>EBP</strong> combines <strong>best research evidence</strong> + <strong>nurse clinical skill</strong> + <strong>patient preferences</strong>. For example, using proven hand-hygiene protocols reduces ward infections and saves lives.</p>
     </div>
   </section>
 
-  <!-- SLIDE 5: MAIN TOPIC & TWO HIGHLIGHTED SUBTOPICS (23 & 24) -->
+  <!-- SLIDE 5: MAIN TOPIC & SUBTOPICS 23 & 24 -->
   <section class="slide">
     <div class="tag gold">PERLs Curriculum • Writer & Presenter</div>
     <h2>Main Topic: Research Skills (Competencies 23 & 24)</h2>
@@ -537,41 +557,41 @@
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>📌 Subtopic 23: Locate credible scientific data</h3>
-        <p style="margin-bottom: 8px;">Finding trustworthy, peer-reviewed medical studies using indexed databases, Boolean search logic, and the CRAAP quality test.</p>
-        <p style="color: var(--accent-cyan); font-size: 0.9rem;"><strong>Why it matters:</strong> Protects patients from false or outdated medical advice.</p>
+        <p style="margin-bottom: 6px;">Finding trustworthy, peer-reviewed medical studies using indexed databases, Boolean search logic, and the CRAAP quality test.</p>
+        <p style="color: var(--accent-cyan); font-size: 0.84rem;"><strong>Why it matters:</strong> Protects patients from false or outdated medical advice.</p>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-gold);">
         <h3>📌 Subtopic 24: Develop a research proposal</h3>
-        <p style="margin-bottom: 8px;">Writing a clear, organized research plan that explains your clinical problem, objectives, study method, and ethical safeguards.</p>
-        <p style="color: var(--accent-gold); font-size: 0.9rem;"><strong>Why it matters:</strong> Turns a ward problem into a safe, approved scientific study.</p>
+        <p style="margin-bottom: 6px;">Writing a clear, organized research plan that explains your clinical problem, objectives, study method, and ethical safeguards.</p>
+        <p style="color: var(--accent-gold); font-size: 0.84rem;"><strong>Why it matters:</strong> Turns a ward problem into a safe, approved scientific study.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 6: TOPIC 2 - TYPES OF DATA (SOURCE VS NATURE) -->
+  <!-- SLIDE 6: TOPIC 2 - TYPES OF DATA -->
   <section class="slide">
     <div class="tag teal">Topic 02 • Data Classification</div>
     <h2>Types of Research Data (Two Separate Classifications)</h2>
-    <p class="lead" style="margin-bottom: 10px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
+    <p class="lead" style="margin-bottom: 8px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>A. By Source (Who collected it?)</h3>
-        <ul class="clean-list" style="margin-top: 6px;">
-          <li><strong>Primary Data (First-Hand):</strong> Collected directly by you for your study.<br><em>Example:</em> Surveying 60 nursing students about hand hygiene habits.</li>
-          <li><strong>Secondary Data (Existing Records):</strong> Already collected by someone else.<br><em>Example:</em> Reading hospital infection logs from last year.</li>
+        <ul class="clean-list" style="margin-top: 4px;">
+          <li><strong>Primary Data (First-Hand):</strong> Collected directly by you.<br><em>Example:</em> Surveying 60 students on hand hygiene.</li>
+          <li><strong>Secondary Data (Existing):</strong> Already collected by others.<br><em>Example:</em> Reading hospital infection logs.</li>
         </ul>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-teal);">
         <h3>B. By Nature (Numbers or Words?)</h3>
-        <ul class="clean-list" style="margin-top: 6px;">
-          <li><strong>Quantitative Data (Numbers):</strong> Measured in digits and statistics.<br><em>Example:</em> Blood pressure (120/80 mmHg), pulse rate, or temperature.</li>
-          <li><strong>Qualitative Data (Words):</strong> Descriptive feelings and experiences.<br><em>Example:</em> Interviewing nurses about why they feel stressed in the ICU.</li>
+        <ul class="clean-list" style="margin-top: 4px;">
+          <li><strong>Quantitative (Numbers):</strong> Measured in digits.<br><em>Example:</em> Blood pressure (120/80 mmHg).</li>
+          <li><strong>Qualitative (Words):</strong> Feelings & experiences.<br><em>Example:</em> Interviewing stressed ICU nurses.</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE SCIENTIFIC DATABASES -->
+  <!-- SLIDE 7: SUBTOPIC 23 - RELIABLE DATABASES -->
   <section class="slide">
     <div class="tag gold">Subtopic 23 • Locate Credible Scientific Data</div>
     <h2>Where to Find Reliable Nursing Literature</h2>
@@ -591,7 +611,7 @@
       </div>
       <div class="card">
         <h3>4. Google Scholar</h3>
-        <p>Simple academic search engine to locate peer-reviewed articles and check how many times they were cited.</p>
+        <p>Simple academic search engine to locate peer-reviewed articles and check citations.</p>
       </div>
     </div>
   </section>
@@ -600,35 +620,35 @@
   <section class="slide">
     <div class="tag gold">Subtopic 23 • Checking Credibility</div>
     <h2>The CRAAP Test: How to Judge Any Source</h2>
-    <div class="grid-3" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="card" style="text-align:center; padding: 12px;">
-        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.3rem;">C</h3>
+    <div class="grid-3 craap-grid" style="grid-template-columns: repeat(5, 1fr);">
+      <div class="card" style="text-align:center; padding: 10px;">
+        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.2rem;">C</h3>
         <strong>Currency</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is it recent? (Published within last 5 years)</p>
+        <p style="font-size:0.75rem; margin-top:2px;">Recent? (<5 yrs)</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
-        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.3rem;">R</h3>
+      <div class="card" style="text-align:center; padding: 10px;">
+        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.2rem;">R</h3>
         <strong>Relevance</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Does it directly fit your nursing topic?</p>
+        <p style="font-size:0.75rem; margin-top:2px;">Fits topic?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
-        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.3rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 10px;">
+        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.2rem;">A</h3>
         <strong>Authority</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is the author a qualified nurse or doctor?</p>
+        <p style="font-size:0.75rem; margin-top:2px;">Expert author?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
-        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.3rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 10px;">
+        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.2rem;">A</h3>
         <strong>Accuracy</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is it supported by real data and references?</p>
+        <p style="font-size:0.75rem; margin-top:2px;">Backed by data?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
-        <h3 style="color:#a78bfa; justify-content:center; font-size:1.3rem;">P</h3>
+      <div class="card" style="text-align:center; padding: 10px;">
+        <h3 style="color:#a78bfa; justify-content:center; font-size:1.2rem;">P</h3>
         <strong>Purpose</strong>
-        <p style="font-size:0.8rem; margin-top:4px;">Is it objective science, or trying to sell something?</p>
+        <p style="font-size:0.75rem; margin-top:2px;">Science or sales?</p>
       </div>
     </div>
-    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--accent-rose);">
-      <p style="font-size: 0.92rem;"><strong>Practical Example:</strong> A blog claiming "Herbal tea cures diabetes in 2 days" with no doctor's name and a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
+    <div class="card" style="margin-top: 10px; border-left: 4px solid var(--accent-rose);">
+      <p style="font-size: 0.86rem;"><strong>Practical Example:</strong> A blog claiming "Herbal tea cures diabetes in 2 days" with no author and a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
     </div>
   </section>
 
@@ -636,32 +656,32 @@
   <section class="slide">
     <div class="tag">Subtopic 23 • Smart Search Techniques</div>
     <h2>Refining Searches with Boolean Operators</h2>
-    <p class="lead" style="margin-bottom: 10px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
+    <p class="lead" style="margin-bottom: 8px;">Type <strong>AND, OR, NOT</strong> in CAPITAL letters to control your database search results:</p>
     <div class="grid-3">
-      <div class="card" style="text-align:center; padding: 14px;">
-        <h3>AND (Narrows Search)</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3>AND (Narrows)</h3>
         <div class="venn-wrap venn-and">
           <div class="circle c-left">Nursing</div>
           <div class="venn-and-mid"></div>
           <div class="circle c-right">Safety</div>
         </div>
-        <p style="font-size: 0.88rem;"><strong>Nursing AND Patient Safety</strong><br>Finds only articles containing <em>both</em> terms.</p>
+        <p style="font-size: 0.82rem;"><strong>Nursing AND Patient Safety</strong><br>Finds articles with <em>both</em> terms.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 14px;">
-        <h3>OR (Broadens Search)</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3>OR (Broadens)</h3>
         <div class="venn-wrap venn-or">
           <div class="circle c-left">Nurse</div>
           <div class="circle c-right">Nursing</div>
         </div>
-        <p style="font-size: 0.88rem;"><strong>Nurse OR Nursing</strong><br>Finds articles with <em>either</em> term (good for synonyms).</p>
+        <p style="font-size: 0.82rem;"><strong>Nurse OR Nursing</strong><br>Finds articles with <em>either</em> term.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 14px;">
-        <h3>NOT (Excludes Terms)</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3>NOT (Excludes)</h3>
         <div class="venn-wrap venn-not">
           <div class="circle c-left">Infection</div>
           <div class="circle c-right">COVID</div>
         </div>
-        <p style="font-size: 0.88rem;"><strong>Infection NOT COVID-19</strong><br>Removes unwanted topics from your results.</p>
+        <p style="font-size: 0.82rem;"><strong>Infection NOT COVID-19</strong><br>Removes unwanted topics.</p>
       </div>
     </div>
   </section>
@@ -670,30 +690,30 @@
   <section class="slide">
     <div class="tag teal">Subtopic 23 • Clinical Research Questions</div>
     <h2>Building Focused Questions with PICO</h2>
-    <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 14px;">
-      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 14px;">
-        <h3 style="font-size:1.3rem;">P</h3>
+    <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 10px;">
+      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 12px;">
+        <h3 style="font-size:1.15rem;">P</h3>
         <strong>Population</strong>
-        <p style="font-size:0.82rem; margin-top:3px;">Who is studied?<br><em>e.g., Nursing students</em></p>
+        <p style="font-size:0.78rem; margin-top:2px;">Who?<br><em>Nursing students</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 14px;">
-        <h3 style="font-size:1.3rem; color:var(--accent-teal);">I</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 12px;">
+        <h3 style="font-size:1.15rem; color:var(--accent-teal);">I</h3>
         <strong>Intervention</strong>
-        <p style="font-size:0.82rem; margin-top:3px;">What action is tested?<br><em>e.g., Video training</em></p>
+        <p style="font-size:0.78rem; margin-top:2px;">Action?<br><em>Video training</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 14px;">
-        <h3 style="font-size:1.3rem; color:var(--accent-gold);">C</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 12px;">
+        <h3 style="font-size:1.15rem; color:var(--accent-gold);">C</h3>
         <strong>Comparison</strong>
-        <p style="font-size:0.82rem; margin-top:3px;">Compared to what?<br><em>e.g., Standard lecture</em></p>
+        <p style="font-size:0.78rem; margin-top:2px;">Versus?<br><em>Standard lecture</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 14px;">
-        <h3 style="font-size:1.3rem; color:var(--accent-rose);">O</h3>
+      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 12px;">
+        <h3 style="font-size:1.15rem; color:var(--accent-rose);">O</h3>
         <strong>Outcome</strong>
-        <p style="font-size:0.82rem; margin-top:3px;">What is the result?<br><em>e.g., Better hand hygiene</em></p>
+        <p style="font-size:0.78rem; margin-top:2px;">Result?<br><em>Better hygiene</em></p>
       </div>
     </div>
     <div class="card" style="background: rgba(0, 212, 255, 0.08);">
-      <p style="font-size: 0.95rem; color: #fff;">
+      <p style="font-size: 0.88rem; color: #fff;">
         <strong>Complete PICO Question:</strong> "In <strong>nursing students (P)</strong>, does <strong>video training (I)</strong> compared to a <strong>standard lecture (C)</strong> improve <strong>hand hygiene compliance (O)</strong>?"
       </p>
     </div>
@@ -703,54 +723,56 @@
   <section class="slide">
     <div class="tag">Topic 07 • Study Methodology</div>
     <h2>Comparing Research Designs</h2>
-    <p class="lead" style="margin-bottom: 8px;">A research design is your overall plan for collecting and analyzing data:</p>
-    <table class="clean-table">
-      <thead>
-        <tr>
-          <th>Research Design</th>
-          <th>Main Purpose</th>
-          <th>Type of Data</th>
-          <th>Nursing Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong style="color:var(--accent-cyan);">1. Quantitative</strong></td>
-          <td>Measure variables & test cause-and-effect</td>
-          <td>Numbers & statistics</td>
-          <td>Counting how many students follow all 7 handwashing steps</td>
-        </tr>
-        <tr>
-          <td><strong style="color:var(--accent-teal);">2. Qualitative</strong></td>
-          <td>Understand human feelings & lived experiences</td>
-          <td>Words & interviews</td>
-          <td>Interviewing nurses about emotional stress in the ICU</td>
-        </tr>
-        <tr>
-          <td><strong style="color:var(--accent-gold);">3. Mixed-Methods</strong></td>
-          <td>Get a complete picture using both approaches</td>
-          <td>Both numbers & words</td>
-          <td>Measuring exam scores (numbers) + asking students how they felt (words)</td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="lead" style="margin-bottom: 6px;">A research design is your overall plan for collecting and analyzing data:</p>
+    <div class="table-scroll">
+      <table class="clean-table">
+        <thead>
+          <tr>
+            <th>Research Design</th>
+            <th>Main Purpose</th>
+            <th>Type of Data</th>
+            <th>Nursing Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--accent-cyan);">1. Quantitative</strong></td>
+            <td>Measure variables & test cause-and-effect</td>
+            <td>Numbers & stats</td>
+            <td>Counting students following handwashing steps</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-teal);">2. Qualitative</strong></td>
+            <td>Understand human feelings & lived experiences</td>
+            <td>Words & stories</td>
+            <td>Interviewing nurses about ICU stress</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-gold);">3. Mixed-Methods</strong></td>
+            <td>Get complete picture using both approaches</td>
+            <td>Numbers & words</td>
+            <td>Exam scores (numbers) + student feedback (words)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <!-- SLIDE 12: SUBTOPIC 24 - RESEARCH PROPOSAL COMPONENTS -->
   <section class="slide">
     <div class="tag gold">Subtopic 24 • Develop a Research Proposal</div>
     <h2>9 Essential Components of a Research Proposal</h2>
-    <p class="lead" style="margin-bottom: 10px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
+    <p class="lead" style="margin-bottom: 8px;">A research proposal is a written blueprint submitted for approval <strong>before</strong> you start collecting data:</p>
     <div class="flow-grid">
-      <div class="flow-step"><strong>1. Title</strong><span>Clear, concise name of your study</span></div>
-      <div class="flow-step"><strong>2. Introduction</strong><span>Background of the clinical issue</span></div>
-      <div class="flow-step"><strong>3. Problem Statement</strong><span>Why this gap needs urgent study</span></div>
-      <div class="flow-step"><strong>4. Objectives</strong><span>Specific, measurable study goals</span></div>
-      <div class="flow-step"><strong>5. Research Questions</strong><span>Focused PICO questions</span></div>
-      <div class="flow-step"><strong>6. Literature Review</strong><span>Summary of past scientific studies</span></div>
-      <div class="flow-step"><strong>7. Methodology</strong><span>Design, sample size & survey tools</span></div>
-      <div class="flow-step"><strong>8. Ethical Considerations</strong><span>How patient rights stay protected</span></div>
-      <div class="flow-step"><strong>9. References</strong><span>Proper APA / Vancouver citations</span></div>
+      <div class="flow-step"><strong>1. Title</strong><span>Clear name of study</span></div>
+      <div class="flow-step"><strong>2. Introduction</strong><span>Clinical issue background</span></div>
+      <div class="flow-step"><strong>3. Problem Statement</strong><span>Why study is needed</span></div>
+      <div class="flow-step"><strong>4. Objectives</strong><span>Specific study goals</span></div>
+      <div class="flow-step"><strong>5. Research Questions</strong><span>Focused PICO queries</span></div>
+      <div class="flow-step"><strong>6. Literature Review</strong><span>Summary of past studies</span></div>
+      <div class="flow-step"><strong>7. Methodology</strong><span>Design, sample & tools</span></div>
+      <div class="flow-step"><strong>8. Ethics</strong><span>Protecting patient rights</span></div>
+      <div class="flow-step"><strong>9. References</strong><span>APA / Vancouver citations</span></div>
     </div>
   </section>
 
@@ -761,16 +783,16 @@
         <div class="tag teal">Subtopic 24 • Step-by-Step Guide</div>
         <h2>Steps in Developing a Research Proposal</h2>
         <ul class="clean-list">
-          <li><strong>Step 1 — Identify a Clinical Problem:</strong> Notice a real issue on the ward (e.g., low hand hygiene compliance).</li>
-          <li><strong>Step 2 — Review Literature:</strong> Search PubMed & CINAHL to see what studies already exist.</li>
-          <li><strong>Step 3 — Formulate Objectives & Design:</strong> Choose your study design, sample size, and questionnaire.</li>
-          <li><strong>Step 4 — Plan Ethics & Timeline:</strong> Prepare consent forms and a realistic work schedule.</li>
-          <li><strong>Step 5 — Submit for Approval:</strong> Get clearance from your supervisor and Ethics Committee before starting.</li>
+          <li><strong>Step 1 — Identify Problem:</strong> Notice real ward issue (e.g., low hand hygiene).</li>
+          <li><strong>Step 2 — Review Literature:</strong> Search PubMed & CINAHL for existing studies.</li>
+          <li><strong>Step 3 — Formulate Objectives:</strong> Choose study design and questionnaire.</li>
+          <li><strong>Step 4 — Plan Ethics & Timeline:</strong> Prepare consent forms and work schedule.</li>
+          <li><strong>Step 5 — Submit Approval:</strong> Get clearance from supervisor before starting.</li>
         </ul>
       </div>
       <div class="img-frame">
         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85" alt="Proposal Planning">
-        <div class="img-caption">Careful planning prevents mistakes during hospital data collection</div>
+        <div class="img-caption">Careful planning prevents mistakes during data collection</div>
       </div>
     </div>
   </section>
@@ -781,20 +803,20 @@
     <h2>Ethical Principles in Nursing Research</h2>
     <div class="grid-equal">
       <div class="card">
-        <h3>🤝 Informed Consent & Voluntary Choice</h3>
-        <p>Explain all risks and benefits clearly. Participants must join freely and can stop at any time without any penalty.</p>
+        <h3>🤝 Informed Consent</h3>
+        <p>Explain risks and benefits clearly. Participants must join freely and can stop anytime without penalty.</p>
       </div>
       <div class="card">
-        <h3>🔒 Confidentiality & Privacy</h3>
-        <p>Never publish patient names or IDs. Use secret codes (e.g., Student #01) to keep personal records completely private.</p>
+        <h3>🔒 Confidentiality</h3>
+        <p>Never publish patient names or IDs. Use secret codes (e.g., Student #01) to keep personal records private.</p>
       </div>
       <div class="card">
-        <h3>⚖️ Beneficence, Non-Maleficence & Justice</h3>
-        <p><strong>Do Good</strong> (beneficence), <strong>Do No Harm</strong> (non-maleficence), and treat every participant fairly (justice).</p>
+        <h3>⚖️ Beneficence & Justice</h3>
+        <p><strong>Do Good</strong>, <strong>Do No Harm</strong>, and treat every participant fairly and equitably.</p>
       </div>
       <div class="card">
-        <h3>📝 Proper Referencing (No Plagiarism)</h3>
-        <p>Never copy-paste another author's work. Always write in your own words and cite original sources properly.</p>
+        <h3>📝 Proper Referencing</h3>
+        <p>Never plagiarize. Always write in your own words and cite original sources properly.</p>
       </div>
     </div>
   </section>
@@ -804,21 +826,21 @@
     <div class="quiz-header">
       <div>
         <span class="tag gold" style="margin-bottom:2px;">Live Class Challenge • 10 Scenarios</span>
-        <h2 style="font-size: 1.25rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
+        <h2 style="font-size: 1.1rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
       </div>
       <div class="scoreboard">
         <div class="score-pill score-auto">
-          <span>🎯 Quiz Score: <strong id="autoScore">0 / 10</strong></span>
+          <span>🎯 Score: <strong id="autoScore">0 / 10</strong></span>
         </div>
         <div class="score-pill score-boys">
           <span>👨 Boys: <strong id="boysScore">0</strong></span>
-          <button class="score-btn" onclick="updateScore('boys', 1)">+</button>
-          <button class="score-btn" onclick="updateScore('boys', -1)">-</button>
+          <button class="score-btn" type="button" onclick="updateScore('boys', 1)">+</button>
+          <button class="score-btn" type="button" onclick="updateScore('boys', -1)">-</button>
         </div>
         <div class="score-pill score-girls">
           <span>👩 Girls: <strong id="girlsScore">0</strong></span>
-          <button class="score-btn" onclick="updateScore('girls', 1)">+</button>
-          <button class="score-btn" onclick="updateScore('girls', -1)">-</button>
+          <button class="score-btn" type="button" onclick="updateScore('girls', 1)">+</button>
+          <button class="score-btn" type="button" onclick="updateScore('girls', -1)">-</button>
         </div>
       </div>
     </div>
@@ -828,18 +850,18 @@
     <div class="options-grid" id="qOptions"></div>
 
     <div class="quiz-actions">
-      <div style="display:flex; gap:8px;">
-        <button class="btn-secondary" onclick="prevQuestion()">← Prev</button>
-        <button class="btn-secondary" onclick="nextQuestion()">Next →</button>
+      <div style="display:flex; gap:6px;">
+        <button class="btn-secondary" type="button" onclick="prevQuestion()">← Prev Q</button>
+        <button class="btn-secondary" type="button" onclick="nextQuestion()">Next Q →</button>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-secondary" onclick="showQuizSummary()">📊 Final Summary</button>
-        <button class="btn-primary" id="revealBtn" onclick="revealResult()">🔍 Show Answer & Rationale</button>
+      <div style="display:flex; gap:6px;">
+        <button class="btn-secondary" type="button" onclick="showQuizSummary()">📊 Summary</button>
+        <button class="btn-primary" type="button" id="revealBtn" onclick="revealResult()">🔍 Show Answer</button>
       </div>
     </div>
 
     <div class="result-panel" id="resultPanel">
-      <h4 id="resultHeading">✅ Correct Answer: Option A</h4>
+      <h4 id="resultHeading">✅ Correct Answer</h4>
       <p id="resultRationale"></p>
     </div>
   </section>
@@ -847,17 +869,17 @@
   <!-- SLIDE 16: ANIMATED THANK YOU SLIDE -->
   <section class="slide">
     <div class="thank-you-container">
-      <div class="tag teal" style="margin-bottom: 8px;">Presentation Complete</div>
+      <div class="tag teal" style="margin-bottom: 6px;">Presentation Complete</div>
       <div class="animated-trophy">🎓✨</div>
-      <h1 style="font-size: 2.8rem; margin-bottom: 10px;">Thank You!</h1>
-      <p class="lead" style="max-width: 720px; margin: 0 auto 14px auto; font-size: 1.05rem;">
+      <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Thank You!</h1>
+      <p class="lead" style="max-width: 680px; margin: 0 auto 10px auto;">
         By mastering how to <strong>locate credible scientific data</strong> (Competency 23) and <strong>develop a research proposal</strong> (Competency 24), Group 05 is ready to lead safe, evidence-based nursing care!
       </p>
-      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 680px; width: 100%;">
-        <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 4px;">
+      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 640px; width: 100%; padding: 12px;">
+        <div style="font-size: 0.95rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px;">
           Group Leader: Mudassir Khan • Group 05 (BSN 5th Semester)
         </div>
-        <div style="font-size: 0.86rem; color: var(--text-muted);">
+        <div style="font-size: 0.78rem; color: var(--text-muted);">
           Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
         </div>
       </div>
@@ -867,11 +889,11 @@
 </main>
 
 <footer>
-  <div class="hint-text">Tip: Use <strong>← / →</strong> Arrow Keys to switch slides</div>
+  <div class="hint-text">Use <strong>← / →</strong> Keys or Swipe</div>
   <div class="nav-controls">
-    <button class="nav-btn" onclick="toggleFullScreen()">⛶ Fullscreen</button>
-    <button class="nav-btn" id="prevSlideBtn" onclick="changeSlide(-1)">← Previous</button>
-    <button class="nav-btn" id="nextSlideBtn" onclick="changeSlide(1)">Next →</button>
+    <button class="nav-btn" type="button" id="prevSlideBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-btn" type="button" onclick="toggleFullScreen()">⛶ Full</button>
+    <button class="nav-btn primary-nav" type="button" id="nextSlideBtn" onclick="changeSlide(1)">Next Slide →</button>
   </div>
 </footer>
 
@@ -884,9 +906,16 @@
   let currentSlide = 0;
 
   function updateSlide() {
-    slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
+    slides.forEach((s, idx) => {
+      if (idx === currentSlide) {
+        s.classList.add('active');
+        s.scrollTop = 0; // Reset scroll to top on mobile when changing slides
+      } else {
+        s.classList.remove('active');
+      }
+    });
     progressBar.style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
-    slideCounter.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+    slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
     prevSlideBtn.disabled = currentSlide === 0;
     nextSlideBtn.disabled = currentSlide === slides.length - 1;
   }
@@ -900,14 +929,45 @@
   }
 
   function toggleFullScreen() {
-    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-    else document.exitFullscreen();
+    if (!document.fullscreenElement) {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    }
   }
 
+  // Keyboard Navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') changeSlide(1);
-    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') changeSlide(1);
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') changeSlide(-1);
   });
+
+  // Reliable Mobile Touch Swipe (Works anywhere on screen without breaking vertical scroll)
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Trigger slide change only when swipe is clearly horizontal
+    if (Math.abs(deltaX) > 55 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
+      if (deltaX < 0) {
+        changeSlide(1); // Swipe Left -> Next Slide
+      } else {
+        changeSlide(-1); // Swipe Right -> Previous Slide
+      }
+    }
+  }, { passive: true });
 
   // 10 Clear Scenario-Based Questions
   const quizData = [
@@ -1052,6 +1112,7 @@
     dotsWrap.innerHTML = '';
     quizData.forEach((_, idx) => {
       const btn = document.createElement('button');
+      btn.type = 'button';
       btn.className = 'q-dot' + (idx === currentQ ? ' active' : '') + (revealedStates[idx] ? ' answered' : '');
       btn.textContent = `Q${idx + 1}`;
       btn.onclick = () => { currentQ = idx; renderQuiz(); };
@@ -1063,6 +1124,7 @@
     const letters = ['A', 'B', 'C', 'D'];
     q.options.forEach((optText, idx) => {
       const btn = document.createElement('button');
+      btn.type = 'button';
       btn.className = 'opt-btn';
       if (selectedOptions[currentQ] === idx) btn.classList.add('selected');
       if (revealedStates[currentQ]) {
@@ -1104,7 +1166,7 @@
     const resPanel = document.getElementById('resultPanel');
     resPanel.classList.add('show');
     document.getElementById('resultHeading').textContent = `🏆 Final Quiz Performance Summary`;
-    document.getElementById('resultRationale').innerHTML = `Questions Revealed: <strong>${answered}/10</strong> | Correct Selections: <strong>${correctCount}/10</strong> | Classroom Score — Boys: <strong>${scores.boys}</strong> vs Girls: <strong>${scores.girls}</strong>`;
+    document.getElementById('resultRationale').innerHTML = `Answered: <strong>${answered}/10</strong> | Correct: <strong>${correctCount}/10</strong> | Boys: <strong>${scores.boys}</strong> vs Girls: <strong>${scores.girls}</strong>`;
   }
 
   function nextQuestion() {
