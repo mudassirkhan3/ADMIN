@@ -8,7 +8,7 @@
 <style>
   :root {
     --bg-dark: #060f1e;
-    --bg-card: rgba(13, 27, 48, 0.96);
+    --bg-card: rgba(13, 27, 48, 0.98);
     --accent-cyan: #00d4ff;
     --accent-teal: #10b981;
     --accent-gold: #f59e0b;
@@ -18,7 +18,7 @@
     --border-glass: rgba(255, 255, 255, 0.16);
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-touch-callout: none; }
 
   html, body {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -103,7 +103,7 @@
   .deck {
     position: fixed;
     top: 52px;
-    bottom: 62px;
+    bottom: 64px;
     left: 0;
     right: 0;
     z-index: 5;
@@ -122,23 +122,17 @@
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: 18px;
-    padding: 28px 38px;
+    padding: 26px 36px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
-    animation: slideEnter 0.32s ease forwards;
   }
 
   .slide.active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  @keyframes slideEnter {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Typography */
@@ -162,7 +156,7 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     line-height: 1.15;
     margin-bottom: 10px;
     background: linear-gradient(135deg, #ffffff 25%, #7dd3fc 100%);
@@ -171,18 +165,18 @@
   }
 
   h2 {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 1rem;
+    font-size: 0.98rem;
     color: #e2e8f0;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    line-height: 1.48;
+    margin-bottom: 10px;
   }
 
   /* Grids & Cards */
@@ -194,20 +188,20 @@
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
     border-radius: 14px;
-    padding: 15px 18px;
+    padding: 14px 18px;
   }
 
-  .card h3 { font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 0.92rem; color: #e2e8f0; line-height: 1.45; }
+  .card h3 { font-size: 1.02rem; color: var(--accent-cyan); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+  .card p { font-size: 0.9rem; color: #e2e8f0; line-height: 1.42; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  ul.clean-list li { position: relative; padding-left: 22px; font-size: 0.92rem; line-height: 1.45; color: #f1f5f9; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.9rem; line-height: 1.42; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
   /* Media & Nursing Animated GIF Frames */
   .media-frame {
     width: 100%;
-    height: 240px;
+    height: 230px;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -218,13 +212,13 @@
   .media-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 8px 12px;
-    background: linear-gradient(transparent, rgba(4, 9, 20, 0.92));
-    font-size: 0.8rem;
+    background: linear-gradient(transparent, rgba(4, 9, 20, 0.94));
+    font-size: 0.78rem;
     color: var(--accent-cyan);
     font-weight: 700;
   }
 
-  /* Strict Single-Screen Vertical Group Member List (No Scroll/No Buttons) */
+  /* Strict Single-Screen Vertical Group Member List */
   .vertical-members-single {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -234,7 +228,7 @@
   .member-row {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    padding: 9px 12px;
+    padding: 8px 12px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -264,33 +258,33 @@
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
     border-radius: 12px;
-    padding: 12px 8px;
+    padding: 10px 8px;
     text-align: center;
   }
-  .obj-num { font-size: 1.15rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px; }
-  .obj-text { font-size: 0.78rem; color: #f1f5f9; line-height: 1.35; }
+  .obj-num { font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 2px; }
+  .obj-text { font-size: 0.75rem; color: #f1f5f9; line-height: 1.3; }
 
   /* Venn Diagrams */
-  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 58px; margin: 4px 0; position: relative; }
-  .circle { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; font-weight: 700; }
-  .c-left { margin-right: -12px; }
-  .c-right { margin-left: -12px; }
+  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 54px; margin: 3px 0; position: relative; }
+  .circle { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; }
+  .c-left { margin-right: -10px; }
+  .c-right { margin-left: -10px; }
   .venn-and .c-left, .venn-and .c-right { background: rgba(0, 212, 255, 0.08); }
-  .venn-and-mid { position: absolute; width: 22px; height: 40px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
+  .venn-and-mid { position: absolute; width: 20px; height: 36px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
   .venn-or .c-left, .venn-or .c-right { background: rgba(16, 185, 129, 0.45); border-color: var(--accent-teal); }
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
 
   /* Flowchart Steps */
   .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 10px 14px; border-radius: 9px; }
-  .flow-step strong { color: var(--accent-teal); font-size: 0.88rem; display: block; margin-bottom: 2px; }
-  .flow-step span { font-size: 0.8rem; color: #e2e8f0; }
+  .flow-step { background: rgba(255,255,255,0.04); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-teal); padding: 9px 12px; border-radius: 8px; }
+  .flow-step strong { color: var(--accent-teal); font-size: 0.85rem; display: block; margin-bottom: 2px; }
+  .flow-step span { font-size: 0.78rem; color: #e2e8f0; }
 
   /* Table */
   .table-scroll { width: 100%; overflow-x: auto; }
-  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 520px; }
-  table.clean-table th, table.clean-table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.86rem; }
+  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 500px; }
+  table.clean-table th, table.clean-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.84rem; }
   table.clean-table th { background: rgba(0, 212, 255, 0.14); color: var(--accent-cyan); font-weight: 700; }
 
   /* Quiz Section */
@@ -307,9 +301,9 @@
   .q-dot.active { background: var(--accent-cyan); color: #040914; border-color: var(--accent-cyan); }
   .q-dot.answered { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-  .scenario-box { background: rgba(0, 212, 255, 0.08); border-left: 3px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 0.9rem; line-height: 1.42; color: #f8fafc; margin-bottom: 8px; }
+  .scenario-box { background: rgba(0, 212, 255, 0.08); border-left: 3px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 0.88rem; line-height: 1.4; color: #f8fafc; margin-bottom: 8px; }
   .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .opt-btn { text-align: left; padding: 10px 14px; border-radius: 9px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.86rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
+  .opt-btn { text-align: left; padding: 10px 14px; border-radius: 9px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.84rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
   .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.18); }
   .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700; }
   .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.18); opacity: 0.75; }
@@ -320,8 +314,8 @@
 
   .result-panel { display: none; margin-top: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.5); }
   .result-panel.show { display: block; }
-  .result-panel h4 { color: var(--accent-teal); font-size: 0.92rem; margin-bottom: 2px; }
-  .result-panel p { font-size: 0.86rem; color: #f1f5f9; line-height: 1.4; }
+  .result-panel h4 { color: var(--accent-teal); font-size: 0.9rem; margin-bottom: 2px; }
+  .result-panel p { font-size: 0.84rem; color: #f1f5f9; line-height: 1.38; }
 
   /* Thank You */
   .thank-you-container {
@@ -342,31 +336,32 @@
     50% { transform: translateY(-12px) scale(1.1); }
   }
 
-  /* Fixed Bottom Navigation Bar */
+  /* Fixed Bottom Navigation Bar (Always active & tappable) */
   footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    height: 62px;
-    z-index: 50;
+    height: 64px;
+    z-index: 100;
     padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(6, 15, 30, 0.96);
+    background: rgba(6, 15, 30, 0.98);
     backdrop-filter: blur(12px);
     border-top: 1px solid var(--border-glass);
   }
-  .nav-controls { display: flex; gap: 10px; width: 100%; justify-content: flex-end; align-items: center; }
+  .nav-controls { display: flex; gap: 12px; width: 100%; justify-content: flex-end; align-items: center; }
   .nav-btn {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 22px;
     border-radius: 10px;
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     cursor: pointer;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   .nav-btn.primary-nav {
     background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
@@ -378,20 +373,20 @@
 
   /* Responsive Rules for Projectors & Mobile */
   @media (max-width: 850px) {
-    .deck { padding: 10px 12px; }
-    .slide { padding: 16px 16px 22px 16px; border-radius: 14px; }
+    .deck { padding: 10px 12px; bottom: 64px; }
+    .slide { padding: 14px 14px 20px 14px; border-radius: 14px; }
     .slide.active { justify-content: flex-start; }
     .grid-2, .grid-equal, .grid-3, .flow-grid, .options-grid, .vertical-members-single { grid-template-columns: 1fr; gap: 8px; }
     .member-row.leader { grid-column: span 1; }
-    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    h1 { font-size: 1.7rem; }
-    h2 { font-size: 1.25rem; }
-    p.lead { font-size: 0.9rem; }
-    .media-frame { height: 150px; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.2rem; }
+    p.lead { font-size: 0.88rem; }
+    .media-frame { height: 140px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
-    .nav-btn { flex: 1; text-align: center; padding: 10px 10px; font-size: 0.86rem; }
+    .nav-btn { flex: 1; text-align: center; padding: 12px 8px; font-size: 0.88rem; }
   }
 </style>
 </head>
@@ -919,7 +914,7 @@
 </main>
 
 <footer>
-  <div class="hint-text">Use <strong>← / →</strong> Keys or Mobile Swipe</div>
+  <div class="hint-text">Use <strong>← / →</strong> Keys or Tap Navigation</div>
   <div class="nav-controls">
     <button class="nav-btn" type="button" id="prevSlideBtn" onclick="changeSlide(-1)">← Previous</button>
     <button class="nav-btn" type="button" onclick="toggleFullScreen()">⛶ Fullscreen</button>
@@ -970,30 +965,37 @@
 
   // Keyboard Navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') changeSlide(1);
-    if (e.key === 'ArrowLeft' || e.key === 'PageUp') changeSlide(-1);
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      changeSlide(1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      changeSlide(-1);
+    }
   });
 
-  // Mobile Touch Swipe
+  // Bulletproof Mobile Touch / Swipe Handling
   let touchStartX = 0;
   let touchStartY = 0;
 
-  document.addEventListener('touchstart', (e) => {
+  window.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].clientX;
     touchStartY = e.changedTouches[0].clientY;
   }, { passive: true });
 
-  document.addEventListener('touchend', (e) => {
+  window.addEventListener('touchend', (e) => {
     const touchEndX = e.changedTouches[0].clientX;
     const touchEndY = e.changedTouches[0].clientY;
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
 
-    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+    // Swipe threshold validation
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX < 0) {
-        changeSlide(1);
+        changeSlide(1);  // Swipe Left -> Next
       } else {
-        changeSlide(-1);
+        changeSlide(-1); // Swipe Right -> Prev
       }
     }
   }, { passive: true });
