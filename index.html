@@ -62,7 +62,7 @@
     align-items: center;
     gap: 12px;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--accent-cyan);
     letter-spacing: 0.5px;
   }
@@ -72,7 +72,7 @@
     border: 1px solid rgba(0, 212, 255, 0.5);
     padding: 4px 12px;
     border-radius: 20px;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: #fff;
   }
 
@@ -95,7 +95,7 @@
 
   .slide-counter {
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #fff;
     white-space: nowrap;
   }
@@ -123,7 +123,7 @@
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
     border-radius: 20px;
-    padding: 26px 38px;
+    padding: 28px 40px;
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -142,20 +142,20 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Headings & Banners */
+  /* Headings & Banners (Increased Font Sizes) */
   .topic-banner {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .tag {
     display: inline-block;
-    padding: 5px 14px;
+    padding: 6px 16px;
     border-radius: 30px;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.1px;
@@ -169,7 +169,7 @@
   .tag.teal { background: rgba(16, 185, 129, 0.22); color: var(--accent-teal); border-color: rgba(16, 185, 129, 0.55); }
 
   .subtopic-label {
-    font-size: 0.84rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-muted);
     letter-spacing: 0.3px;
@@ -177,57 +177,57 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.75rem;
+    font-size: 3rem;
     line-height: 1.15;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     background: linear-gradient(135deg, #ffffff 25%, #7dd3fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   h2 {
-    font-size: 1.65rem;
+    font-size: 1.85rem;
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: #fff;
     line-height: 1.25;
   }
 
   p.lead {
-    font-size: 0.98rem;
+    font-size: 1.08rem;
     color: #e2e8f0;
-    line-height: 1.48;
-    margin-bottom: 10px;
+    line-height: 1.5;
+    margin-bottom: 14px;
   }
 
   /* Grids & Cards */
-  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: center; }
-  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 26px; align-items: center; }
+  .grid-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   .card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
     border-radius: 14px;
-    padding: 14px 18px;
+    padding: 16px 20px;
   }
 
-  .card h3 { font-size: 1.02rem; color: var(--accent-cyan); margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
-  .card p { font-size: 0.88rem; color: #e2e8f0; line-height: 1.42; }
+  .card h3 { font-size: 1.12rem; color: var(--accent-cyan); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .card p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.45; }
 
-  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  ul.clean-list li { position: relative; padding-left: 20px; font-size: 0.88rem; line-height: 1.4; color: #f1f5f9; }
+  ul.clean-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  ul.clean-list li { position: relative; padding-left: 22px; font-size: 0.95rem; line-height: 1.45; color: #f1f5f9; }
   ul.clean-list li::before { content: "✦"; position: absolute; left: 0; color: var(--accent-cyan); font-weight: bold; }
 
   /* Infographic Panels */
   .infographic-panel {
     width: 100%;
-    min-height: 240px;
+    min-height: 250px;
     border-radius: 16px;
     background: linear-gradient(145deg, rgba(8, 22, 44, 0.96), rgba(15, 38, 68, 0.96));
     border: 1px solid rgba(0, 212, 255, 0.45);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-    padding: 16px 18px;
+    padding: 18px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -237,22 +237,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.9px;
     text-transform: uppercase;
     color: var(--accent-cyan);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .live-dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: var(--accent-teal);
     margin-right: 6px;
-    animation: pulseLive 1.5s infinite;
+    animation: pulseLive 1.5s infinite ease-in-out;
   }
 
   @keyframes pulseLive {
@@ -268,7 +268,7 @@
     stroke-linejoin: round;
     stroke-dasharray: 450;
     stroke-dashoffset: 450;
-    animation: drawECG 2.6s linear infinite;
+    animation: drawECG 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @keyframes drawECG {
@@ -292,18 +292,18 @@
     border: 1px solid rgba(0, 212, 255, 0.4);
     border-radius: 10px;
     padding: 8px 4px;
-    font-size: 0.76rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #fff;
   }
 
-  .flow-stack { display: flex; flex-direction: column; gap: 7px; }
+  .flow-stack { display: flex; flex-direction: column; gap: 8px; }
   .flow-item {
     background: rgba(255, 255, 255, 0.06);
     border-left: 4px solid var(--accent-cyan);
-    padding: 7px 12px;
+    padding: 8px 14px;
     border-radius: 8px;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: #f8fafc;
   }
@@ -311,18 +311,18 @@
   .blueprint-step {
     background: rgba(255, 255, 255, 0.06);
     border-left: 4px solid var(--accent-gold);
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.86rem;
     font-weight: 700;
     color: #f8fafc;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    animation: pulseStep 4s infinite ease-in-out;
+    animation: pulseStep 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .blueprint-step:nth-child(2) { animation-delay: 1s; border-left-color: var(--accent-cyan); }
-  .blueprint-step:nth-child(3) { animation-delay: 2s; border-left-color: var(--accent-teal); }
+  .blueprint-step:nth-child(2) { animation-delay: 1.5s; border-left-color: var(--accent-cyan); }
+  .blueprint-step:nth-child(3) { animation-delay: 3s; border-left-color: var(--accent-teal); }
 
   @keyframes pulseStep {
     0%, 100% { background: rgba(255, 255, 255, 0.05); transform: translateX(0); }
@@ -333,28 +333,28 @@
   .vertical-members-column {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 7px;
     width: 100%;
-    max-width: 800px;
+    max-width: 840px;
     margin: 4px auto 0 auto;
   }
   .member-row {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
-  .member-left { display: flex; align-items: center; gap: 12px; }
+  .member-left { display: flex; align-items: center; gap: 14px; }
   .member-row.leader {
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.24), rgba(16, 185, 129, 0.2));
     border-color: var(--accent-cyan);
   }
   .avatar {
-    width: 30px; height: 30px;
+    width: 32px; height: 32px;
     border-radius: 50%;
     background: var(--accent-cyan);
     color: #040914;
@@ -362,32 +362,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     flex-shrink: 0;
   }
-  .member-name { font-weight: 700; color: #fff; font-size: 0.9rem; }
-  .member-role { font-size: 0.76rem; font-weight: 700; color: var(--text-muted); }
+  .member-name { font-weight: 700; color: #fff; font-size: 0.95rem; }
+  .member-role { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
   .member-row.leader .member-role { color: var(--accent-cyan); }
 
   /* Objectives Tiles */
-  .obj-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 6px; }
+  .obj-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px; }
   .obj-tile {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
     border-radius: 12px;
-    padding: 10px 8px;
+    padding: 12px 10px;
     text-align: center;
   }
-  .obj-num { font-size: 1.1rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 2px; }
-  .obj-text { font-size: 0.76rem; color: #f1f5f9; line-height: 1.3; }
+  .obj-num { font-size: 1.2rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 4px; }
+  .obj-text { font-size: 0.82rem; color: #f1f5f9; line-height: 1.35; }
 
   /* Venn Diagrams */
-  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 52px; margin: 3px 0; position: relative; }
-  .circle { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; }
-  .c-left { margin-right: -10px; }
-  .c-right { margin-left: -10px; }
+  .venn-wrap { display: flex; justify-content: center; align-items: center; height: 56px; margin: 4px 0; position: relative; }
+  .circle { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; }
+  .c-left { margin-right: -12px; }
+  .c-right { margin-left: -12px; }
   .venn-and .c-left, .venn-and .c-right { background: rgba(0, 212, 255, 0.08); }
-  .venn-and-mid { position: absolute; width: 20px; height: 36px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
+  .venn-and-mid { position: absolute; width: 22px; height: 40px; background: rgba(0, 212, 255, 0.55); border-radius: 50%; }
   .venn-or .c-left, .venn-or .c-right { background: rgba(16, 185, 129, 0.45); border-color: var(--accent-teal); }
   .venn-not .c-left { background: rgba(245, 158, 11, 0.5); border-color: var(--accent-gold); z-index: 2; }
   .venn-not .c-right { background: rgba(255, 255, 255, 0.03); border-style: dashed; border-color: #64748b; }
@@ -396,60 +396,60 @@
   .proposal-grid-9 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 10px;
   }
   .prop-item {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
     border-left: 3px solid var(--accent-gold);
-    padding: 7px 10px;
+    padding: 8px 12px;
     border-radius: 8px;
   }
-  .prop-item strong { color: var(--accent-gold); font-size: 0.82rem; display: block; margin-bottom: 1px; }
-  .prop-item span { font-size: 0.74rem; color: #e2e8f0; line-height: 1.25; display: block; }
+  .prop-item strong { color: var(--accent-gold); font-size: 0.88rem; display: block; margin-bottom: 2px; }
+  .prop-item span { font-size: 0.78rem; color: #e2e8f0; line-height: 1.3; display: block; }
 
   /* Table */
   .table-scroll { width: 100%; overflow-x: auto; }
-  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 500px; }
-  table.clean-table th, table.clean-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.85rem; }
+  table.clean-table { width: 100%; border-collapse: collapse; margin-top: 6px; min-width: 500px; }
+  table.clean-table th, table.clean-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-glass); font-size: 0.9rem; }
   table.clean-table th { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); font-weight: 700; }
 
   /* Quiz Section */
-  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border-glass); }
-  .scoreboard { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-  .score-pill { display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 8px; font-weight: 700; font-size: 0.78rem; }
+  .quiz-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-glass); }
+  .scoreboard { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .score-pill { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; }
   .score-auto { background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.45); color: #6ee7b7; }
   .score-boys { background: rgba(56, 189, 248, 0.16); border: 1px solid rgba(56, 189, 248, 0.45); color: #7dd3fc; }
   .score-girls { background: rgba(244, 63, 94, 0.16); border: 1px solid rgba(244, 63, 94, 0.45); color: #fda4af; }
-  .score-btn { background: rgba(255,255,255,0.22); border: none; color: #fff; width: 22px; height: 22px; border-radius: 4px; cursor: pointer; font-weight: 800; }
+  .score-btn { background: rgba(255,255,255,0.22); border: none; color: #fff; width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-weight: 800; }
 
-  .q-nav-dots { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
-  .q-dot { padding: 4px 8px; border-radius: 5px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.75rem; cursor: pointer; }
+  .q-nav-dots { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .q-dot { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-glass); background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 700; font-size: 0.8rem; cursor: pointer; }
   .q-dot.active { background: var(--accent-cyan); color: #040914; border-color: var(--accent-cyan); }
   .q-dot.answered { border-color: var(--accent-teal); color: var(--accent-teal); }
 
-  .scenario-box { background: rgba(0, 212, 255, 0.09); border-left: 4px solid var(--accent-cyan); padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 0.88rem; line-height: 1.4; color: #f8fafc; margin-bottom: 8px; }
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-  .opt-btn { text-align: left; padding: 10px 14px; border-radius: 9px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.84rem; font-family: inherit; cursor: pointer; display: flex; gap: 8px; align-items: flex-start; }
+  .scenario-box { background: rgba(0, 212, 255, 0.09); border-left: 4px solid var(--accent-cyan); padding: 12px 16px; border-radius: 0 10px 10px 0; font-size: 0.94rem; line-height: 1.45; color: #f8fafc; margin-bottom: 10px; }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .opt-btn { text-align: left; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.04); color: #f1f5f9; font-size: 0.88rem; font-family: inherit; cursor: pointer; display: flex; gap: 10px; align-items: flex-start; }
   .opt-btn.selected { border-color: var(--accent-gold); background: rgba(245, 158, 11, 0.2); }
   .opt-btn.correct-reveal { border-color: var(--accent-teal); background: rgba(16, 185, 129, 0.28); color: #fff; font-weight: 700; }
   .opt-btn.wrong-reveal { border-color: var(--accent-rose); background: rgba(244, 63, 94, 0.2); opacity: 0.75; }
 
-  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; font-size: 0.84rem; cursor: pointer; }
-  .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid var(--border-glass); padding: 7px 12px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; cursor: pointer; }
+  .quiz-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--accent-cyan), #0284c7); color: #040914; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 800; font-size: 0.88rem; cursor: pointer; }
+  .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid var(--border-glass); padding: 9px 14px; border-radius: 8px; font-weight: 600; font-size: 0.86rem; cursor: pointer; }
 
-  .result-panel { display: none; margin-top: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.55); }
+  .result-panel { display: none; margin-top: 10px; padding: 12px 16px; border-radius: 10px; background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.55); }
   .result-panel.show { display: block; }
-  .result-panel h4 { color: var(--accent-teal); font-size: 0.9rem; margin-bottom: 2px; }
-  .result-panel p { font-size: 0.82rem; color: #f1f5f9; line-height: 1.38; }
+  .result-panel h4 { color: var(--accent-teal); font-size: 0.95rem; margin-bottom: 3px; }
+  .result-panel p { font-size: 0.86rem; color: #f1f5f9; line-height: 1.4; }
 
   /* Thank You */
   .thank-you-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; }
-  .animated-trophy { font-size: 3.5rem; margin-bottom: 8px; animation: bounceCelebrate 1.8s infinite ease-in-out; }
+  .animated-trophy { font-size: 4rem; margin-bottom: 10px; animation: bounceCelebrate 2s infinite ease-in-out; }
   @keyframes bounceCelebrate {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-12px) scale(1.1); }
+    50% { transform: translateY(-14px) scale(1.1); }
   }
 
   /* Fixed Bottom Navigation Bar */
@@ -484,23 +484,23 @@
     border: none;
   }
   .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-  .hint-text { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+  .hint-text { font-size: 0.86rem; color: var(--text-muted); white-space: nowrap; }
 
   /* Mobile Responsive Rules */
   @media (max-width: 850px) {
     .deck { padding: 10px 14px; bottom: 68px; }
-    .slide { padding: 14px 14px 20px 14px; border-radius: 16px; }
+    .slide { padding: 16px 16px 22px 16px; border-radius: 16px; }
     .slide.active { justify-content: flex-start; }
-    .grid-2, .grid-equal, .grid-3, .proposal-grid-9, .options-grid { grid-template-columns: 1fr; gap: 8px; }
-    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .grid-2, .grid-equal, .grid-3, .proposal-grid-9, .options-grid { grid-template-columns: 1fr; gap: 10px; }
+    .obj-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .craap-grid, .pico-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    h1 { font-size: 1.65rem; }
-    h2 { font-size: 1.2rem; }
-    p.lead { font-size: 0.86rem; }
-    .infographic-panel { min-height: 185px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.3rem; }
+    p.lead { font-size: 0.9rem; }
+    .infographic-panel { min-height: 200px; }
     .hint-text { display: none; }
     .nav-controls { justify-content: space-between; }
-    .nav-btn { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.85rem; }
+    .nav-btn { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.88rem; }
   }
 </style>
 </head>
@@ -534,7 +534,7 @@
           A clear, structured, and projector-optimized guide to locating credible scientific evidence and developing clinical research proposals for safe patient care.
         </p>
         <div class="card" style="border-left: 4px solid var(--accent-teal);">
-          <p style="font-size: 0.98rem; color: #fff;">
+          <p style="font-size: 1.02rem; color: #fff;">
             <strong>BSN 5th Semester — Group 05</strong><br>
             <span style="color: var(--text-muted);">Evidence-Based Nursing Practice & Clinical Inquiry</span>
           </p>
@@ -564,7 +564,7 @@
       <span class="tag teal">Presentation Team</span>
     </div>
     <h2>BSN 5th Semester — Group 05 Members</h2>
-    <p class="lead" style="margin-bottom: 6px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
+    <p class="lead" style="margin-bottom: 8px;">Presented by Group 05 under the PERLs Module (Writer & Presenter Attribute).</p>
     
     <div class="vertical-members-column">
       <div class="member-row leader">
@@ -630,12 +630,12 @@
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>📌 Main Topic 1 — Competency 23: Locate Credible Scientific Data</h3>
         <p style="margin-bottom: 8px;">Finding trustworthy, peer-reviewed medical studies using indexed databases (PubMed, CINAHL, Cochrane), Boolean search operators, PICO questioning, and the CRAAP evaluation test.</p>
-        <p style="color: var(--accent-cyan); font-size: 0.86rem;"><strong>Clinical Goal:</strong> Protects patients from false, biased, or outdated medical claims.</p>
+        <p style="color: var(--accent-cyan); font-size: 0.9rem;"><strong>Clinical Goal:</strong> Protects patients from false, biased, or outdated medical claims.</p>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-gold);">
         <h3>📌 Main Topic 2 — Competency 24: Develop a Research Proposal</h3>
         <p style="margin-bottom: 8px;">Writing a structured, step-by-step research plan that defines your clinical problem, objectives, 9 proposal components, study methodology, and ethical safeguards.</p>
-        <p style="color: var(--accent-gold); font-size: 0.86rem;"><strong>Clinical Goal:</strong> Transforms a bedside problem into an ethical, approved clinical study.</p>
+        <p style="color: var(--accent-gold); font-size: 0.9rem;"><strong>Clinical Goal:</strong> Transforms a bedside problem into an ethical, approved clinical study.</p>
       </div>
     </div>
   </section>
@@ -646,7 +646,7 @@
       <span class="tag gold">Presentation Roadmap</span>
     </div>
     <h2>Learning Objectives</h2>
-    <p class="lead" style="margin-bottom: 8px;">By the end of this presentation, students will master these 10 core outcomes:</p>
+    <p class="lead" style="margin-bottom: 10px;">By the end of this presentation, students will master these 10 core outcomes:</p>
     <div class="obj-grid">
       <div class="obj-tile">
         <div class="obj-num">01</div>
@@ -698,7 +698,7 @@
       <span class="subtopic-label">• Definitions & Nursing Relevance</span>
     </div>
     <h2>Definitions & Why Research Skills Matter in Nursing</h2>
-    <div class="grid-equal" style="margin-bottom: 12px;">
+    <div class="grid-equal" style="margin-bottom: 14px;">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>🔬 Definition of Research</h3>
         <p>A systematic, scientific investigation carried out step-by-step to discover new facts, verify clinical knowledge, and solve healthcare problems.</p>
@@ -709,8 +709,8 @@
       </div>
     </div>
     <div class="card" style="border-left: 4px solid var(--accent-gold); background: rgba(245, 158, 11, 0.07);">
-      <h3 style="color: var(--accent-gold); margin-bottom: 6px;">🩺 Why Research Skills Are Essential in Nursing:</h3>
-      <div class="grid-equal" style="gap: 10px;">
+      <h3 style="color: var(--accent-gold); margin-bottom: 8px;">🩺 Why Research Skills Are Essential in Nursing:</h3>
+      <div class="grid-equal" style="gap: 12px;">
         <ul class="clean-list">
           <li><strong>Ensures Patient Safety:</strong> Replaces outdated ward habits with scientifically proven nursing care.</li>
           <li><strong>Strengthens Critical Thinking:</strong> Helps nurses verify drug protocols, wound care, and infection control.</li>
@@ -730,18 +730,18 @@
       <span class="subtopic-label">• Data Classification</span>
     </div>
     <h2>Types of Research Data (Two Separate Classifications)</h2>
-    <p class="lead" style="margin-bottom: 8px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
+    <p class="lead" style="margin-bottom: 10px;">Data is classified in two completely different ways—by <strong>where it comes from</strong> and by <strong>what form it takes</strong>:</p>
     <div class="grid-equal">
       <div class="card" style="border-top: 4px solid var(--accent-cyan);">
         <h3>A. By Source (Who collected it?)</h3>
-        <ul class="clean-list" style="margin-top: 4px;">
+        <ul class="clean-list" style="margin-top: 6px;">
           <li><strong>Primary Data (First-Hand):</strong> Collected directly by you.<br><em>Example:</em> Surveying 60 students on hand hygiene.</li>
           <li><strong>Secondary Data (Existing):</strong> Already collected by others.<br><em>Example:</em> Reading hospital infection logs.</li>
         </ul>
       </div>
       <div class="card" style="border-top: 4px solid var(--accent-teal);">
         <h3>B. By Nature (Numbers or Words?)</h3>
-        <ul class="clean-list" style="margin-top: 4px;">
+        <ul class="clean-list" style="margin-top: 6px;">
           <li><strong>Quantitative (Numbers):</strong> Measured in digits.<br><em>Example:</em> Blood pressure (120/80 mmHg).</li>
           <li><strong>Qualitative (Words):</strong> Feelings & experiences.<br><em>Example:</em> Interviewing stressed ICU nurses.</li>
         </ul>
@@ -759,22 +759,22 @@
     <div class="grid-2">
       <div>
         <p class="lead">Avoid unverified blogs or social media posts. Use indexed health databases—and always critically appraise individual search results:</p>
-        <div class="grid-equal" style="gap: 10px;">
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">1. PubMed</h3>
-            <p style="font-size:0.82rem;">36M+ biomedical & clinical articles.</p>
+        <div class="grid-equal" style="gap: 12px;">
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:1rem;">1. PubMed</h3>
+            <p style="font-size:0.86rem;">36M+ biomedical & clinical articles.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">2. CINAHL</h3>
-            <p style="font-size:0.82rem;">Premier nursing & allied health index.</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:1rem;">2. CINAHL</h3>
+            <p style="font-size:0.86rem;">Premier nursing & allied health index.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">3. Cochrane Library</h3>
-            <p style="font-size:0.82rem;">Gold standard for systematic reviews.</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:1rem;">3. Cochrane Library</h3>
+            <p style="font-size:0.86rem;">Gold standard for systematic reviews.</p>
           </div>
-          <div class="card" style="padding: 10px 14px;">
-            <h3 style="font-size:0.95rem;">4. Google Scholar</h3>
-            <p style="font-size:0.82rem;">Broad scholarly search (verify peer-review).</p>
+          <div class="card" style="padding: 12px 16px;">
+            <h3 style="font-size:1rem;">4. Google Scholar</h3>
+            <p style="font-size:0.86rem;">Broad scholarly search (verify peer-review).</p>
           </div>
         </div>
       </div>
@@ -789,7 +789,7 @@
           <div class="flow-item" style="border-left-color: var(--accent-gold);">⚠️ Google Scholar Preprints (Verify Peer Review)</div>
           <div class="flow-item" style="border-left-color: var(--accent-rose);">❌ Unverified Social Media & Commercial Blogs</div>
         </div>
-        <div style="font-size:0.76rem; color:var(--text-muted); text-align:center;">
+        <div style="font-size:0.8rem; color:var(--text-muted); text-align:center;">
           Always verify source credibility before applying to patient care
         </div>
       </div>
@@ -804,34 +804,34 @@
     </div>
     <h2>The CRAAP Test: Five Checkpoints for Credibility</h2>
     <div class="grid-3 craap-grid" style="grid-template-columns: repeat(5, 1fr);">
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.2rem;">C</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-cyan); justify-content:center; font-size:1.3rem;">C</h3>
         <strong>Currency</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Recent? (<5 yrs)</p>
+        <p style="font-size:0.8rem; margin-top:3px;">Recent? (<5 yrs)</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.2rem;">R</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-teal); justify-content:center; font-size:1.3rem;">R</h3>
         <strong>Relevance</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Fits topic?</p>
+        <p style="font-size:0.8rem; margin-top:3px;">Fits topic?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.2rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-gold); justify-content:center; font-size:1.3rem;">A</h3>
         <strong>Authority</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Expert author?</p>
+        <p style="font-size:0.8rem; margin-top:3px;">Expert author?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.2rem;">A</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:var(--accent-rose); justify-content:center; font-size:1.3rem;">A</h3>
         <strong>Accuracy</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Backed by data?</p>
+        <p style="font-size:0.8rem; margin-top:3px;">Backed by data?</p>
       </div>
-      <div class="card" style="text-align:center; padding: 10px;">
-        <h3 style="color:#a78bfa; justify-content:center; font-size:1.2rem;">P</h3>
+      <div class="card" style="text-align:center; padding: 12px;">
+        <h3 style="color:#a78bfa; justify-content:center; font-size:1.3rem;">P</h3>
         <strong>Purpose</strong>
-        <p style="font-size:0.75rem; margin-top:2px;">Science or sales?</p>
+        <p style="font-size:0.8rem; margin-top:3px;">Science or sales?</p>
       </div>
     </div>
-    <div class="card" style="margin-top: 10px; border-left: 4px solid var(--accent-rose);">
-      <p style="font-size: 0.85rem;"><strong>Practical Outcome:</strong> A peer-reviewed CINAHL article passes all five checks, whereas a commercial blog claiming "Herbal tea cures diabetes in 2 days" with a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
+    <div class="card" style="margin-top: 12px; border-left: 4px solid var(--accent-rose);">
+      <p style="font-size: 0.9rem;"><strong>Practical Outcome:</strong> A peer-reviewed CINAHL article passes all five checks, whereas a commercial blog claiming "Herbal tea cures diabetes in 2 days" with a "Buy Now" button fails <strong>Authority, Accuracy, and Purpose</strong>.</p>
     </div>
   </section>
 
@@ -843,42 +843,42 @@
     </div>
     <h2>Refining Searches with Boolean Operators</h2>
     
-    <div class="card" style="border-left: 4px solid var(--accent-cyan); background: rgba(0, 212, 255, 0.08); margin-bottom: 10px; padding: 10px 16px;">
-      <p style="font-size: 0.9rem; color: #fff;">
+    <div class="card" style="border-left: 4px solid var(--accent-cyan); background: rgba(0, 212, 255, 0.08); margin-bottom: 12px; padding: 12px 18px;">
+      <p style="font-size: 0.95rem; color: #fff;">
         <strong style="color: var(--accent-cyan);">What are Boolean Operators?</strong> They are simple logical commands written in <strong>CAPITAL letters</strong> (AND, OR, NOT) that tell medical search engines how to combine or separate your keywords to find exact nursing research articles.
       </p>
     </div>
 
     <div class="grid-3">
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>AND (Narrows Search)</h3>
         <div class="venn-wrap venn-and">
           <div class="circle c-left">Nursing</div>
           <div class="venn-and-mid"></div>
           <div class="circle c-right">Safety</div>
         </div>
-        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Nursing AND Patient Safety<br><em>Result:</em> Finds articles containing <strong>both</strong> terms to narrow your search.</p>
+        <p style="font-size: 0.86rem; margin-top:6px;"><strong>Example:</strong> Nursing AND Patient Safety<br><em>Result:</em> Finds articles containing <strong>both</strong> terms to narrow your search.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>OR (Broadens Search)</h3>
         <div class="venn-wrap venn-or">
           <div class="circle c-left">Nurse</div>
           <div class="circle c-right">Nursing</div>
         </div>
-        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Nurse OR Nursing<br><em>Result:</em> Finds articles with <strong>either</strong> term to expand your options.</p>
+        <p style="font-size: 0.86rem; margin-top:6px;"><strong>Example:</strong> Nurse OR Nursing<br><em>Result:</em> Finds articles with <strong>either</strong> term to expand your options.</p>
       </div>
-      <div class="card" style="text-align:center; padding: 12px;">
+      <div class="card" style="text-align:center; padding: 14px;">
         <h3>NOT (Excludes Terms)</h3>
         <div class="venn-wrap venn-not">
           <div class="circle c-left">Infection</div>
           <div class="circle c-right">COVID</div>
         </div>
-        <p style="font-size: 0.82rem; margin-top:4px;"><strong>Example:</strong> Infection NOT COVID-19<br><em>Result:</em> Removes unwanted topics to clean up results.</p>
+        <p style="font-size: 0.86rem; margin-top:6px;"><strong>Example:</strong> Infection NOT COVID-19<br><em>Result:</em> Removes unwanted topics to clean up results.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 10: COMPETENCY 23 — PICO FRAMEWORK (WITH SIMPLE DEFINITION) -->
+  <!-- SLIDE 10: COMPETENCY 23 — PICO FRAMEWORK (SUPER SIMPLE & CLEAR) -->
   <section class="slide">
     <div class="topic-banner">
       <span class="tag">Main Topic 1 • Competency 23</span>
@@ -886,38 +886,41 @@
     </div>
     <h2>Building Focused Clinical Questions with PICO</h2>
     
-    <!-- Simple Definition Box for PICO -->
-    <div class="card" style="border-left: 4px solid var(--accent-teal); background: rgba(16, 185, 129, 0.08); margin-bottom: 10px; padding: 10px 16px;">
-      <p style="font-size: 0.9rem; color: #fff;">
-        <strong style="color: var(--accent-teal);">What is the PICO Framework?</strong> PICO is a simple 4-part memory tool used by nurses to turn a general ward problem into a clear, searchable clinical research question (<strong>P</strong>opulation, <strong>I</strong>ntervention, <strong>C</strong>omparison, <strong>O</strong>utcome).
+    <!-- Ultra-Simple Definition Box -->
+    <div class="card" style="border-left: 4px solid var(--accent-teal); background: rgba(16, 185, 129, 0.08); margin-bottom: 12px; padding: 12px 18px;">
+      <p style="font-size: 0.95rem; color: #fff;">
+        <strong style="color: var(--accent-teal);">What is PICO?</strong> PICO is a 4-part memory tool that helps nurses turn a confusing ward problem into a clear, easy-to-search question. Instead of guessing, you break your question into 4 simple parts:
       </p>
     </div>
 
-    <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 10px;">
-      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 10px 12px;">
-        <h3 style="font-size:1.1rem;">P</h3>
-        <strong>Population</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Who is the group?<br><em>Nursing students</em></p>
+    <!-- 4 Simple PICO Cards -->
+    <div class="grid-3 pico-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 12px; gap: 10px;">
+      <div class="card" style="border-top: 4px solid var(--accent-cyan); padding: 12px; text-align: center;">
+        <h3 style="font-size: 1.2rem; justify-content: center; color: var(--accent-cyan);">P</h3>
+        <strong style="font-size: 0.92rem; display:block; margin: 4px 0;">Population</strong>
+        <p style="font-size: 0.82rem; color: #cbd5e1;">Who are you studying?<br><em>e.g., Nursing students</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 10px 12px;">
-        <h3 style="font-size:1.1rem; color:var(--accent-teal);">I</h3>
-        <strong>Intervention</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">What new action?<br><em>Video training</em></p>
+      <div class="card" style="border-top: 4px solid var(--accent-teal); padding: 12px; text-align: center;">
+        <h3 style="font-size: 1.2rem; justify-content: center; color: var(--accent-teal);">I</h3>
+        <strong style="font-size: 0.92rem; display:block; margin: 4px 0;">Intervention</strong>
+        <p style="font-size: 0.82rem; color: #cbd5e1;">What action or test?<br><em>e.g., Video training</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 10px 12px;">
-        <h3 style="font-size:1.1rem; color:var(--accent-gold);">C</h3>
-        <strong>Comparison</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">Compared to what?<br><em>Standard lecture</em></p>
+      <div class="card" style="border-top: 4px solid var(--accent-gold); padding: 12px; text-align: center;">
+        <h3 style="font-size: 1.2rem; justify-content: center; color: var(--accent-gold);">C</h3>
+        <strong style="font-size: 0.92rem; display:block; margin: 4px 0;">Comparison</strong>
+        <p style="font-size: 0.82rem; color: #cbd5e1;">Compared to what?<br><em>e.g., Standard lecture</em></p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 10px 12px;">
-        <h3 style="font-size:1.1rem; color:var(--accent-rose);">O</h3>
-        <strong>Outcome</strong>
-        <p style="font-size:0.78rem; margin-top:2px;">What measurable result?<br><em>Better hand hygiene</em></p>
+      <div class="card" style="border-top: 4px solid var(--accent-rose); padding: 12px; text-align: center;">
+        <h3 style="font-size: 1.2rem; justify-content: center; color: var(--accent-rose);">O</h3>
+        <strong style="font-size: 0.92rem; display:block; margin: 4px 0;">Outcome</strong>
+        <p style="font-size: 0.82rem; color: #cbd5e1;">What is the result?<br><em>e.g., Better hand hygiene</em></p>
       </div>
     </div>
-    <div class="card" style="background: rgba(0, 212, 255, 0.09); padding: 10px 16px;">
-      <p style="font-size: 0.88rem; color: #fff;">
-        <strong>Complete PICO Example:</strong> "In <strong>nursing students (P)</strong>, does <strong>video training (I)</strong> compared to a <strong>standard lecture (C)</strong> improve <strong>hand hygiene compliance (O)</strong>?"
+
+    <!-- Complete PICO Example Box -->
+    <div class="card" style="background: rgba(0, 212, 255, 0.09); padding: 12px 18px; border-left: 4px solid var(--accent-cyan);">
+      <p style="font-size: 0.92rem; color: #fff;">
+        <strong style="color: var(--accent-cyan);">Example PICO Sentence:</strong> "In <span style="color:#7dd3fc;">nursing students (P)</span>, does <span style="color:#6ee7b7;">video training (I)</span> compared to a <span style="color:#fbbf24;">standard lecture (C)</span> improve <span style="color:#fda4af;">hand hygiene compliance (O)</span>?"
       </p>
     </div>
   </section>
@@ -929,7 +932,7 @@
       <span class="subtopic-label">• Study Methodology Selection</span>
     </div>
     <h2>Comparing Research Designs</h2>
-    <p class="lead" style="margin-bottom: 6px;">A research design is your overall plan for collecting and analyzing data in your proposal:</p>
+    <p class="lead" style="margin-bottom: 8px;">A research design is your overall plan for collecting and analyzing data in your proposal:</p>
     <div class="table-scroll">
       <table class="clean-table">
         <thead>
@@ -971,8 +974,8 @@
     </div>
     <h2>Research Proposal: Definition & 9 Essential Elements</h2>
     
-    <div class="card" style="border-left: 4px solid var(--accent-gold); background: rgba(245, 158, 11, 0.09); margin-bottom: 10px; padding: 10px 16px;">
-      <p style="font-size: 0.9rem; color: #fff;">
+    <div class="card" style="border-left: 4px solid var(--accent-gold); background: rgba(245, 158, 11, 0.09); margin-bottom: 12px; padding: 12px 18px;">
+      <p style="font-size: 0.95rem; color: #fff;">
         <strong style="color: var(--accent-gold);">Definition of Research Proposal:</strong> A formal, structured written plan prepared <em>before</em> starting a study that explains <strong>what</strong> clinical problem will be investigated, <strong>why</strong> it is important, and <strong>how</strong> data will be collected and protected ethically.
       </p>
     </div>
@@ -1009,7 +1012,7 @@
             <span style="color:var(--accent-teal);">REVIEW</span>
           </div>
         </div>
-        <div style="font-size:0.74rem; color:var(--text-muted); text-align:center; margin-top: 6px;">
+        <div style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top: 8px;">
           All 9 sections are assembled prior to Ethics Board submission
         </div>
       </div>
@@ -1035,7 +1038,7 @@
       </div>
       <div class="card" style="background: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--accent-teal);">
         <h3 style="color: var(--accent-teal);">💡 Key Academic Distinction</h3>
-        <p style="color: #fff; font-size: 0.94rem;"><strong>Proposal Development</strong> is drafting your 9-part research blueprint, whereas <strong>Formal Ethical Approval</strong> is the independent review committee permission required before approaching any participants.</p>
+        <p style="color: #fff; font-size: 0.98rem;"><strong>Proposal Development</strong> is drafting your 9-part research blueprint, whereas <strong>Formal Ethical Approval</strong> is the independent review committee permission required before approaching any participants.</p>
       </div>
     </div>
   </section>
@@ -1072,7 +1075,7 @@
     <div class="quiz-header">
       <div>
         <span class="tag gold" style="margin-bottom:2px;">Live Class Challenge • 10 Scenarios</span>
-        <h2 style="font-size: 1.1rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
+        <h2 style="font-size: 1.2rem; margin-bottom:0;" id="qTitle">Question 1 of 10</h2>
       </div>
       <div class="scoreboard">
         <div class="score-pill score-auto">
@@ -1115,17 +1118,17 @@
   <!-- SLIDE 16: THANK YOU SLIDE -->
   <section class="slide">
     <div class="thank-you-container">
-      <div class="tag teal" style="margin-bottom: 6px;">Presentation Complete</div>
+      <div class="tag teal" style="margin-bottom: 8px;">Presentation Complete</div>
       <div class="animated-trophy">🎓✨</div>
-      <h1 style="font-size: 2.3rem; margin-bottom: 8px;">Thank You!</h1>
-      <p class="lead" style="max-width: 700px; margin: 0 auto 10px auto;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Thank You!</h1>
+      <p class="lead" style="max-width: 720px; margin: 0 auto 12px auto;">
         By mastering how to <strong>locate credible scientific data</strong> (Competency 23) and <strong>develop a research proposal</strong> (Competency 24), Group 05 is ready to lead safe, evidence-based nursing care!
       </p>
-      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 640px; width: 100%; padding: 12px;">
-        <div style="font-size: 0.95rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 3px;">
+      <div class="card" style="border-left: 4px solid var(--accent-cyan); max-width: 660px; width: 100%; padding: 14px;">
+        <div style="font-size: 1rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 4px;">
           BSN 5th Semester — Group 05 • PERLs Module
         </div>
-        <div style="font-size: 0.78rem; color: var(--text-muted);">
+        <div style="font-size: 0.82rem; color: var(--text-muted);">
           Mudassir Khan • Zain Luqman • Muhammad Murtaza • Aroosa Gull • Amna Safdar • Muneeba Waheed • Laraib Afzal
         </div>
       </div>
