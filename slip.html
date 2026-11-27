@@ -2,106 +2,2112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official QR Verification | New Life Institute of Nursing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#05060a">
+    <title>THE GIRL HE NEVER FORGOT ❤️</title>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f0f9ff; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .verify-card { background: #fff; width: 100%; max-width: 480px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); padding: 24px; text-align: center; border-top: 6px solid #0284c7; }
-        .verify-card img.logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #0284c7; margin-bottom: 10px; }
-        h2 { font-size: 1.1rem; color: #1e293b; margin-bottom: 4px; font-weight: 800; }
-        p.sub { font-size: 0.75rem; color: #64748b; margin-bottom: 20px; }
-        .status-badge { display: inline-block; padding: 6px 16px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; }
-        .details-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; font-size: 0.85rem; margin-bottom: 20px; }
-        .details-row { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 6px; }
-        .details-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .footer { font-size: 0.7rem; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 12px; }
-        .footer span { font-weight: 700; color: #0284c7; }
+        /* ==========================================================================
+           1. CINEMA VIEWPORT & TYPOGRAPHY VARIABLES
+           ========================================================================== */
+        :root {
+            --bg-cinema: #05060a;
+            --gold-accent: #f4c987;
+            --rose-accent: #e89999;
+            --text-ivory: #faf6f0;
+            --font-serif: "Georgia", "Times New Roman", "Palatino Linotype", serif;
+            --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            background-color: var(--bg-cinema);
+            color: var(--text-ivory);
+            font-family: var(--font-sans);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ==========================================================================
+           2. EXACT 9:16 VERTICAL FILM STAGE (1080x1920 SAFE COMPOSITION)
+           ========================================================================== */
+        .cinema-stage {
+            position: relative;
+            width: 100dvw;
+            height: 100dvh;
+            background-color: #000000;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        @media (min-width: 540px) {
+            .cinema-stage {
+                width: auto;
+                height: 96dvh;
+                aspect-ratio: 9 / 16;
+                border-radius: 24px;
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 32px 80px rgba(0, 0, 0, 0.96);
+            }
+        }
+
+        #film-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Subtle film vignette & letterbox soft fade */
+        .film-vignette {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 50% 44%, transparent 54%, rgba(4, 5, 10, 0.56) 100%),
+                linear-gradient(to bottom, rgba(4, 5, 10, 0.48) 0%, transparent 16%, transparent 66%, rgba(4, 5, 10, 0.88) 100%);
+            z-index: 5;
+        }
+
+        /* ==========================================================================
+           3. MINIMAL TOP 6-SEGMENT PROGRESS BAR & AUDIO TOGGLE
+           ========================================================================== */
+        .top-hud {
+            position: absolute;
+            top: max(14px, env(safe-area-inset-top));
+            left: 14px;
+            right: 14px;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 5px;
+            width: 100%;
+        }
+
+        .progress-segment {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.22);
+            border-radius: 999px;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #e7b878, #fff1d6);
+            box-shadow: 0 0 8px rgba(244, 201, 135, 0.85);
+            border-radius: 999px;
+            will-change: width;
+        }
+
+        .hud-controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2px;
+        }
+
+        .pause-pill {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(10, 12, 18, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 5px 11px;
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .pause-pill.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .audio-btn {
+            pointer-events: auto;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(10, 12, 18, 0.48);
+            color: var(--text-ivory);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .audio-btn:active {
+            transform: scale(0.92);
+        }
+
+        .audio-btn.playing {
+            border-color: rgba(244, 201, 135, 0.65);
+            box-shadow: 0 0 14px rgba(244, 201, 135, 0.28);
+        }
+
+        /* ==========================================================================
+           4. INSTAGRAM SAFE-ZONE SUBTITLES & ENDING OVERLAY
+           ========================================================================== */
+        .subtitle-safe-zone {
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            /* Positioned safely above Instagram Reels bottom UI (caption/audio bar) */
+            bottom: max(126px, calc(env(safe-area-inset-bottom) + 114px));
+            z-index: 15;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .story-line {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1.12rem, 4.4vw, 1.42rem);
+            font-weight: 400;
+            line-height: 1.42;
+            letter-spacing: 0.015em;
+            color: var(--text-ivory);
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.96), 0 0 4px rgba(0, 0, 0, 0.8);
+            max-width: 92%;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .story-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ending-prompt {
+            font-family: var(--font-sans);
+            font-size: clamp(0.88rem, 3.5vw, 1.04rem);
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: 0.02em;
+            color: #f8dfb4;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+            max-width: 88%;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+
+        .ending-prompt.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .replay-btn {
+            pointer-events: auto;
+            margin-top: 6px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 201, 135, 0.55);
+            background: rgba(14, 16, 24, 0.72);
+            color: var(--text-ivory);
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px) scale(0.96);
+            transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s ease, background 0.2s ease;
+        }
+
+        .replay-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .replay-btn:active {
+            transform: scale(0.94);
+            background: rgba(244, 201, 135, 0.22);
+        }
     </style>
 </head>
 <body>
+    <main class="cinema-stage" id="cinema-stage" aria-label="The Girl He Never Forgot - Animated Short Film">
+        <canvas id="film-canvas"></canvas>
+        <div class="film-vignette"></div>
 
-    <div class="verify-card" id="cardContainer">
-        <img class="logo" src="https://tse3.mm.bing.net/th/id/OIP.54d-2G_YbQaT-0gz1YUxUwAAAA?r=0&pid=Api&h=220&P=0" alt="Logo">
-        <h2>New Life Institute of Nursing, Multan</h2>
-        <p class="sub">Official Document Verification Portal</p>
-
-        <div id="loadingView">
-            <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: #0284c7; margin: 20px 0;"></i>
-            <p>Verifying candidate record from secure database...</p>
-        </div>
-
-        <div id="resultView" style="display: none;">
-            <div id="statusBadgeContainer" class="status-badge" style="background: #dcfce7; color: #166534;">
-                <i class="fa-solid fa-circle-check"></i> AUTHENTIC ADMIT CARD
+        <!-- Minimal Top Progress Indicator & Audio Control -->
+        <header class="top-hud">
+            <div class="progress-grid" aria-hidden="true">
+                <div class="progress-segment"><div class="progress-fill" data-seg="0"></div></div>
+                <div class="progress-segment"><div class="progress-fill" data-seg="1"></div></div>
+                <div class="progress-segment"><div class="progress-fill" data-seg="2"></div></div>
+                <div class="progress-segment"><div class="progress-fill" data-seg="3"></div></div>
+                <div class="progress-segment"><div class="progress-fill" data-seg="4"></div></div>
+                <div class="progress-segment"><div class="progress-fill" data-seg="5"></div></div>
             </div>
-
-            <div class="details-box">
-                <div class="details-row"><strong>Candidate Name:</strong> <span id="vName">-</span></div>
-                <div class="details-row"><strong>Father's Name:</strong> <span id="vFather">-</span></div>
-                <div class="details-row"><strong>CNIC / B-Form:</strong> <span id="vCnic">-</span></div>
-                <div class="details-row"><strong>Admission Status:</strong> <span id="vAppStatus" style="color: #0284c7; font-weight:700;">-</span></div>
-                <div class="details-row"><strong>Fee Verification:</strong> <span id="vPayStatus" style="font-weight:700;">-</span></div>
+            <div class="hud-controls-row">
+                <div class="pause-pill" id="pause-pill">Paused</div>
+                <button class="audio-btn" id="audio-btn" type="button" aria-label="Toggle Romantic Music" title="Toggle Music">
+                    <svg id="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                    <svg id="icon-sound" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
+        </header>
 
-        <div id="errorView" style="display: none;">
-            <div class="status-badge" style="background: #fee2e2; color: #991b1b;">
-                <i class="fa-solid fa-triangle-exclamation"></i> RECORD NOT FOUND
-            </div>
-            <p style="font-size: 0.82rem; color: #64748b;">The scanned QR code does not match any active record in the institutional database.</p>
-        </div>
-
-        <div class="footer">
-            New Life Institute of Nursing | Near (PSO Ibrahim) Petrol Pump, M.A Jinnah Rd, Multan<br>
-            Developed by <span>Mudassir Khan</span>
-        </div>
-    </div>
+        <!-- Instagram Safe-Area Cinematic Subtitles & Replay -->
+        <section class="subtitle-safe-zone" aria-live="polite">
+            <p class="story-line" id="story-line"></p>
+            <p class="ending-prompt" id="ending-prompt">Have you ever missed someone you never got to say goodbye to? ❤️</p>
+            <button class="replay-btn" id="replay-btn" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                <span>Replay Film</span>
+            </button>
+        </section>
+    </main>
 
     <script>
-        // Your exact new Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyhefkRmoxHNrLr5JWxeyw2-qdtZsc9N5AqyhWq5n97LeNa42sLqZbuC4x6bjx9Xvca/exec';
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const queryCNIC = urlParams.get('q');
+        /**
+         * ==========================================================================
+         * "THE GIRL HE NEVER FORGOT" ❤️ — 30-SECOND CINEMATIC ANIMATION ENGINE
+         * Resolution: 1080 x 1920 (9:16 Vertical Film Frame)
+         * Continuity:
+         *   - Boy: Tousled dark-brown hair, charcoal wool overcoat, warm taupe scarf
+         *   - Girl: Wavy chestnut-brown hair, cream knit turtleneck, camel trench coat
+         * ==========================================================================
+         */
+        (function () {
+            'use strict';
 
-        if (!queryCNIC) {
-            document.getElementById('loadingView').style.display = 'none';
-            document.getElementById('errorView').style.display = 'block';
-        } else {
-            fetch(scriptURL + '?q=' + encodeURIComponent(queryCNIC))
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('loadingView').style.display = 'none';
-                    console.log("QR Verification Response:", data);
+            const W = 1080;
+            const H = 1920;
+            const TOTAL_DURATION = 30.0; // Exact 30-second runtime
+            const SCENE_LEN = 5.0;       // 6 scenes x 5s = 30s
 
-                    if (data.status === 'success') {
-                        document.getElementById('vName').innerText = data.name || '-';
-                        document.getElementById('vFather').innerText = data.father || '-';
-                        document.getElementById('vCnic').innerText = data.cnic || '-';
-                        
-                        // Map manual status values directly from your Google Sheet
-                        const appStatus = data.appStatus || 'Under Review';
-                        const payStatus = data.payStatus || 'Pending Verification';
+            const stage = document.getElementById('cinema-stage');
+            const canvas = document.getElementById('film-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = W;
+            canvas.height = H;
 
-                        document.getElementById('vAppStatus').innerText = appStatus;
-                        
-                        const paySpan = document.getElementById('vPayStatus');
-                        paySpan.innerText = payStatus;
-                        paySpan.style.color = payStatus.toLowerCase().includes('verified') ? '#166534' : '#b45309';
+            const segFills = Array.from(document.querySelectorAll('.progress-fill'));
+            const storyLineEl = document.getElementById('story-line');
+            const endingPromptEl = document.getElementById('ending-prompt');
+            const replayBtn = document.getElementById('replay-btn');
+            const pausePill = document.getElementById('pause-pill');
+            const audioBtn = document.getElementById('audio-btn');
+            const iconMuted = document.getElementById('icon-muted');
+            const iconSound = document.getElementById('icon-sound');
 
-                        document.getElementById('resultView').style.display = 'block';
-                    } else {
-                        document.getElementById('errorView').style.display = 'block';
+            // ======================================================================
+            // 1. ROMANTIC SCORE ENGINE (LOCAL ./music.mp3 + WEB AUDIO PIANO/STRINGS)
+            // ======================================================================
+            const RomanticAudio = {
+                ctx: null,
+                isPlaying: false,
+                mp3Audio: null,
+                useMp3: false,
+                schedulerId: null,
+                step: 0,
+
+                initMp3Check() {
+                    try {
+                        const audio = new Audio('./music.mp3');
+                        audio.loop = true;
+                        audio.volume = 0.65;
+                        audio.addEventListener('canplaythrough', () => {
+                            this.mp3Audio = audio;
+                            this.useMp3 = true;
+                        }, { once: true });
+                        audio.addEventListener('error', () => {
+                            this.useMp3 = false;
+                        }, { once: true });
+                    } catch (_) {
+                        this.useMp3 = false;
                     }
-                })
-                .catch(err => {
-                    console.error("QR Verification Error:", err);
-                    document.getElementById('loadingView').style.display = 'none';
-                    document.getElementById('errorView').style.display = 'block';
+                },
+
+                toggle() {
+                    if (this.isPlaying) {
+                        this.stop();
+                    } else {
+                        this.start();
+                    }
+                },
+
+                start() {
+                    if (this.isPlaying) return;
+                    this.isPlaying = true;
+                    audioBtn.classList.add('playing');
+                    iconMuted.style.display = 'none';
+                    iconSound.style.display = 'block';
+
+                    if (this.useMp3 && this.mp3Audio) {
+                        this.mp3Audio.play().catch(() => {
+                            this.useMp3 = false;
+                            this.startSynth();
+                        });
+                    } else {
+                        this.startSynth();
+                    }
+                },
+
+                stop() {
+                    this.isPlaying = false;
+                    audioBtn.classList.remove('playing');
+                    iconMuted.style.display = 'block';
+                    iconSound.style.display = 'none';
+
+                    if (this.mp3Audio) {
+                        this.mp3Audio.pause();
+                    }
+                    if (this.schedulerId) {
+                        clearInterval(this.schedulerId);
+                        this.schedulerId = null;
+                    }
+                },
+
+                restart() {
+                    if (this.useMp3 && this.mp3Audio) {
+                        this.mp3Audio.currentTime = 0;
+                    }
+                    this.step = 0;
+                },
+
+                startSynth() {
+                    try {
+                        if (!this.ctx) {
+                            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                            this.ctx = new AudioCtx();
+                        }
+                        if (this.ctx.state === 'suspended') {
+                            this.ctx.resume();
+                        }
+                    } catch (_) {
+                        return;
+                    }
+
+                    // Emotional F Major / D Minor arpeggiated piano progression
+                    const progression = [
+                        // Dm9: D3, A3, E4, F4, A4
+                        [146.83, 220.00, 329.63, 349.23, 440.00],
+                        // Bbmaj7: Bb2, F3, D4, A4, F4
+                        [116.54, 174.61, 293.66, 440.00, 349.23],
+                        // Fmaj9: F2, C3, G3, A3, E4
+                        [87.31, 130.81, 196.00, 220.00, 329.63],
+                        // Csus4 -> C: C3, G3, F4, E4, G4
+                        [130.81, 196.00, 349.23, 329.63, 392.00]
+                    ];
+
+                    const playPianoNote = (freq, duration, gainPeak, isPad = false) => {
+                        if (!this.ctx || !this.isPlaying) return;
+                        const now = this.ctx.currentTime;
+                        const osc = this.ctx.createOscillator();
+                        const osc2 = this.ctx.createOscillator();
+                        const filter = this.ctx.createBiquadFilter();
+                        const gain = this.ctx.createGain();
+
+                        osc.type = isPad ? 'sine' : 'triangle';
+                        osc2.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now);
+                        osc2.frequency.setValueAtTime(freq * (isPad ? 1.002 : 2.0), now);
+
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(isPad ? 680 : 1450, now);
+                        filter.frequency.exponentialRampToValueAtTime(320, now + duration);
+
+                        const subGain = this.ctx.createGain();
+                        subGain.gain.value = isPad ? 0.35 : 0.14;
+
+                        gain.gain.setValueAtTime(0.0001, now);
+                        gain.gain.linearRampToValueAtTime(gainPeak, now + (isPad ? 0.6 : 0.035));
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+                        osc.connect(filter);
+                        osc2.connect(subGain);
+                        subGain.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(this.ctx.destination);
+
+                        osc.start(now);
+                        osc2.start(now);
+                        osc.stop(now + duration + 0.05);
+                        osc2.stop(now + duration + 0.05);
+                    };
+
+                    const tickNote = () => {
+                        if (!this.isPlaying) return;
+                        const bar = Math.floor(this.step / 5) % progression.length;
+                        const noteIdx = this.step % 5;
+                        const chord = progression[bar];
+                        if (noteIdx === 0) {
+                            playPianoNote(chord[0], 3.4, 0.075, true);
+                        }
+                        playPianoNote(chord[noteIdx], 2.3, noteIdx === 4 ? 0.065 : 0.048, false);
+                        this.step++;
+                    };
+
+                    tickNote();
+                    if (this.schedulerId) clearInterval(this.schedulerId);
+                    this.schedulerId = setInterval(tickNote, 560);
+                }
+            };
+
+            RomanticAudio.initMp3Check();
+
+            audioBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                RomanticAudio.toggle();
+            });
+
+            // ======================================================================
+            // 2. MATH, EASING & PARTICLE SYSTEMS (LEAVES, RAIN, BOKEH, CLOUDS)
+            // ======================================================================
+            function clamp(v, min, max) {
+                return Math.max(min, Math.min(max, v));
+            }
+
+            function lerp(a, b, t) {
+                return a + (b - a) * t;
+            }
+
+            function smoothstep(edge0, edge1, x) {
+                const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+                return t * t * (3 - 2 * t);
+            }
+
+            function hash(n) {
+                const x = Math.sin(n * 127.1 + 311.7) * 43758.5453123;
+                return x - Math.floor(x);
+            }
+
+            // Pre-seeded floating autumn leaves
+            const leaves = Array.from({ length: 26 }, (_, i) => ({
+                x: hash(i * 1.7) * W,
+                y: hash(i * 2.9) * H,
+                size: 10 + hash(i * 4.1) * 14,
+                speedX: 35 + hash(i * 5.3) * 55,
+                speedY: 45 + hash(i * 6.7) * 65,
+                phase: hash(i * 8.3) * Math.PI * 2,
+                hue: i % 2 === 0 ? '#d97724' : '#b84a1e'
+            }));
+
+            // Pre-seeded rain streaks for Scene 3
+            const raindrops = Array.from({ length: 170 }, (_, i) => ({
+                x: hash(i * 3.1) * (W + 300) - 150,
+                y: hash(i * 7.3) * H,
+                len: 28 + hash(i * 9.1) * 44,
+                speed: 1250 + hash(i * 11.3) * 650,
+                alpha: 0.16 + hash(i * 13.7) * 0.34,
+                width: 1.2 + hash(i * 17.1) * 1.4
+            }));
+
+            // Pre-seeded depth-of-field bokeh orbs
+            const bokehOrbs = Array.from({ length: 24 }, (_, i) => ({
+                x: hash(i * 2.3) * W,
+                y: 160 + hash(i * 4.7) * (H - 420),
+                r: 18 + hash(i * 6.1) * 56,
+                phase: hash(i * 9.7) * Math.PI * 2,
+                warm: i % 3 !== 0
+            }));
+
+            function drawBokehLayer(ctx, time, opacity, warmTint = true) {
+                if (opacity <= 0.01) return;
+                ctx.save();
+                bokehOrbs.forEach((b, i) => {
+                    const driftX = Math.sin(time * 0.4 + b.phase) * 18;
+                    const driftY = Math.cos(time * 0.35 + b.phase) * 14;
+                    const pulse = 0.65 + 0.35 * Math.sin(time * 1.6 + b.phase);
+                    const grad = ctx.createRadialGradient(b.x + driftX, b.y + driftY, 2, b.x + driftX, b.y + driftY, b.r);
+                    if (warmTint && b.warm) {
+                        grad.addColorStop(0, `rgba(255, 224, 165, ${0.26 * opacity * pulse})`);
+                        grad.addColorStop(0.7, `rgba(245, 175, 95, ${0.12 * opacity * pulse})`);
+                        grad.addColorStop(1, 'rgba(245, 175, 95, 0)');
+                    } else {
+                        grad.addColorStop(0, `rgba(195, 225, 255, ${0.22 * opacity * pulse})`);
+                        grad.addColorStop(0.7, `rgba(130, 175, 235, ${0.1 * opacity * pulse})`);
+                        grad.addColorStop(1, 'rgba(130, 175, 235, 0)');
+                    }
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.arc(b.x + driftX, b.y + driftY, b.r, 0, Math.PI * 2);
+                    ctx.fill();
                 });
-        }
+                ctx.restore();
+            }
+
+            function drawAutumnLeaves(ctx, time, count = 22) {
+                ctx.save();
+                for (let i = 0; i < count; i++) {
+                    const lf = leaves[i];
+                    const x = ((lf.x + time * lf.speedX + Math.sin(time * 1.8 + lf.phase) * 35) % (W + 80)) - 40;
+                    const y = ((lf.y + time * lf.speedY) % (H + 80)) - 40;
+                    const rot = time * 1.9 + lf.phase;
+                    ctx.save();
+                    ctx.translate(x, y);
+                    ctx.rotate(rot);
+                    ctx.fillStyle = lf.hue;
+                    ctx.globalAlpha = 0.78;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, lf.size, lf.size * 0.48, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+                ctx.restore();
+            }
+
+            // ======================================================================
+            // 3. CHARACTER CONTINUITY RENDERERS (REALISTIC 3D-SHADED PROPORTIONS)
+            // ======================================================================
+
+            /**
+             * Renders the Redesigned Hero Boy with modern 3D animated film proportions:
+             * - Sculpted jawline & defined chin, straight nose bridge, warm-olive/golden skin shading
+             * - Multi-layered deep hazel-amber eyes with dual catchlights & tapered expressive brows
+             * - Dark-navy/charcoal tousled layered hair with swept-side bangs & specular strands
+             * - Tailored dark charcoal-navy wool coat, slate-grey turtleneck & warm camel-brown scarf
+             */
+            function drawBoy(ctx, opts) {
+                const {
+                    x, y,
+                    scale = 1,
+                    walkPhase = 0,       // 0 = standing, >0 = walking cycle
+                    headTurn = 0,        // -1 (left) to +1 (right)
+                    headTilt = 0,        // radians (+ = looking down, - = looking up)
+                    expression = 'neutral', // 'neutral', 'awe', 'smile', 'sad', 'peaceful'
+                    blink = 0,           // 0 = open, 1 = closed
+                    armMode = 'walk',    // 'walk', 'umbrella', 'holdingClosedUmbrella'
+                    wind = 0,
+                    rimLight = 'rgba(255, 215, 155, 0.65)'
+                } = opts;
+
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.scale(scale, scale);
+
+                const breath = Math.sin(wind * 2.2) * 2.4;
+                const walkBob = walkPhase > 0 ? Math.abs(Math.sin(walkPhase)) * 7 : 0;
+                const stride = walkPhase > 0 ? Math.sin(walkPhase) * 24 : 0;
+
+                ctx.translate(0, -walkBob);
+
+                // Soft ground contact shadow
+                const shadowGrad = ctx.createRadialGradient(0, 295, 8, 0, 295, 85);
+                shadowGrad.addColorStop(0, 'rgba(0, 0, 0, 0.48)');
+                shadowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = shadowGrad;
+                ctx.beginPath();
+                ctx.ellipse(0, 295, 82, 18, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // --- LEGS & TAILORED CHARCOAL-NAVY TROUSERS ---
+                ctx.fillStyle = '#141924';
+                ctx.beginPath();
+                ctx.roundRect(-24 - stride * 0.6, 145, 22, 145, 10);
+                ctx.fill();
+
+                ctx.fillStyle = '#1c2333';
+                ctx.beginPath();
+                ctx.roundRect(4 + stride * 0.6, 145, 22, 145, 10);
+                ctx.fill();
+
+                // Leather dress boots
+                ctx.fillStyle = '#100e12';
+                ctx.beginPath();
+                ctx.roundRect(-28 - stride * 0.6, 282, 32, 14, 6);
+                ctx.roundRect(2 + stride * 0.6, 282, 34, 14, 6);
+                ctx.fill();
+
+                // --- TAILORED CHARCOAL-NAVY WOOL OVERCOAT ---
+                const coatGrad = ctx.createLinearGradient(-58, -22, 58, 198);
+                coatGrad.addColorStop(0, '#2c364a');
+                coatGrad.addColorStop(0.5, '#1d2433');
+                coatGrad.addColorStop(1, '#11151f');
+
+                const coatSway = Math.sin(wind * 3.1) * 5;
+                ctx.fillStyle = coatGrad;
+                ctx.beginPath();
+                ctx.moveTo(-45, -12 + breath);
+                ctx.quadraticCurveTo(-59, 85, -63 - coatSway, 196);
+                ctx.lineTo(63 + coatSway * 0.5, 196);
+                ctx.quadraticCurveTo(59, 85, 45, -12 + breath);
+                ctx.closePath();
+                ctx.fill();
+
+                // Rim light edge on coat
+                ctx.strokeStyle = rimLight;
+                ctx.lineWidth = 2.4;
+                ctx.stroke();
+
+                // Structured coat lapels & soft slate-grey turtleneck sweater
+                ctx.fillStyle = '#535e70';
+                ctx.beginPath();
+                ctx.moveTo(-18, -16 + breath);
+                ctx.lineTo(18, -16 + breath);
+                ctx.lineTo(8, 82 + breath);
+                ctx.lineTo(-8, 82 + breath);
+                ctx.closePath();
+                ctx.fill();
+
+                // Coat lapel folds
+                ctx.strokeStyle = '#121722';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(-22, -12 + breath);
+                ctx.lineTo(-9, 76 + breath);
+                ctx.moveTo(22, -12 + breath);
+                ctx.lineTo(9, 76 + breath);
+                ctx.stroke();
+
+                // --- WARM CAMEL-BROWN CASHMERE SCARF ---
+                const scarfGrad = ctx.createLinearGradient(-30, -24, 30, 96);
+                scarfGrad.addColorStop(0, '#cfa06e');
+                scarfGrad.addColorStop(0.5, '#b07d4b');
+                scarfGrad.addColorStop(1, '#82562d');
+                ctx.fillStyle = scarfGrad;
+                ctx.beginPath();
+                ctx.roundRect(-29, -24 + breath, 58, 24, 12);
+                ctx.fill();
+
+                // Hanging scarf end fluttering in breeze
+                const scarfFlutter = Math.sin(wind * 3.8) * 9;
+                ctx.beginPath();
+                ctx.moveTo(5, -4 + breath);
+                ctx.quadraticCurveTo(19 + scarfFlutter * 0.4, 48, 15 + scarfFlutter, 100);
+                ctx.lineTo(-4 + scarfFlutter, 98);
+                ctx.quadraticCurveTo(-2 + scarfFlutter * 0.4, 48, -10, -4 + breath);
+                ctx.closePath();
+                ctx.fill();
+
+                // --- ARMS & HANDS ---
+                const armSwing = walkPhase > 0 ? Math.sin(walkPhase) * 18 : 0;
+                ctx.fillStyle = '#1f2636';
+                if (armMode === 'walk') {
+                    ctx.beginPath();
+                    ctx.roundRect(-56, -4 + breath, 20, 118 - armSwing * 0.4, 10);
+                    ctx.roundRect(36, -4 + breath, 20, 118 + armSwing * 0.4, 10);
+                    ctx.fill();
+                } else if (armMode === 'umbrella') {
+                    ctx.beginPath();
+                    ctx.roundRect(-55, -4 + breath, 20, 114, 10);
+                    ctx.fill();
+                    ctx.save();
+                    ctx.translate(42, 4 + breath);
+                    ctx.rotate(-0.42);
+                    ctx.beginPath();
+                    ctx.roundRect(-10, 0, 20, 96, 10);
+                    ctx.fill();
+                    ctx.fillStyle = '#e5ad89';
+                    ctx.beginPath();
+                    ctx.arc(0, 96, 10, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                } else if (armMode === 'holdingClosedUmbrella') {
+                    ctx.beginPath();
+                    ctx.roundRect(-55, -4 + breath, 20, 115, 10);
+                    ctx.roundRect(35, -4 + breath, 20, 115, 10);
+                    ctx.fill();
+                    ctx.strokeStyle = '#151b26';
+                    ctx.lineWidth = 8;
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    ctx.moveTo(46, 108);
+                    ctx.lineTo(54, 286);
+                    ctx.stroke();
+                }
+
+                // --- NECK & SCULPTED 3D HERO HEAD ---
+                ctx.save();
+                ctx.translate(headTurn * 6, -34 + breath);
+                ctx.rotate(headTilt);
+
+                // Slate turtleneck collar & sculpted neck
+                ctx.fillStyle = '#535e70';
+                ctx.beginPath();
+                ctx.roundRect(-16, -6, 32, 16, 6);
+                ctx.fill();
+
+                ctx.fillStyle = '#d49a79';
+                ctx.fillRect(-13, -16, 26, 16);
+                ctx.fillStyle = 'rgba(85, 44, 28, 0.36)';
+                ctx.beginPath();
+                ctx.ellipse(0, -10, 14, 6, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Sculpted ear on opposite side of headTurn
+                const earX = headTurn >= 0 ? -29 + headTurn * 4 : 29 + headTurn * 4;
+                ctx.fillStyle = '#cf9372';
+                ctx.beginPath();
+                ctx.ellipse(earX, -38, 5.5, 10, headTurn * 0.15, 0, Math.PI * 2);
+                ctx.fill();
+                // Ear subsurface warmth
+                ctx.fillStyle = 'rgba(225, 110, 88, 0.35)';
+                ctx.beginPath();
+                ctx.ellipse(earX, -38, 3, 6, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Sculpted handsome face: defined cheekbones, tapered jawline & firm chin
+                const skinGrad = ctx.createRadialGradient(-8 + headTurn * 9, -46, 6, 0, -38, 52);
+                skinGrad.addColorStop(0, '#f7ccb0');
+                skinGrad.addColorStop(0.58, '#e3a784');
+                skinGrad.addColorStop(1, '#b87856');
+
+                ctx.fillStyle = skinGrad;
+                ctx.beginPath();
+                ctx.moveTo(-30, -58);
+                ctx.lineTo(-29, -32);
+                ctx.quadraticCurveTo(-24, -13, -8, -3);
+                ctx.quadraticCurveTo(0, 1, 8, -3);
+                ctx.quadraticCurveTo(24, -13, 29, -32);
+                ctx.lineTo(30, -58);
+                ctx.bezierCurveTo(29, -84, -29, -84, -30, -58);
+                ctx.closePath();
+                ctx.fill();
+
+                // Subtle jawline & cheekbone contour shading
+                ctx.strokeStyle = 'rgba(135, 76, 52, 0.28)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                const fx = headTurn * 9.5;
+
+                // Natural warm subsurface cheek & nose-bridge glow
+                const cheekGrad = ctx.createRadialGradient(fx, -32, 2, fx, -32, 28);
+                cheekGrad.addColorStop(0, 'rgba(228, 118, 94, 0.24)');
+                cheekGrad.addColorStop(1, 'rgba(228, 118, 94, 0)');
+                ctx.fillStyle = cheekGrad;
+                ctx.beginPath();
+                ctx.arc(fx, -32, 28, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Tapered, expressive dark-navy/charcoal eyebrows
+                ctx.fillStyle = '#181e2c';
+                const browInnerY = (expression === 'sad' || expression === 'awe') ? -50.5 : (expression === 'smile' || expression === 'peaceful' ? -47.5 : -48.5);
+                const browOuterY = (expression === 'sad' || expression === 'awe') ? -46.5 : -49.5;
+
+                // Left brow
+                ctx.beginPath();
+                ctx.moveTo(fx - 20, browOuterY);
+                ctx.quadraticCurveTo(fx - 12, browInnerY - 3, fx - 4.5, browInnerY);
+                ctx.lineTo(fx - 5, browInnerY + 2.8);
+                ctx.quadraticCurveTo(fx - 12, browInnerY - 0.5, fx - 20, browOuterY + 1.6);
+                ctx.closePath();
+                ctx.fill();
+
+                // Right brow
+                ctx.beginPath();
+                ctx.moveTo(fx + 20, browOuterY);
+                ctx.quadraticCurveTo(fx + 12, browInnerY - 3, fx + 4.5, browInnerY);
+                ctx.lineTo(fx + 5, browInnerY + 2.8);
+                ctx.quadraticCurveTo(fx + 12, browInnerY - 0.5, fx + 20, browOuterY + 1.6);
+                ctx.closePath();
+                ctx.fill();
+
+                // --- SOULFUL DEEP HAZEL-AMBER CINEMA EYES WITH DUAL CATCHLIGHTS ---
+                [-12.5, 12.5].forEach((exOff, eyeIdx) => {
+                    const ex = fx + exOff;
+                    const ey = -40.5;
+                    if (blink > 0.65) {
+                        ctx.strokeStyle = '#1e1922';
+                        ctx.lineWidth = 2.6;
+                        ctx.beginPath();
+                        ctx.moveTo(ex - 6, ey + 0.5);
+                        ctx.quadraticCurveTo(ex, ey + 3.2, ex + 6, ey + 0.5);
+                        ctx.stroke();
+                    } else {
+                        const eyeH = 4.1 * (1 - blink * 0.72);
+                        // Almond sclera with soft upper lid shadow
+                        ctx.fillStyle = '#f7f6f5';
+                        ctx.beginPath();
+                        ctx.ellipse(ex, ey, 6.2, eyeH, eyeIdx === 0 ? -0.05 : 0.05, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Multi-layered radial hazel-amber iris
+                        const ix = ex + headTurn * 1.5;
+                        const irisGrad = ctx.createRadialGradient(ix, ey + 0.5, 0.8, ix, ey, 3.4);
+                        irisGrad.addColorStop(0, '#1c120b');
+                        irisGrad.addColorStop(0.45, '#6e4523');
+                        irisGrad.addColorStop(0.82, '#a86e32');
+                        irisGrad.addColorStop(1, '#2a1b12');
+                        ctx.fillStyle = irisGrad;
+                        ctx.beginPath();
+                        ctx.arc(ix, ey, 3.3, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Deep pupil
+                        ctx.fillStyle = '#0e0a08';
+                        ctx.beginPath();
+                        ctx.arc(ix, ey, 1.45, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Dual catchlights (key reflection + pinpoint rim sparkle)
+                        ctx.fillStyle = '#ffffff';
+                        ctx.beginPath();
+                        ctx.arc(ix - 1.15, ey - 1.15, 1.15, 0, Math.PI * 2);
+                        ctx.arc(ix + 1.25, ey + 0.95, 0.55, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Crisp dark upper lash line
+                        ctx.strokeStyle = '#161922';
+                        ctx.lineWidth = 2.1;
+                        ctx.beginPath();
+                        ctx.moveTo(ex - 6.4, ey - 0.6);
+                        ctx.quadraticCurveTo(ex, ey - eyeH - 1.1, ex + 6.4, ey - 0.6);
+                        ctx.stroke();
+                    }
+                });
+
+                // Straight sculpted nose bridge with soft 3D highlight & shadow
+                ctx.strokeStyle = 'rgba(130, 74, 50, 0.52)';
+                ctx.lineWidth = 2.0;
+                ctx.beginPath();
+                ctx.moveTo(fx - 0.5, -42);
+                ctx.lineTo(fx + headTurn * 3.2, -26.5);
+                ctx.quadraticCurveTo(fx + headTurn * 1.5, -24.5, fx - 2.2, -25.5);
+                ctx.stroke();
+
+                // Soft nose bridge specular highlight
+                ctx.strokeStyle = 'rgba(255, 236, 218, 0.45)';
+                ctx.lineWidth = 1.4;
+                ctx.beginPath();
+                ctx.moveTo(fx + 0.6, -40);
+                ctx.lineTo(fx + headTurn * 2.6 + 0.8, -28);
+                ctx.stroke();
+
+                // Realistic parted/smiling lips with subtle lower-lip highlight
+                ctx.lineCap = 'round';
+                if (expression === 'smile' || expression === 'peaceful') {
+                    ctx.strokeStyle = '#8f4d42';
+                    ctx.lineWidth = 2.3;
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 9.5, -16.5);
+                    ctx.quadraticCurveTo(fx, -10.5, fx + 9.5, -16.5);
+                    ctx.stroke();
+                    // Lower lip highlight
+                    ctx.strokeStyle = 'rgba(255, 216, 198, 0.55)';
+                    ctx.lineWidth = 1.6;
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 4.5, -12.2);
+                    ctx.quadraticCurveTo(fx, -11.2, fx + 4.5, -12.2);
+                    ctx.stroke();
+                } else if (expression === 'sad') {
+                    ctx.strokeStyle = '#87493f';
+                    ctx.lineWidth = 2.3;
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 8.5, -13.5);
+                    ctx.quadraticCurveTo(fx, -18.2, fx + 8.5, -13.5);
+                    ctx.stroke();
+                } else if (expression === 'awe') {
+                    // Gently parted lips in quiet awe
+                    ctx.fillStyle = '#5e2b26';
+                    ctx.beginPath();
+                    ctx.ellipse(fx, -15.2, 4.8, 2.2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = '#99554a';
+                    ctx.lineWidth = 1.6;
+                    ctx.stroke();
+                } else {
+                    ctx.strokeStyle = '#8f4d42';
+                    ctx.lineWidth = 2.2;
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 8.5, -15.5);
+                    ctx.quadraticCurveTo(fx, -14.5, fx + 8.5, -15.5);
+                    ctx.stroke();
+                }
+
+                // --- DARK-NAVY / CHARCOAL TOUSLED LAYERED HAIR WITH SWEPT BANGS ---
+                const hairGrad = ctx.createLinearGradient(-34, -94, 34, -42);
+                hairGrad.addColorStop(0, '#2a344a');
+                hairGrad.addColorStop(0.5, '#181e2c');
+                hairGrad.addColorStop(1, '#0d111a');
+                ctx.fillStyle = hairGrad;
+
+                const hairWave = Math.sin(wind * 3.4) * 3.8;
+                ctx.beginPath();
+                ctx.moveTo(-32, -44);
+                ctx.bezierCurveTo(-39, -78, -20, -96, 2, -93 + hairWave * 0.35);
+                ctx.bezierCurveTo(22, -96, 39, -78, 32, -44);
+                // Layered swept-side bangs framing forehead
+                ctx.bezierCurveTo(28, -60, 20, -64, 13 + hairWave, -50);
+                ctx.bezierCurveTo(8, -61, 2, -62, -4 + hairWave * 0.8, -48);
+                ctx.bezierCurveTo(-11, -60, -21, -62, -32, -44);
+                ctx.closePath();
+                ctx.fill();
+
+                // Specular light sheen across hair crown & bangs
+                ctx.strokeStyle = rimLight;
+                ctx.lineWidth = 2.0;
+                ctx.stroke();
+
+                ctx.strokeStyle = 'rgba(175, 205, 255, 0.28)';
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(-18, -76);
+                ctx.quadraticCurveTo(0, -83, 18, -74);
+                ctx.stroke();
+
+                ctx.restore();
+                ctx.restore();
+            }
+
+            /**
+             * Renders the Redesigned Hero Girl with modern 3D animated film beauty:
+             * - Soft heart-shaped face, delicate cheekbones, subtle rosy blush & graceful nose
+             * - Large luminous emerald-hazel/warm-amber eyes with feathered lashes & double catchlights
+             * - Rose-tinted lips with Cupid's bow & glossy highlight
+             * - Warm honey-chestnut long wavy hair with wispy bangs, side tendrils & golden rim sheen
+             * - Cream cable-knit turtleneck sweater layered under a tailored warm beige/camel trench coat
+             */
+            function drawGirl(ctx, opts) {
+                const {
+                    x, y,
+                    scale = 1,
+                    walkPhase = 0,
+                    headTurn = 0,
+                    headTilt = 0,
+                    expression = 'smile', // 'neutral', 'smile', 'shySmile'
+                    blink = 0,
+                    seated = false,
+                    wind = 0,
+                    rimLight = 'rgba(255, 224, 168, 0.7)'
+                } = opts;
+
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.scale(scale, scale);
+
+                const breath = Math.sin(wind * 2.4 + 1.1) * 2.2;
+                const walkBob = (!seated && walkPhase > 0) ? Math.abs(Math.sin(walkPhase)) * 6 : 0;
+                const stride = (!seated && walkPhase > 0) ? Math.sin(walkPhase) * 20 : 0;
+
+                ctx.translate(0, -walkBob);
+
+                if (!seated) {
+                    // Ground contact shadow
+                    const shadowGrad = ctx.createRadialGradient(0, 278, 6, 0, 278, 74);
+                    shadowGrad.addColorStop(0, 'rgba(0, 0, 0, 0.44)');
+                    shadowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    ctx.fillStyle = shadowGrad;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 278, 72, 16, 0, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Slim dark trousers & ankle boots
+                    ctx.fillStyle = '#1b1d24';
+                    ctx.beginPath();
+                    ctx.roundRect(-19 - stride * 0.55, 138, 17, 136, 8);
+                    ctx.roundRect(3 + stride * 0.55, 138, 17, 136, 8);
+                    ctx.fill();
+
+                    ctx.fillStyle = '#2d1e18';
+                    ctx.beginPath();
+                    ctx.roundRect(-22 - stride * 0.55, 266, 25, 13, 6);
+                    ctx.roundRect(2 + stride * 0.55, 266, 26, 13, 6);
+                    ctx.fill();
+                }
+
+                // --- BACK LAYER OF LONG WAVY HONEY-CHESTNUT HAIR ---
+                const hairWave = Math.sin(wind * 3.2) * 9;
+                const backHairGrad = ctx.createLinearGradient(-48, -88, 48, 82);
+                backHairGrad.addColorStop(0, '#854c27');
+                backHairGrad.addColorStop(0.5, '#5e3216');
+                backHairGrad.addColorStop(1, '#381b0a');
+                ctx.fillStyle = backHairGrad;
+                ctx.beginPath();
+                ctx.moveTo(-36, -66);
+                ctx.bezierCurveTo(-56, -12, -58 + hairWave, 42, -40 + hairWave, 78);
+                ctx.quadraticCurveTo(0 + hairWave * 0.8, 88, 40 + hairWave, 78);
+                ctx.bezierCurveTo(58 + hairWave, 42, 56, -12, 36, -66);
+                ctx.closePath();
+                ctx.fill();
+
+                // Golden rim light along wavy hair silhouette
+                ctx.strokeStyle = rimLight;
+                ctx.lineWidth = 2.0;
+                ctx.stroke();
+
+                // --- TAILORED WARM BEIGE / CAMEL TRENCH COAT ---
+                const coatGrad = ctx.createLinearGradient(-48, -14, 48, 178);
+                coatGrad.addColorStop(0, '#dec09b');
+                coatGrad.addColorStop(0.55, '#c29c70');
+                coatGrad.addColorStop(1, '#946e46');
+
+                const coatH = seated ? 115 : 182;
+                ctx.fillStyle = coatGrad;
+                ctx.beginPath();
+                ctx.moveTo(-37, -12 + breath);
+                ctx.quadraticCurveTo(-49, coatH * 0.5, -53, coatH);
+                ctx.lineTo(53, coatH);
+                ctx.quadraticCurveTo(49, coatH * 0.5, 37, -12 + breath);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.strokeStyle = rimLight;
+                ctx.lineWidth = 2.2;
+                ctx.stroke();
+
+                // Cozy cream cable-knit turtleneck sweater center panel
+                ctx.fillStyle = '#faf3e8';
+                ctx.beginPath();
+                ctx.moveTo(-16, -18 + breath);
+                ctx.lineTo(16, -18 + breath);
+                ctx.lineTo(12, 76 + breath);
+                ctx.lineTo(-12, 76 + breath);
+                ctx.closePath();
+                ctx.fill();
+
+                // Subtle vertical cable-knit texture lines
+                ctx.strokeStyle = 'rgba(196, 176, 148, 0.55)';
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(-5, -14 + breath);
+                ctx.lineTo(-4, 72 + breath);
+                ctx.moveTo(5, -14 + breath);
+                ctx.lineTo(4, 72 + breath);
+                ctx.stroke();
+
+                // Trench coat belt
+                if (!seated) {
+                    ctx.fillStyle = '#a37b50';
+                    ctx.fillRect(-45, 66 + breath, 90, 12);
+                    ctx.strokeStyle = '#f0d5b0';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(-8, 65 + breath, 16, 14);
+                }
+
+                // Arms
+                const armSwing = (!seated && walkPhase > 0) ? Math.sin(walkPhase) * 14 : 0;
+                ctx.fillStyle = '#c7a175';
+                ctx.beginPath();
+                ctx.roundRect(-46, -4 + breath, 17, 102 - armSwing * 0.35, 8);
+                ctx.roundRect(29, -4 + breath, 17, 102 + armSwing * 0.35, 8);
+                ctx.fill();
+
+                // --- NECK & RADIANT 3D HEART-SHAPED HEAD ---
+                ctx.save();
+                ctx.translate(headTurn * 5, -31 + breath);
+                ctx.rotate(headTilt);
+
+                // Cream cable-knit turtleneck collar
+                ctx.fillStyle = '#f3e8d8';
+                ctx.beginPath();
+                ctx.roundRect(-14, -13, 28, 21, 8);
+                ctx.fill();
+
+                // Soft heart-shaped face with delicate cheekbones & porcelain-warm glow
+                const skinGrad = ctx.createRadialGradient(-6 + headTurn * 7, -43, 5, 0, -35, 44);
+                skinGrad.addColorStop(0, '#fff0e4');
+                skinGrad.addColorStop(0.62, '#f2c8ae');
+                skinGrad.addColorStop(1, '#cf9677');
+
+                ctx.fillStyle = skinGrad;
+                ctx.beginPath();
+                ctx.moveTo(-26, -54);
+                ctx.bezierCurveTo(-28, -32, -22, -16, -7, -6);
+                ctx.quadraticCurveTo(0, -2.5, 7, -6);
+                ctx.bezierCurveTo(22, -16, 28, -32, 26, -54);
+                ctx.bezierCurveTo(25, -78, -25, -78, -26, -54);
+                ctx.closePath();
+                ctx.fill();
+
+                const fx = headTurn * 8.5;
+
+                // Soft rosy cheek blush gradient
+                [-12.5, 12.5].forEach((cxOff) => {
+                    const blush = ctx.createRadialGradient(fx + cxOff, -29.5, 1, fx + cxOff, -29.5, 13);
+                    blush.addColorStop(0, 'rgba(238, 118, 124, 0.34)');
+                    blush.addColorStop(1, 'rgba(238, 118, 124, 0)');
+                    ctx.fillStyle = blush;
+                    ctx.beginPath();
+                    ctx.arc(fx + cxOff, -29.5, 13, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Gentle arched honey-brown eyebrows
+                ctx.strokeStyle = '#5c3218';
+                ctx.lineWidth = 2.3;
+                ctx.lineCap = 'round';
+                ctx.beginPath();
+                ctx.moveTo(fx - 18, -46.5);
+                ctx.quadraticCurveTo(fx - 11.5, -50.2, fx - 5, -47.5);
+                ctx.moveTo(fx + 5, -47.5);
+                ctx.quadraticCurveTo(fx + 11.5, -50.2, fx + 18, -46.5);
+                ctx.stroke();
+
+                // --- LUMINOUS EMERALD-HAZEL / WARM-AMBER CINEMA EYES ---
+                [-11.5, 11.5].forEach((exOff, eyeIdx) => {
+                    const ex = fx + exOff;
+                    const ey = -39;
+                    if (blink > 0.65) {
+                        ctx.strokeStyle = '#4a2614';
+                        ctx.lineWidth = 2.4;
+                        ctx.beginPath();
+                        ctx.moveTo(ex - 5.8, ey + 0.5);
+                        ctx.quadraticCurveTo(ex, ey + 3.0, ex + 5.8, ey + 0.5);
+                        ctx.stroke();
+                    } else {
+                        const eyeH = 4.5 * (1 - blink * 0.72);
+                        // Luminous sclera
+                        ctx.fillStyle = '#ffffff';
+                        ctx.beginPath();
+                        ctx.ellipse(ex, ey, 6.0, eyeH, eyeIdx === 0 ? -0.04 : 0.04, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Detailed emerald-hazel & warm-amber radial iris
+                        const ix = ex + headTurn * 1.4;
+                        const irisGrad = ctx.createRadialGradient(ix, ey + 0.5, 0.8, ix, ey, 3.7);
+                        irisGrad.addColorStop(0, '#1f1810');
+                        irisGrad.addColorStop(0.42, '#4e6b48'); // Emerald-hazel inner ring
+                        irisGrad.addColorStop(0.78, '#b57b38'); // Warm amber outer glow
+                        irisGrad.addColorStop(1, '#3b2514');
+                        ctx.fillStyle = irisGrad;
+                        ctx.beginPath();
+                        ctx.arc(ix, ey, 3.6, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Deep expressive pupil
+                        ctx.fillStyle = '#120d0a';
+                        ctx.beginPath();
+                        ctx.arc(ix, ey, 1.55, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Double sparkling cinema catchlights
+                        ctx.fillStyle = '#ffffff';
+                        ctx.beginPath();
+                        ctx.arc(ix - 1.25, ey - 1.25, 1.3, 0, Math.PI * 2);
+                        ctx.arc(ix + 1.3, ey + 1.0, 0.65, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Feathered dark upper eyelashes
+                        ctx.strokeStyle = '#2b160c';
+                        ctx.lineWidth = 2.3;
+                        ctx.beginPath();
+                        ctx.moveTo(ex - 6.3, ey - 0.5);
+                        ctx.quadraticCurveTo(ex, ey - eyeH - 1.2, ex + 6.3, ey - 0.5);
+                        ctx.stroke();
+
+                        // Delicate outer lash flick
+                        const flickDir = eyeIdx === 0 ? -1 : 1;
+                        ctx.lineWidth = 1.6;
+                        ctx.beginPath();
+                        ctx.moveTo(ex + flickDir * 5.8, ey - 0.8);
+                        ctx.lineTo(ex + flickDir * 7.8, ey - 2.4);
+                        ctx.stroke();
+                    }
+                });
+
+                // Small graceful nose with soft bridge highlight
+                ctx.strokeStyle = 'rgba(155, 95, 72, 0.48)';
+                ctx.lineWidth = 1.8;
+                ctx.beginPath();
+                ctx.moveTo(fx, -39);
+                ctx.lineTo(fx + headTurn * 2.4, -27.5);
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(255, 245, 236, 0.72)';
+                ctx.beginPath();
+                ctx.arc(fx + headTurn * 2.2, -28.5, 1.3, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Rose-tinted lips with Cupid's bow & glossy highlight
+                if (expression === 'smile' || expression === 'shySmile') {
+                    // Upper lip with Cupid's bow
+                    ctx.fillStyle = '#cf6d72';
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 8.5, -17);
+                    ctx.quadraticCurveTo(fx - 3.5, -19.2, fx, -17.6);
+                    ctx.quadraticCurveTo(fx + 3.5, -19.2, fx + 8.5, -17);
+                    ctx.quadraticCurveTo(fx, -14.8, fx - 8.5, -17);
+                    ctx.fill();
+
+                    // Lower lip & smile curve
+                    ctx.fillStyle = '#e08286';
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 7.5, -16.5);
+                    ctx.quadraticCurveTo(fx, -10.5, fx + 7.5, -16.5);
+                    ctx.quadraticCurveTo(fx, -13.5, fx - 7.5, -16.5);
+                    ctx.fill();
+
+                    // Glossy lower-lip highlight
+                    ctx.fillStyle = 'rgba(255, 238, 240, 0.78)';
+                    ctx.beginPath();
+                    ctx.ellipse(fx, -13.4, 3.2, 1.0, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillStyle = '#d47478';
+                    ctx.beginPath();
+                    ctx.moveTo(fx - 7.5, -16.2);
+                    ctx.quadraticCurveTo(fx - 3, -18.2, fx, -16.8);
+                    ctx.quadraticCurveTo(fx + 3, -18.2, fx + 7.5, -16.2);
+                    ctx.quadraticCurveTo(fx, -12.6, fx - 7.5, -16.2);
+                    ctx.fill();
+                }
+
+                // --- FRONT HONEY-CHESTNUT HAIR: WISPY BANGS & FACE-FRAMING TENDRILS ---
+                const frontHairGrad = ctx.createLinearGradient(-30, -86, 30, 25);
+                frontHairGrad.addColorStop(0, '#99592e');
+                frontHairGrad.addColorStop(0.55, '#6b3919');
+                frontHairGrad.addColorStop(1, '#3d1d0b');
+                ctx.fillStyle = frontHairGrad;
+
+                // Left sweeping lock & tendril
+                ctx.beginPath();
+                ctx.moveTo(-2, -80);
+                ctx.bezierCurveTo(-26, -80, -34, -52, -30 + hairWave * 0.4, -2);
+                ctx.bezierCurveTo(-26 + hairWave * 0.5, 26, -16 + hairWave * 0.5, 48, -26 + hairWave * 0.65, 66);
+                ctx.bezierCurveTo(-39 + hairWave * 0.65, 42, -41, -28, -30, -66);
+                ctx.closePath();
+                ctx.fill();
+
+                // Right sweeping lock & tendril
+                ctx.beginPath();
+                ctx.moveTo(-2, -80);
+                ctx.bezierCurveTo(25, -80, 34, -52, 30 + hairWave * 0.4, -2);
+                ctx.bezierCurveTo(26 + hairWave * 0.5, 26, 16 + hairWave * 0.5, 48, 26 + hairWave * 0.65, 66);
+                ctx.bezierCurveTo(39 + hairWave * 0.65, 42, 41, -28, 30, -66);
+                ctx.closePath();
+                ctx.fill();
+
+                // Delicate wispy center bangs
+                ctx.beginPath();
+                ctx.moveTo(-12, -74);
+                ctx.quadraticCurveTo(-8 + hairWave * 0.25, -56, -13 + hairWave * 0.3, -47);
+                ctx.quadraticCurveTo(-4, -57, -1 + hairWave * 0.2, -46);
+                ctx.quadraticCurveTo(4, -58, 10 + hairWave * 0.3, -48);
+                ctx.quadraticCurveTo(12, -62, 8, -74);
+                ctx.closePath();
+                ctx.fill();
+
+                // Golden crown rim-light sheen
+                ctx.strokeStyle = rimLight;
+                ctx.lineWidth = 1.8;
+                ctx.beginPath();
+                ctx.moveTo(-26, -64);
+                ctx.quadraticCurveTo(0, -84, 26, -64);
+                ctx.stroke();
+
+                ctx.restore();
+                ctx.restore();
+            }
+
+            // ======================================================================
+            // 4. SIX CINEMATIC SCENES (EXACT 0–30s STORYBOARD)
+            // ======================================================================
+
+            // SCENE 1 (0–5s): THE FIRST SIGHT (Golden Hour City Street & Café Window)
+            function renderScene1(ctx, localT, globalT) {
+                const zoom = 1.0 + localT * 0.016;
+                const panX = -localT * 12;
+                ctx.save();
+                ctx.translate(W * 0.5 + panX, H * 0.5);
+                ctx.scale(zoom, zoom);
+                ctx.translate(-W * 0.5, -H * 0.5);
+
+                // Golden-hour sky & sunbeams
+                const sky = ctx.createLinearGradient(0, 0, 0, H * 0.65);
+                sky.addColorStop(0, '#3d5a80');
+                sky.addColorStop(0.45, '#e08e55');
+                sky.addColorStop(1, '#ffe3a8');
+                ctx.fillStyle = sky;
+                ctx.fillRect(-60, -60, W + 120, H + 120);
+
+                // Volumetric sunbeams from upper left
+                const sunGrad = ctx.createRadialGradient(160, 260, 20, 160, 260, 920);
+                sunGrad.addColorStop(0, 'rgba(255, 246, 210, 0.85)');
+                sunGrad.addColorStop(0.4, 'rgba(255, 194, 112, 0.34)');
+                sunGrad.addColorStop(1, 'rgba(255, 194, 112, 0)');
+                ctx.fillStyle = sunGrad;
+                ctx.fillRect(-60, -60, W + 120, H + 120);
+
+                // Distant European-style city architecture
+                ctx.fillStyle = '#735348';
+                ctx.fillRect(-40, 420, 480, 920);
+                ctx.fillStyle = '#5c4139';
+                ctx.fillRect(420, 340, 700, 1000);
+
+                // Cobblestone street & golden reflections
+                const streetGrad = ctx.createLinearGradient(0, 1280, 0, H + 60);
+                streetGrad.addColorStop(0, '#59463e');
+                streetGrad.addColorStop(0.5, '#3b2e2a');
+                streetGrad.addColorStop(1, '#211917');
+                ctx.fillStyle = streetGrad;
+                ctx.fillRect(-60, 1280, W + 120, H - 1200);
+
+                // Warm amber café window on the right
+                const winX = 520, winY = 640, winW = 500, winH = 620;
+                const cafeGlow = ctx.createRadialGradient(winX + 250, winY + 300, 30, winX + 250, winY + 300, 420);
+                cafeGlow.addColorStop(0, '#ffdfa0');
+                cafeGlow.addColorStop(0.55, '#d98a3c');
+                cafeGlow.addColorStop(1, '#4a2816');
+                ctx.fillStyle = cafeGlow;
+                ctx.beginPath();
+                ctx.roundRect(winX, winY, winW, winH, 18);
+                ctx.fill();
+
+                // Hanging Edison pendant lights inside café
+                [640, 860].forEach((lx) => {
+                    ctx.strokeStyle = '#2b1810';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.moveTo(lx, winY);
+                    ctx.lineTo(lx, winY + 120);
+                    ctx.stroke();
+
+                    const bulbGlow = ctx.createRadialGradient(lx, winY + 130, 3, lx, winY + 130, 65);
+                    bulbGlow.addColorStop(0, '#fffbe6');
+                    bulbGlow.addColorStop(0.4, 'rgba(255, 200, 110, 0.5)');
+                    bulbGlow.addColorStop(1, 'rgba(255, 200, 110, 0)');
+                    ctx.fillStyle = bulbGlow;
+                    ctx.beginPath();
+                    ctx.arc(lx, winY + 130, 65, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Girl seated inside by the café window; she turns her head & smiles at t=2.2s
+                const eyeContactT = smoothstep(2.0, 3.4, localT);
+                const girlBlink = (localT > 2.6 && localT < 2.8) ? 1 : 0;
+                drawGirl(ctx, {
+                    x: 755,
+                    y: 965,
+                    scale: 1.24,
+                    seated: true,
+                    headTurn: lerp(0.35, -0.75, eyeContactT),
+                    expression: eyeContactT > 0.5 ? 'smile' : 'neutral',
+                    blink: girlBlink,
+                    wind: globalT * 0.4
+                });
+
+                // Wooden café table & warm steaming coffee cup
+                ctx.fillStyle = '#4a2716';
+                ctx.fillRect(610, 1110, 320, 150);
+                ctx.fillStyle = '#faf5ee';
+                ctx.beginPath();
+                ctx.roundRect(685, 1084, 34, 26, 6);
+                ctx.fill();
+
+                // Glass window mullions & diagonal reflection sheen
+                ctx.strokeStyle = '#2d1c14';
+                ctx.lineWidth = 14;
+                ctx.strokeRect(winX, winY, winW, winH);
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                ctx.moveTo(winX + winW * 0.5, winY);
+                ctx.lineTo(winX + winW * 0.5, winY + winH);
+                ctx.stroke();
+
+                ctx.fillStyle = 'rgba(255, 245, 225, 0.14)';
+                ctx.beginPath();
+                ctx.moveTo(winX + 40, winY);
+                ctx.lineTo(winX + 160, winY);
+                ctx.lineTo(winX + 60, winY + winH);
+                ctx.lineTo(winX, winY + winH);
+                ctx.closePath();
+                ctx.fill();
+
+                // Boy walking along the street, slowing down as he notices her
+                const walkStop = smoothstep(0.0, 2.6, localT);
+                const boyX = lerp(175, 345, walkStop);
+                const walkCycle = (1 - smoothstep(2.1, 2.8, localT)) * localT * 6.5;
+                const boyBlink = (localT > 3.1 && localT < 3.28) ? 1 : 0;
+
+                drawBoy(ctx, {
+                    x: boyX,
+                    y: 1095,
+                    scale: 1.36,
+                    walkPhase: walkCycle,
+                    headTurn: lerp(0.35, 0.88, smoothstep(1.6, 2.9, localT)),
+                    expression: eyeContactT > 0.6 ? 'awe' : 'neutral',
+                    blink: boyBlink,
+                    wind: globalT
+                });
+
+                drawAutumnLeaves(ctx, globalT, 20);
+                drawBokehLayer(ctx, globalT, 0.75, true);
+                ctx.restore();
+            }
+
+            // SCENE 2 (5–10s): THE LITTLE MOMENTS (Two Smoothly Blended Montage Shots)
+            function renderScene2(ctx, localT, globalT) {
+                const subBlend = smoothstep(2.25, 2.85, localT);
+
+                // SHOT 2A (0 - 2.6s): Crossing paths on a sunlit tree-lined avenue
+                if (subBlend < 1) {
+                    ctx.save();
+                    ctx.globalAlpha = 1 - subBlend;
+                    const zoomA = 1.02 + localT * 0.02;
+                    ctx.translate(W * 0.5, H * 0.5);
+                    ctx.scale(zoomA, zoomA);
+                    ctx.translate(-W * 0.5, -H * 0.5);
+
+                    const skyA = ctx.createLinearGradient(0, 0, 0, H);
+                    skyA.addColorStop(0, '#6a8eae');
+                    skyA.addColorStop(0.55, '#f2c185');
+                    skyA.addColorStop(1, '#3d2f2a');
+                    ctx.fillStyle = skyA;
+                    ctx.fillRect(0, 0, W, H);
+
+                    // Golden autumn tree canopy
+                    ctx.fillStyle = '#c46d29';
+                    ctx.beginPath();
+                    ctx.arc(180, 420, 320, 0, Math.PI * 2);
+                    ctx.arc(880, 380, 360, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Avenue walkway
+                    ctx.fillStyle = '#4a3d38';
+                    ctx.fillRect(0, 1260, W, 660);
+
+                    // Girl walking left, turning back with a shy smile
+                    const gX = lerp(740, 420, localT / 2.8);
+                    drawGirl(ctx, {
+                        x: gX,
+                        y: 1080,
+                        scale: 1.32,
+                        walkPhase: localT * 5.8,
+                        headTurn: lerp(-0.65, 0.78, smoothstep(0.9, 2.1, localT)),
+                        expression: 'shySmile',
+                        wind: globalT * 1.2
+                    });
+
+                    // Boy walking right, glancing back shyly
+                    const bX = lerp(310, 660, localT / 2.8);
+                    drawBoy(ctx, {
+                        x: bX,
+                        y: 1110,
+                        scale: 1.38,
+                        walkPhase: localT * 5.8,
+                        headTurn: lerp(0.65, -0.82, smoothstep(1.0, 2.2, localT)),
+                        expression: 'smile',
+                        wind: globalT * 1.2
+                    });
+
+                    drawAutumnLeaves(ctx, globalT, 24);
+                    drawBokehLayer(ctx, globalT, 0.85, true);
+                    ctx.restore();
+                }
+
+                // SHOT 2B (2.4 - 5.0s): Opposite ends of a sunlit park bench noticing each other
+                if (subBlend > 0) {
+                    ctx.save();
+                    ctx.globalAlpha = subBlend;
+                    const tB = Math.max(0, localT - 2.3);
+                    const zoomB = 1.0 + tB * 0.022;
+                    ctx.translate(W * 0.5, H * 0.5);
+                    ctx.scale(zoomB, zoomB);
+                    ctx.translate(-W * 0.5, -H * 0.5);
+
+                    const parkSky = ctx.createLinearGradient(0, 0, 0, H);
+                    parkSky.addColorStop(0, '#52796f');
+                    parkSky.addColorStop(0.5, '#cad2c5');
+                    parkSky.addColorStop(1, '#2f3e46');
+                    ctx.fillStyle = parkSky;
+                    ctx.fillRect(0, 0, W, H);
+
+                    // Warm dappled sunlight
+                    const sunPark = ctx.createRadialGradient(540, 460, 30, 540, 460, 740);
+                    sunPark.addColorStop(0, 'rgba(255, 244, 200, 0.8)');
+                    sunPark.addColorStop(1, 'rgba(255, 244, 200, 0)');
+                    ctx.fillStyle = sunPark;
+                    ctx.fillRect(0, 0, W, H);
+
+                    // Park lawn & pathway
+                    ctx.fillStyle = '#38523c';
+                    ctx.fillRect(0, 960, W, 380);
+                    ctx.fillStyle = '#47423e';
+                    ctx.fillRect(0, 1320, W, 600);
+
+                    // Long wooden park bench
+                    ctx.fillStyle = '#6b4226';
+                    ctx.fillRect(140, 1110, 800, 24);
+                    ctx.fillRect(140, 1185, 800, 22);
+                    ctx.fillStyle = '#24272e';
+                    ctx.fillRect(175, 1110, 16, 180);
+                    ctx.fillRect(889, 1110, 16, 180);
+
+                    const lookT = smoothstep(0.3, 1.8, tB);
+                    // Boy on left end looking toward her
+                    drawBoy(ctx, {
+                        x: 295,
+                        y: 1055,
+                        scale: 1.24,
+                        headTurn: lerp(0.2, 0.85, lookT),
+                        expression: 'smile',
+                        wind: globalT
+                    });
+
+                    // Girl on right end turning toward him with a warm smile
+                    drawGirl(ctx, {
+                        x: 785,
+                        y: 1055,
+                        scale: 1.2,
+                        seated: true,
+                        headTurn: lerp(-0.2, -0.85, lookT),
+                        expression: 'smile',
+                        wind: globalT
+                    });
+
+                    drawBokehLayer(ctx, globalT, 0.9, true);
+                    ctx.restore();
+                }
+            }
+
+            // SCENE 3 (10–15s): THE RAIN (Rainy Evening & Offering His Umbrella)
+            function renderScene3(ctx, localT, globalT) {
+                const zoom = 1.0 + localT * 0.018;
+                ctx.save();
+                ctx.translate(W * 0.5, H * 0.5);
+                ctx.scale(zoom, zoom);
+                ctx.translate(-W * 0.5, -H * 0.5);
+
+                // Moody rainy blue-hour twilight sky
+                const sky = ctx.createLinearGradient(0, 0, 0, H);
+                sky.addColorStop(0, '#0a1526');
+                sky.addColorStop(0.52, '#1a2f4b');
+                sky.addColorStop(1, '#090f1a');
+                ctx.fillStyle = sky;
+                ctx.fillRect(-50, -50, W + 100, H + 100);
+
+                // Warm glowing vintage streetlamp halo
+                const lampX = 210, lampY = 580;
+                ctx.strokeStyle = '#1b2230';
+                ctx.lineWidth = 14;
+                ctx.beginPath();
+                ctx.moveTo(lampX, lampY);
+                ctx.lineTo(lampX, 1340);
+                ctx.stroke();
+
+                const lampHalo = ctx.createRadialGradient(lampX, lampY, 8, lampX, lampY, 460);
+                lampHalo.addColorStop(0, 'rgba(255, 224, 150, 0.92)');
+                lampHalo.addColorStop(0.32, 'rgba(255, 185, 95, 0.34)');
+                lampHalo.addColorStop(1, 'rgba(255, 185, 95, 0)');
+                ctx.fillStyle = lampHalo;
+                ctx.fillRect(0, 120, W, 1200);
+
+                // Wet asphalt road with shimmering golden & blue reflections
+                const roadGrad = ctx.createLinearGradient(0, 1300, 0, H);
+                roadGrad.addColorStop(0, '#121b2b');
+                roadGrad.addColorStop(1, '#070b12');
+                ctx.fillStyle = roadGrad;
+                ctx.fillRect(-50, 1300, W + 100, H - 1250);
+
+                // Shimmering water reflections on road
+                for (let r = 0; r < 22; r++) {
+                    const ry = 1330 + r * 26;
+                    const shimmer = Math.sin(globalT * 4.5 + r) * 16;
+                    ctx.fillStyle = r % 2 === 0 ? 'rgba(255, 198, 110, 0.24)' : 'rgba(130, 180, 255, 0.18)';
+                    ctx.fillRect(140 + shimmer, ry, 240, 4);
+                    ctx.fillRect(620 - shimmer, ry + 8, 220, 3);
+                }
+
+                // Boy approaches from left (0 to 2.2s) and extends his dark umbrella over her
+                const approach = smoothstep(0.0, 2.2, localT);
+                const boyX = lerp(240, 455, approach);
+                const walkCycle = (1 - smoothstep(1.8, 2.3, localT)) * localT * 6.2;
+                const sharedMoment = smoothstep(2.0, 3.2, localT);
+
+                // Girl standing on right, turning toward him with a warm shy smile
+                drawGirl(ctx, {
+                    x: 645,
+                    y: 1105,
+                    scale: 1.34,
+                    headTurn: lerp(-0.15, -0.78, sharedMoment),
+                    expression: sharedMoment > 0.4 ? 'shySmile' : 'neutral',
+                    blink: (localT > 3.4 && localT < 3.58) ? 1 : 0,
+                    wind: globalT * 1.3,
+                    rimLight: 'rgba(255, 215, 150, 0.65)'
+                });
+
+                drawBoy(ctx, {
+                    x: boyX,
+                    y: 1095,
+                    scale: 1.38,
+                    walkPhase: walkCycle,
+                    headTurn: lerp(0.45, 0.82, sharedMoment),
+                    expression: sharedMoment > 0.4 ? 'smile' : 'neutral',
+                    armMode: 'umbrella',
+                    wind: globalT * 1.3,
+                    rimLight: 'rgba(255, 215, 150, 0.65)'
+                });
+
+                // Large Dark Canopy Umbrella extending over both characters
+                const umbX = lerp(boyX + 45, 565, approach);
+                const umbY = 815;
+                // Umbrella shaft & J-handle
+                ctx.strokeStyle = '#1c222e';
+                ctx.lineWidth = 7;
+                ctx.beginPath();
+                ctx.moveTo(boyX + 54, 1125);
+                ctx.lineTo(umbX, umbY);
+                ctx.stroke();
+
+                // Canopy dome
+                const umbGrad = ctx.createLinearGradient(umbX - 210, umbY - 95, umbX + 210, umbY + 20);
+                umbGrad.addColorStop(0, '#2a3548');
+                umbGrad.addColorStop(0.5, '#171e2b');
+                umbGrad.addColorStop(1, '#0e131c');
+                ctx.fillStyle = umbGrad;
+                ctx.beginPath();
+                ctx.moveTo(umbX - 215, umbY + 12);
+                ctx.quadraticCurveTo(umbX, umbY - 125, umbX + 215, umbY + 12);
+                ctx.quadraticCurveTo(umbX + 110, umbY - 8, umbX, umbY + 6);
+                ctx.quadraticCurveTo(umbX - 110, umbY - 8, umbX - 215, umbY + 12);
+                ctx.closePath();
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255, 220, 165, 0.45)';
+                ctx.lineWidth = 2.5;
+                ctx.stroke();
+
+                // Diagonal falling rain streaks (skipping dry zone beneath umbrella)
+                ctx.save();
+                ctx.strokeStyle = 'rgba(205, 228, 255, 0.42)';
+                raindrops.forEach((drop) => {
+                    const rx = ((drop.x - globalT * 210) % (W + 200) + (W + 200)) % (W + 200) - 100;
+                    const ry = (drop.y + globalT * drop.speed) % H;
+                    // Keep dry zone underneath the shared umbrella
+                    if (rx > umbX - 195 && rx < umbX + 195 && ry > umbY + 10 && ry < 1380) {
+                        return;
+                    }
+                    ctx.globalAlpha = drop.alpha;
+                    ctx.lineWidth = drop.width;
+                    ctx.beginPath();
+                    ctx.moveTo(rx, ry);
+                    ctx.lineTo(rx - 10, ry + drop.len);
+                    ctx.stroke();
+                });
+                ctx.restore();
+
+                drawBokehLayer(ctx, globalT, 0.65, true);
+                ctx.restore();
+            }
+
+            // SCENE 4 (15–20s): THE EMPTY PLACE (Overcast Morning & Empty Café Window)
+            function renderScene4(ctx, localT, globalT) {
+                const zoom = 1.04 - localT * 0.012;
+                ctx.save();
+                ctx.translate(W * 0.5, H * 0.5);
+                ctx.scale(zoom, zoom);
+                ctx.translate(-W * 0.5, -H * 0.5);
+
+                // Cool overcast morning palette
+                const sky = ctx.createLinearGradient(0, 0, 0, H);
+                sky.addColorStop(0, '#46586b');
+                sky.addColorStop(0.55, '#7c8f9e');
+                sky.addColorStop(1, '#262e38');
+                ctx.fillStyle = sky;
+                ctx.fillRect(-50, -50, W + 100, H + 100);
+
+                // Café building & cool morning street
+                ctx.fillStyle = '#474f59';
+                ctx.fillRect(420, 340, 700, 1000);
+                ctx.fillStyle = '#2d333b';
+                ctx.fillRect(-50, 1280, W + 100, H - 1220);
+
+                // Same café window, now cool & empty inside
+                const winX = 520, winY = 640, winW = 500, winH = 620;
+                const coolWin = ctx.createLinearGradient(winX, winY, winX, winY + winH);
+                coolWin.addColorStop(0, '#627382');
+                coolWin.addColorStop(1, '#2a333d');
+                ctx.fillStyle = coolWin;
+                ctx.beginPath();
+                ctx.roundRect(winX, winY, winW, winH, 18);
+                ctx.fill();
+
+                // Empty wooden chair & untouched white teacup
+                ctx.fillStyle = '#33241d';
+                ctx.fillRect(745, 960, 14, 165);
+                ctx.fillRect(665, 1085, 95, 16);
+                ctx.fillStyle = '#3d281e';
+                ctx.fillRect(610, 1110, 320, 150);
+                ctx.fillStyle = '#dce3ea';
+                ctx.beginPath();
+                ctx.roundRect(685, 1086, 32, 24, 6);
+                ctx.fill();
+
+                ctx.strokeStyle = '#1f242b';
+                ctx.lineWidth = 14;
+                ctx.strokeRect(winX, winY, winW, winH);
+                ctx.lineWidth = 8;
+                ctx.beginPath();
+                ctx.moveTo(winX + winW * 0.5, winY);
+                ctx.lineTo(winX + winW * 0.5, winY + winH);
+                ctx.stroke();
+
+                // Boy arrives holding his closed umbrella, looks around, then lowers his head in disappointment
+                const lookAround = Math.sin(clamp(localT - 0.6, 0, 2.2) * Math.PI) * 0.55;
+                const lookDown = smoothstep(2.4, 4.2, localT);
+
+                drawBoy(ctx, {
+                    x: 345,
+                    y: 1095,
+                    scale: 1.36,
+                    headTurn: lerp(0.75, 0.25, lookDown) + lookAround,
+                    headTilt: lookDown * 0.24,
+                    expression: lookDown > 0.35 ? 'sad' : 'neutral',
+                    armMode: 'holdingClosedUmbrella',
+                    wind: globalT * 0.7,
+                    rimLight: 'rgba(195, 215, 235, 0.45)'
+                });
+
+                drawBokehLayer(ctx, globalT, 0.45, false);
+                ctx.restore();
+            }
+
+            // SCENE 5 (20–25s): THE SECRET NOTE (Close-up of Eyes & Handwritten Note in Old Book)
+            function renderScene5(ctx, localT, globalT) {
+                const zoom = 1.0 + localT * 0.022;
+                ctx.save();
+                ctx.translate(W * 0.5, H * 0.5);
+                ctx.scale(zoom, zoom);
+                ctx.translate(-W * 0.5, -H * 0.5);
+
+                // Warm lamp-lit vintage study background
+                const roomGrad = ctx.createRadialGradient(540, 560, 40, 540, 760, 1100);
+                roomGrad.addColorStop(0, '#593b24');
+                roomGrad.addColorStop(0.55, '#2b1b11');
+                roomGrad.addColorStop(1, '#120b07');
+                ctx.fillStyle = roomGrad;
+                ctx.fillRect(-50, -50, W + 100, H + 100);
+
+                // Upper frame: Emotional close-up of the boy's eyes looking down at the note
+                drawBoy(ctx, {
+                    x: 540,
+                    y: 785,
+                    scale: 2.35,
+                    headTurn: 0.04,
+                    headTilt: 0.16,
+                    expression: 'awe',
+                    blink: (localT > 2.1 && localT < 2.32) ? 1 : 0,
+                    wind: globalT * 0.4,
+                    rimLight: 'rgba(255, 205, 135, 0.7)'
+                });
+
+                // Subtle emotional glisten in his eyes
+                const glistenAlpha = smoothstep(1.2, 3.5, localT) * 0.65;
+                ctx.fillStyle = `rgba(220, 242, 255, ${glistenAlpha})`;
+                ctx.beginPath();
+                ctx.ellipse(512, 628, 12, 3, 0, 0, Math.PI * 2);
+                ctx.ellipse(568, 628, 12, 3, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Lower-mid frame: Open vintage hardcover book & handwritten folded cream note
+                const bookY = 1040;
+                // Hardcover leather binding
+                ctx.fillStyle = '#4a2514';
+                ctx.beginPath();
+                ctx.roundRect(140, bookY, 800, 440, 18);
+                ctx.fill();
+
+                // Left & Right aged cream book pages
+                const pageGrad = ctx.createLinearGradient(165, bookY, 915, bookY);
+                pageGrad.addColorStop(0, '#e6d7be');
+                pageGrad.addColorStop(0.48, '#f5ebd8');
+                pageGrad.addColorStop(0.5, '#c4b193');
+                pageGrad.addColorStop(0.52, '#f5ebd8');
+                pageGrad.addColorStop(1, '#e2d2b5');
+                ctx.fillStyle = pageGrad;
+                ctx.beginPath();
+                ctx.roundRect(166, bookY + 16, 748, 405, 10);
+                ctx.fill();
+
+                // Folded cream stationery note resting across the pages
+                ctx.save();
+                ctx.translate(540, bookY + 215);
+                ctx.rotate(-0.045);
+                ctx.shadowColor = 'rgba(35, 20, 10, 0.35)';
+                ctx.shadowBlur = 24;
+                ctx.shadowOffsetY = 10;
+                ctx.fillStyle = '#fffaf0';
+                ctx.beginPath();
+                ctx.roundRect(-275, -135, 550, 270, 8);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.shadowOffsetY = 0;
+
+                // Subtle stationery fold crease
+                ctx.strokeStyle = 'rgba(180, 155, 125, 0.35)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(-265, 0);
+                ctx.lineTo(265, 0);
+                ctx.stroke();
+
+                // Handwritten cursive message revealing smoothly
+                const revealAlpha = smoothstep(0.4, 1.8, localT);
+                ctx.globalAlpha = revealAlpha;
+                ctx.fillStyle = '#3b281c';
+                ctx.font = 'italic 33px Georgia, serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('“I wanted to tell you...', 0, -34);
+                ctx.fillText('you made my ordinary', 0, 24);
+                ctx.fillText('days beautiful.”', 0, 82);
+                ctx.restore();
+
+                drawBokehLayer(ctx, globalT, 0.7, true);
+                ctx.restore();
+            }
+
+            // SCENE 6 (25–30s): THE DEEP ENDING (Evening Sky, Peaceful Smile & Memory Silhouette)
+            function renderScene6(ctx, localT, globalT) {
+                const zoom = 1.0 + localT * 0.015;
+                ctx.save();
+                ctx.translate(W * 0.5, H * 0.5);
+                ctx.scale(zoom, zoom);
+                ctx.translate(-W * 0.5, -H * 0.5);
+
+                // Golden-lavender twilight sky
+                const sky = ctx.createLinearGradient(0, 0, 0, H);
+                sky.addColorStop(0, '#1e2749');
+                sky.addColorStop(0.42, '#6b4e71');
+                sky.addColorStop(0.75, '#e08e6d');
+                sky.addColorStop(1, '#1a1826');
+                ctx.fillStyle = sky;
+                ctx.fillRect(-50, -50, W + 100, H + 100);
+
+                // Warm horizon glow
+                const horizon = ctx.createRadialGradient(540, 1080, 30, 540, 1080, 780);
+                horizon.addColorStop(0, 'rgba(255, 215, 155, 0.72)');
+                horizon.addColorStop(0.55, 'rgba(235, 145, 125, 0.25)');
+                horizon.addColorStop(1, 'rgba(235, 145, 125, 0)');
+                ctx.fillStyle = horizon;
+                ctx.fillRect(-50, -50, W + 100, H + 100);
+
+                // Evening terrace balustrade & cityscape silhouette
+                ctx.fillStyle = '#181a26';
+                ctx.fillRect(-50, 1340, W + 100, H - 1280);
+                ctx.fillStyle = '#242738';
+                ctx.fillRect(-50, 1265, W + 100, 22);
+
+                // Softly shimmering golden memory silhouette of the girl in the distance
+                const memPulse = 0.24 + 0.12 * Math.sin(globalT * 2.2);
+                ctx.save();
+                ctx.globalAlpha = memPulse * smoothstep(0.5, 2.2, localT);
+                drawGirl(ctx, {
+                    x: 745,
+                    y: 1055,
+                    scale: 1.15,
+                    headTurn: -0.65,
+                    expression: 'smile',
+                    wind: globalT * 1.1,
+                    rimLight: 'rgba(255, 235, 185, 0.9)'
+                });
+                ctx.restore();
+
+                // Boy standing beneath the evening sky, looking up with a gentle, peaceful smile
+                const lookUp = smoothstep(0.4, 2.0, localT);
+                drawBoy(ctx, {
+                    x: 410,
+                    y: 1085,
+                    scale: 1.38,
+                    headTurn: 0.28,
+                    headTilt: -lookUp * 0.14,
+                    expression: 'peaceful',
+                    blink: (localT > 2.8 && localT < 3.02) ? 1 : 0,
+                    wind: globalT * 1.15,
+                    rimLight: 'rgba(255, 210, 155, 0.75)'
+                });
+
+                drawAutumnLeaves(ctx, globalT, 16);
+                drawBokehLayer(ctx, globalT, 0.85, true);
+                ctx.restore();
+            }
+
+            const sceneRenderers = [
+                renderScene1,
+                renderScene2,
+                renderScene3,
+                renderScene4,
+                renderScene5,
+                renderScene6
+            ];
+
+            const sceneCaptions = [
+                '“Sometimes, a stranger becomes a memory.”',
+                '“They never spoke... but somehow, they understood.”',
+                '“One small gesture. A thousand unspoken feelings.”',
+                '“Then one day... she was gone.”',
+                '“I wanted to tell you... you made my ordinary days beautiful.”',
+                '“Some people leave your life... but never leave your heart.”'
+            ];
+
+            // ======================================================================
+            // 5. TIMELINE SEQUENCER, CROSSFADES, PAUSE & REPLAY CONTROLLER
+            // ======================================================================
+            let elapsed = 0;
+            let isPaused = false;
+            let isEnded = false;
+            let lastTimestamp = null;
+            let activeCaptionIdx = -1;
+
+            function updateSubtitles(t) {
+                const idx = Math.min(5, Math.floor(t / SCENE_LEN));
+                const localT = t - idx * SCENE_LEN;
+
+                // Fade caption in after 0.35s and fade out gently before scene transition (except final scene)
+                const shouldShow = localT >= 0.3 && (idx === 5 || localT <= 4.55);
+
+                if (shouldShow) {
+                    if (activeCaptionIdx !== idx) {
+                        activeCaptionIdx = idx;
+                        storyLineEl.textContent = sceneCaptions[idx];
+                    }
+                    storyLineEl.classList.add('visible');
+                } else {
+                    storyLineEl.classList.remove('visible');
+                }
+
+                // Final engagement prompt appears at 27.6s
+                if (t >= 27.6) {
+                    endingPromptEl.classList.add('visible');
+                } else {
+                    endingPromptEl.classList.remove('visible');
+                }
+
+                // Replay button appears cleanly at 29.7s
+                if (t >= 29.7) {
+                    replayBtn.classList.add('visible');
+                } else {
+                    replayBtn.classList.remove('visible');
+                }
+            }
+
+            function renderFrame(t) {
+                const clampedT = clamp(t, 0, TOTAL_DURATION);
+                const idx = Math.min(5, Math.floor(clampedT / SCENE_LEN));
+                const localT = clampedT - idx * SCENE_LEN;
+
+                // Update 6-segment progress bar
+                segFills.forEach((fill, sIdx) => {
+                    if (sIdx < idx) {
+                        fill.style.width = '100%';
+                    } else if (sIdx === idx) {
+                        const pct = clamp((localT / SCENE_LEN) * 100, 0, 100);
+                        fill.style.width = pct.toFixed(2) + '%';
+                    } else {
+                        fill.style.width = '0%';
+                    }
+                });
+
+                // Render current scene
+                ctx.clearRect(0, 0, W, H);
+                sceneRenderers[idx](ctx, localT, clampedT);
+
+                // Smooth 0.65s cinematic crossfade from previous scene at scene boundaries
+                const CROSSFADE = 0.65;
+                if (idx > 0 && localT < CROSSFADE) {
+                    const prevAlpha = 1 - smoothstep(0, CROSSFADE, localT);
+                    ctx.save();
+                    ctx.globalAlpha = prevAlpha;
+                    sceneRenderers[idx - 1](ctx, SCENE_LEN + localT, clampedT);
+                    ctx.restore();
+                }
+
+                updateSubtitles(clampedT);
+            }
+
+            function animationLoop(timestamp) {
+                if (lastTimestamp === null) {
+                    lastTimestamp = timestamp;
+                }
+
+                const dt = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
+                lastTimestamp = timestamp;
+
+                if (!isPaused && !isEnded) {
+                    elapsed += dt;
+                    if (elapsed >= TOTAL_DURATION) {
+                        elapsed = TOTAL_DURATION;
+                        isEnded = true;
+                    }
+                }
+
+                // Keep ambient motion gently alive even on final frame after 30s
+                const ambientT = isEnded ? TOTAL_DURATION + (timestamp * 0.001) % 60 : elapsed;
+                renderFrame(isEnded ? TOTAL_DURATION : elapsed);
+
+                if (isEnded) {
+                    ctx.clearRect(0, 0, W, H);
+                    renderScene6(ctx, 5.0, ambientT);
+                    updateSubtitles(TOTAL_DURATION);
+                }
+
+                requestAnimationFrame(animationLoop);
+            }
+
+            // Tap stage to pause/resume (helpful when starting Android screen recorder)
+            stage.addEventListener('click', () => {
+                if (isEnded) return;
+                isPaused = !isPaused;
+                pausePill.classList.toggle('visible', isPaused);
+                if (isPaused && RomanticAudio.isPlaying && RomanticAudio.mp3Audio) {
+                    RomanticAudio.mp3Audio.pause();
+                } else if (!isPaused && RomanticAudio.isPlaying && RomanticAudio.mp3Audio) {
+                    RomanticAudio.mp3Audio.play().catch(() => {});
+                }
+            });
+
+            // Replay button resets the entire 30-second film seamlessly
+            replayBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                elapsed = 0;
+                isPaused = false;
+                isEnded = false;
+                activeCaptionIdx = -1;
+                pausePill.classList.remove('visible');
+                endingPromptEl.classList.remove('visible');
+                replayBtn.classList.remove('visible');
+                RomanticAudio.restart();
+                renderFrame(0);
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                renderFrame(0);
+                requestAnimationFrame(animationLoop);
+            });
+        })();
     </script>
 </body>
 </html>
