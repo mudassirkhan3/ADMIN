@@ -35,6 +35,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    touch-action: pan-y;
   }
 
   /* Password Gate Overlay */
@@ -56,7 +57,7 @@
     max-width: 440px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.85);
     animation: gatePop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   @keyframes gatePop {
@@ -77,7 +78,7 @@
     font-weight: 700;
   }
   .gate-input:focus { outline: none; border-color: var(--psych-mint); }
-  .gate-error { color: var(--psych-coral); font-size: 0.92rem; font-weight: 700; margin-top: 6px; display: none; }
+  .gate-error { color: var(--psych-coral); font-size: 0.94rem; font-weight: 700; margin-top: 8px; display: none; }
 
   /* Ambient Orbs */
   .ambient-layer {
@@ -110,7 +111,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 26px;
+    padding: 0 24px;
     background: rgba(6, 18, 37, 0.96);
     backdrop-filter: blur(16px);
     border-bottom: 1.5px solid var(--border-glow);
@@ -121,18 +122,18 @@
   .header-badge { background: rgba(45, 212, 191, 0.2); border: 1px solid var(--psych-mint); color: #99f6e4; padding: 4px 12px; border-radius: 20px; font-size: 0.84rem; font-weight: 800; }
   
   .progress-track { flex: 1; max-width: 340px; margin: 0 20px; height: 9px; background: rgba(255,255,255,0.15); border-radius: 10px; overflow: hidden; }
-  .progress-fill { height: 100%; width: 5.55%; background: linear-gradient(90deg, var(--psych-mint), var(--psych-sky), var(--psych-warmth)); transition: width 0.4s ease; }
+  .progress-fill { height: 100%; width: 5.55%; background: linear-gradient(90deg, var(--psych-mint), var(--psych-sky), var(--psych-warmth)); transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 
   .header-right { display: flex; align-items: center; gap: 12px; }
   .slide-counter { font-weight: 800; font-size: 1.08rem; color: var(--text-white); min-width: 70px; text-align: right; }
   .hdr-btn { background: rgba(255,255,255,0.1); border: 1px solid var(--border-glow); color: var(--text-white); padding: 7px 14px; border-radius: 9px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
   .hdr-btn:hover { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); }
 
-  /* Deck & Slides */
+  /* Deck & Directional Slide Transitions */
   .deck {
     position: fixed;
     top: 64px;
-    bottom: 74px;
+    bottom: 76px;
     left: 0; right: 0;
     z-index: 10;
     max-width: 1440px;
@@ -153,12 +154,25 @@
     box-shadow: 0 35px 80px rgba(0,0,0,0.7);
     overflow-y: auto;
     position: relative;
-    animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
-  .slide.active { display: flex; flex-direction: column; justify-content: center; }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(18px) scale(0.985); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+  .slide.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.anim-next {
+    animation: slideInNext 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .slide.anim-prev {
+    animation: slideInPrev 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes slideInNext {
+    from { opacity: 0; transform: translateX(36px) scale(0.985); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+  }
+  @keyframes slideInPrev {
+    from { opacity: 0; transform: translateX(-36px) scale(0.985); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
   }
 
   /* Auditorium Typography & Spacing */
@@ -177,7 +191,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  h2 { font-size: 2.1rem; font-weight: 800; color: var(--text-white); margin-bottom: 12px; line-height: 1.25; }
+  h2 { font-size: 2.08rem; font-weight: 800; color: var(--text-white); margin-bottom: 12px; line-height: 1.25; }
   p.lead { font-size: 1.18rem; color: var(--text-soft); line-height: 1.5; margin-bottom: 14px; }
 
   /* Responsive Grids & Cards */
@@ -222,14 +236,14 @@
   .obj-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky)); color: var(--bg-abyss); font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
   /* Interactive Hook & Buttons */
-  .hook-option { width: 100%; text-align: left; padding: 14px 18px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.07); color: var(--text-white); font-size: 1.04rem; font-weight: 700; font-family: inherit; cursor: pointer; margin-bottom: 10px; transition: all 0.25s ease; display: flex; align-items: center; gap: 12px; }
+  .hook-option { width: 100%; text-align: left; padding: 14px 18px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.07); color: var(--text-white); font-size: 1.02rem; font-weight: 700; font-family: inherit; cursor: pointer; margin-bottom: 10px; transition: all 0.25s ease; display: flex; align-items: center; gap: 12px; }
   .hook-option:hover { background: rgba(56, 189, 248, 0.22); border-color: var(--psych-sky); transform: translateX(4px); }
-  .hook-option.wrong { background: rgba(251, 113, 133, 0.25); border-color: var(--psych-coral); }
-  .hook-option.correct { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); }
+  .hook-option.wrong { background: rgba(251, 113, 133, 0.26); border-color: var(--psych-coral); }
+  .hook-option.correct { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); box-shadow: 0 0 18px rgba(45, 212, 191, 0.3); }
 
   .stress-meter-wrap { margin: 10px 0; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 10px 14px; border: 1px solid rgba(255,255,255,0.18); }
   .stress-bar-bg { height: 14px; background: rgba(255,255,255,0.12); border-radius: 8px; overflow: hidden; margin-top: 6px; }
-  .stress-bar-fill { height: 100%; width: 92%; background: linear-gradient(90deg, #f43f5e, #fb7185); transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1), background 0.7s ease; }
+  .stress-bar-fill { height: 100%; width: 88%; background: linear-gradient(90deg, #f43f5e, #fb7185); transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1), background 0.7s ease; }
 
   .reveal-panel { display: none; margin-top: 10px; padding: 14px 18px; border-radius: 14px; background: rgba(45, 212, 191, 0.16); border: 1.5px solid var(--psych-mint); font-size: 0.98rem; line-height: 1.48; }
   .reveal-panel.show { display: block; animation: cardFadeIn 0.35s ease; }
@@ -292,13 +306,13 @@
     100% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.42); }
   }
 
-  /* Footer Controls - Always Visible on Mobile */
+  /* Footer Controls & Highlighted Next Slide Button */
   footer.nav-footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    height: 72px;
+    height: 74px;
     z-index: 60;
-    padding: 0 20px;
+    padding: 0 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -306,11 +320,49 @@
     backdrop-filter: blur(16px);
     border-top: 1.5px solid var(--border-glow);
   }
-  .nav-group { display: flex; gap: 8px; align-items: center; }
-  .nav-btn { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3); color: var(--text-white); padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 0.92rem; cursor: pointer; font-family: inherit; transition: all 0.2s ease; white-space: nowrap; }
-  .nav-btn:hover:not(:disabled) { background: rgba(45, 212, 191, 0.3); border-color: var(--psych-mint); }
-  .nav-btn.primary { background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky)); color: var(--bg-abyss); border: none; }
-  .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .nav-group { display: flex; gap: 10px; align-items: center; }
+  .nav-btn {
+    background: rgba(255,255,255,0.14);
+    border: 1.5px solid rgba(255,255,255,0.28);
+    color: var(--text-white);
+    padding: 11px 18px;
+    border-radius: 11px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+  .nav-btn:hover:not(:disabled) {
+    background: rgba(45, 212, 191, 0.28);
+    border-color: var(--psych-mint);
+  }
+  .nav-btn.next-highlight {
+    background: linear-gradient(135deg, #2dd4bf, #38bdf8, #fbbf24);
+    background-size: 200% 200%;
+    color: #041022;
+    border: 2px solid #ffffff;
+    padding: 12px 24px;
+    font-size: 1.02rem;
+    font-weight: 900;
+    box-shadow: 0 0 22px rgba(45, 212, 191, 0.65), 0 4px 14px rgba(0, 0, 0, 0.5);
+    animation: nextPulse 2.4s ease-in-out infinite;
+  }
+  .nav-btn.next-highlight:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.85);
+  }
+  @keyframes nextPulse {
+    0%, 100% { box-shadow: 0 0 16px rgba(45, 212, 191, 0.55); }
+    50% { box-shadow: 0 0 28px rgba(56, 189, 248, 0.9); }
+  }
+  .nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    animation: none;
+    box-shadow: none;
+  }
 
   /* Overview Modal */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(4, 12, 28, 0.9); backdrop-filter: blur(8px); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
@@ -322,31 +374,32 @@
 
   /* Mobile Adjustments */
   @media (max-width: 920px) {
-    .deck { padding: 8px 10px; bottom: 76px; }
+    .deck { padding: 8px 10px; bottom: 78px; }
     .slide { padding: 16px 14px; }
     .slide.active { justify-content: flex-start; }
     .title-layout, .grid-2, .grid-2-weighted, .grid-3, .grid-4, .grid-5, .obj-grid, .workflow-steps, .journey-steps-row, .sim-options-grid, .overview-grid {
       grid-template-columns: 1fr;
     }
     h1 { font-size: 1.9rem; }
-    h2 { font-size: 1.35rem; }
+    h2 { font-size: 1.38rem; }
     p.lead { font-size: 0.98rem; }
-    .progress-track, .header-title { display: none; }
-    .nav-btn { padding: 9px 12px; font-size: 0.85rem; }
+    .progress-track, .header-title, .desktop-only { display: none; }
+    .nav-btn { padding: 10px 13px; font-size: 0.88rem; }
+    .nav-btn.next-highlight { padding: 11px 18px; font-size: 0.95rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- Password Gate Modal -->
+<!-- Password Gate Modal (No Password Hint Shown) -->
 <div id="passwordGate">
   <div class="gate-card">
     <div style="font-size: 3rem; margin-bottom: 10px;">🔒🩺</div>
     <h2 style="font-size: 1.6rem; margin-bottom: 6px;">Presentation Access</h2>
     <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 14px;">Enter presentation password to unlock:</p>
-    <input type="password" id="gatePassInput" class="gate-input" placeholder="Enter password (group4)" autocomplete="current-password">
+    <input type="password" id="gatePassInput" class="gate-input" placeholder="Enter password" autocomplete="current-password">
     <button class="primary-action-btn" type="button" onclick="verifyPassword()" style="width: 100%;">Unlock Presentation ✨</button>
-    <div id="gateError" class="gate-error">Incorrect password. Hint: group4</div>
+    <div id="gateError" class="gate-error">Incorrect password. Please try again.</div>
   </div>
 </div>
 
@@ -375,7 +428,7 @@
 <main class="deck" id="deck">
 
   <!-- SLIDE 1 -->
-  <section class="slide active">
+  <section class="slide active anim-next">
     <div class="title-layout">
       <div>
         <div class="institute-header-box">
@@ -458,39 +511,45 @@
     </div>
   </section>
 
-  <!-- SLIDE 3 (UPDATED WITH NURSE 2 APPROACH) -->
+  <!-- SLIDE 3 (NEW TRICKY & CURIOSITY-SPARKING CLINICAL QUESTION) -->
   <section class="slide">
-    <div class="pill-row"><span class="pill coral">⚡ Live Clinical Challenge</span></div>
-    <h2>Audience Question: How Would You Approach 5-Year-Old Ayaan?</h2>
+    <div class="pill-row"><span class="pill coral">🤔 Tricky Clinical Question — Think Like a Pediatric Nurse!</span></div>
+    <h2>Why Did 3-Year-Old Zoya Refuse Her Syrup?</h2>
     <div class="grid-2-weighted">
       <div>
-        <div class="card" style="border-left: 6px solid var(--psych-coral); background: rgba(251, 113, 133, 0.14); margin-bottom: 14px;">
-          <p style="font-size: 1.14rem; font-weight: 700; color: var(--text-white);">
-            🚨 <strong>Scenario:</strong> <em>"5-year-old Ayaan is crying loudly, hiding behind his mother, and refusing a dressing change."</em>
+        <div class="card" style="border-left: 6px solid var(--psych-warmth); background: rgba(251, 191, 36, 0.13); margin-bottom: 12px;">
+          <p style="font-size: 1.08rem; font-weight: 700; color: var(--text-white); line-height: 1.48;">
+            💊 <strong>Ward Mystery:</strong> A polite nurse kneels down to 3-year-old Zoya's eye level, smiles warmly, and asks: <em>"Zoya, do you want to take your fever medicine now?"</em><br>
+            Zoya immediately shouts <strong>"NO!"</strong> and locks her lips tight. <strong>What went wrong, and what should the nurse say instead?</strong>
           </p>
         </div>
-        <h3 style="color: var(--psych-warmth); font-size: 1.15rem; margin-bottom: 10px;">Nurse 2 Approach (Recommended):</h3>
-        <button class="hook-option" type="button" onclick="triggerNurse2(this)">
-          <span>🩺 <strong>Nurse 2:</strong> Kneel to eye level, speak slowly, and offer a choice: <em>"I can see you're scared. Would you like me to explain what we're going to do, or shall we help Teddy first?"</em></span>
+
+        <button class="hook-option" type="button" onclick="triggerTrickyHook(this, 'A')">
+          <span><strong>A.</strong> "If you don't drink this syrup right now, you won't get to go home!"</span>
+        </button>
+        <button class="hook-option" type="button" onclick="triggerTrickyHook(this, 'B')">
+          <span><strong>B.</strong> "It's time for your medicine, Zoya. Would you like the red cup or the blue cup?"</span>
+        </button>
+        <button class="hook-option" type="button" onclick="triggerTrickyHook(this, 'C')">
+          <span><strong>C.</strong> "Look how sweet this syrup tastes—it's just like strawberry candy!"</span>
         </button>
       </div>
+
       <div>
         <div class="card" style="text-align: center; background: rgba(7, 25, 52, 0.92);">
-          <div style="font-size: 3.2rem; margin-bottom: 6px;" id="hookEmoji">😊🧸</div>
-          <div style="font-size: 1.15rem; font-weight: 800; color: var(--psych-mint);" id="hookStatus">AYAAN'S STRESS LEVEL: LOW (TRUST ESTABLISHED)</div>
+          <div style="font-size: 3.1rem; margin-bottom: 6px;" id="hookEmoji">🤨🔒</div>
+          <div style="font-size: 1.08rem; font-weight: 800; color: var(--psych-warmth);" id="hookStatus">TODDLER RESISTANCE: LOCKED</div>
           <div class="stress-meter-wrap">
-            <div style="display:flex; justify-content:space-between; font-size:0.88rem; font-weight:800;">
-              <span>Patient Anxiety Index</span>
-              <span id="stressPct" style="color:#5eead4;">18% (Calm & Safe)</span>
+            <div style="display:flex; justify-content:space-between; font-size:0.86rem; font-weight:800;">
+              <span>Resistance &amp; Power-Struggle Level</span>
+              <span id="stressPct" style="color:#fda4af;">88% (Refusal)</span>
             </div>
             <div class="stress-bar-bg">
-              <div class="stress-bar-fill" id="stressFill" style="width: 18%; background: linear-gradient(90deg, #0d9488, #2dd4bf);"></div>
+              <div class="stress-bar-fill" id="stressFill"></div>
             </div>
           </div>
         </div>
-        <div class="reveal-panel show" id="hookResult" style="border-color: var(--psych-mint);">
-          <strong>✅ Clinical Insight (Nurse 2):</strong> Giving the child control through a simple choice drops cortisol levels and builds instant rapport.
-        </div>
+        <div class="reveal-panel" id="hookResult"></div>
       </div>
     </div>
   </section>
@@ -638,7 +697,7 @@
       <div style="display: flex; flex-direction: column; gap: 12px;">
         <div class="card" style="background: rgba(251, 191, 36, 0.12); border-left: 5px solid var(--psych-warmth);">
           <h3 style="color: var(--psych-warmth); font-size: 1.08rem;">📌 Clinical Scenario:</h3>
-          <p style="font-size: 0.98rem;">Ayaan's mother is visibly anxious because her 5-year-old child needs a dressing change.</p>
+          <p style="font-size: 0.98rem;">Ayaan's mother is visibly anxious because her child needs a dressing change.</p>
         </div>
         <div class="card" style="border-left: 5px solid var(--psych-coral); padding: 12px 16px;">
           <strong style="color: #fda4af; font-size: 0.98rem;">❌ Poor Communication:</strong>
@@ -939,10 +998,10 @@
     </div>
   </section>
 
-  <!-- SLIDE 16 (EXACT 6-SCENE INTERACTIVE SIMULATION) -->
+  <!-- SLIDE 16 (6-SCENE INTERACTIVE SIMULATION) -->
   <section class="slide">
     <div class="pill-row"><span class="pill coral">Interactive Simulation</span></div>
-    <h2>Slide 16 — You Are the Nurse! 🩺</h2>
+    <h2>You Are the Nurse! 🩺</h2>
     <div class="sim-container" id="simContainer">
       <!-- Scene 1: Situation -->
       <div id="simScene1">
@@ -1118,14 +1177,14 @@
 <footer class="nav-footer">
   <div class="nav-group">
     <button class="nav-btn" type="button" onclick="restartDeck()">↺ Restart</button>
-    <button class="nav-btn" type="button" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+    <button class="nav-btn desktop-only" type="button" onclick="toggleFullscreen()">⛶ Fullscreen</button>
   </div>
-  <div style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; display: none;" id="navHint">
-    Navigate: <strong>← / →</strong>
+  <div class="desktop-only" style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600;">
+    Swipe or Use <strong>← / →</strong>
   </div>
   <div class="nav-group">
     <button class="nav-btn" type="button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
-    <button class="nav-btn primary" type="button" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
+    <button class="nav-btn next-highlight" type="button" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
   </div>
 </footer>
 
@@ -1162,11 +1221,12 @@
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   let currentIdx = 0;
+  let slideDirection = 'next';
 
   const slideTitles = [
     "1. Title & Group 04 Introduction",
     "2. Learning Objectives",
-    "3. Opening Hook: Nurse 2 Approach",
+    "3. Tricky Question: Why Did Zoya Refuse?",
     "4. Intro to Pediatric Communication",
     "5. Guidelines for Communicating with Children",
     "6. Communication by Age & Development",
@@ -1186,8 +1246,11 @@
 
   function updateDeck() {
     slides.forEach((s, i) => {
-      s.classList.toggle('active', i === currentIdx);
-      if (i === currentIdx) s.scrollTop = 0;
+      s.classList.remove('active', 'anim-next', 'anim-prev');
+      if (i === currentIdx) {
+        s.classList.add('active', slideDirection === 'prev' ? 'anim-prev' : 'anim-next');
+        s.scrollTop = 0;
+      }
     });
     progressBar.style.width = `${((currentIdx + 1) / slides.length) * 100}%`;
     slideCounter.textContent = `${currentIdx + 1} / ${slides.length}`;
@@ -1198,18 +1261,21 @@
   function changeSlide(delta) {
     const target = currentIdx + delta;
     if (target >= 0 && target < slides.length) {
+      slideDirection = delta > 0 ? 'next' : 'prev';
       currentIdx = target;
       updateDeck();
     }
   }
 
   function goToSlide(idx) {
+    slideDirection = idx >= currentIdx ? 'next' : 'prev';
     currentIdx = idx;
     updateDeck();
     closeOverview();
   }
 
   function restartDeck() {
+    slideDirection = 'prev';
     currentIdx = 0;
     updateDeck();
   }
@@ -1221,6 +1287,33 @@
       document.exitFullscreen().catch(() => {});
     }
   }
+
+  /* Custom Touch Swipe Navigation for Mobile & Tablet */
+  let touchStartX = 0;
+  let touchStartY = 0;
+  const deckEl = document.getElementById('deck');
+
+  deckEl.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  deckEl.addEventListener('touchend', (e) => {
+    if (document.getElementById('passwordGate').style.display !== 'none') return;
+    if (document.getElementById('overviewModal').classList.contains('open')) return;
+
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+
+    // Trigger slide change only on intentional horizontal swipe
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      if (dx < 0) {
+        changeSlide(1);
+      } else {
+        changeSlide(-1);
+      }
+    }
+  }, { passive: true });
 
   document.addEventListener('keydown', (e) => {
     if (document.getElementById('passwordGate').style.display !== 'none') return;
@@ -1237,10 +1330,42 @@
     }
   });
 
-  /* Slide 3 Nurse 2 Hook Interaction */
-  function triggerNurse2(btn) {
-    btn.style.borderColor = 'var(--psych-mint)';
-    btn.style.background = 'rgba(45, 212, 191, 0.28)';
+  /* Slide 3 Tricky Toddler Choice Hook */
+  function triggerTrickyHook(btn, choice) {
+    const all = btn.parentElement.querySelectorAll('.hook-option');
+    all.forEach(b => b.classList.remove('correct', 'wrong'));
+    const res = document.getElementById('hookResult');
+    const fill = document.getElementById('stressFill');
+    const pct = document.getElementById('stressPct');
+    const emoji = document.getElementById('hookEmoji');
+    const status = document.getElementById('hookStatus');
+
+    res.classList.add('show');
+    if (choice === 'B') {
+      btn.classList.add('correct');
+      fill.style.width = '15%';
+      fill.style.background = 'linear-gradient(90deg, #0d9488, #2dd4bf)';
+      pct.textContent = '15% (Cooperating!)';
+      pct.style.color = '#5eead4';
+      emoji.textContent = '🥳🥤';
+      status.textContent = 'TODDLER AUTONOMY SATISFIED!';
+      status.style.color = '#5eead4';
+      res.style.borderColor = '#2dd4bf';
+      res.innerHTML = `<strong>✅ Psychological Insight (Option B):</strong> Never ask a toddler a <em>"Do you want to...?"</em> yes/no question when medicine isn't optional! Offering a <strong>controlled choice</strong> ("Red cup or blue cup?") satisfies their need for autonomy while keeping treatment on track.`;
+    } else {
+      btn.classList.add('wrong');
+      fill.style.width = '96%';
+      fill.style.background = 'linear-gradient(90deg, #e11d48, #fb7185)';
+      pct.textContent = '96% (Trust Broken!)';
+      pct.style.color = '#fda4af';
+      emoji.textContent = '😭🚫';
+      status.textContent = 'POWER STRUGGLE ESCALATED';
+      status.style.color = '#fda4af';
+      res.style.borderColor = '#fb7185';
+      res.innerHTML = choice === 'A'
+        ? `<strong>⚠️ Avoid Threats (Option A):</strong> Threatening a hospitalized child increases anxiety and makes them view care as punishment. Try <strong>Option B</strong>!`
+        : `<strong>⚠️ Never Call Medicine "Candy" (Option C):</strong> Calling medicine "candy" is a major pediatric safety hazard (accidental poisoning risk) and breaks honesty. Try <strong>Option B</strong>!`;
+    }
   }
 
   /* Slide 16 Simulation Logic */
