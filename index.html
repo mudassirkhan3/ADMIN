@@ -7,8 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-abyss: #050f20;
-    --bg-surface: rgba(10, 25, 52, 0.96);
+    --bg-abyss: #061225;
+    --bg-surface: rgba(10, 25, 50, 0.98);
     --psych-teal: #0d9488;
     --psych-mint: #2dd4bf;
     --psych-sky: #38bdf8;
@@ -17,7 +17,8 @@
     --psych-coral: #fb7185;
     --text-white: #ffffff;
     --text-soft: #f1f5f9;
-    --border-glow: rgba(45, 212, 191, 0.45);
+    --text-muted: #cbd5e1;
+    --border-glow: rgba(45, 212, 191, 0.38);
   }
 
   * {
@@ -29,130 +30,56 @@
 
   html, body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: radial-gradient(circle at 80% 15%, #103760, #050f20 80%);
+    background: radial-gradient(circle at 75% 15%, #103b66, #061225 80%);
     color: var(--text-white);
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
 
-  /* ==================== LOCK SCREEN ==================== */
-  #lockScreen {
+  /* Password Gate Overlay */
+  #passwordGate {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: radial-gradient(circle at 50% 25%, #0e335e, #040b18 85%);
+    background: radial-gradient(circle at center, #0e2a4d, #040914 90%);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   }
-
-  #lockScreen.unlocked {
-    opacity: 0;
-    transform: scale(1.08);
-    pointer-events: none;
-  }
-
-  .lock-card {
-    background: rgba(11, 28, 58, 0.94);
+  .gate-card {
+    background: rgba(11, 29, 62, 0.98);
     border: 2px solid var(--psych-mint);
-    border-radius: 26px;
-    padding: 36px 32px;
-    max-width: 460px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(45, 212, 191, 0.22);
-    animation: lockFloat 4s ease-in-out infinite;
-  }
-
-  @keyframes lockFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  .lock-logo-ring {
-    width: 98px;
-    height: 98px;
-    margin: 0 auto 16px;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px dashed rgba(45, 212, 191, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: ringPulse 2.4s infinite;
-  }
-
-  @keyframes ringPulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(45, 212, 191, 0.3); }
-    50% { box-shadow: 0 0 0 13px rgba(45, 212, 191, 0.08); }
-  }
-
-  .lock-logo-placeholder {
-    font-size: 0.8rem;
-    color: var(--psych-mint);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
-    padding: 0 8px;
-  }
-
-  .lock-input {
+    padding: 36px 42px;
+    max-width: 440px;
     width: 100%;
-    padding: 15px 18px;
-    border-radius: 14px;
-    border: 2px solid rgba(56, 189, 248, 0.5);
-    background: rgba(5, 15, 32, 0.9);
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    animation: gatePop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes gatePop {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .gate-input {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
     color: var(--text-white);
-    font-size: 1.2rem;
-    font-weight: 800;
-    text-align: center;
-    margin: 16px 0 12px;
-    outline: none;
-    font-family: inherit;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .lock-input:focus {
-    border-color: var(--psych-mint);
-    box-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
-  }
-
-  .lock-input.shake {
-    animation: shakeBox 0.4s ease;
-    border-color: var(--psych-coral);
-  }
-
-  @keyframes shakeBox {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    50% { transform: translateX(8px); }
-    75% { transform: translateX(-6px); }
-  }
-
-  .unlock-btn {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky));
-    color: var(--bg-abyss);
     font-size: 1.15rem;
-    font-weight: 800;
-    cursor: pointer;
     font-family: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    font-weight: 700;
   }
+  .gate-input:focus { outline: none; border-color: var(--psych-mint); }
+  .gate-error { color: var(--psych-coral); font-size: 0.92rem; font-weight: 700; margin-top: 6px; display: none; }
 
-  .unlock-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 26px rgba(45, 212, 191, 0.45);
-  }
-
-  /* ==================== AMBIENT & HEADER ==================== */
+  /* Ambient Orbs */
   .ambient-layer {
     position: fixed;
     inset: 0;
@@ -160,132 +87,61 @@
     z-index: 0;
     overflow: hidden;
   }
-
   .orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(115px);
+    filter: blur(125px);
     opacity: 0.32;
-    animation: orbBreathe 9s ease-in-out infinite alternate;
+    animation: orbPulse 9s ease-in-out infinite alternate;
   }
-  .orb-teal { width: 520px; height: 520px; background: var(--psych-teal); top: -140px; left: -120px; }
-  .orb-sky { width: 460px; height: 460px; background: #0284c7; bottom: -120px; right: -100px; animation-delay: 3s; }
-
-  @keyframes orbBreathe {
-    0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.14) translate(18px, -16px); }
+  .orb-1 { width: 520px; height: 520px; background: var(--psych-teal); top: -130px; left: -120px; }
+  .orb-2 { width: 460px; height: 460px; background: var(--psych-sky); bottom: -120px; right: -100px; animation-delay: 3s; }
+  @keyframes orbPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12) translate(14px, -14px); }
   }
 
+  /* Header */
   header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 66px;
+    height: 64px;
     z-index: 50;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
-    background: rgba(5, 15, 32, 0.96);
+    padding: 0 26px;
+    background: rgba(6, 18, 37, 0.96);
     backdrop-filter: blur(16px);
     border-bottom: 1.5px solid var(--border-glow);
   }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-logo { height: 40px; width: auto; object-fit: contain; background: #fff; padding: 3px; border-radius: 8px; }
+  .header-title { font-weight: 800; font-size: 1.02rem; color: var(--psych-mint); letter-spacing: 0.3px; }
+  .header-badge { background: rgba(45, 212, 191, 0.2); border: 1px solid var(--psych-mint); color: #99f6e4; padding: 4px 12px; border-radius: 20px; font-size: 0.84rem; font-weight: 800; }
+  
+  .progress-track { flex: 1; max-width: 340px; margin: 0 20px; height: 9px; background: rgba(255,255,255,0.15); border-radius: 10px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 5.55%; background: linear-gradient(90deg, var(--psych-mint), var(--psych-sky), var(--psych-warmth)); transition: width 0.4s ease; }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .slide-counter { font-weight: 800; font-size: 1.08rem; color: var(--text-white); min-width: 70px; text-align: right; }
+  .hdr-btn { background: rgba(255,255,255,0.1); border: 1px solid var(--border-glow); color: var(--text-white); padding: 7px 14px; border-radius: 9px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
+  .hdr-btn:hover { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); }
 
-  .header-logo-placeholder {
-    height: 40px;
-    padding: 0 10px;
-    border: 1px dashed rgba(45, 212, 191, 0.5);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: var(--psych-mint);
-    font-weight: 700;
-  }
-
-  .header-title {
-    font-weight: 800;
-    font-size: 0.98rem;
-    color: var(--psych-mint);
-    letter-spacing: 0.3px;
-  }
-
-  .header-badge {
-    background: rgba(45, 212, 191, 0.2);
-    border: 1px solid var(--psych-mint);
-    color: #99f6e4;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.84rem;
-    font-weight: 800;
-  }
-
-  .progress-track {
-    flex: 1;
-    max-width: 320px;
-    margin: 0 18px;
-    height: 9px;
-    background: rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    width: 5.55%;
-    background: linear-gradient(90deg, var(--psych-mint), var(--psych-sky), var(--psych-warmth));
-    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .slide-counter {
-    font-weight: 800;
-    font-size: 1.06rem;
-    color: var(--text-white);
-    min-width: 64px;
-    text-align: right;
-  }
-
-  .hdr-btn {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid var(--border-glow);
-    color: var(--text-white);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 0.92rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-  }
-  .hdr-btn:hover { background: rgba(45, 212, 191, 0.25); border-color: var(--psych-mint); }
-
-  /* ==================== DECK & SLIDES ==================== */
+  /* Deck & Slides */
   .deck {
     position: fixed;
-    top: 66px;
+    top: 64px;
     bottom: 70px;
     left: 0; right: 0;
     z-index: 10;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 14px 22px;
+    padding: 16px 26px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .slide {
     display: none;
     width: 100%;
@@ -293,1138 +149,1129 @@
     background: var(--bg-surface);
     border: 1.5px solid var(--border-glow);
     border-radius: 24px;
-    padding: 26px 38px;
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
+    padding: 28px 42px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.7);
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
-
-  .slide.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    animation: slideEntrance 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  @keyframes slideEntrance {
-    from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  .slide.active { display: flex; flex-direction: column; justify-content: center; }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(18px) scale(0.985); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* Staggered Card Entrance Animations */
-  .slide.active .card,
-  .slide.active .obj-item,
-  .slide.active .age-box {
-    animation: cardStagger 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  }
-  .slide.active .card:nth-child(1), .slide.active .obj-item:nth-child(1), .slide.active .age-box:nth-child(1) { animation-delay: 0.06s; }
-  .slide.active .card:nth-child(2), .slide.active .obj-item:nth-child(2), .slide.active .age-box:nth-child(2) { animation-delay: 0.14s; }
-  .slide.active .card:nth-child(3), .slide.active .obj-item:nth-child(3), .slide.active .age-box:nth-child(3) { animation-delay: 0.22s; }
-  .slide.active .card:nth-child(4), .slide.active .obj-item:nth-child(4), .slide.active .age-box:nth-child(4) { animation-delay: 0.30s; }
-  .slide.active .card:nth-child(5), .slide.active .obj-item:nth-child(5), .slide.active .age-box:nth-child(5) { animation-delay: 0.38s; }
-  .slide.active .obj-item:nth-child(6) { animation-delay: 0.44s; }
-  .slide.active .obj-item:nth-child(7) { animation-delay: 0.50s; }
-
-  @keyframes cardStagger {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ==================== TYPOGRAPHY (ENHANCED LARGE SIZE) ==================== */
-  .pill-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-
-  .pill {
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 0.88rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    background: rgba(56, 189, 248, 0.18);
-    color: var(--psych-sky);
-    border: 1px solid rgba(56, 189, 248, 0.5);
-  }
-  .pill.mint { background: rgba(45, 212, 191, 0.2); color: var(--psych-mint); border-color: rgba(45, 212, 191, 0.55); }
-  .pill.warm { background: rgba(251, 191, 36, 0.2); color: var(--psych-warmth); border-color: rgba(251, 191, 36, 0.55); }
-  .pill.coral { background: rgba(251, 113, 133, 0.22); color: #fda4af; border-color: rgba(251, 113, 133, 0.55); }
+  /* Auditorium Typography & Spacing */
+  .pill-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .pill { padding: 5px 16px; border-radius: 30px; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; background: rgba(56, 189, 248, 0.2); color: var(--psych-sky); border: 1px solid rgba(56, 189, 248, 0.5); }
+  .pill.mint { background: rgba(45, 212, 191, 0.22); color: var(--psych-mint); border-color: rgba(45, 212, 191, 0.55); }
+  .pill.warm { background: rgba(251, 191, 36, 0.22); color: var(--psych-warmth); border-color: rgba(251, 191, 36, 0.55); }
+  .pill.coral { background: rgba(251, 113, 133, 0.24); color: #fda4af; border-color: rgba(251, 113, 133, 0.55); }
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.9rem;
+    font-size: 3.1rem;
     line-height: 1.15;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     background: linear-gradient(135deg, #ffffff 20%, #5eead4 65%, #38bdf8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  h2 { font-size: 2.1rem; font-weight: 800; color: var(--text-white); margin-bottom: 12px; line-height: 1.25; }
+  p.lead { font-size: 1.18rem; color: var(--text-soft); line-height: 1.5; margin-bottom: 14px; }
 
-  h2 {
-    font-size: 1.98rem;
-    font-weight: 800;
-    color: var(--text-white);
-    margin-bottom: 12px;
-    line-height: 1.24;
-  }
-
-  p.lead {
-    font-size: 1.2rem;
-    color: var(--text-soft);
-    line-height: 1.52;
-    margin-bottom: 14px;
-  }
-
-  /* ==================== GRIDS & CARDS ==================== */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .grid-2-weighted { display: grid; grid-template-columns: 1.22fr 0.78fr; gap: 22px; align-items: center; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
-  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 11px; }
+  /* Responsive Grids & Cards with Smooth Hover Animations */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-2-weighted { display: grid; grid-template-columns: 1.24fr 0.76fr; gap: 24px; align-items: center; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 
   .card {
-    background: rgba(255, 255, 255, 0.068);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    border-radius: 18px;
-    padding: 18px 20px;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background: rgba(255, 255, 255, 0.065);
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    padding: 16px 20px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    animation: cardFadeIn 0.5s ease backwards;
   }
   .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     border-color: var(--psych-mint);
-    box-shadow: 0 12px 26px rgba(13, 148, 136, 0.25);
+    box-shadow: 0 14px 32px rgba(13, 148, 136, 0.22);
+  }
+  @keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .card h3 {
-    font-size: 1.26rem;
-    font-weight: 800;
-    color: var(--psych-mint);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .card h3 { font-size: 1.24rem; font-weight: 800; color: var(--psych-mint); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .card p, .card li { font-size: 1.05rem; line-height: 1.48; color: var(--text-soft); }
 
-  .card p, .card li {
-    font-size: 1.12rem;
-    line-height: 1.5;
-    color: var(--text-soft);
-  }
+  ul.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  ul.bullet-list li { position: relative; padding-left: 24px; font-size: 1.04rem; line-height: 1.46; }
+  ul.bullet-list li::before { content: "✦"; position: absolute; left: 0; color: var(--psych-mint); font-weight: 800; }
 
-  ul.bullet-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
-  ul.bullet-list li {
-    position: relative;
-    padding-left: 26px;
-    font-size: 1.12rem;
-    line-height: 1.48;
-  }
-  ul.bullet-list li::before {
-    content: "✦";
-    position: absolute;
-    left: 0;
-    color: var(--psych-mint);
-    font-weight: 800;
-  }
+  /* Title Layout */
+  .title-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 28px; align-items: center; }
+  .institute-header-box { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(45, 212, 191, 0.45); padding: 14px 18px; border-radius: 16px; margin-bottom: 14px; }
+  .logo-frame { width: 74px; height: 74px; background: #fff; border-radius: 12px; padding: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+  .logo-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-  /* ==================== TITLE SLIDE ==================== */
-  .title-layout {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 26px;
-    align-items: center;
-  }
-
-  .institute-header-box {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: rgba(255, 255, 255, 0.09);
-    border: 1.5px solid rgba(45, 212, 191, 0.55);
-    padding: 14px 18px;
-    border-radius: 18px;
-    margin-bottom: 12px;
-  }
-
-  .logo-frame-placeholder {
-    width: 80px;
-    height: 80px;
-    border: 2px dashed rgba(45, 212, 191, 0.6);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 0.75rem;
-    color: var(--psych-mint);
-    font-weight: 700;
-    text-align: center;
-    padding: 4px;
-    background: rgba(255,255,255,0.03);
-  }
-
-  .team-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  .team-chip {
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    padding: 7px 14px;
-    border-radius: 11px;
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: var(--text-white);
-  }
-  .team-chip.leader {
-    background: linear-gradient(135deg, rgba(13, 148, 136, 0.38), rgba(56, 189, 248, 0.32));
-    border: 1.5px solid var(--psych-warmth);
-    color: #fef08a;
-  }
+  .team-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .team-chip { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22); padding: 6px 14px; border-radius: 10px; font-size: 0.96rem; font-weight: 700; color: var(--text-white); }
+  .team-chip.leader { background: linear-gradient(135deg, rgba(13, 148, 136, 0.35), rgba(56, 189, 248, 0.3)); border: 1.5px solid var(--psych-warmth); color: #fef08a; }
 
   /* Objectives */
-  .obj-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  .obj-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 13px;
-    background: rgba(255, 255, 255, 0.068);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    border-radius: 15px;
-    padding: 13px 16px;
-  }
-  .obj-num {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky));
-    color: var(--bg-abyss);
-    font-weight: 800;
-    font-size: 1.05rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
+  .obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .obj-item { display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 13px 16px; animation: cardFadeIn 0.5s ease backwards; }
+  .obj-num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky)); color: var(--bg-abyss); font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-  /* Interactive Scenario Buttons */
-  .interactive-btn {
-    width: 100%;
-    text-align: left;
-    padding: 15px 18px;
-    border-radius: 15px;
-    border: 1.5px solid rgba(255, 255, 255, 0.24);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-white);
-    font-size: 1.12rem;
-    font-weight: 700;
-    font-family: inherit;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .interactive-btn:hover { background: rgba(56, 189, 248, 0.24); border-color: var(--psych-sky); transform: translateX(4px); }
-  .interactive-btn.wrong { background: rgba(251, 113, 133, 0.28); border-color: var(--psych-coral); }
-  .interactive-btn.correct { background: rgba(45, 212, 191, 0.3); border-color: var(--psych-mint); }
+  /* Interactive Hook & Buttons */
+  .hook-option { width: 100%; text-align: left; padding: 15px 20px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.07); color: var(--text-white); font-size: 1.08rem; font-weight: 700; font-family: inherit; cursor: pointer; margin-bottom: 12px; transition: all 0.25s ease; display: flex; align-items: center; gap: 12px; }
+  .hook-option:hover { background: rgba(56, 189, 248, 0.22); border-color: var(--psych-sky); transform: translateX(5px); }
+  .hook-option.wrong { background: rgba(251, 113, 133, 0.25); border-color: var(--psych-coral); }
+  .hook-option.correct { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); }
 
-  /* Animated Ward Monitor */
-  .ward-monitor {
-    background: rgba(6, 18, 40, 0.94);
-    border: 2px solid var(--psych-sky);
-    border-radius: 18px;
-    padding: 16px;
-    text-align: center;
-  }
-  .stress-bar-bg {
-    height: 14px;
-    background: rgba(255,255,255,0.14);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 8px;
-  }
-  .stress-bar-fill {
-    height: 100%;
-    width: 90%;
-    background: linear-gradient(90deg, #f43f5e, #fb7185);
-    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1), background 0.7s ease;
-  }
+  .stress-meter-wrap { margin: 12px 0; background: rgba(0,0,0,0.4); border-radius: 12px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.18); }
+  .stress-bar-bg { height: 16px; background: rgba(255,255,255,0.12); border-radius: 8px; overflow: hidden; margin-top: 6px; }
+  .stress-bar-fill { height: 100%; width: 92%; background: linear-gradient(90deg, #f43f5e, #fb7185); transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1), background 0.7s ease; }
 
-  .reveal-panel {
-    display: none;
-    margin-top: 10px;
-    padding: 15px 18px;
-    border-radius: 15px;
-    background: rgba(45, 212, 191, 0.18);
-    border: 1.5px solid var(--psych-mint);
-    font-size: 1.06rem;
-    line-height: 1.5;
-  }
-  .reveal-panel.show { display: block; animation: slideEntrance 0.35s ease; }
+  .reveal-panel { display: none; margin-top: 12px; padding: 16px 20px; border-radius: 14px; background: rgba(45, 212, 191, 0.16); border: 1.5px solid var(--psych-mint); font-size: 1.02rem; line-height: 1.5; }
+  .reveal-panel.show { display: block; animation: cardFadeIn 0.35s ease; }
 
-  .action-btn {
-    background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky));
-    color: var(--bg-abyss);
-    border: none;
-    padding: 13px 22px;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 1.08rem;
-    cursor: pointer;
-    font-family: inherit;
-    transition: transform 0.2s ease;
-  }
-  .action-btn:hover { transform: scale(1.02); }
+  .primary-action-btn { background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky)); color: var(--bg-abyss); border: none; padding: 12px 22px; border-radius: 11px; font-weight: 800; font-size: 1.05rem; cursor: pointer; font-family: inherit; transition: transform 0.2s ease; }
+  .primary-action-btn:hover { transform: scale(1.03); }
 
-  /* Age Boxes */
-  .age-box {
-    background: rgba(255, 255, 255, 0.068);
-    border: 1.5px solid rgba(255, 255, 255, 0.18);
-    border-top: 5px solid var(--psych-sky);
-    border-radius: 15px;
-    padding: 13px 14px;
-  }
-  .age-box h4 { font-size: 1.12rem; color: var(--psych-warmth); margin-bottom: 6px; font-weight: 800; }
-  .age-box ul { padding-left: 16px; font-size: 0.98rem; line-height: 1.42; color: var(--text-soft); }
-  .age-box .ex { margin-top: 8px; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.22); font-size: 0.94rem; color: #7dd3fc; font-weight: 700; }
+  /* Age Timeline */
+  .age-box { background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-top: 5px solid var(--psych-sky); border-radius: 14px; padding: 13px 15px; }
+  .age-box h4 { font-size: 1.08rem; color: var(--psych-warmth); margin-bottom: 6px; font-weight: 800; }
+  .age-box ul { padding-left: 16px; font-size: 0.94rem; line-height: 1.4; color: var(--text-soft); }
+  .age-box .ex { margin-top: 8px; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.2); font-size: 0.88rem; color: #7dd3fc; font-weight: 700; }
 
-  /* Workflow Steps */
-  .workflow-steps {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-top: 12px;
-  }
-  .wf-node {
-    background: linear-gradient(145deg, rgba(13, 148, 136, 0.3), rgba(56, 189, 248, 0.2));
-    border: 1.5px solid var(--psych-mint);
-    border-radius: 13px;
-    padding: 11px 8px;
-    text-align: center;
-    font-weight: 800;
-    font-size: 0.98rem;
-    animation: pulseNode 4s infinite ease-in-out;
-  }
+  /* Workflow */
+  .workflow-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 14px; }
+  .wf-node { background: linear-gradient(145deg, rgba(13, 148, 136, 0.3), rgba(56, 189, 248, 0.2)); border: 1.5px solid var(--psych-mint); border-radius: 12px; padding: 11px 8px; text-align: center; font-weight: 800; font-size: 0.95rem; animation: pulseNode 4s infinite ease-in-out; }
   .wf-node:nth-child(2) { animation-delay: 0.8s; }
   .wf-node:nth-child(3) { animation-delay: 1.6s; }
   .wf-node:nth-child(4) { animation-delay: 2.4s; }
   .wf-node:nth-child(5) { animation-delay: 3.2s; }
-
   @keyframes pulseNode {
     0%, 100% { transform: translateY(0); border-color: var(--psych-mint); }
-    50% { transform: translateY(-4px); border-color: var(--psych-warmth); }
+    50% { transform: translateY(-5px); border-color: var(--psych-warmth); }
   }
 
   /* Slide 17 Comfort Journey */
-  .journey-stage {
-    background: linear-gradient(145deg, rgba(7, 25, 52, 0.96), rgba(13, 52, 78, 0.96));
-    border: 2px solid var(--psych-mint);
-    border-radius: 20px;
-    padding: 20px 24px;
-    text-align: center;
-  }
-  .journey-steps-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .j-step-btn {
-    padding: 14px 10px;
-    border-radius: 13px;
-    border: 1.5px solid rgba(255,255,255,0.28);
-    background: rgba(255,255,255,0.07);
-    color: var(--text-white);
-    font-weight: 800;
-    font-size: 1.02rem;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.3s ease;
-  }
-  .j-step-btn.active-step {
-    border-color: var(--psych-warmth);
-    background: linear-gradient(135deg, rgba(45, 212, 191, 0.38), rgba(56, 189, 248, 0.32));
-    transform: translateY(-3px);
-    box-shadow: 0 8px 22px rgba(45, 212, 191, 0.35);
-  }
+  .journey-stage { background: linear-gradient(145deg, rgba(7, 25, 52, 0.96), rgba(13, 52, 78, 0.96)); border: 2px solid var(--psych-mint); border-radius: 20px; padding: 22px 26px; text-align: center; }
+  .journey-steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+  .j-step-btn { padding: 15px 10px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); color: var(--text-white); font-weight: 800; font-size: 0.98rem; cursor: pointer; font-family: inherit; transition: all 0.3s ease; }
+  .j-step-btn.active-step { border-color: var(--psych-warmth); background: linear-gradient(135deg, rgba(45, 212, 191, 0.4), rgba(56, 189, 248, 0.35)); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(45, 212, 191, 0.35); }
 
-  /* Slide 18 Finale Animations */
-  .finale-anim {
-    animation: finaleFloat 3s ease-in-out infinite;
-  }
-  @keyframes finaleFloat {
+  /* Finale Animations */
+  .finale-anim { animation: floatSlow 3.2s ease-in-out infinite; }
+  @keyframes floatSlow {
     0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-6px) scale(1.02); }
+    50% { transform: translateY(-8px) scale(1.03); }
   }
-
-  .heartbeat-icon {
-    display: inline-block;
-    animation: heartPulse 1.4s ease-in-out infinite;
-  }
+  .heartbeat-icon { display: inline-block; animation: heartPulse 1.4s ease-in-out infinite; }
   @keyframes heartPulse {
     0%, 100% { transform: scale(1); }
     25% { transform: scale(1.22); }
     50% { transform: scale(1); }
-    75% { transform: scale(1.16); }
+    75% { transform: scale(1.15); }
   }
-
-  .glow-quote {
-    animation: quoteGlow 4s ease-in-out infinite alternate;
-  }
+  .glow-quote { animation: quoteGlow 4s ease-in-out infinite alternate; }
   @keyframes quoteGlow {
-    0% { box-shadow: 0 0 12px rgba(45, 212, 191, 0.22); }
-    100% { box-shadow: 0 0 28px rgba(251, 191, 36, 0.42); }
+    0% { box-shadow: 0 0 14px rgba(45, 212, 191, 0.22); }
+    100% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.42); }
   }
 
-  /* Bottom Controls */
+  /* Footer Controls */
   footer.nav-footer {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     height: 70px;
     z-index: 60;
-    padding: 0 24px;
+    padding: 0 26px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(5, 15, 32, 0.98);
+    background: rgba(6, 18, 37, 0.98);
     backdrop-filter: blur(16px);
     border-top: 1.5px solid var(--border-glow);
   }
-
   .nav-group { display: flex; gap: 10px; align-items: center; }
-
-  .nav-btn {
-    background: rgba(255, 255, 255, 0.14);
-    border: 1.5px solid rgba(255, 255, 255, 0.32);
-    color: var(--text-white);
-    padding: 11px 20px;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 0.98rem;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s ease;
-  }
-  .nav-btn:hover:not(:disabled) { background: rgba(45, 212, 191, 0.25); border-color: var(--psych-mint); }
-  .nav-btn.primary {
-    background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky));
-    color: var(--bg-abyss);
-    border: none;
-  }
+  .nav-btn { background: rgba(255,255,255,0.14); border: 1.5px solid rgba(255,255,255,0.3); color: var(--text-white); padding: 11px 22px; border-radius: 11px; font-weight: 800; font-size: 0.98rem; cursor: pointer; font-family: inherit; transition: all 0.2s ease; }
+  .nav-btn:hover:not(:disabled) { background: rgba(45, 212, 191, 0.28); border-color: var(--psych-mint); }
+  .nav-btn.primary { background: linear-gradient(135deg, var(--psych-mint), var(--psych-sky)); color: var(--bg-abyss); border: none; }
   .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
   /* Overview Modal */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(4, 12, 28, 0.9);
-    backdrop-filter: blur(8px);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(4, 12, 28, 0.9); backdrop-filter: blur(8px); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
   .modal-overlay.open { display: flex; }
+  .modal-box { background: #0b1f44; border: 2px solid var(--psych-mint); border-radius: 20px; max-width: 920px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 26px 32px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
+  .overview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .ov-item { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 12px; cursor: pointer; text-align: left; color: var(--text-white); font-family: inherit; }
+  .ov-item:hover, .ov-item.current { border-color: var(--psych-mint); background: rgba(45, 212, 191, 0.22); }
 
-  .modal-box {
-    background: #0b1f44;
-    border: 2px solid var(--psych-mint);
-    border-radius: 22px;
-    max-width: 920px;
-    width: 100%;
-    max-height: 85vh;
-    overflow-y: auto;
-    padding: 24px 28px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.85);
-  }
-
-  .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 14px;
-  }
-  .ov-item {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.22);
-    padding: 12px;
-    border-radius: 12px;
-    cursor: pointer;
-    text-align: left;
-    color: var(--text-white);
-    font-family: inherit;
-  }
-  .ov-item:hover, .ov-item.current { border-color: var(--psych-mint); background: rgba(45, 212, 191, 0.25); }
-
-  /* ==================== MOBILE & TABLET RESPONSIVE ==================== */
+  /* Mobile Adjustments */
   @media (max-width: 920px) {
-    header { padding: 0 12px; height: 58px; }
-    .header-logo-placeholder { height: 32px; font-size: 0.65rem; padding: 0 6px; }
-    .deck { top: 58px; bottom: 64px; padding: 8px 10px; }
-    .slide { padding: 18px 16px; border-radius: 18px; }
+    .deck { padding: 10px 12px; bottom: 68px; }
+    .slide { padding: 20px 18px; }
     .slide.active { justify-content: flex-start; }
     .title-layout, .grid-2, .grid-2-weighted, .grid-3, .grid-4, .grid-5, .obj-grid, .workflow-steps, .journey-steps-row, .overview-grid {
       grid-template-columns: 1fr;
-      gap: 12px;
     }
-    h1 { font-size: 2.05rem; }
+    h1 { font-size: 2.1rem; }
     h2 { font-size: 1.5rem; }
-    p.lead { font-size: 1.06rem; }
-    .card p, .card li, ul.bullet-list li { font-size: 1.04rem; }
-    .progress-track, .header-title, .desktop-hint { display: none !important; }
-    footer.nav-footer { height: 64px; padding: 0 12px; }
-    .nav-btn { padding: 10px 14px; font-size: 0.94rem; }
-    .lock-card { padding: 26px 20px; }
+    p.lead { font-size: 1.02rem; }
+    .progress-track, .header-title { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ==================== LOCK SCREEN (PASSWORD: group 5) ==================== -->
-<div id="lockScreen">
-  <div class="lock-card">
-    <div class="lock-logo-ring">
-      <div class="lock-logo-placeholder">Insert Logo Here</div>
-    </div>
-    <h2 style="font-size: 1.5rem; margin-bottom: 6px;">Presentation Locked</h2>
-    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">Enter Group Password to Unlock</p>
-    <input type="password" id="lockInput" class="lock-input" placeholder="Enter password (group 5)" autocomplete="off">
-    <button class="unlock-btn" onclick="tryUnlock()">Unlock Presentation</button>
+<!-- Password Gate Modal -->
+<div id="passwordGate">
+  <div class="gate-card">
+    <div style="font-size: 3rem; margin-bottom: 10px;">🔒🩺</div>
+    <h2 style="font-size: 1.6rem; margin-bottom: 6px;">Presentation Access</h2>
+    <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 14px;">Enter presentation password to unlock:</p>
+    <input type="password" id="gatePassInput" class="gate-input" placeholder="Enter password (group4)" autocomplete="current-password">
+    <button class="primary-action-btn" type="button" onclick="verifyPassword()" style="width: 100%;">Unlock Presentation ✨</button>
+    <div id="gateError" class="gate-error">Incorrect password. Hint: group4</div>
   </div>
 </div>
 
-<!-- ==================== AMBIENT BACKGROUND ORBS ==================== -->
 <div class="ambient-layer">
-  <div class="orb orb-teal"></div>
-  <div class="orb orb-sky"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 </div>
 
-<!-- ==================== HEADER ==================== -->
+<!-- Header -->
 <header>
   <div class="header-left">
-    <div class="header-logo-placeholder">Logo</div>
-    <span class="header-title">Pediatric Nursing | Unit IV</span>
+    <img src="logo.png" alt="New Life Institute of Nursing Logo" class="header-logo" onerror="this.style.display='none'">
+    <span class="header-title">NEW LIFE INSTITUTE OF NURSING MULTAN</span>
+    <span class="header-badge">UNIT IV • GROUP 04</span>
   </div>
   <div class="progress-track">
-    <div class="progress-fill" id="progressFill"></div>
+    <div class="progress-fill" id="progressBar"></div>
   </div>
   <div class="header-right">
-    <span class="slide-counter" id="slideCounter">1 / 20</span>
-    <button class="hdr-btn" onclick="openOverview()">Index</button>
+    <button class="hdr-btn" type="button" onclick="openOverview()">📑 All Slides</button>
+    <span class="slide-counter" id="slideCounter">1 / 18</span>
   </div>
 </header>
 
-<!-- ==================== MAIN PRESENTATION DECK (20 Slides) ==================== -->
-<main class="deck">
+<!-- Deck -->
+<main class="deck" id="deck">
 
-  <!-- SLIDE 1: Title Slide -->
-  <section class="slide active" data-slide="1">
+  <!-- SLIDE 1 -->
+  <section class="slide active">
     <div class="title-layout">
       <div>
         <div class="institute-header-box">
-          <div class="logo-frame-placeholder">Logo</div>
+          <div class="logo-frame">
+            <img src="logo.png" alt="New Life Institute of Nursing Multan Official Logo" onerror="this.alt='NLIN Logo'">
+          </div>
           <div>
-            <div style="font-weight: 800; font-size: 1.05rem; color: var(--psych-mint);">New Life Institute of Nursing, Multan</div>
-            <div style="font-size: 0.88rem; color: var(--text-muted);">BSN Professional Nursing Program • Semester V</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--text-white);">NEW LIFE INSTITUTE OF NURSING MULTAN</div>
+            <div style="font-size: 1rem; color: var(--psych-mint); font-weight: 700;">Subject: Pediatric Health Nursing I • Unit IV</div>
           </div>
         </div>
+
         <div class="pill-row">
-          <span class="pill mint">Unit IV Presentation</span>
-          <span class="pill">Pediatric Health Nursing I</span>
+          <span class="pill mint">Unit IV</span>
+          <span class="pill warm">Group 04</span>
         </div>
-        <h1>Therapeutic Communication & Play in Pediatrics</h1>
-        <p class="lead">Bridging the communication gap with children and leveraging therapeutic play for clinical assessment, coping, and healing.</p>
-        <div style="margin-top: 12px; font-weight: 700; color: var(--psych-sky);">Class Representative & Presenter: Mudassir Khan</div>
+
+        <h1>COMMUNICATION &amp; THERAPEUTIC PLAY</h1>
+        <p class="lead" style="font-size: 1.25rem; color: #e0f2fe; font-weight: 600;">
+          While Caring for Children with Various Disease Processes
+        </p>
+
+        <div style="margin-top: 10px;">
+          <div style="font-size: 0.95rem; font-weight: 800; color: var(--psych-warmth); text-transform: uppercase; letter-spacing: 0.8px;">
+            Group 04 Members (Group Leader: Mudassir Khan)
+          </div>
+          <div class="team-chips">
+            <span class="team-chip">1. Iqra Anwar</span>
+            <span class="team-chip">2. Bithiah Shahid</span>
+            <span class="team-chip">3. Rimsha Maryam</span>
+            <span class="team-chip">4. Kisa Zahra</span>
+            <span class="team-chip">5. Ahmad</span>
+            <span class="team-chip leader">6. Mudassir Khan — Group Leader</span>
+            <span class="team-chip">7. Nimra Gill</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 0.98rem; color: var(--psych-mint); font-weight: 800;">
+          Created &amp; Managed by Mudassir Khan
+        </div>
       </div>
-      <div class="card" style="background: rgba(13, 148, 136, 0.15); border-color: var(--psych-mint);">
-        <h3 style="font-size: 1.15rem; margin-bottom: 10px;">Presentation Team (Group 5)</h3>
-        <div class="team-chips">
-          <div class="team-chip leader">Mudassir Khan (Lead)</div>
-          <div class="team-chip">Zain Luqman</div>
-          <div class="team-chip">Muhammad Murtaza</div>
-          <div class="team-chip">Aroosa Gull</div>
-          <div class="team-chip">Amna Safdar</div>
-          <div class="team-chip">Muneeba Waheed</div>
-          <div class="team-chip">Laraib Afzal</div>
+
+      <div class="card" style="background: linear-gradient(155deg, rgba(13,148,136,0.28), rgba(6,18,37,0.92)); text-align: center; padding: 26px;">
+        <svg viewBox="0 0 280 220" style="width: 100%; max-height: 200px;">
+          <rect x="15" y="15" width="250" height="190" rx="18" fill="rgba(56,189,248,0.1)" stroke="#2dd4bf" stroke-width="2"/>
+          <g class="finale-anim">
+            <rect x="35" y="42" width="95" height="42" rx="12" fill="#0d9488"/>
+            <text x="82.5" y="68" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800">💬 Trust</text>
+          </g>
+          <g class="finale-anim" style="animation-delay: 0.5s;">
+            <rect x="150" y="42" width="95" height="42" rx="12" fill="#fbbf24"/>
+            <text x="197.5" y="68" text-anchor="middle" fill="#061225" font-size="13" font-weight="800">🧸 Play</text>
+          </g>
+          <g class="finale-anim" style="animation-delay: 1s;">
+            <rect x="92" y="112" width="96" height="42" rx="12" fill="#38bdf8"/>
+            <text x="140" y="138" text-anchor="middle" fill="#061225" font-size="13" font-weight="800">🛡️ Safety</text>
+          </g>
+          <text x="140" y="185" text-anchor="middle" fill="#5eead4" font-size="13" font-weight="800">Pediatric Psychological Care</text>
+        </svg>
+        <div style="font-size: 1rem; font-weight: 800; color: var(--psych-mint); margin-top: 8px;">
+          Child-Centered Therapeutic Environment
         </div>
-        <div style="margin-top: 14px; font-size: 0.92rem; color: var(--text-muted);">Instructor: Mam Misbah</div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 2: Objectives -->
-  <section class="slide" data-slide="2">
+  <!-- SLIDE 2 -->
+  <section class="slide">
     <div class="pill-row">
-      <span class="pill mint">Learning Objectives</span>
-      <span class="pill">Roadmap</span>
+      <span class="pill mint">Unit IV Roadmap</span>
     </div>
-    <h2>What We Will Master in Unit IV</h2>
+    <h2>Learning Objectives</h2>
+    <p class="lead">By the end of this presentation, students will be able to:</p>
     <div class="obj-grid">
-      <div class="obj-item">
-        <div class="obj-num">1</div>
-        <div>
-          <h4 style="color: var(--text-white); font-size: 1.05rem; margin-bottom: 3px;">Developmental Communication</h4>
-          <p style="font-size: 0.96rem;">Adapt verbal and non-verbal communication techniques across infancy to adolescence.</p>
-        </div>
-      </div>
-      <div class="obj-item">
-        <div class="obj-num">2</div>
-        <div>
-          <h4 style="color: var(--text-white); font-size: 1.05rem; margin-bottom: 3px;">Therapeutic Play</h4>
-          <p style="font-size: 0.96rem;">Utilize play as a therapeutic medium to reduce hospital anxiety and fear.</p>
-        </div>
-      </div>
-      <div class="obj-item">
-        <div class="obj-num">3</div>
-        <div>
-          <h4 style="color: var(--text-white); font-size: 1.05rem; margin-bottom: 3px;">Global & Pakistani Context</h4>
-          <p style="font-size: 0.96rem;">Examine newborn and family health promotion frameworks within Pakistan's healthcare infrastructure.</p>
-        </div>
-      </div>
-      <div class="obj-item">
-        <div class="obj-num">4</div>
-        <div>
-          <h4 style="color: var(---text-white); font-size: 1.05rem; margin-bottom: 3px;">Clinical Application</h4>
-          <p style="font-size: 0.96rem;">Navigate pediatric triage, parental support, and procedural preparation with confidence.</p>
-        </div>
-      </div>
+      <div class="obj-item"><div class="obj-num">1</div><p><strong>Explain</strong> the importance of effective communication with children and their families.</p></div>
+      <div class="obj-item"><div class="obj-num">2</div><p><strong>Identify</strong> age-appropriate communication techniques for different developmental stages.</p></div>
+      <div class="obj-item"><div class="obj-num">3</div><p><strong>Describe</strong> the role of play in children's growth and development.</p></div>
+      <div class="obj-item"><div class="obj-num">4</div><p><strong>Explain</strong> the major functions of play for hospitalized children.</p></div>
+      <div class="obj-item"><div class="obj-num">5</div><p><strong>Differentiate</strong> between therapeutic play and play therapy.</p></div>
+      <div class="obj-item"><div class="obj-num">6</div><p><strong>Explain</strong> how nurses use play as a tool in pediatric nursing management.</p></div>
+      <div class="obj-item" style="grid-column: 1 / -1;"><div class="obj-num">7</div><p><strong>Apply</strong> communication and therapeutic play techniques in common pediatric clinical situations.</p></div>
     </div>
   </section>
 
-  <!-- SLIDE 3: Interactive Ward Triage Scenario -->
-  <section class="slide" data-slide="3">
+  <!-- SLIDE 3 (ALIGNED WITH CASE STUDY 16: 5-YEAR-OLD AYAAN) -->
+  <section class="slide">
     <div class="pill-row">
-      <span class="pill warm">Interactive Clinical Scenario</span>
-      <span class="pill coral">Pediatric Emergency</span>
+      <span class="pill coral">⚡ Live Clinical Challenge</span>
     </div>
-    <h2>The Anxious Toddler in ER</h2>
-    <p class="lead">A 3-year-old child arrives at the emergency ward clinging tightly to their mother, crying inconsolably at the sight of a nurse in scrubs. How do you approach?</p>
-    
-    <div class="grid-2">
-      <div>
-        <button class="interactive-btn wrong" onclick="triggerScenario(false)">
-          <span>❌</span> Approach immediately with stethoscope raised to listen to chest.
-        </button>
-        <button class="interactive-btn wrong" onclick="triggerScenario(false)">
-          <span>❌</span> Ask mother to leave the room so the child stops crying.
-        </button>
-        <button class="interactive-btn correct" onclick="triggerScenario(true)">
-          <span>✅</span> Squat down to eye level, speak in a gentle calm tone, and engage mother first.
-        </button>
-      </div>
-      <div class="ward-monitor">
-        <h4 style="color: var(--psych-sky); margin-bottom: 8px;">Child Stress Level Monitor</h4>
-        <div style="font-size: 2rem; font-weight: 800;" id="stressText">HIGH (90%)</div>
-        <div class="stress-bar-bg">
-          <div class="stress-bar-fill" id="stressBar"></div>
-        </div>
-        <div id="scenarioResult" class="reveal-panel">
-          <strong>Correct Nursing Action!</strong> Toddlers perceive towering adults as threatening. Lowering yourself to eye level, building rapport with the parent first, and offering a toy defuses stranger anxiety instantly.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 4: Foundations of Pediatric Communication -->
-  <section class="slide" data-slide="4">
-    <div class="pill-row"><span class="pill mint">Core Concepts</span></div>
-    <h2>Principles of Pediatric Communication</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Age-Appropriate Language</h3>
-        <p>Match vocabulary to cognitive level. Avoid abstract idioms ("take your breath away") that terrify young children.</p>
-      </div>
-      <div class="card">
-        <h3>Non-Verbal Cues</h3>
-        <p>Children read body language before words. Maintain an open posture, gentle smile, and relaxed physical proximity.</p>
-      </div>
-      <div class="card">
-        <h3>Family-Centered Care</h3>
-        <p>Parents are partners. Involve them as security anchors during assessments and painful procedures.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 5: Developmental Stages - Infants & Toddlers -->
-  <section class="slide" data-slide="5">
-    <div class="pill-row"><span class="pill">Age-Specific Approaches</span></div>
-    <h2>Communicating with Infants & Toddlers</h2>
-    <div class="grid-2">
-      <div class="age-box">
-        <h4>Infants (0 - 12 Months)</h4>
-        <ul class="bullet-list">
-          <li>Rely entirely on non-verbal communication.</li>
-          <li>Respond to soothing tones, gentle stroking, and smiling.</li>
-          <li>Stranger anxiety peaks around 8 months—keep parents close.</li>
-        </ul>
-        <div class="ex">Nursing Tip: Talk softly before touching; soothe immediately after procedures.</div>
-      </div>
-      <div class="age-box">
-        <h4>Toddlers (1 - 3 Years)</h4>
-        <ul class="bullet-list">
-          <li>Egocentric thinkers; interpret words literally.</li>
-          <li>Experience separation anxiety and loss of control.</li>
-          <li>Use simple concrete nouns ("medicine", "bandage").</li>
-        </ul>
-        <div class="ex">Nursing Tip: Prepare them right before the procedure, not days in advance.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 6: Preschoolers & School-Age Children -->
-  <section class="slide" data-slide="6">
-    <div class="pill-row"><span class="pill">Age-Specific Approaches</span></div>
-    <h2>Preschoolers & School-Age Children</h2>
-    <permanent class="grid-2">
-      <div class="age-box">
-        <h4>Preschoolers (3 - 6 Years)</h4>
-        <ul class="bullet-list">
-          <li>Animistic thinking (believe objects have feelings).</li>
-          <li>Prone to magical thinking and fear of bodily mutilation ("Band-Aid keeps insides in").</li>
-          <li>Use play equipment (stuffed animals) to explain procedures.</li>
-        </ul>
-        <div class="ex">Nursing Tip: Let them handle equipment like a stethoscope first.</div>
-      </div>
-      <div class="age-box">
-        <h4>School-Age (6 - 12 Years)</h4>
-        <ul class="bullet-list">
-          <li>Capable of logical, concrete reasoning.</li>
-          <li>Desire explanations of "how things work" (show them charts or real equipment).</li>
-          <li>Concerned about modesty, privacy, and loss of control.</li>
-        </ul>
-        <div class="ex">Nursing Tip: Encourage active participation and choices where possible.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 7: Adolescents -->
-  <section class="slide" data-slide="7">
-    <div class="pill-row"><span class="pill">Age-Specific Approaches</span></div>
-    <h2>Adolescents (12 - 18 Years)</h2>
+    <h2>Audience Question: How Would You Approach 5-Year-Old Ayaan?</h2>
     <div class="grid-2-weighted">
-      <div class="card">
-        <h3>Key Developmental Needs</h3>
-        <ul class="bullet-list">
-          <li>Identity formation and peer orientation.</li>
-          <li>Strong desire for autonomy, confidentiality, and respect.</li>
-          <li>Fear of altered body image, disability, and social isolation.</li>
-          <li>Abstract thinking and future orientation developed.</li>
-        </ul>
+      <div>
+        <div class="card" style="border-left: 6px solid var(--psych-coral); background: rgba(251, 113, 133, 0.14); margin-bottom: 14px;">
+          <p style="font-size: 1.16rem; font-weight: 700; color: var(--text-white);">
+            🚨 <strong>Scenario:</strong> <em>"5-year-old Ayaan is admitted to the pediatric ward. He needs a dressing change and examination, but he is crying loudly, hiding behind his mother, and refusing to allow anyone near."</em>
+          </p>
+        </div>
+
+        <h3 style="color: var(--psych-warmth); font-size: 1.2rem; margin-bottom: 10px;">What should the nurse do FIRST?</h3>
+        <button class="hook-option" type="button" onclick="triggerHook(this, 'A')">
+          <span><strong>A.</strong> Immediately start explaining the medical procedure step-by-step.</span>
+        </button>
+        <button class="hook-option" type="button" onclick="triggerHook(this, 'B')">
+          <span><strong>B.</strong> Firmly tell Ayaan, "Be a big brave boy and stop crying right now!"</span>
+        </button>
+        <button class="hook-option" type="button" onclick="triggerHook(this, 'C')">
+          <span><strong>C.</strong> Kneel down to Ayaan's eye level, smile gently, and introduce a toy/doll first.</span>
+        </button>
       </div>
-      <div class="card" style="background: rgba(56, 189, 248, 0.12); border-color: var(--psych-sky);">
-        <h3>Communication Strategies</h3>
-        <ul class="bullet-list">
-          <li>Interview adolescent privately without parents for part of the session to ensure confidentiality.</li>
-          <li>Be honest, non-judgmental, and avoid talking down.</li>
-          <li>Respect privacy during physical exams.</li>
-        </ul>
+
+      <div>
+        <div class="card" style="text-align: center; background: rgba(7, 25, 52, 0.92);">
+          <div style="font-size: 3.2rem; margin-bottom: 6px;" id="hookEmoji">😟💦</div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: var(--psych-coral);" id="hookStatus">AYAAN'S STRESS LEVEL: HIGH</div>
+          <div class="stress-meter-wrap">
+            <div style="display:flex; justify-content:space-between; font-size:0.88rem; font-weight:800;">
+              <span>Patient Anxiety Index</span>
+              <span id="stressPct" style="color:#fda4af;">92% (Panic)</span>
+            </div>
+            <div class="stress-bar-bg">
+              <div class="stress-bar-fill" id="stressFill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-panel" id="hookResult"></div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 8: Therapeutic Play in Nursing -->
-  <section class="slide" data-slide="8">
-    <div class="pill-row"><span class="pill mint">Therapeutic Play</span></div>
-    <h2>Play as the Universal Language of Children</h2>
-    <p class="lead">Play is not merely recreation in healthcare—it is a vital medium for developmental expression, coping, and therapeutic intervention.</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Emotional Expression</h3>
-        <p>Allows children to vent anger, fear, frustration, and sadness safely without verbal barriers.</p>
+  <!-- SLIDE 4 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 1 • Psychology of Pediatric Care</span></div>
+    <h2>Introduction to Pediatric Communication</h2>
+    <div class="grid-2-weighted">
+      <div>
+        <ul class="bullet-list">
+          <li><strong>What is Communication?</strong> A two-way exchange of thoughts, feelings, and information through words, tone, facial expressions, and body language.</li>
+          <li><strong>What is Pediatric Communication?</strong> Adapting verbal and non-verbal interaction to match a child's developmental stage while partnering with their family.</li>
+          <li><strong>Why Different from Adults?</strong> Children have limited vocabulary, concrete thinking, shorter attention spans, and express fear through behavior rather than words.</li>
+          <li><strong>Why Age-Appropriate?</strong> Preschoolers take words literally; adolescents need privacy and respect. One style does not fit all ages.</li>
+          <li><strong>Child + Family Partnership:</strong> Parents are a child's primary security—supporting parents builds <strong>trust, comfort, safety, cooperation, and emotional support</strong>.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Coping & Mastery</h3>
-        <p>Helps pediatric patients master stressful hospital experiences by taking on the role of the caregiver (e.g., giving injections to a doll).</p>
-      </div>
-      <div class="card">
-        <h3>Developmental Growth</h3>
-        <p>Supports cognitive, motor, and social milestones even during prolonged hospitalization.</p>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card" style="border-left: 5px solid var(--psych-coral); background: rgba(251, 113, 133, 0.1);">
+          <h3 style="color: #fda4af;">😰 Frightened, Unsupported Child</h3>
+          <p>Feels overwhelmed by strangers and loud equipment; cries, clings to parents, or resists care.</p>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--psych-mint); background: rgba(45, 212, 191, 0.14);">
+          <h3 style="color: var(--psych-mint);">😊 Supported, Reassured Child</h3>
+          <p>Understands what to expect in simple terms, feels emotionally safe, trusts the nurse, and cooperates better.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 9: Types of Therapeutic Play -->
-  <section class="slide" data-slide="9">
-    <div class="pill-row"><span class="pill mint">Clinical Categories</span></div>
-    <h2>Types of Play in Pediatric Care</h2>
+  <!-- SLIDE 5 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 1 • Practical Guidelines</span></div>
+    <h2>12 Guidelines for Communicating with Children</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>Dramatic / Therapeutic Play</h3>
-        <p>Structured play sessions where medical equipment (syringes without needles, stethoscopes, dolls) is introduced. Children act out medical procedures, reducing anxiety and misconceptions.</p>
+        <ul class="bullet-list" style="gap: 6px; font-size: 1rem;">
+          <li><strong>1.</strong> Approach the child calmly and respectfully.</li>
+          <li><strong>2.</strong> Introduce yourself clearly (name &amp; role).</li>
+          <li><strong>3.</strong> Use the child's preferred name.</li>
+          <li><strong>4.</strong> Get down to the child's eye level when appropriate.</li>
+          <li><strong>5.</strong> Use simple, age-appropriate words.</li>
+          <li><strong>6.</strong> Speak slowly and clearly.</li>
+        </ul>
       </div>
       <div class="card">
-        <h3>Free / Diversional Play</h3>
-        <p>Unstructured play chosen by the child (drawing, building blocks, board games). Promotes normalcy, relaxation, distraction from pain, and energy release.</p>
+        <ul class="bullet-list" style="gap: 6px; font-size: 1rem;">
+          <li><strong>7.</strong> Give the child time to respond.</li>
+          <li><strong>8.</strong> Use open-ended questions when they can understand.</li>
+          <li><strong>9.</strong> Use toys, pictures, gestures, and demonstrations.</li>
+          <li><strong>10.</strong> Be honest and avoid giving false promises.</li>
+          <li><strong>11.</strong> Respect the child's feelings and privacy.</li>
+          <li><strong>12.</strong> Encourage the child to express fears and questions.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top: 12px;">
+      <div class="card" style="border-left: 5px solid var(--psych-mint); padding: 12px 18px;">
+        <h3 style="color: var(--psych-mint); font-size: 1.08rem;">✅ Nurse SHOULD Say:</h3>
+        <p style="font-size: 0.98rem;"><em>"Hi Ayaan, I'm Nurse Sara. I'm going to check your bandage with this cool light—would you like to touch it first?"</em></p>
+      </div>
+      <div class="card" style="border-left: 5px solid var(--psych-coral); padding: 12px 18px;">
+        <h3 style="color: #fda4af; font-size: 1.08rem;">❌ Nurse SHOULD AVOID Saying:</h3>
+        <p style="font-size: 0.98rem;"><em>"Hold still right now! I'm going to change this dressing and it won't hurt at all."</em></p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 10: Therapeutic Play Techniques in Action -->
-  <section class="slide" data-slide="10">
-    <div class="pill-row"><span class="pill mint">Clinical Application</span></div>
-    <h2>Putting Play into Practice</h2>
-    <ul class="bullet-list">
-      <li><strong>Medical Doll Play:</strong> Demonstrate an upcoming intravenous (IV) cannulation or injection on a teddy bear or doll first, letting the child touch the equipment.</li>
-      <li><strong>Storytelling & Puppetry:</strong> Use puppets to express feelings or explain hospital routines ("Teddy is also nervous about his medicine, but he is very brave!").</li>
-      <li><strong>Art & Drawing:</strong> Ask young patients to draw how they feel or where it hurts to assess pain and emotional state non-verbally.</li>
-    </ul>
+  <!-- SLIDE 6 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 1 • Developmental Timeline</span></div>
+    <h2>Communication According to Age &amp; Development</h2>
+    <div class="grid-5" style="margin-top: 8px;">
+      <div class="age-box" style="border-top-color: #38bdf8;">
+        <h4>👶 1. Infants<br><small>(0–12 Mos)</small></h4>
+        <ul>
+          <li>Gentle, soothing voice.</li>
+          <li>Warm facial expressions.</li>
+          <li>Gentle touch when appropriate.</li>
+          <li>Comforting presence &amp; parent closeness.</li>
+        </ul>
+        <div class="ex">Ex: Softly humming while parent holds infant during exam.</div>
+      </div>
+      <div class="age-box" style="border-top-color: #2dd4bf;">
+        <h4>🚶 2. Toddlers<br><small>(1–3 Yrs)</small></h4>
+        <ul>
+          <li>Short, simple sentences.</li>
+          <li>Demonstrate on dolls/toys.</li>
+          <li>Give simple choices.</li>
+          <li>Allow comfort objects.</li>
+        </ul>
+        <div class="ex">Ex: "Blue bandage or star bandage?" while holding teddy.</div>
+      </div>
+      <div class="age-box" style="border-top-color: #fbbf24;">
+        <h4>🎨 3. Preschool<br><small>(3–5 Yrs)</small></h4>
+        <ul>
+          <li>Concrete, literal words.</li>
+          <li>Simple explanations.</li>
+          <li>Stories &amp; pretend play.</li>
+          <li>Avoid frightening terms.</li>
+        </ul>
+        <div class="ex">Ex: Tell Ayaan "clean the skin" instead of "cut or remove."</div>
+      </div>
+      <div class="age-box" style="border-top-color: #a78bfa;">
+        <h4>🎒 4. School-Age<br><small>(6–12 Yrs)</small></h4>
+        <ul>
+          <li>Explain what will happen.</li>
+          <li>Encourage questions.</li>
+          <li>Use pictures &amp; demos.</li>
+          <li>Allow participation.</li>
+        </ul>
+        <div class="ex">Ex: Show diagram &amp; let child hold clean gauze.</div>
+      </div>
+      <div class="age-box" style="border-top-color: #fb7185;">
+        <h4>🧑‍🎓 5. Adolescents<br><small>(13–18 Yrs)</small></h4>
+        <ul>
+          <li>Respect privacy.</li>
+          <li>Show respect &amp; honesty.</li>
+          <li>Involve in decisions.</li>
+          <li>Avoid judgment; support autonomy.</li>
+        </ul>
+        <div class="ex">Ex: Speak privately when appropriate &amp; ask their goals.</div>
+      </div>
+    </div>
   </section>
 
-  <!-- SLIDE 11: Global & Pakistani Newborn Health Context -->
-  <section class="slide" data-slide="11">
-    <div class="pill-row"><span class="pill warm">Global & Local Context</span></div>
-    <h2>Newborn & Family Health Promotion</h2>
+  <!-- SLIDE 7 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 1 • Family-Centered Care</span></div>
+    <h2>Communicating Effectively with Families</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>Global Standards (WHO / UNICEF)</h3>
-        <ul class="bullet-list">
-          <li>Early Initiation of Breastfeeding (EIBF) within 1 hour of birth.</li>
-          <li>Exclusive breastfeeding for the first 6 months of life.</li>
-          <li>Kangaroo Mother Care (KMC) for low birth weight and preterm infants.</li>
+        <h3>👨‍👩‍👧 Key Family Communication Principles</h3>
+        <ul class="bullet-list" style="gap: 6px; font-size: 0.98rem;">
+          <li>Listen actively to parents and caregivers.</li>
+          <li>Show genuine empathy and patience.</li>
+          <li>Respect cultural beliefs and family values.</li>
+          <li>Give clear info; avoid unnecessary medical jargon.</li>
+          <li>Encourage questions and provide realistic reassurance.</li>
+          <li>Include families in care and protect confidentiality.</li>
+          <li>Recognize parental stress and anxiety.</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Context in Pakistan</h3>
-        <ul class="bullet-list">
-          <li>High neonatal mortality rates (NMR) driven by birth asphyxia, prematurity, and neonatal sepsis.</li>
-          <li>Crucial role of Lady Health Workers (LHWs) and Community Midwives (CMWs) in rural maternal-child education.</li>
-          <li>Expanding EPI (Expanded Programme on Immunization) coverage across provinces.</li>
-        </ul>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="card" style="background: rgba(251, 191, 36, 0.12); border-left: 5px solid var(--psych-warmth);">
+          <h3 style="color: var(--psych-warmth); font-size: 1.08rem;">📌 Clinical Scenario:</h3>
+          <p style="font-size: 0.98rem;">Ayaan's mother is visibly anxious because her 5-year-old child needs a dressing change.</p>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--psych-coral); padding: 12px 16px;">
+          <strong style="color: #fda4af; font-size: 0.98rem;">❌ Poor Communication:</strong>
+          <p style="font-size: 0.94rem;"><em>"Don't worry, we do dressings all day. Just step outside while we hold him down."</em></p>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--psych-mint); padding: 12px 16px;">
+          <strong style="color: var(--psych-mint); font-size: 0.98rem;">✅ Professional Nursing Response:</strong>
+          <p style="font-size: 0.94rem;"><em>"I understand this feels stressful. You can stay right beside Ayaan, hold his hand, and help him blow bubbles while I gently clean his bandage."</em></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 12: Family-Centered Care in Nursing -->
-  <section class="slide" data-slide="12">
-    <div class="pill-row"><span class="pill mint">Family Dynamics</span></div>
-    <h2>Collaborating with Families</h2>
+  <!-- SLIDE 8 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 1 • Clinical Best Practices</span></div>
+    <h2>Pediatric Communication: Do's &amp; Don'ts</h2>
+    <div class="grid-2">
+      <div class="card" style="border-top: 5px solid var(--psych-mint);">
+        <h3 style="color: var(--psych-mint);">✅ DO (Supportive Practice)</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li>Listen carefully without interrupting.</li>
+          <li>Use simple, honest language.</li>
+          <li>Show empathy and use a calm tone.</li>
+          <li>Give appropriate, safe choices.</li>
+          <li>Encourage questions and validate feelings.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 5px solid var(--psych-coral);">
+        <h3 style="color: #fda4af;">❌ DON'T (Harmful Habits)</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li>Threaten or shame the child for crying.</li>
+          <li>Use frightening words (e.g., "cut," "shoot").</li>
+          <li>Ignore the child's questions.</li>
+          <li>Make false promises ("It won't hurt at all").</li>
+          <li>Rush unnecessarily or talk over the child.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 14px; background: rgba(56, 189, 248, 0.12); border-left: 5px solid var(--psych-sky); padding: 14px 20px;">
+      <p style="font-size: 1.02rem;">
+        <strong style="color: var(--psych-coral);">Instead of:</strong> <em>"Stop crying, it doesn't hurt."</em> &nbsp;➡️&nbsp;
+        <strong style="color: var(--psych-mint);">Say:</strong> <em>"I can see you're scared. I'll explain what we're going to do, and you can hold your teddy bear."</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill mint">Topic 2 • Child Development</span></div>
+    <h2>Role of Play in Growth &amp; Development</h2>
+    <p class="lead" style="margin-bottom: 12px;">
+      <strong>What is Play?</strong> Play is a child's natural, voluntary activity for exploring the world, learning skills, and expressing thoughts. It drives healthy development across all five domains:
+    </p>
+    <div class="grid-5">
+      <div class="card" style="border-top: 4px solid #38bdf8; padding: 14px;">
+        <h3 style="font-size: 1.08rem;">🏃 Physical</h3>
+        <p style="font-size: 0.94rem;">Builds gross &amp; fine motor strength, balance, and coordination.<br><em>Ex: Running, active play, stacking blocks.</em></p>
+      </div>
+      <div class="card" style="border-top: 4px solid #2dd4bf; padding: 14px;">
+        <h3 style="font-size: 1.08rem;">🧠 Cognitive</h3>
+        <p style="font-size: 0.94rem;">Develops problem-solving, memory, cause-and-effect, and focus.<br><em>Ex: Building blocks, puzzles.</em></p>
+      </div>
+      <div class="card" style="border-top: 4px solid #fbbf24; padding: 14px;">
+        <h3 style="font-size: 1.08rem;">🗣️ Language</h3>
+        <p style="font-size: 0.94rem;">Expands vocabulary, storytelling, and two-way communication.<br><em>Ex: Singing songs, puppet dialogue.</em></p>
+      </div>
+      <div class="card" style="border-top: 4px solid #fb7185; padding: 14px;">
+        <h3 style="font-size: 1.08rem;">💖 Emotional</h3>
+        <p style="font-size: 0.94rem;">Allows safe release of fear, anger, and stress while building confidence.<br><em>Ex: Drawing feelings, pretend play.</em></p>
+      </div>
+      <div class="card" style="border-top: 4px solid #a78bfa; padding: 14px;">
+        <h3 style="font-size: 1.08rem;">🤝 Social</h3>
+        <p style="font-size: 0.94rem;">Teaches sharing, empathy, cooperation, and taking turns.<br><em>Ex: Playing group games with peers.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill mint">Topic 2 • Developmental Progression</span></div>
+    <h2>7 Types of Play in Child Development</h2>
+    <div class="grid-4" style="margin-bottom: 12px;">
+      <div class="card" style="padding: 12px 14px;">
+        <h3 style="font-size: 1.02rem;">1. Solitary Play</h3>
+        <p style="font-size: 0.9rem;">Plays alone with own toys (Infants). <em>Ex: Shaking a rattle.</em><br><strong>Value:</strong> Sensory exploration &amp; focus.</p>
+      </div>
+      <div class="card" style="padding: 12px 14px;">
+        <h3 style="font-size: 1.02rem;">2. Parallel Play</h3>
+        <p style="font-size: 0.9rem;">Plays beside peers without sharing (Toddlers). <em>Ex: Two toddlers stacking blocks side-by-side.</em><br><strong>Value:</strong> Peer comfort &amp; observation.</p>
+      </div>
+      <div class="card" style="padding: 12px 14px;">
+        <h3 style="font-size: 1.02rem;">3. Associative Play</h3>
+        <p style="font-size: 0.9rem;">Shares toys without formal rules (Preschool). <em>Ex: Sharing crayons while drawing.</em><br><strong>Value:</strong> Sharing &amp; social language.</p>
+      </div>
+      <div class="card" style="padding: 12px 14px;">
+        <h3 style="font-size: 1.02rem;">4. Cooperative Play</h3>
+        <p style="font-size: 0.9rem;">Organized group play with rules/roles (School-age). <em>Ex: Board games or team sports.</em><br><strong>Value:</strong> Teamwork &amp; rule following.</p>
+      </div>
+    </div>
     <div class="grid-3">
-      <div class="card">
-        <h3>Assessment Partner</h3>
-        <p>Parents provide invaluable baseline history regarding child behavior, routines, and symptom onset.</p>
+      <div class="card" style="padding: 12px 15px; border-left: 4px solid var(--psych-warmth);">
+        <h3 style="font-size: 1.04rem; color: var(--psych-warmth);">5. Pretend / Dramatic Play</h3>
+        <p style="font-size: 0.92rem;">Acting out roles &amp; imagination (Preschool+). <em>Ex: Playing "doctor/nurse" with a doll.</em><br><strong>Value:</strong> Emotional processing &amp; empathy.</p>
       </div>
-      <div class="card">
-        <h3>Stress Mitigation</h3>
-        <p>Hospitalization creates intense parental anxiety. Nurses must provide empathetic listening, clear explanations, and reassurance.</p>
+      <div class="card" style="padding: 12px 15px; border-left: 4px solid var(--psych-mint);">
+        <h3 style="font-size: 1.04rem; color: var(--psych-mint);">6. Constructive Play</h3>
+        <p style="font-size: 0.92rem;">Building or creating objects (Toddlers–School-age). <em>Ex: Lego towers or clay modeling.</em><br><strong>Value:</strong> Fine motor &amp; problem-solving.</p>
       </div>
-      <div class="card">
-        <h3>Rooming-In Support</h3>
-        <p>Encourage parents to stay alongside hospitalized children to maintain emotional security and decrease separation trauma.</p>
+      <div class="card" style="padding: 12px 15px; border-left: 4px solid var(--psych-coral);">
+        <h3 style="font-size: 1.04rem; color: #fda4af;">7. Physical / Active Play</h3>
+        <p style="font-size: 0.92rem;">Whole-body movement (All ages). <em>Ex: Hopping, ball toss, gentle hall walk.</em><br><strong>Value:</strong> Strength, energy release &amp; coordination.</p>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 13: Managing Pain & Procedural Distress -->
-  <section class="slide" data-slide="13">
-    <div class="pill-row"><span class="pill coral">Pain & Comfort</span></div>
-    <h2>Minimizing Procedure Trauma</h2>
+  <!-- SLIDE 11 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill warm">Topic 3 • Hospitalized Child</span></div>
+    <h2>10 Functions of Play for Hospitalized Children</h2>
+    <div class="grid-2-weighted">
+      <div class="grid-2" style="gap: 12px;">
+        <div class="card" style="padding: 14px 16px;">
+          <ul class="bullet-list" style="gap: 6px; font-size: 0.96rem;">
+            <li><strong>1.</strong> Reduces anxiety and fear.</li>
+            <li><strong>2.</strong> Provides safe emotional expression.</li>
+            <li><strong>3.</strong> Maintains a sense of normalcy.</li>
+            <li><strong>4.</strong> Reduces hospital boredom.</li>
+            <li><strong>5.</strong> Promotes social interaction.</li>
+          </ul>
+        </div>
+        <div class="card" style="padding: 14px 16px;">
+          <ul class="bullet-list" style="gap: 6px; font-size: 0.96rem;">
+            <li><strong>6.</strong> Improves psychological coping.</li>
+            <li><strong>7.</strong> Helps children understand procedures.</li>
+            <li><strong>8.</strong> Increases cooperation with nurses.</li>
+            <li><strong>9.</strong> Supports ongoing developmental needs.</li>
+            <li><strong>10.</strong> Gives a sense of control and choice.</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="card" style="border-left: 5px solid var(--psych-coral); background: rgba(251, 113, 133, 0.1); padding: 14px 18px;">
+          <h3 style="color: #fda4af; font-size: 1.08rem;">❌ Without Supportive Play</h3>
+          <p style="font-size: 0.96rem;">Leads to heightened fear, isolation, boredom, regression, and emotional withdrawal.</p>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--psych-mint); background: rgba(45, 212, 191, 0.14); padding: 14px 18px;">
+          <h3 style="color: var(--psych-mint); font-size: 1.08rem;">✅ With Appropriate Play</h3>
+          <p style="font-size: 0.96rem;">Promotes comfort, emotional expression, engagement, and improved coping—<em>while recognizing play supports care rather than replacing medical pain relief.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 12 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill mint">Topic 4 • Core Nursing Intervention</span></div>
+    <h2>Therapeutic Play in Pediatric Nursing</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🧸 What is Therapeutic Play?</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li><strong>Definition:</strong> Structured, purposeful play guided by a nurse to help a child cope with illness, hospitalization, and medical procedures.</li>
+          <li><strong>Purpose:</strong> Prepares children for procedures, lets them express fears, reduces stress, and restores a feeling of control.</li>
+          <li><strong>How Nurses Use It:</strong> Integrated into bedside assessments, pre-procedure teaching, and emotional support.</li>
+          <li><strong>When Useful:</strong> Before injections, dressing changes, surgery, oxygen therapy, or prolonged admissions.</li>
+        </ul>
+      </div>
+      <div class="card" style="background: rgba(56, 189, 248, 0.08);">
+        <h3>🩺 Practical Nursing Examples</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li>💉 Letting a child practice a pretend dressing change on a doll.</li>
+          <li>🧰 Exploring a safe toy medical kit (stethoscope, bandages).</li>
+          <li>🫧 Blowing bubbles before or during a stressful procedure.</li>
+          <li>🖍️ Drawing feelings about being in the hospital.</li>
+          <li>🧸 Using hand puppets to explain upcoming treatment.</li>
+          <li>🩹 Touching safe, sterile gauze or tape before use.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 13 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill warm">Topic 4 • Key Clinical Distinction</span></div>
+    <h2>Therapeutic Play vs. Play Therapy</h2>
+    <p class="lead" style="margin-bottom: 12px;">
+      <strong>Important Distinction:</strong> Therapeutic play is a supportive nursing care tool—it is <strong>not</strong> the same as formal psychological play therapy.
+    </p>
+    <div class="grid-2">
+      <div class="card" style="border-top: 5px solid var(--psych-mint);">
+        <h3 style="color: var(--psych-mint);">🩺 Therapeutic Play</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li>Often used by <strong>pediatric nurses</strong>.</li>
+          <li>Part of routine bedside nursing care.</li>
+          <li>Supports coping, preparation, expression, and understanding.</li>
+          <li>Involves dolls, toys, medical kits, drawing, or games.</li>
+          <li>Focuses on a <strong>specific healthcare-related need</strong>.</li>
+          <li><em>Example: Nurse uses a teddy bear to show how a dressing will feel.</em></li>
+        </ul>
+      </div>
+      <div class="card" style="border-top: 5px solid var(--psych-warmth);">
+        <h3 style="color: var(--psych-warmth);">🧠 Play Therapy</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.98rem;">
+          <li>A <strong>specialized therapeutic intervention</strong>.</li>
+          <li>Conducted by trained mental-health or certified play therapists.</li>
+          <li>Uses play within a formal psychotherapeutic relationship.</li>
+          <li>Addresses deeper emotional, behavioral, or psychological difficulties.</li>
+          <li>Requires specialized clinical training and psychological assessment.</li>
+          <li><em>Example: Weekly counseling sessions for severe childhood trauma.</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 14 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 5 • Nursing Management</span></div>
+    <h2>Play as a Tool in Pediatric Nursing Management</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>📋 10 Clinical Uses in Nursing Care</h3>
+        <div class="grid-2" style="gap: 8px;">
+          <ul class="bullet-list" style="gap: 4px; font-size: 0.94rem;">
+            <li><strong>1.</strong> Assessment</li>
+            <li><strong>2.</strong> Procedure preparation</li>
+            <li><strong>3.</strong> Distraction</li>
+            <li><strong>4.</strong> Emotional expression</li>
+            <li><strong>5.</strong> Building trust</li>
+          </ul>
+          <ul class="bullet-list" style="gap: 4px; font-size: 0.94rem;">
+            <li><strong>6.</strong> Promoting cooperation</li>
+            <li><strong>7.</strong> Health education</li>
+            <li><strong>8.</strong> Supporting coping</li>
+            <li><strong>9.</strong> Comfort &amp; relaxation</li>
+            <li><strong>10.</strong> Developmental support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🧸 Bedside Application Examples</h3>
+        <ul class="bullet-list" style="gap: 6px; font-size: 0.94rem;">
+          <li><strong>Doll:</strong> Demonstrate wound dressing steps.</li>
+          <li><strong>Toy Stethoscope:</strong> Introduce chest exam playfully.</li>
+          <li><strong>Bubble Blowing:</strong> Distraction &amp; deep breathing.</li>
+          <li><strong>Storytelling:</strong> Explain why cleaning a wound helps.</li>
+          <li><strong>Drawing:</strong> Assess hidden worries or pain location.</li>
+          <li><strong>Puppet Play:</strong> Encourage shy children to talk.</li>
+        </ul>
+      </div>
+    </div>
     <div class="workflow-steps">
-      <div class="wf-node">1. Preparation<br><small>Age-appropriate explanation</small></div>
-      <div class="wf-node">2. Presence<br><small>Parent holding hand</small></div>
-      <div class="wf-node">3. Distraction<br><small>Bubbles, toys, music</small></div>
-      <div class="wf-node">4. Analgesia<br><small>Topical EMLA cream</small></div>
-      <div class="wf-node">5. Praise<br><small>Positive reinforcement</small></div>
-    </div>
-    <p style="margin-top: 18px; text-align: center; color: var(--text-soft); font-size: 1.05rem;">Minimizing procedural trauma prevents long-term medical phobias in children.</p>
-  </section>
-
-  <!-- SLIDE 14: Barriers to Effective Communication -->
-  <section class="slide" data-slide="14">
-    <div class="pill-row"><span class="pill coral">Clinical Challenges</span></div>
-    <h2>Overcoming Communication Barriers</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Common Obstacles</h3>
-        <ul class="bullet-list">
-          <li>Language or cultural barriers between nursing staff and families.</li>
-          <li>Parental anxiety clouding comprehension of medical instructions.</li>
-          <li>Child developmental delays, autism spectrum, or sensory impairments.</li>
-          <li>High noise and stress levels in busy hospital wards.</li>
-        </ul>
-      </div>
-      <div class="card" style="background: rgba(251, 113, 133, 0.12); border-color: var(--psych-coral);">
-        <h3>Nursing Solutions</h3>
-        <ul class="bullet-list">
-          <li>Use professional interpreters or pictorial communication boards.</li>
-          <li>Verify understanding using the "teach-back" method.</li>
-          <li>Create calm, quiet spaces for sensitive family discussions.</li>
-        </ul>
-      </div>
+      <div class="wf-node">1. Assess the Child</div>
+      <div class="wf-node">2. Choose Suitable Play</div>
+      <div class="wf-node">3. Explain &amp; Demonstrate</div>
+      <div class="wf-node">4. Encourage Participation</div>
+      <div class="wf-node">5. Evaluate Response</div>
     </div>
   </section>
 
-  <!-- SLIDE 15: Role of the Pediatric Nurse -->
-  <section class="slide" data-slide="15">
-    <div class="pill-row"><span class="pill mint">Professional Role</span></div>
-    <h2>Advocacy, Educator & Caregiver</h2>
+  <!-- SLIDE 15 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill">Topic 5 • Procedural Care</span></div>
+    <h2>Using Play Before, During &amp; After Procedures</h2>
     <div class="grid-3">
-      <div class="card">
-        <h3>Child Advocate</h3>
-        <p>Defending the child's emotional and physical rights, ensuring pain management and minimizing unnecessary distress.</p>
+      <div class="card" style="border-top: 5px solid var(--psych-sky);">
+        <h3>🕒 Before Procedure</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.95rem;">
+          <li>Explain using simple pictures or toys.</li>
+          <li>Demonstrate steps on a doll first.</li>
+          <li>Let the child ask questions freely.</li>
+          <li>Offer suitable choices (e.g., choice of bandage color).</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Health Educator</h3>
-        <p>Empowering parents and older children with home care instructions, nutrition guidance, and immunization schedules.</p>
+      <div class="card" style="border-top: 5px solid var(--psych-warmth);">
+        <h3 style="color: var(--psych-warmth);">⚡ During Procedure</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.95rem;">
+          <li>Use active distraction (bubbles, pinwheel, counting).</li>
+          <li>Encourage slow breathing games.</li>
+          <li>Allow a favorite comfort object.</li>
+          <li>Maintain calm, supportive communication and clinical safety.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Therapeutic Communicator</h3>
-        <p>Establishing trust and emotional safety as the cornerstone of pediatric healing.</p>
+      <div class="card" style="border-top: 5px solid var(--psych-mint);">
+        <h3 style="color: var(--psych-mint);">🌟 After Procedure</h3>
+        <ul class="bullet-list" style="gap: 7px; font-size: 0.95rem;">
+          <li>Praise coping and effort honestly.</li>
+          <li>Encourage expression of feelings.</li>
+          <li>Provide comfort and parent reassurance.</li>
+          <li>Allow calming play and evaluate response.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 14px; border-left: 5px solid var(--psych-coral); background: rgba(251, 113, 133, 0.1); padding: 12px 18px;">
+      <p style="font-size: 0.98rem;">
+        <strong>⚠️ Clinical Safety Note:</strong> Therapeutic play enhances coping, but it <strong>never replaces</strong> prescribed analgesia (pain relief), informed consent/assent, aseptic technique, or clinical safety precautions.
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 16 (MATCHED DISCUSSION WITH SLIDE 3: 5-YEAR-OLD AYAAN) -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill coral">Interactive Case Study</span></div>
+    <h2>Clinical Discussion: Solving 5-Year-Old Ayaan's Dressing Change</h2>
+    <div class="grid-2-weighted">
+      <div>
+        <div class="card" style="border-left: 5px solid var(--psych-warmth); background: rgba(251, 191, 36, 0.12); margin-bottom: 14px;">
+          <p style="font-size: 1.08rem; font-weight: 700;">
+            🩹 <strong>Scenario Review:</strong> <em>"Recall 5-year-old Ayaan who was crying and refusing his wound dressing change. How do our communication and therapeutic play principles solve this?"</em>
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1.1rem;">💬 Class Discussion Summary:</h3>
+          <ol style="padding-left: 20px; font-size: 0.96rem; line-height: 1.5; color: var(--text-soft);">
+            <li><strong>Communication:</strong> Kneel to Ayaan's eye level, speak softly, and give simple choices.</li>
+            <li><strong>Therapeutic Play:</strong> Use a doll to demonstrate cleaning a bandage first.</li>
+            <li><strong>Preparation:</strong> Let Ayaan touch clean sterile gauze before it touches his skin.</li>
+            <li><strong>Reduce Fear:</strong> Involve his mother and use bubble blowing as a distraction.</li>
+            <li><strong>Evaluation:</strong> Observe decreased crying, relaxed posture, and successful cooperation!</li>
+          </ol>
+        </div>
+      </div>
+      <div>
+        <button class="primary-action-btn" type="button" onclick="toggleCasePlan()" style="width: 100%; margin-bottom: 12px;">
+          🔍 Reveal Expert Nursing Action Plan
+        </button>
+        <div class="reveal-panel" id="casePlanPanel" style="margin-top: 0;">
+          <ul class="bullet-list" style="gap: 6px; font-size: 0.92rem;">
+            <li><strong>Step 1:</strong> Establish psychological safety with mother present.</li>
+            <li><strong>Step 2:</strong> Introduce medical play using a teddy bear.</li>
+            <li><strong>Step 3:</strong> Provide prescribed analgesia in advance if ordered.</li>
+            <li><strong>Step 4:</strong> Engage Ayaan in blowing bubbles during the procedure.</li>
+            <li><strong>Step 5:</strong> Honestly praise his bravery and reward with a sticker!</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 16: Case Study: Hospitalized Preschooler -->
-  <section class="slide" data-slide="16">
-    <div class="pill-row"><span class="pill warm">Case Study Analysis</span></div>
-    <h2>Applying Theory to Practice</h2>
-    <div class="card" style="background: rgba(251, 191, 36, 0.1); border-color: var(--psych-warmth);">
-      <h3 style="color: var(--psych-warmth);">Scenario: 4-Year-Old Ali in Ward</h3>
-      <p style="margin-bottom: 10px;">Ali is admitted for severe dehydration due to gastroenteritis. He cries hysterically whenever nurse enters, believing the IV pole is a "monster" and the IV line is punishment.</p>
-      <ul class="bullet-list">
-        <p style="font-weight: 700; color: var(--text-white); margin-top: 6px;">Intervention Plan:</p>
-        <li>Acknowledge magical thinking without dismissing his fear ("I know the pole looks tall, but it's just helping your tummy feel better").</li>
-        <li>Engage in therapeutic doll play to let Ali "fix" his teddy bear's IV line.</li>
-        <li>Involve mother in administering oral rehydration solution with positive reinforcement.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- SLIDE 17: Interactive Child Comfort Journey -->
-  <section class="slide" data-slide="17">
-    <div class="pill-row"><span class="pill mint">Interactive Journey</span></div>
-    <h2>The Child's Healing Pathway</h2>
-    <p class="lead">Click each stage to review key pediatric nursing interventions along the continuum of care:</p>
-    
+  <!-- SLIDE 17 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill mint">Simple Bedside Guide • Easy to Understand</span></div>
+    <h2>The 4-Step Pediatric Bedside Comfort Journey</h2>
+    <p class="lead" style="margin-bottom: 14px;">
+      Click each step below to review the essential clinical actions for calming and supporting a hospitalized child:
+    </p>
     <div class="journey-stage">
-      <div id="journeyDisplay" style="font-size: 1.15rem; font-weight: 700; color: var(--psych-mint); min-height: 55px; display: flex; align-items: center; justify-content: center;">
-        Select a stage below to explore nursing interventions.
+      <div style="font-size: 2.4rem; margin-bottom: 8px;" id="journeyEmoji">👋</div>
+      <div style="font-size: 1.25rem; font-weight: 800; color: var(--psych-mint); margin-bottom: 8px;" id="journeyTitle">Step 1: Connection &amp; Trust</div>
+      <div id="journeyDesc" style="font-size: 1.08rem; color: #e0f2fe; line-height: 1.55; min-height: 56px; max-width: 780px; margin: 0 auto;">
+        Approach gently at eye level, introduce yourself warmly, use the child's preferred name, and involve parents to establish immediate psychological safety.
       </div>
       <div class="journey-steps-row">
-        <button class="j-step-btn" onclick="setJourney(0)">1. Admission</button>
-        <button class="j-step-btn" onclick="setJourney(1)">2. Assessment</button>
-        <button class="j-step-btn" onclick="setJourney(2)">3. Treatment</button>
-        <button class="j-step-btn" onclick="setJourney(3)">4. Discharge</button>
+        <button class="j-step-btn active-step" type="button" onclick="selectJourneyStep(1, this)">1️⃣ Connection</button>
+        <button class="j-step-btn" type="button" onclick="selectJourneyStep(2, this)">2️⃣ Communication</button>
+        <button class="j-step-btn" type="button" onclick="selectJourneyStep(3, this)">3️⃣ Preparation</button>
+        <button class="j-step-btn" type="button" onclick="selectJourneyStep(4, this)">4️⃣ Comfort &amp; Praise</button>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 18: Summary & Key Takeaways -->
-  <section class="slide" data-slide="18">
-    <div class="pill-row"><span class="pill mint">Summary</span></div>
-    <h2>Key Takeaways for Professional Practice</h2>
-    <div class="grid-2">
+  <!-- SLIDE 18 -->
+  <section class="slide">
+    <div class="pill-row"><span class="pill mint">Unit IV Finale • Key Takeaways</span></div>
+    <h2>Summary, Key Takeaways &amp; References</h2>
+    <div class="grid-2-weighted">
       <div class="card">
-        <h3>Communication is Therapeutic</h3>
-        <p>Tailoring communication to developmental stages reduces anxiety, builds trust, and ensures accurate clinical assessments.</p>
+        <h3>📌 7 Essential Clinical Takeaways</h3>
+        <ul class="bullet-list" style="gap: 6px; font-size: 0.96rem;">
+          <li><strong>1.</strong> Communicate according to the child's age, developmental level, and needs.</li>
+          <li><strong>2.</strong> Include and support families as trusted care partners.</li>
+          <li><strong>3.</strong> Play is essential for physical, cognitive, language, emotional, and social growth.</li>
+          <li><strong>4.</strong> Play helps hospitalized children cope and express feelings safely.</li>
+          <li><strong>5.</strong> Therapeutic play is a valuable nursing tool at the bedside.</li>
+          <li><strong>6.</strong> Nurses use play to prepare, educate, distract, and support children.</li>
+          <li><strong>7.</strong> Therapeutic play is different from formal psychological play therapy.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>Play Heals</h3>
-        <p>Therapeutic play is an essential clinical tool that helps children cope with hospitalization, fear, and pain.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLIDE 19: References -->
-  <section class="slide" data-slide="19">
-    <div class="pill-row"><span class="pill">References & Sources</span></div>
-    <h2>Evidence-Based References</h2>
-    <ul class="bullet-list" style="font-size: 1rem;">
-      <li>Wong, D. L., et al. (2023). <em>Wong's Essentials of Pediatric Nursing</em>. 11th Edition. Elsevier.</li>
-      <li>World Health Organization (WHO). (2022). <em>Integrated Management of Childhood Illness (IMCI) Guidelines</em>. Geneva: WHO.</li>
-      <li>Hockenberry, M. J., & Wilson, D. (2021). <em>Nursing Care of Infants and Children</em>. Mosby Elsevier.</li>
-      <li>Pakistan Nursing Council (PNC) & University of Health Sciences (UHS) Curriculum Guidelines for BSN.</li>
-    </ul>
-  </section>
-
-  <!-- SLIDE 20: Thank You / Finale -->
-  <section class="slide" data-slide="20">
-    <div style="text-align: center; max-width: 800px; margin: 0 auto;" class="finale-anim">
-      <div style="font-size: 3.5rem; margin-bottom: 12px;"><span class="heartbeat-icon">❤️</span></div>
-      <h1>Thank You!</h1>
-      <p class="lead" style="margin-bottom: 20px;">"Healing little hearts takes both clinical expertise and compassionate communication."</p>
-      
-      <div class="card glow-quote" style="background: rgba(13, 148, 136, 0.18); border-color: var(--psych-mint); display: inline-block; padding: 20px 36px; margin-bottom: 20px;">
-        <h3 style="color: var(--psych-mint); justify-content: center; margin-bottom: 6px;">New Life Institute of Nursing, Multan</h3>
-        <p style="font-weight: 700; color: var(--text-white);">BSN Semester V — Group 5 Presentation</p>
-        <p style="font-size: 0.95Mjrem; color: var(--text-muted); margin-top: 4px;">Led by Mudassir Khan & Team</p>
-      </div>
-
-      <div>
-        <button class="action-btn" onclick="jumpToSlide(1)">Restart Presentation</button>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="card glow-quote" style="background: linear-gradient(135deg, rgba(13,148,136,0.28), rgba(56,189,248,0.18)); border-color: var(--psych-mint); padding: 14px 18px; text-align: center;">
+          <div class="finale-anim" style="font-size: 2.1rem; margin-bottom: 4px;">
+            🧸 <span class="heartbeat-icon">💖</span> 🩺
+          </div>
+          <p style="font-size: 1.08rem; font-style: italic; font-weight: 800; color: #fef08a;">
+            "For a child, play is more than fun—it is a language of learning, healing and trust."
+          </p>
+        </div>
+        <div class="card" style="padding: 12px 16px;">
+          <h3 style="font-size: 0.98rem; color: var(--psych-sky);">📚 Credible References</h3>
+          <ul style="padding-left: 16px; font-size: 0.84rem; line-height: 1.4; color: var(--text-muted);">
+            <li>Hockenberry, M. J., &amp; Wilson, D. (2019). <em>Wong's Nursing Care of Infants and Children</em> (11th ed.). Elsevier.</li>
+            <li>Kyle, T., &amp; Carman, S. (2020). <em>Essentials of Pediatric Nursing</em> (4th ed.). Wolters Kluwer.</li>
+            <li>American Academy of Pediatrics (AAP). (2021). <em>Child Life Services &amp; Therapeutic Play in Hospitalized Children</em>.</li>
+            <li>World Health Organization (WHO). (2022). <em>Standards for Improving Quality of Care for Children and Young Adolescents in Health Facilities</em>.</li>
+          </ul>
+        </div>
+        <div class="finale-anim" style="text-align: center; padding: 4px;">
+          <div style="font-size: 1.85rem; font-weight: 800; background: linear-gradient(90deg, #2dd4bf, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            THANK YOU! ✨
+          </div>
+          <div style="font-size: 1.08rem; color: var(--text-white); font-weight: 700;">
+            Created &amp; Managed by Mudassir Khan
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- ==================== FOOTER NAVIGATION ==================== -->
+<!-- Footer Controls -->
 <footer class="nav-footer">
   <div class="nav-group">
-    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-btn" type="button" onclick="restartDeck()">↺ Restart</button>
+    <button class="nav-btn" type="button" onclick="toggleFullscreen()">⛶ Fullscreen</button>
   </div>
-  <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);" class="desktop-hint">
-    Use Arrow Keys / Buttons to Navigate
+  <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+    Navigate: <strong>← / →</strong> or <strong>Spacebar</strong>
   </div>
   <div class="nav-group">
-    <button class="nav-btn primary" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    <button class="nav-btn" type="button" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+    <button class="nav-btn primary" type="button" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
   </div>
 </footer>
 
-<!-- ==================== OVERVIEW MODAL ==================== -->
-<div class="modal-overlay" id="overviewModal" onclick="closeOverview(event)">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-      <h2>Presentation Index</h2>
-      <button class="hdr-btn" onclick="document.getElementById('overviewModal').classList.remove('open')">✕ Close</button>
+<!-- Overview Modal -->
+<div class="modal-overlay" id="overviewModal" onclick="if(event.target===this) closeOverview()">
+  <div class="modal-box">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="margin-bottom: 0;">📑 Slide Navigator (18 Slides)</h2>
+      <button class="hdr-btn" type="button" onclick="closeOverview()">✕ Close</button>
     </div>
     <div class="overview-grid" id="overviewGrid"></div>
   </div>
 </div>
 
 <script>
-  let currentSlide = 1;
-  const totalSlides = 20;
+  /* Password Gate Verification */
+  function verifyPassword() {
+    const val = document.getElementById('gatePassInput').value.trim();
+    const err = document.getElementById('gateError');
+    if (val === 'group4') {
+      document.getElementById('passwordGate').style.display = 'none';
+    } else {
+      err.style.display = 'block';
+      document.getElementById('gatePassInput').focus();
+    }
+  }
+
+  document.getElementById('gatePassInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') verifyPassword();
+  });
+
+  const slides = document.querySelectorAll('.slide');
+  const progressBar = document.getElementById('progressBar');
+  const slideCounter = document.getElementById('slideCounter');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIdx = 0;
 
   const slideTitles = [
-    "1. Title & Team", "2. Objectives", "3. Clinical Scenario", "4. Communication Foundations",
-    "5. Infants & Toddlers", "6. Preschoolers & School-Age", "7. Adolescents", "8. Therapeutic Play Intro",
-    "9. Types of Play", "10. Play in Practice", "11. Global & Pakistani Context", "12. Family-Centered Care",
-    "13. Managing Pain", "14. Communication Barriers", "15. Role of Pediatric Nurse", "16. Case Study",
-    "17. Interactive Journey", "18. Summary", "19. References", "20. Conclusion"
+    "1. Title & Group 04 Introduction",
+    "2. Learning Objectives",
+    "3. Opening Hook: 5-Year-Old Ayaan's Fear",
+    "4. Intro to Pediatric Communication",
+    "5. Guidelines for Communicating with Children",
+    "6. Communication by Age & Development",
+    "7. Communication with Families",
+    "8. Communication Do's & Don'ts",
+    "9. Role of Play in Growth & Development",
+    "10. Types of Play in Child Development",
+    "11. Functions of Play in Hospital",
+    "12. Therapeutic Play",
+    "13. Therapeutic Play vs. Play Therapy",
+    "14. Play in Nursing Management",
+    "15. Play Before, During & After Procedures",
+    "16. Real-Life Case Study (Ayaan)",
+    "17. Bedside Comfort Journey",
+    "18. Summary, Takeaways & References"
   ];
 
   function updateDeck() {
-    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-    const active = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
-    if (active) active.classList.add('active');
-
-    document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
-    document.getElementById('progressFill').style.width = `${(currentSlide / totalSlides) * 100}%`;
-
-    document.getElementById('prevBtn').disabled = (currentSlide === 1);
-    document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === currentIdx);
+      if (i === currentIdx) s.scrollTop = 0;
+    });
+    progressBar.style.width = `${((currentIdx + 1) / slides.length) * 100}%`;
+    slideCounter.textContent = `${currentIdx + 1} / ${slides.length}`;
+    prevBtn.disabled = currentIdx === 0;
+    nextBtn.disabled = currentIdx === slides.length - 1;
   }
 
-  function changeSlide(dir) {
-    const next = currentSlide + dir;
-    if (next >= 1 && next <= totalSlides) {
-      currentSlide = next;
+  function changeSlide(delta) {
+    const target = currentIdx + delta;
+    if (target >= 0 && target < slides.length) {
+      currentIdx = target;
       updateDeck();
     }
   }
 
-  function jumpToSlide(n) {
-    currentSlide = n;
+  function goToSlide(idx) {
+    currentIdx = idx;
     updateDeck();
-    document.getElementById('overviewModal').classList.remove('open');
+    closeOverview();
   }
 
-  function tryUnlock() {
-    const input = document.getElementById('lockInput');
-    const val = input.value.trim().toLowerCase();
-    if (val === 'group 5' || val === 'group5') {
-      const lock = document.getElementById('lockScreen');
-      lock.classList.add('unlocked');
-      setTimeout(() => lock.style.display = 'none', 650);
+  function restartDeck() {
+    currentIdx = 0;
+    updateDeck();
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
     } else {
-      input.classList.add('shake');
-      setTimeout(() => input.classList.remove('shake'), 400);
-      input.value = '';
-      input.placeholder = 'Incorrect! Try "group 5"';
+      document.exitFullscreen().catch(() => {});
     }
   }
 
-  document.getElementById('lockInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') tryUnlock();
+  document.addEventListener('keydown', (e) => {
+    if (document.getElementById('passwordGate').style.display !== 'none') return;
+    if (document.getElementById('overviewModal').classList.contains('open')) {
+      if (e.key === 'Escape') closeOverview();
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      changeSlide(1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      changeSlide(-1);
+    }
   });
 
-  function triggerScenario(isCorrect) {
-    const bar = document.getElementById('stressBar');
-    const txt = document.getElementById('stressText');
-    const panel = document.getElementById('scenarioResult');
-    if (isCorrect) {
-      bar.style.width = '20%';
-      bar.style.background = 'linear-gradient(90deg, #10b981, #34d399)';
-      txt.textContent = 'LOW (20%)';
-      panel.classList.add('show');
+  /* Slide 3 Hook Interaction */
+  function triggerHook(btn, choice) {
+    const all = btn.parentElement.querySelectorAll('.hook-option');
+    all.forEach(b => b.classList.remove('correct', 'wrong'));
+    const res = document.getElementById('hookResult');
+    const fill = document.getElementById('stressFill');
+    const pct = document.getElementById('stressPct');
+    const emoji = document.getElementById('hookEmoji');
+    const status = document.getElementById('hookStatus');
+
+    res.classList.add('show');
+    if (choice === 'C') {
+      btn.classList.add('correct');
+      fill.style.width = '18%';
+      fill.style.background = 'linear-gradient(90deg, #0d9488, #2dd4bf)';
+      pct.textContent = '18% (Calm & Safe!)';
+      pct.style.color = '#5eead4';
+      emoji.textContent = '😊🧸';
+      status.textContent = "AYAAN'S STRESS LEVEL: LOW (TRUST ESTABLISHED)";
+      status.style.color = '#5eead4';
+      res.style.borderColor = '#2dd4bf';
+      res.innerHTML = `<strong>✅ Psychological Breakthrough (Option C):</strong> Kneeling to Ayaan's eye level removes physical intimidation, and introducing a toy activates his natural play instinct—dropping fear immediately!`;
     } else {
-      bar.style.width = '95%';
-      bar.style.background = '#ef4444';
-      txt.textContent = 'HIGH (95%) - Crying Intensified';
-      panel.classList.remove('show');
+      btn.classList.add('wrong');
+      fill.style.width = '98%';
+      fill.style.background = 'linear-gradient(90deg, #e11d48, #fb7185)';
+      pct.textContent = '98% (Overwhelmed!)';
+      pct.style.color = '#fda4af';
+      emoji.textContent = '😱😭';
+      status.textContent = "AYAAN'S STRESS LEVEL: PANIC";
+      status.style.color = '#fda4af';
+      res.style.borderColor = '#fb7185';
+      res.innerHTML = choice === 'A'
+        ? `<strong>⚠️ Not Yet (Option A):</strong> A panicking 5-year-old's brain cannot process medical explanations until emotional safety is established first. Try <strong>Option C</strong>!`
+        : `<strong>⚠️ Avoid Shaming (Option B):</strong> Telling a scared child to "stop crying" invalidates their feelings and breaks trust. Try <strong>Option C</strong>!`;
     }
   }
 
-  const journeySteps = [
-    "Stage 1: Admission – Greet family warmly, reduce anxiety, orient room, assess baseline vital signs and developmental status.",
-    "Stage 2: Assessment – Non-verbal observation, gentle approach from least to most invasive, involve parents as calm anchors.",
-    "Stage 3: Treatment – Procedural preparation via therapeutic doll play, topical anesthetic, distraction (bubbles/toys), praise.",
-    "Stage 4: Discharge – Clear verbal and written home care instructions, medication schedule, warning signs, follow-up appointment."
-  ];
-
-  function setIndex(idx) {
-    document.querySelectorAll('.j-step-btn').forEach((b, i) => {
-      if (i === idx) b.classList.add('active-step');
-      else b.classList.remove('active-step');
-    });
-    document.getElementById('journeyDisplay').textContent = journeySteps[idx];
+  /* Slide 16 Case Toggle */
+  function toggleCasePlan() {
+    document.getElementById('casePlanPanel').classList.toggle('show');
   }
 
-  // alias for onclick in HTML
-  function setJourney(idx) { setIndex(idx); }
+  /* Slide 17 Comfort Journey */
+  const journeyData = {
+    1: {
+      emoji: "👋",
+      title: "Step 1: Connection & Trust",
+      desc: "Approach gently at eye level, introduce yourself warmly, use the child's preferred name, and involve parents to establish immediate psychological safety."
+    },
+    2: {
+      emoji: "💬",
+      title: "Step 2: Age-Appropriate Communication",
+      desc: "Use simple, concrete words matching the child's developmental stage. Avoid scary medical jargon and give clear, honest explanations."
+    },
+    3: {
+      emoji: "🧸",
+      title: "Step 3: Therapeutic Preparation",
+      desc: "Use medical play, dolls, or toy kits to demonstrate procedures before they happen, allowing the child to feel in control and prepared."
+    },
+    4: {
+      emoji: "🌟",
+      title: "Step 4: Comfort & Honest Praise",
+      desc: "Use active distraction (bubbles, stories) during care, and honestly praise the child's coping effort afterward to build lasting confidence."
+    }
+  };
 
+  function selectJourneyStep(stepNum, btn) {
+    document.querySelectorAll('.j-step-btn').forEach(b => b.classList.remove('active-step'));
+    btn.classList.add('active-step');
+    const data = journeyData[stepNum];
+    document.getElementById('journeyEmoji').textContent = data.emoji;
+    document.getElementById('journeyTitle').textContent = data.title;
+    document.getElementById('journeyDesc').textContent = data.desc;
+  }
+
+  /* Overview Modal */
   function openOverview() {
     const grid = document.getElementById('overviewGrid');
     grid.innerHTML = '';
     slideTitles.forEach((t, i) => {
-      const num = i + 1;
-      const div = document.createElement('div');
-      div.className = `ov-item ${num === currentSlide ? 'current' : ''}`;
-      div.textContent = t;
-      div.onclick = () => jumpToSlide(num);
-      grid.appendChild(div);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ov-item' + (i === currentIdx ? ' current' : '');
+      btn.innerHTML = `<strong style="color:#2dd4bf; display:block; margin-bottom:4px;">Slide ${i + 1}</strong><span style="font-size:0.9rem;">${t.replace(/^\d+\.\s*/, '')}</span>`;
+      btn.onclick = () => goToSlide(i);
+      grid.appendChild(btn);
     });
     document.getElementById('overviewModal').classList.add('open');
   }
 
-  function closeOverview(e) {
-    if (e.target.id === 'overviewModal') {
-      document.getElementById('overviewModal').classList.remove('open');
-    }
+  function closeOverview() {
+    document.getElementById('overviewModal').classList.remove('open');
   }
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (document.getElementById('lockScreen').style.display !== 'none') return;
-    if (document.getElementById('overviewModal').classList.contains('open')) {
-      if (e.key === 'Escape') document.getElementById('overviewModal').classList.remove('open');
-      return;
-    }
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') changeSlide(1);
-    if (e.key === 'ArrowLeft' || e.key === 'PageUp') changeSlide(-1);
-  });
-
-  // Initialize first state
   updateDeck();
-  setIndex(0);
 </script>
 </body>
 </html>
